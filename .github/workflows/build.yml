@@ -1,5 +1,4 @@
-name: github pages
-
+name: Build Wiki
 on:
   push:
     branches:
