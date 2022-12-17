@@ -2,14 +2,14 @@ baseURL = "wiki"
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
-title = "ClimateTown Wiki"
+title = "ClimateTown Knowledge Hub"
 theme = "learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= true
 
 [params]
   editURL = "https://github.com/ClimateTown/wiki/edit/main/content"
-  description = "A wiki of climate focused resources currated by the ClimateTown community."
+  description = "A knowledge hub of climate focused resources currated by the ClimateTown community."
   author = "ClimateTown Community"
   showVisitedLinks = false
   disableBreadcrumb = false
@@ -26,7 +26,7 @@ home = [ "HTML", "RSS", "JSON"]
 
 [Languages]
 [Languages.en]
-title = "Documentation for Hugo Learn Theme"
+title = "ClimateTown Knowledge Hub"
 weight = 1
 languageName = "English"
 landingPageURL = "/en"

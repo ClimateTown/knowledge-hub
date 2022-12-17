@@ -1,4 +1,4 @@
-name: Build Wiki
+name: Build website
 on:
   push:
     branches:
