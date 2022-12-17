@@ -34,13 +34,13 @@ landingPageName = "<i class='fas fa-home'></i> Home"
 
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-pen-square'></i> Contribute on GitHub"
+name = "✍ Contribute on GitHub"
 identifier = "ds"
 url = "https://github.com/ClimateTown/wiki"
 weight = 10
 
 [[Languages.en.menu.shortcuts]]
-name = "<i class='fas fa-bullhorn'></i> Credits"
+name = "📢 Credits"
 url = "https://github.com/ClimateTown/wiki/graphs/contributors"
 weight = 30
 
