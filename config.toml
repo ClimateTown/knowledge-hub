@@ -1,4 +1,5 @@
-baseURL = "https://climatetown.github.io/knowledge-hub/"
+baseURL = "https://climatetown.github.io/knowledge-hub"
+canonifyURLs = true
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
@@ -11,6 +12,7 @@ defaultContentLanguageInSubdir= true
   editURL = "https://github.com/ClimateTown/knowledge-hub/edit/main/content/"
   description = "A knowledge hub of climate focused resources currated by the ClimateTown community."
   author = "ClimateTown Community"
+  logo = "/images/knowledge-hub-logo.png"
   showVisitedLinks = false
   disableBreadcrumb = false
   disableNextPrev = false

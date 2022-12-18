@@ -1,4 +1,4 @@
-# ClimateTown Knowledge Hub 
+![ClimateTown Knowledge Hub](static/images/index/knowledge-hub-banner.png)
 
 
 [![YouTube subs](https://img.shields.io/youtube/channel/subscribers/UCuVLG9pThvBABcYCm7pkNkA?label=ClimateTown&style=for-the-badge)](https://www.youtube.com/@ClimateTown)
