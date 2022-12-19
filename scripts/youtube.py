@@ -11,8 +11,8 @@ from tqdm import tqdm
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
 
-YOUTUBE_CHANNEL_IDS = Path("static") / "data" / "youtube_channel_ids.yml"
-VIDEO_DATA = Path("static") / "data" / "video_data.json"
+YOUTUBE_CHANNEL_IDS = Path("data") / "youtube_channel_ids.yml"
+VIDEO_DATA = Path("data") / "video_data.json"
 NUMBER_OF_VIDEOS = 200
 
 

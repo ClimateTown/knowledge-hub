@@ -4,4 +4,4 @@ public
 .vscode
 
 # Exclude YouTube video data from YouTube API (would soil git history)
-static/data/video_data.json
+data/video_data.json
