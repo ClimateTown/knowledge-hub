@@ -1,0 +1,63 @@
+<!-- YouTube feed styling -->
+<style>
+  .youtube-feed {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .thumbnail .caption {
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .thumbnail .caption h3 {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .thumbnail .caption p {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+  }
+
+  .thumbnail:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<!-- YouTube feed -->
+{{ if .Site.Data.video_data }}
+<div class="youtube-feed">
+  {{ range .Site.Data.video_data }}
+  <a href="https://youtu.be/{{.videoId}}">
+    <div class="thumbnail" id="{{.videoId}}" channel="{{.channelId}}">
+      <img src="https://i.ytimg.com/vi/{{.videoId}}/hqdefault.jpg" alt="Video thumbnail">
+      <div class="caption">
+        <h3>{{.title | safeHTML }}</h3>
+      </div>
+    </div>
+  </a>
+</div>
+{{ end }}
+{{ else }}
+<p>An error occured :( . Please <a href="https://github.com/ClimateTown/knowledge-hub">report an issue on GitHub</a></p>
+{{ end }}
