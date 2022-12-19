@@ -1,42 +1,31 @@
 <!-- YouTube feed styling -->
 <style>
-  .youtube-feed {
+  div.thumbnail-grid {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    
   }
 
-  .thumbnail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 300px;
-    height: 200px;
-    margin: 10px;
+  a.thumbnail {
+    display: inline-grid;
+    max-width: 12em;
     border-radius: 5px;
+    height: auto;
+    padding: 0;
+    margin: 0.5em;
   }
 
   .thumbnail img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    margin: 0 !important;
+    padding: 0;
   }
 
-  .thumbnail .caption {
-    background-color: #fff;
-    padding: 10px;
+  .thumbnail p {
+    padding: 0;
+    margin: 0;
     text-align: center;
-  }
-
-  .thumbnail .caption h3 {
-    font-size: 16px;
-    margin: 0;
-  }
-
-  .thumbnail .caption p {
-    font-size: 14px;
-    color: #555;
-    margin: 0;
   }
 
   .thumbnail:hover {
@@ -44,20 +33,19 @@
   }
 </style>
 
+
 <!-- YouTube feed -->
 {{ if .Site.Data.video_data }}
-<div class="youtube-feed">
+<div class="thumbnail=-gri">
   {{ range .Site.Data.video_data }}
-  <a href="https://youtu.be/{{.videoId}}">
-    <div class="thumbnail" id="{{.videoId}}" channel="{{.channelId}}">
-      <img src="https://i.ytimg.com/vi/{{.videoId}}/hqdefault.jpg" alt="Video thumbnail">
-      <div class="caption">
-        <h3>{{.title | safeHTML }}</h3>
-      </div>
+  <a class="thumbnail" id="{{.videoId}}" channel="{{.channelId}}" href="https://youtu.be/{{.videoId}}">
+    <img src="https://i.ytimg.com/vi/{{.videoId}}/hqdefault.jpg" alt="Video thumbnail">
+    <div class="caption">
+      <p>{{.title | safeHTML }}</p>
     </div>
   </a>
+  {{ end }}
 </div>
-{{ end }}
 {{ else }}
 <p>An error occured :( . Please <a href="https://github.com/ClimateTown/knowledge-hub">report an issue on GitHub</a></p>
 {{ end }}
