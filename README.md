@@ -1,5 +1,9 @@
-![ClimateTown Knowledge Hub](static/images/index/knowledge-hub-banner.png)
 
+<p align="center">
+<a href="https://climatetown.github.io/knowledge-hub">
+<img width="200" src="static/images/knowledge-hub-logo.png">
+</a>
+</p>
 
 [![YouTube subs](https://img.shields.io/youtube/channel/subscribers/UCuVLG9pThvBABcYCm7pkNkA?label=ClimateTown&style=for-the-badge)](https://www.youtube.com/@ClimateTown)
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/ClimateTown)
