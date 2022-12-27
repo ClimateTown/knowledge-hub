@@ -6,7 +6,7 @@
     let displayedResources = resources;
     let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
     // TODO: make this a user preference
-    $: tagLogic = "and" ? tagLogicAnd : "or";
+    $: tagLogic = tagLogicAnd ? "and" : "or";
 
     let tags = data.payload.tags;
     // Creating filter object
