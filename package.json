@@ -7,7 +7,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test:unit": "vitest"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^1.0.0",
@@ -20,6 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"vitest": "^0.26.2",
 		"yaml": "^2.2.0"
 	}
 }
