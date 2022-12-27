@@ -2,7 +2,7 @@ name: Build website
 on:
   push:
     branches:
-      - main  # Set a branch to deploy
+      - dev  # Set a branch to deploy
   pull_request:
 
 jobs:
