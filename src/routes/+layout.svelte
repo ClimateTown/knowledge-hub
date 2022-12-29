@@ -5,10 +5,7 @@
 </script>
 
 <svelte:head>
-    <title>My App</title>
-    <!-- TODO: Remove line in production -->
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
+    <title>Climate Town Knowledge Hub</title>
     <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
     <script
         src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
