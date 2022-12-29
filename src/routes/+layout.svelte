@@ -14,9 +14,15 @@
 </svelte:head>
 
 <nav>
+    <!-- image of width 4em -->
+    <img
+        style="width: 4em"
+        src="/images/knowledge-hub-logo.png"
+        alt="Knowledge Hub logo"
+    />
+
     <a href="/">Home</a>
     <a href="/resources">Resources</a>
-    <a href="/youtube">YouTube Feed</a>
 
     <a href="https://github.com/ClimateTown/knowledge-hub"
         >✍ Contribute on GitHub</a
