@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Climate Town Knowledge Hub</h1>
+<p>
+    Welcome to the Climate Town Knowledge Hub, your “one stop shop” for
+    important resources in the fight against climate change! This website
+    contains a collection of online resources, initiatives, and tools suggested
+    by the Climate Town Discord community.
+</p>
+<img src="/images/banner.jpg" alt="Climate banner image" style="width: 80%" />

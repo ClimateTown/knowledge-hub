@@ -5,10 +5,7 @@
 </script>
 
 <svelte:head>
-    <title>My App</title>
-    <!-- TODO: Remove line in production -->
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
+    <title>Climate Town Knowledge Hub</title>
     <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
     <script
         src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
@@ -17,14 +14,29 @@
 </svelte:head>
 
 <nav>
+    <!-- image of width 4em -->
+    <img
+        style="width: 4em"
+        src="/images/knowledge-hub-logo.png"
+        alt="Knowledge Hub logo"
+    />
+
     <a href="/">Home</a>
     <a href="/resources">Resources</a>
-    <a href="/youtube">YouTube Feed</a>
+
+    <a href="https://github.com/ClimateTown/knowledge-hub"
+        >✍ Contribute on GitHub</a
+    >
+    <a href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors"
+        >📣 Credits</a
+    >
+    <a href="https://www.climatetownproductions.com/">🌐 Main Website </a>
 </nav>
 
 <slot />
 
 <style>
+    /* Emoji support https://github.com/twitter/twemoji#inline-styles */
     :global(img.emoji) {
         height: 1em;
         width: 1em;
