@@ -1,5 +1,6 @@
 <!-- Emoji support -->
 <script>
+    import { base } from "$app/paths";
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
 </script>
@@ -17,12 +18,12 @@
     <!-- image of width 4em -->
     <img
         style="width: 4em"
-        src="/images/knowledge-hub-logo.png"
+        src="{base}/images/knowledge-hub-logo.png"
         alt="Knowledge Hub logo"
     />
 
-    <a href="/">Home</a>
-    <a href="/resources">Resources</a>
+    <a href="{base}/">Home</a>
+    <a href="{base}/resources">Resources</a>
 
     <a href="https://github.com/ClimateTown/knowledge-hub"
         >✍ Contribute on GitHub</a
