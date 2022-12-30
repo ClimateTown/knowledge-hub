@@ -1,3 +1,7 @@
+<script>
+    import { base } from "$app/paths";
+</script>
+
 <h1>Climate Town Knowledge Hub</h1>
 <p>
     Welcome to the Climate Town Knowledge Hub, your “one stop shop” for
@@ -5,4 +9,8 @@
     contains a collection of online resources, initiatives, and tools suggested
     by the Climate Town Discord community.
 </p>
-<img src="/images/banner.jpg" alt="Climate banner image" style="width: 80%" />
+<img
+    src="{base}/images/banner.jpg"
+    alt="Climate banner image"
+    style="width: 80%"
+/>
