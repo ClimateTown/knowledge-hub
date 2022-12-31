@@ -4,19 +4,18 @@ import { test, expect, CustomMatcherResult } from 'vitest'
 
 const resources_path: string = 'data/resources.yml'
 
-// Defining tests
-// type resource = { title: string, url: string, tags: string[] }
+// This test validates that the resources.yml file is valid according to the requirements of resources.
 
-interface Resource {
-    title: string,
-    url: string,
-    tags: string[],
-}
+// interface Resource {
+//     title: string,
+//     url: string,
+//     tags: string[],
+// }
 
 function toBeResource(toBeDetermined: any): CustomMatcherResult {
     const { title, url, description, tags } = toBeDetermined;
 
-    // Checking that resource has 4 keys
+    // Checking that resource object has 4 keys
     if (!(Object.keys(toBeDetermined).length === 4)) {
         throw new Error(`resource url ${url} has ${Object.keys(toBeDetermined).length} keys (should have 4; title, url, description, and tags)`)
     }
@@ -60,10 +59,8 @@ const yml_data = parse(file)
 console.log(yml_data)
 
 // check yml_data is of type resources
-test('testing resources in YAML file...', () => {
-    for (let resource of yml_data) {
-        expect(resource).toBeResource()
-    }
+test.each(yml_data)("Validating resource $title ($url) in resource file", (resource) => {
+    expect(resource).toBeResource()
 })
 
 
