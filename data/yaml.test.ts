@@ -56,8 +56,6 @@ expect.extend({
 const file = fs.readFileSync(resources_path, 'utf8')
 const yml_data = parse(file)
 
-console.log(yml_data)
-
 // check yml_data is of type resources
 test.each(yml_data)("Validating resource $title ($url) in resource file", (resource) => {
     expect(resource).toBeResource()
