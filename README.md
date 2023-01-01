@@ -27,19 +27,18 @@ The following sections go through how you can make different contributions. Thes
 For any discussion or questions about the Knowledge Hub, join us in `#💬knowledge-hub-discussion` in the ClimateTown Discord.
 
 ### Small edits/typos
-Resources data (title, URL, description, tags) are stored in the `data/resources.yml` file, which is then used to create the title. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
+Resources data (title, URL, description, tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
 
-As the whole website is stored in this repository, you can also use the search functionality to locate typos or suggest changes elsewhere in the site.
+To suggest changes anywhere else in the site, you can use GitHub's search functionality to find the exact file which to suggest the change.
 
 ### Resource suggestions
 We're always looking to publicise awesome climate resources. Got a resource to share? The easiest way is to create an issue, filling out the "resource suggestion" form. This will create a discussion around the resource, and if it's a good fit for the Knowledge Hub, we'll add it to the site.
 
 ### Site suggestions
-This website is driven by coders from the community. Have a suggestion to make the site better? Create an issue and we'll discuss it! If the feature sounds good, we'll look at adding it to the site. The feature is much more likely to be added if you can help with the development.
+This website is powered by coders from the community. Have a suggestion to make the site better? Create an issue and we'll discuss it! If the feature sounds good, we'll look at adding it to the site. The feature is much more likely to be added if you are willing to help with the development.
 
 
-## Development
-### Installation and setup
+## Development installation
 The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/). A dev environment can be easily set up using Node and npm:
 
 - [install Node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
