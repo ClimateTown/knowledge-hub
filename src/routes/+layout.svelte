@@ -1,5 +1,6 @@
 <!-- Emoji support -->
 <script>
+    import "../app.css";
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
 </script>
@@ -16,13 +17,21 @@
     ></script>
 </svelte:head>
 
-<nav>
-    <a href="/">Home</a>
-    <a href="/resources">Resources</a>
-    <a href="/youtube">YouTube Feed</a>
+<div class="body h-screen flex">
+<div class="w-1/5 bg-green-600 flex flex-col p-5 h-screen">
+    <img src="/images/knowledge-hub-logo.png" alt="Logo of Knowledge Hub" />
+<nav class="space-y-6 flex flex-col">
+    <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/">Home</a></button>
+    <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/resources">Resources</a></button>
+    <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/youtube">YouTube Feed</a></button>
 </nav>
+</div>
 
-<slot />
+<div class="w-4/5 py-10 pb-5 pt-24 px-32">
+    <slot />
+</div>
+
+</div>
 
 <style>
     :global(img.emoji) {
