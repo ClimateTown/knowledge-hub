@@ -1,7 +1,7 @@
 name: Build website
 on:
   push:
-    branches: ["dev"]
+    branches: ["dev", "cicd-test/*"]
 
   workflow_dispatch:
 
@@ -29,6 +29,12 @@ jobs:
           node-version: 19
           cache: 'npm'
       - run: npm install
+      - name: Scrape YouTube data
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python scripts/youtube.py --api-key ${{ secrets.YOUTUBE_API_KEY }}
       # - run: npm ci
       - run: npm run build
       - name: Upload artifact
