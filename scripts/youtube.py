@@ -99,7 +99,7 @@ def save_channel_data(channel_ids: List[str], youtube: build):
     """
     channels = []
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
-    for channel_id in channel_ids:
+    for channel_id in pbar:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
         # Execute the request and store the response
         response = request.execute()
@@ -177,7 +177,7 @@ def main():
     logger.success(f"Retrieved channel IDs from {YOUTUBE_CHANNEL_IDS}")
     logger.debug(f"Channel IDs: {channel_ids}")
 
-    # save_video_data(channel_ids, youtube)
+    save_video_data(channel_ids, youtube)
     save_channel_data(channel_ids, youtube)
 
     return
