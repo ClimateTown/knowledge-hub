@@ -24,6 +24,7 @@
 
     <a href="{base}/">Home</a>
     <a href="{base}/resources">Resources</a>
+    <a href="{base}/youtube">YouTube Feed</a>
 
     <a href="https://github.com/ClimateTown/knowledge-hub"
         >✍ Contribute on GitHub</a
