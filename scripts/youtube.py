@@ -149,22 +149,24 @@ def save_video_data(channel_ids: List[str], youtube: build):
 
 def main():
     logger.info("Starting YouTube Python script")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--api-key", help="Your YouTube Data API key")
+    args = parser.parse_args()
+    api_key = args.api_key
 
-    if Path(".env").exists():
+    if api_key is None:
+        if not Path(".env").exists():
+            raise Exception("API key not provided, and not in env file")
+        
         logger.info("Loading in API key from .env file...")
 
         load_dotenv()
         api_key = os.getenv("YOUTUBE_API_KEY")
     else:
-        logger.info("Parsing in API key from command line...")
-
-        parser = argparse.ArgumentParser()
-        parser.add_argument("--api-key", help="Your YouTube Data API key")
-
-        args = parser.parse_args()
-        api_key = args.api_key
+        logger.info("API key parsed from command line.")
 
     assert type(api_key) == str, "API key must be a string"
+
     logger.success("YouTube API key successfully retrieved")
 
     youtube = build("youtube", "v3", developerKey=api_key)
