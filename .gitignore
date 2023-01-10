@@ -2,6 +2,7 @@ venv
 public
 .env
 .vscode
+ignore-me
 
 # Exclude YouTube video data from YouTube API (would soil git history)
 data/video_data.json

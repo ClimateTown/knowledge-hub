@@ -10,9 +10,15 @@
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 
-The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub) (your "one stop shop" for important climate resources in the fight against climate change!).
+⚠⚠This hub is still a WIP and not released.⚠⚠
+
+---
+
+The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one stop shop" for important climate resources in the fight against climate change!
 
 ## Contributing
+> TLDR; [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose), or edit the content directly and make a pull request.
+
 All contributions welcome! Everything from:
 - suggestions
 - fixing typos
@@ -20,42 +26,30 @@ All contributions welcome! Everything from:
 - helping with website development
 - discussing content on the hub (check out the channels on Discord for this!)
   
-The following sections go through how you can make different contributions. These will require you having a GitHub account. If you have any questions about contributing, feel free to ask in the Discord.
+The following sections go through how you can make different contributions. These will require you having a GitHub account.
+
+For any discussion or questions about the Knowledge Hub, join us in `#💬knowledge-hub-discussion` in the ClimateTown Discord.
 
 ### Small edits/typos
-Every page on the website has an "Edit this page" button. Clicking this will direct you to the exact file in the repo where the content is stored, so you have make the appropriate change to the page. Super easy!
+Resources data (title, URL, description, tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
 
-### Suggestions
-Have an idea for the knowledge hub? Maybe its a topic you'd like, or a website feature. Make your suggestion by [creating an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose), and following the steps provided there. The issue will act as a space for the topic to be discussed.
+To suggest changes anywhere else in the site, you can use GitHub's search functionality to find the exact file which to suggest the change.
 
-### Make your own post
-Want to make your own post? Great! Before launching on your writing spree, we recommend to first create an issue for the post. This allows us to discuss the addition to make sure its a good fit for the Knowledge Hub (and so others can also get involved if they want to!).
+### Resource suggestions
+We're always looking to publicise awesome climate resources. Got a resource to share? The easiest way is to create an issue, filling out the "resource suggestion" form. This will create a discussion around the resource, and if it's a good fit for the Knowledge Hub, we'll add it to the site.
 
-Posts are written in markdown ([learn to write Markdown](https://www.markdownguide.org/getting-started/)) in the `content` folder of the repo. Feel free to copy one of the existing posts to act as a starting point. The website theme used for the knowledge hub also has additional features such as highlighted note blocks (read the [documentation](https://learn.netlify.app/en/)).
+### Site suggestions
+This website is powered by coders from the community. Have a suggestion to make the site better? Create an issue and we'll discuss it! If the feature sounds good, we'll look at adding it to the site. The feature is much more likely to be added if you are willing to help with the development.
 
-If you're confident with Git, you can create a pull request once the post is written. If you're new to GitHub, you can use the issue you created to collaborate with a technical person to get your post added to the Hub.
 
-## Development
-**Assuming you know Git/GitHub**  
-Discussion regarding development is done in the issues. Here you're welcome to comment on existing issues and assign them to yourself, or create new issues if you have ideas on how the knowledge hub can be changed.
+## Development installation
+The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/). A dev environment can be easily set up using Node and npm:
 
-### Installation and setup
-The site is built on [Hugo](https://gohugo.io/) using the [Hugo Learn Theme](https://github.com/matcornic/hugo-theme-learn).
-
-First, [install Hugo](https://gohugo.io/getting-started/installing/). Then clone this repo (or a fork of it) with the `--recurse-submodules` flag to ensure the theme is also downloaded:
-```sh
-git clone --recurse-submodules https://github.com/ClimateTown/knowledge-hub.git
-```
-cd into this folder, and run:
-```
-hugo server -w
-```
-Now you have a server running on `localhost:1313` that will automatically update when you make changes to the files. Note that if you make changes to css or the `config.toml` file, you'll need to restart the server.
-
-Read up on how Hugo works in the [documentation](https://gohugo.io/documentation/). The directory structure of the repo follows a [standard project directory structure](https://gohugo.io/getting-started/directory-structure/)
-
+- [install Node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
+- `git clone https://github.com/ClimateTown/knowledge-hub.git`
+- `cd` into the cloned directory
+- `npm install`
+- `npm run dev`
 
 ## Acknowledgements
-- [Hugo](https://gohugo.io/) for the static site generator
-- [Hugo Learn Theme](https://github.com/matcornic/hugo-theme-learn)
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
