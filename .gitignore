@@ -1,5 +1,6 @@
 venv
 public
+.env
 .vscode
 ignore-me
 
