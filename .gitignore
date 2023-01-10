@@ -1,8 +1,20 @@
 venv
 public
-.env
 .vscode
+ignore-me
 
 # Exclude YouTube video data from YouTube API (would soil git history)
 data/video_data.json
 data/channel_data.json
+
+# Svelte
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

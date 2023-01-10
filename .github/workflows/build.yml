@@ -1,7 +1,7 @@
 name: Build website
 on:
   push:
-    branches: ["dev"]
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 19
           cache: 'npm'
+      - run: npm install
       # - run: npm ci
       - run: npm run build
       - name: Upload artifact
@@ -36,6 +37,7 @@ jobs:
           path: ./build
 
   deploy:
+    if: ${{ github.ref }} == 'refs/heads/main' and ${{ github.repository }} == 'ClimateTown/knowledge-hub'
     runs-on: ubuntu-latest
     needs: build
     environment:
