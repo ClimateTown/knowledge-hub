@@ -10,6 +10,10 @@
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 
+⚠⚠This hub is still a WIP and not released.⚠⚠
+
+---
+
 The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one stop shop" for important climate resources in the fight against climate change!
 
 ## Contributing
