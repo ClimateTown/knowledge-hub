@@ -3,6 +3,8 @@
     import { base } from "$app/paths";
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
+
+    import "../app.css"
 </script>
 
 <svelte:head>
