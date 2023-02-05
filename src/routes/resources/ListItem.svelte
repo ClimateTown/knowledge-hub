@@ -6,24 +6,24 @@
 </script>
 
 <div class="card space-y-5 flex flex-col mt-7 justify-between">
-    <div class="border-b-2 flex space-y-2">
+    <div class="border-b-2 flex">
         <h2>{title}</h2>
-        <a href={url}>Link</a>
+        <a class="pl-2 pt-2" href={url}>Link</a>
     </div>
-    <div class="flex space-x-2 justify-between">
-        <div class="flex flex-col space-y-2">
-            <p>
+    <div class="flex flex-col justify-between">
+        <div class="flex flex-row space-x-2">
+            <p class="w-10/12">
                 {description}
             </p>
-            <div class="flex space-x-2">
+        <img class="w-2/12" src="/images/plant.jpg" style="width:300px;height:300px;" alt="watering a plant" />
+        </div>
+        <div class="flex space-x-2">
                 {#each tags as tag}
                     <div class="bg-gray-200 rounded p-2">
                         {tag}
                     </div>
                 {/each}
-            </div>
         </div>
-        <img src="/images/plant.jpg" style="width:300px;height:300px;" alt="watering a plant" />
     </div>
 </div>
 
