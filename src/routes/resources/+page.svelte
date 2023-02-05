@@ -70,14 +70,14 @@
 </script>
 
 <!-- begin form -->
-<form on:submit|preventDefault={filterResources} class="border-solid border-2 rounded p-4">
+<form on:submit|preventDefault={filterResources} class="border-solid border-2 rounded p-4 space-y-4">
     <h2>Filter</h2>
     <!-- <label for="search">Search</label> -->
     <!-- <input type="text" id="search" name="search" /> -->
-    <div class="flex space-x-3">
+    <div class="flex flex-row flex-wrap gap-2">
     {#each tags as tag}
         <!-- checkbox -->
-        <div class="checkbox-item flex justify-between space-x-2">
+        <div class="checkbox-item flex justify-between gap-2">
             <input
                 type="checkbox"
                 class="appearance-none bg-white checked:bg-black checked:border-blue-400 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
@@ -105,10 +105,20 @@
         border-radius: 5px;
     }
 
+    @media (min-width: 640px) {
+        input[type=checkbox] {
+        width: 25px;
+        height: 25px;
+        border-radius: 7px !important;
+        }
+    }
+
     input[type=checkbox] {
         width: 25px;
         height: 25px;
         border-radius: 7px !important;
     }
+
+    
 
 </style>

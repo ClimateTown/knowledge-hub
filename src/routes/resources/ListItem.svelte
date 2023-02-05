@@ -11,13 +11,13 @@
         <a class="pl-2 pt-2" href={url}>Link</a>
     </div>
     <div class="flex flex-col justify-between">
-        <div class="flex flex-row space-x-2">
-            <p class="w-10/12">
+        <div class="flex flex-col md:flex-row md:space-x-2 space-y-4 md:space-y-0">
+            <p class="md:w-10/12">
                 {description}
             </p>
-        <img class="w-2/12" src="/images/plant.jpg" style="width:300px;height:300px;" alt="watering a plant" />
+        <img class="md:w-2/12" src="/images/plant.jpg" style="width:300px;height:300px;" alt="watering a plant" />
         </div>
-        <div class="flex space-x-2">
+        <div class="flex space-x-2 pt-4 md:pt-0">
                 {#each tags as tag}
                     <div class="bg-gray-200 rounded p-2">
                         {tag}
