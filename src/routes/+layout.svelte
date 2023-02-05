@@ -1,15 +1,12 @@
 <!-- Emoji support -->
 <script>
-    import "../app.css";
+    import { base } from "$app/paths";
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
 </script>
 
 <svelte:head>
-    <title>My App</title>
-    <!-- TODO: Remove line in production -->
-    <meta charset="utf-8" />
-    <meta name="robots" content="noindex" />
+    <title>Climate Town Knowledge Hub</title>
     <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
     <script
         src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
@@ -21,9 +18,12 @@
     <div class="w-full lg:w-1/5 bg-green-600 flex flex-col lg:p-5 min-h-max lg:min-h-screen px-16">
         <img class="md:w-6/12 lg:w-full self-center" src="/images/knowledge-hub-logo.png" alt="Logo of Knowledge Hub" />
         <nav class="self-center gap-4 flex flex-wrap lg:flex-col pb-6 lg:pb-0">
-            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/">Home</a></button>
-            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/resources">Resources</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="{base}/">Home</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="{base}/resources">Resources</a></button>
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/youtube">YouTube Feed</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://github.com/ClimateTown/knowledge-hub">✍ Contribute on GitHub</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors">📣 Credits</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://www.climatetownproductions.com/">🌐 Main Website </a></button>
         </nav>
     </div>
 
@@ -33,6 +33,7 @@
 </div>
 
 <style>
+    /* Emoji support https://github.com/twitter/twemoji#inline-styles */
     :global(img.emoji) {
         height: 1em;
         width: 1em;
