@@ -1,15 +1,10 @@
 - title: Climate website
   url: https://climate.nasa.gov/
-  description: Phasellus pretium ex non libero luctus vulputate. Donec eleifend erat
-    sem, id efficitur metus accumsan in. Praesent risus erat, viverra vel gravida
-    euismod, egestas a risus. Praesent luctus turpis ante, eu ornare orci scelerisque
-    quis. Etiam ac viverra sem. Vivamus sed condimentum odio, id tincidunt sem. Donec
-    odio mi, fringilla non efficitur in, ultricies ac tortor. Vivamus sollicitudin
-    faucibus lectus, vel sodales dolor pharetra vitae. Integer cursus dapibus ante,
-    et commodo dui. Nullam fringilla erat eget ultricies lacinia. Donec faucibus porta
-    orci. Proin tincidunt velit tortor, et congue diam lobortis et. Vestibulum eget
-    lacus ut purus auctor semper sit amet a ante. Duis ultricies congue urna eu mollis.
-    Sed placerat urna finibus odio blandit mollis.
+  description: >-
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+    parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.
   tags:
   - Climate
   - Nasa
