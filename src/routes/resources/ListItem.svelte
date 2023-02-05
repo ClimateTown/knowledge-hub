@@ -5,7 +5,7 @@
     export let tags: Array<string>;
 </script>
 
-<div class="w-full rounded-lg shadow-lg">
+<div class="rounded-lg shadow-lg">
     <img
         alt="Website preview"
         class="object-cover rounded-t-lg object-center h-48 w-full"
@@ -38,7 +38,7 @@
             </div>
         </a>
         <p class="mt-2 text-gray-700">{description}</p>
-        <div class="flex space-x-2 text-sm pt-2">
+        <div class="flex space-x-2 text-xs pt-2">
             {#each tags as tag}
                 <div class="bg-gray-200 rounded-lg p-1">
                     {tag}
