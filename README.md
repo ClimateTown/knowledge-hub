@@ -51,5 +51,19 @@ The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://ki
 - `npm install`
 - `npm run dev`
 
+### OPTIONAL: Python
+Some of the tools in the codebase (eg. YouTube API, JSON schema validation) use Python. For most changes to the site Python is not required.
+
+To set up Python:
+- install Python from [here](https://www.python.org/downloads/) if you haven't already (minimum version 3.7)
+- create a virtual environment, then activate it (optional, but recommended)
+  - `python -m venv venv`
+  - activate the environment using either:
+    - `source venv/bin/activate` (Linux/MacOS)
+    - `venv\Scripts\activate.bat` (Windows)
+- `pip install -r requirements.txt`
+
+This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`.
+
 ## Acknowledgements
 - [Twemoji](https://twemoji.twitter.com/) for emoji support

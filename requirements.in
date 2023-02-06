@@ -1,0 +1,7 @@
+black
+google-api-python-client
+loguru
+numpy
+python-dotenv
+PyYAML
+tqdm
