@@ -7,3 +7,4 @@ pytest
 python-dotenv
 PyYAML
 tqdm
+opengraph_py3

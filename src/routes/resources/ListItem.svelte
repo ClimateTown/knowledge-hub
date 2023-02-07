@@ -2,15 +2,23 @@
     export let title: string;
     export let url: string;
     export let description: string;
+    export let og_preview: string | undefined;
     export let tags: Array<string>;
 </script>
 
 <div class="rounded-lg shadow-lg">
-    <img
-        alt="Website preview"
-        class="object-cover rounded-t-lg object-center h-48 w-full"
-        src="images/plant.jpg"
-    />
+    {#if og_preview}
+        <img
+            class="object-cover rounded-t-lg object-center h-48 w-full"
+            alt="Website preview"
+            src={og_preview}
+        />
+    {:else}
+        <div
+            class="object-cover rounded-t-lg object-center h-48 w-full bg-gray-500"
+        />
+    {/if}
+
     <div class="m-3">
         <a href={url} target="_blank" rel="noreferrer">
             <div class="text-xl font-medium text-gray-900 mt-3">
