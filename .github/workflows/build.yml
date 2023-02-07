@@ -3,7 +3,7 @@ on:
   push:
     branches: ["main", "cicd-test/*"]
   schedule:
-    - "0 * * * *"
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
