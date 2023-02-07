@@ -7,6 +7,7 @@ import yaml
 
 CURRENT_FOLDER = Path(__file__).parent
 
+
 def test_resources_yaml():
     with open(CURRENT_FOLDER / "resources.yml") as f:
         data = yaml.safe_load(f)
