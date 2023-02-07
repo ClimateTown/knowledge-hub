@@ -63,7 +63,7 @@ To set up Python:
     - `venv\Scripts\activate.bat` (Windows)
 - `pip install -r requirements.txt`
 
-This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`.
+This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`. To update your environment run `pip-sync`.
 
 ## Acknowledgements
 - [Twemoji](https://twemoji.twitter.com/) for emoji support

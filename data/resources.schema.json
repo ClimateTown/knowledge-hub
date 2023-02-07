@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "title": {
+                "description": "The title of the resource to be displayed on the site.",
+                "type": "string",
+                "maxLength": 50
+            },
+            "url": {
+                "description": "The URL of the resource.",
+                "type": "string"
+            },
+            "description": {
+                "description": "A short description of the resource.",
+                "type": "string",
+                "maxLength": 200
+            },
+            "tags": {
+                "description": "A list of tags to categorize the resource.",
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "maxLength": 30
+                },
+                "minItems": 1,
+                "maxItems": 6
+            }
+        },
+        "required": [
+            "title",
+            "url",
+            "description",
+            "tags"
+        ]
+    }
+}

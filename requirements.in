@@ -1,7 +1,9 @@
 black
 google-api-python-client
+jsonschema
 loguru
 numpy
+pytest
 python-dotenv
 PyYAML
 tqdm
