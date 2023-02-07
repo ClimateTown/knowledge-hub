@@ -32,5 +32,3 @@ declare namespace App {
 	}
 	// interface Platform {}
 }
-
-

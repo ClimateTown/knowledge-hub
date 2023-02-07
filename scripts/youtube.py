@@ -157,7 +157,7 @@ def main():
     if api_key is None:
         if not Path(".env").exists():
             raise Exception("API key not provided, and not in env file")
-        
+
         logger.info("Loading in API key from .env file...")
 
         load_dotenv()
