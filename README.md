@@ -25,7 +25,7 @@ All contributions welcome! Everything from:
 - writing content
 - helping with website development
 - discussing content on the hub (check out the channels on Discord for this!)
-  
+
 The following sections go through how you can make different contributions. These will require you having a GitHub account.
 
 For any discussion or questions about the Knowledge Hub, join us in `#💬knowledge-hub-discussion` in the ClimateTown Discord.
@@ -64,6 +64,17 @@ To set up Python:
 - `pip install -r requirements.txt`
 
 This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`. To update your environment run `pip-sync`.
+
+### OPTIONAL: Pre-commit
+This codebase uses [pre-commit](https://pre-commit.com/) and [pre-commit CI](https://pre-commit.ci/) to run linting on code, format Python code, and generally have help with code quality.
+
+You can either set up pre-commit locally (completely optional; it will run on every commit, aborting a commit if the pre-commit workflow fails), or you do nothing and leave it up to pre-commit CI to take care of it (where it will run on every push to GitHub, and fixes changes in PRs).
+
+To set up pre-commit locally:
+- install pre-commit using `pip install pre-commit` (other installation methods are available [here](https://pre-commit.com/#install))
+- `pre-commit install` to install the hooks
+
+To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
 
 ## Acknowledgements
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
