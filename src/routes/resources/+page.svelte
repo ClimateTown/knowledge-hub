@@ -70,14 +70,17 @@
 </script>
 
 <!-- begin form -->
-<form on:submit|preventDefault={filterResources}>
+<form on:submit|preventDefault={filterResources} class="border-solid border-2 rounded p-4 space-y-4">
+    <h2>Filter</h2>
     <!-- <label for="search">Search</label> -->
     <!-- <input type="text" id="search" name="search" /> -->
+    <div class="flex flex-row flex-wrap gap-2">
     {#each tags as tag}
         <!-- checkbox -->
-        <div>
+        <div class="checkbox-item flex justify-between gap-2">
             <input
                 type="checkbox"
+                class="appearance-none bg-white checked:bg-black checked:border-blue-400 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
                 bind:checked={filterObject.tags[tag]}
                 id={removeWhitespace(tag)}
                 name={removeWhitespace(tag)}
@@ -85,11 +88,39 @@
             <label for={tag}>{tag}</label>
         </div>
     {/each}
+    </div>
     <button type="submit">Filter</button>
 </form>
 
-{#each displayedResources as resource}
-    <ListItem {...resource} />
-{:else}
-    <div>No resources here!</div>
-{/each}
+<div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-4 mt-3">
+    {#each displayedResources as resource}
+        <ListItem {...resource} />
+    {:else}
+        <div>No resources here!</div>
+    {/each}
+</div>
+
+<style>
+    .checkbox-item {
+        background-color: rgb(209 213 219);
+        padding: 10px 14px 10px 14px;
+        border-radius: 5px;
+    }
+
+    @media (min-width: 640px) {
+        input[type=checkbox] {
+        width: 25px;
+        height: 25px;
+        border-radius: 7px !important;
+        }
+    }
+
+    input[type=checkbox] {
+        width: 25px;
+        height: 25px;
+        border-radius: 7px !important;
+    }
+
+    
+
+</style>

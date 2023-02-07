@@ -95,12 +95,14 @@
 </form>
 
 {#key rerender}
-    {#each displayedVideos as video}
-        <YoutubeVideo
-            {...video}
-            channelInfo={getChannelData(video.channelId)}
-        />
-    {:else}
-        <div>No videos here!</div>
-    {/each}
+    <div class="grid grid-flow-row xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-2">
+        {#each displayedVideos as video}
+            <YoutubeVideo
+                {...video}
+                channelInfo={getChannelData(video.channelId)}
+            />
+        {:else}
+            <div>No videos here!</div>
+        {/each}
+    </div>
 {/key}
