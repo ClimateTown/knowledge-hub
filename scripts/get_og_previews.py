@@ -1,11 +1,10 @@
 from pathlib import Path
+from urllib.request import Request, urlopen
 
 import yaml
-from tqdm import tqdm
-
-import urllib.request
 from bs4 import BeautifulSoup
 from loguru import logger
+from tqdm import tqdm
 
 resources_file = Path("data") / "resources.yml"
 
@@ -20,7 +19,8 @@ def get_page(url):
         soup (string): HTML source of scraped page.
     """
 
-    response = urllib.request.urlopen(url)
+    req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    response = urlopen(req, timeout=10)
 
     if response.getcode() != 200:
         logger.error(f"Error fetching {url}. Status code: {response.getcode()}")
@@ -56,12 +56,12 @@ def get_og_preview(url):
     return image_url
 
 
-if __name__ == "__main__":
+def main():
     with resources_file.open() as f:
         resources = yaml.safe_load(f)
     logger.success("Read in `resources.yml` file.")
 
-    for resource in tqdm(resources):
+    for resource in resources:
         logger.info(f"Getting OG preview for {resource['url']}")
 
         try:
@@ -77,3 +77,7 @@ if __name__ == "__main__":
         yaml.dump(resources, f)
 
     logger.success("Wrote OG previews to `resources.yml` file.")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,10 +1,11 @@
+beautifulsoup4
 black
 google-api-python-client
 jsonschema
 loguru
 numpy
+pandas
 pytest
 python-dotenv
 PyYAML
 tqdm
-opengraph_py3
