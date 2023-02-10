@@ -1,45 +1,224 @@
-- title: Climate website
-  url: https://climate.nasa.gov/
-  description: >-
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-    ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-    parturient montes, nascetur ridiculus mus.
+- description: Works to make New York City's buildings more sustainable and resilient, reducing carbon emissions, creating healthier environments and conserving energy and resources.
   tags:
-  - Climate
-  - Nasa
-  - Earth Observation
-- title: Climate website 2
-  url: https://earthengine.com
-  description: An earth obs website
+  - Organizations
+  - location/US/NYC
+  title: Urban Green Council
+  url: https://www.urbangreencouncil.org/
+- description: The Sierra Club is a grassroots environmental organization that protects wild places, wildlife, and the planet by advocating for clean energy, preserving public lands, and promoting sustainable communities.
   tags:
-  - Climate
-  - Nasa
-  - Earth Observation
-- title: Responsible Banking
-  description: A website
+  - Organizations
+  title: Sierra Club
+  url: https://www.sierraclub.org/articles
+- description: The Greenlining Institute works towards a future where communities of color can build wealth, live in healthy places filled with economic opportunity, and are ready to meet the challenges posed by climate change.
   tags:
-  - Banking
-  - Sustainability
-  - Finance
-  url: https://www.responsiblebanking.org/
-- title: Responsible Banking 2
-  description: A website
+  - Organizations
+  title: The Greenlining Institute
+  url: https://greenlining.org
+- description: RMI is an non-profit orginization of experts, who's goal is transforming the global energy system to secure a clean, prosperous, zero-carbon future for all.
   tags:
-  - Banking
-  - Sustainability
-  - Finance
-  url: https://www.responsiblebanking.org/
-- title: Going vegan
-  url: https://www.veganuary.com/
-  description: A website
+  - Organizations
+  title: RMI
+  url: https://rmi.org/our-work
+- description: A movement against fossil fuel corruption driving climate change.
+  tags:
+  - Collective Action
+  - Activism
+  title: Sunrise Movement
+  url: https://www.sunrisemovement.org
+- description: Extinction Rebellion is a global environmental movement, aimed at using civil disobedience to compel government action on the climate crisis.
+  tags:
+  - Organizations
+  - Collective Action
+  - Activism
+  title: Extinction Rebellion
+  url: https://extinctionrebellion.us/get-involved
+- description: The Citizens' Climate Lobby empowers citizens to work with their elected representatives to create policies that tackle climate change.
+  tags:
+  - Organizations
+  - Collective Action
+  title: Citizens' Climate Lobby
+  url: https://citizensclimatelobby.org/
+- description: The Union of Concerned Scientists is a science-based advocacy organization that works to protect human health and the environment through the use of science, policy, and advocacy.
+  tags:
+  - Organizations
+  title: Union of Concerned Scientists
+  url: https://www.ucsusa.org/
+- description: Just Stop Oil's goal is to ensure that the UK government commits to ending all new licenses for the exploration, development and production of fossil fuels.
+  tags:
+  - Organizations
+  - Collective Action
+  - Activism
+  title: Just Stop Oil
+  url: https://juststopoil.org
+- description: Official website for the US House of Representatives. This website also has contact information for house representatives.
+  tags:
+  - Politics/US
+  title: US House of Representatives
+  url: https://www.house.gov
+- description: Contact your UK representatives. Easily find who represents you, and how to reach out to them, by entering your address or postcode.
+  tags:
+  - Contacting representatives
+  - Politics/UK
+  - Individual Action
+  title: Write to Them
+  url: https://www.writetothem.com/
+- description: 'Contact your (US) senators. This site includes list of representatives, their contact information, and resources (including an "ultimate guide" on how to effectively communicate with your representatives). '
+  tags:
+  - Contacting representatives
+  - Politics/US
+  - Individual Action
+  title: Contact Senators (USA)
+  url: https://contactsenators.com/
+- description: Bypass payways for news articles and webpages. Has varying amounts of success for different websites.
+  tags:
+  - Bypass Paywals
+  - Tools
+  title: 12ft.io
+  url: https://12ft.io/
+- description: Common cause promotes democracy in the USA. Their "Find your representatives" tool allows you to look up your representatives by entering your address/ZIP code.
+  tags:
+  - Contacting representatives
+  - Politics/US
+  - Individual Action
+  - Tools
+  title: Common Cause
+  url: https://www.commoncause.org/find-your-representative/addr/
+- description: An open source, currated list of resources, services, products and ideas in the fight against climate change. Also the inspiration for this Knowledge Hub.
+  tags:
+  - 📚 Knowledge Hubs
+  - ✨ Mod Choice
+  title: Awesome Earth
+  url: https://github.com/philsturgeon/awesome-earth
+- description: An interactive portal to view, subset, and download earth observation data from NASA's EOSDIS system. Google "EOSDIS api" to find ways to programmatically interface with NASA's systems.
+  tags:
+  - Climate Tech
+  title: NASA Eath Data
+  url: https://search.earthdata.nasa.gov/search
+- description: A country-agnostic guide on how to go about effectively contacting your political representatives.
+  tags:
+  - ✨ Mod Choice
+  - Contacting representatives
+  - Politics
+  - Individual Action
+  title: Contact your representatives
+  url: https://www.youtube.com/watch?v=KXXYkLa-HHI
+- description: Discover jobs at thousands of exciting climate tech companies and nonprofits around the world.
+  tags:
+  - ✨ Mod Choice
+  - Climate Careers
+  title: Climatebase
+  url: https://climatebase.org/
+- description: 'Find impactful work with 80,000 Hours. You have about 80,000 working hours in your career: 40 years x 50 weeks x 40 hours, why not make them count doing something you believe in?'
+  tags:
+  - ✨ Mod Choice
+  - Climate Careers
+  title: 80,000 Hours
+  url: https://80000hours.org/
+- description: Bypass paywalls for news articles by looking at archived versions of webpages.
+  tags:
+  - Bypass Paywals
+  - Tools
+  title: Internet Archive
+  url: https://archive.org/
+- description: Work on impactful AI, data-driven projects in teams of likeminded professionals and students. They have regular projects, including climate change oriented projects involving earth observation data.
+  tags:
+  - Climate Tech
+  - Collective Action
+  title: FruitPunch AI
+  url: https://www.fruitpunch.ai/
+- description: End Overdose aims to end drug-related overdose deaths through education, medical intervention, and public awareness. They help provide access to Narcan, and other equipment to help prevent drug overdosing.
+  tags:
+  - Drug Help
+  title: End Overdose
+  url: https://endoverdose.net/
+- description: A global movement working to solve the climate crisis and transition to a world with safe, clean energy for all, through community-driven solutions and grassroots activism.
+  tags:
+  - Organizations
+  - location/Global
+  title: 350.org
+  url: https://www.350.org
+- description: Rollie and Climate Town have partnered with Climate Changemakers on several projects, including the awesome movement for electric schoolbus funding in the US. Climate Changemakers helps people take action in their communities and empowers people to "get off the sidelines".
+  tags:
+  - 🍞 Rollie's Choice
+  - ✨ Mod Choice
+  - Collective Action
+  - Individual Action
+  title: Climate Changemakers
+  url: https://www.climatechangemakers.org/
+- description: Sustainably produced Vegan and Vegetarian dietary supplements. They offer worldwide shipping, and a subscription plan.
   tags:
   - Vegan
-  - Sustainability
-  - Health
-- title: Going vegan 2
-  description: A website
-  url: https://www.veganuary.com/
+  - Sustainable Food
+  - Healthy Living
+  title: Vegetology
+  url: https://www.vegetology.com/
+- description: Track your nutrition, exercise, and health with the app Cronometer. Loved by the vegan community, this app allows you to count your calories and maintain a healthy diet. Their free version is feature rich.
+  tags:
+  - Healthy Living
+  title: Cronometer
+  url: https://cronometer.com/
+- description: A 22 challenge to try a plant based diet. This free program has a meal plan, and supportive community to help you along the journey.
   tags:
   - Vegan
-  - Sustainability
-  - Health
+  - Sustainable Food
+  title: Challenge 22
+  url: https://challenge22.com/
+- description: ARA is a platform for activists to facilitate animal rights advocacy, which includes social events, philosophical discussion, community building, and most importantly, vegan outreach and activism.
+  tags:
+  - Vegan
+  - Discord
+  - Community
+  title: Animal Rights Advocates
+  url: https://discord.gg/animalrights
+- description: A Discord server about everything vegan!
+  tags:
+  - Vegan
+  - Discord
+  - Community
+  title: Vegan World
+  url: https://discord.gg/vegan
+- description: Veganuary supports people transitioning to a plant based diet. They have recipes, meal plans, shopping/nutrition advice, and a podcast. They also host a yearly challenge to try a plant based diet.
+  tags:
+  - Vegan
+  - Sustainable Food
+  title: Veganuary
+  url: https://veganuary.com/
+- description: Hosts up to date data on the earth's cryosphere. Includes educational resources for understanding how the cryosphere works.
+  tags:
+  - Education
+  - Climate Tech
+  title: US National Snow and Ice Data Center
+  url: https://nsidc.org
+- description: Provides live and historical data on weather on an easy to use platform.
+  tags:
+  - Tools
+  - Climate Tech
+  title: Earth Nullschool
+  url: https://earth.nullschool.net
+- description: A website providing information about updates in climate science and policy. Good for understanding the extent of the climate crisis and whats being done.
+  tags:
+  - Education
+  - Article
+  title: Carbon Brief
+  url: https://carbonbrief.org
+- description: 'An online community of scientists, engineers, designers and humanists coming together to collaborate to regenerate thriving social-ecological systems. Originally '
+  tags:
+  - Climate Tech
+  - Research
+  - Community
+  - Collective Action
+  title: Collaborative Earth
+  url: https://www.collaborative.earth/
+- description: 'An intiative to connect climate professionals with those looking to get into a climate career using the hashtag #opendoorclimate on LinkedIn.'
+  tags:
+  - Climate Careers
+  - Professional Networking
+  title: '#OpenDoorClimate'
+  url: https://www.opendoorclimate.com/
+- description: The UFCW is a labor union made up of 1.3 million hard-working men and women in the U.S. and Canada. Their website promotes workers rights, and gives a guide for forming a union.
+  tags:
+  - Workers rights
+  - Unionize
+  - location/US
+  title: United Food and Commercial Workers International Union (UFCW)
+  url: https://www.ufcw.org
