@@ -18,11 +18,11 @@
 
 <div class="body flex flex-col lg:flex-row min-w-fit">
     <div class="w-full lg:w-1/5 bg-green-600 flex flex-col lg:p-5 min-h-max lg:min-h-screen px-16">
-        <img class="md:w-6/12 lg:w-full self-center" src="/images/knowledge-hub-logo.png" alt="Logo of Knowledge Hub" />
+        <img class="md:w-6/12 lg:w-full self-center" src="{base}/images/knowledge-hub-logo.png" alt="Logo of Knowledge Hub" />
         <nav class="self-center gap-4 flex flex-wrap lg:flex-col pb-6 lg:pb-0">
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="{base}/">Home</a></button>
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="{base}/resources">Resources</a></button>
-            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="/youtube">YouTube Feed</a></button>
+            <button class="bg-slate-200 p-3 drop-shadow-md"><a href="{base}/youtube">YouTube Feed</a></button>
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://github.com/ClimateTown/knowledge-hub">✍ Contribute on GitHub</a></button>
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors">📣 Credits</a></button>
             <button class="bg-slate-200 p-3 drop-shadow-md"><a href="https://www.climatetownproductions.com/">🌐 Main Website </a></button>

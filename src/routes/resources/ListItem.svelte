@@ -4,6 +4,8 @@
     export let description: string;
     export let og_preview: string | undefined;
     export let tags: Array<string>;
+
+    import { base } from "$app/paths";
 </script>
 
 <div class="rounded-lg shadow-lg">
