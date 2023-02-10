@@ -3,13 +3,15 @@
     export let url: string;
     export let description: string;
     export let tags: Array<string>;
+
+    import { base } from "$app/paths";
 </script>
 
 <div class="rounded-lg shadow-lg">
     <img
         alt="Website preview"
         class="object-cover rounded-t-lg object-center h-48 w-full"
-        src="images/plant.jpg"
+        src="{base}/images/plant.jpg"
     />
     <div class="m-3">
         <a href={url} target="_blank" rel="noreferrer">
