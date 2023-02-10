@@ -2,72 +2,72 @@ name: Resource Suggestion
 description: Suggest adding a resource to the Knowledge Hub.
 title: '[RESOURCE] <descriptive title>'
 labels:
-  - suggestion/resource
+- suggestion/resource
 body:
-  - type: markdown
-    attributes:
-      value: >+
-        Suggest an online resource to add to the Knowledge Hub. This resource
-        can be anything directly (or indirectly) related to the climate
-        movement.
+- type: markdown
+  attributes:
+    value: >+
+      Suggest an online resource to add to the Knowledge Hub. This resource
+      can be anything directly (or indirectly) related to the climate
+      movement.
 
 
-        Strict guidelines:
+      Strict guidelines:
 
-        - All resources must be legal (e.g. no linking to SciHub, Libgen, or any
-        other resources that infringe on  copyright of research or books)
-
-
-
-        Other considerations:
-
-        - Try suggest resources that are "timeless", and not going to quickly go
-        out of date.
-
-        - Avoid linking of specific articles, or YouTube videos (unless they are
-        particularly iconic/important)
+      - All resources must be legal (e.g. no linking to SciHub, Libgen, or any
+      other resources that infringe on  copyright of research or books)
 
 
-        We will be somewhat liberal with including resources, prioritising
-        making many resources available in an easily filterable way.
 
-  - type: input
-    attributes:
-      label: Resource title
-      description: Give an appropriate title for the resource
-    validations:
-      required: true
-  - type: input
-    attributes:
-      label: URL
-      description: URL to the resource
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Relevant tags (1 per line)
-      description: >-
-        What tags would you like to apply to this resource? (try use existing
-        tags from the website, or applying one you feel is necessary)
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Resource Summary
-      description: >-
-        Provide a summary of the resource (<70 words). This will be displayed on
-        the website alongside the title.
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Relevance
-      description: >-
-        How is this resource relevant to the climate movement, or the
-        ClimateTown community?
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Other comments
-      description: Add any additional info you see fit
+      Other considerations:
+
+      - Try suggest resources that are "timeless", and not going to quickly go
+      out of date.
+
+      - Avoid linking of specific articles, or YouTube videos (unless they are
+      particularly iconic/important)
+
+
+      We will be somewhat liberal with including resources, prioritising
+      making many resources available in an easily filterable way.
+
+- type: input
+  attributes:
+    label: Resource title
+    description: Give an appropriate title for the resource
+  validations:
+    required: true
+- type: input
+  attributes:
+    label: URL
+    description: URL to the resource
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Relevant tags (1 per line)
+    description: >-
+      What tags would you like to apply to this resource? (try use existing
+      tags from the website, or applying one you feel is necessary)
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Resource Summary
+    description: >-
+      Provide a summary of the resource (<70 words). This will be displayed on
+      the website alongside the title.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Relevance
+    description: >-
+      How is this resource relevant to the climate movement, or the
+      ClimateTown community?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Other comments
+    description: Add any additional info you see fit
