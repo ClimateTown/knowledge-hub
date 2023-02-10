@@ -92,7 +92,7 @@
     <button type="submit">Filter</button>
 </form>
 
-<div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-8 gap-y-4 mt-3">
+<div class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3">
     {#each displayedResources as resource}
         <ListItem {...resource} />
     {:else}
