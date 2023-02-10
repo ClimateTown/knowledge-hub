@@ -1,14 +1,13 @@
 name: Testing (YAML, and code)
-on:
-  [push, pull_request]
+on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - run: pip install -r requirements.txt
-      - run: python -m pytest
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - run: pip install -r requirements.txt
+    - run: python -m pytest
