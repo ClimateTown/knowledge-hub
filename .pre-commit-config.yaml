@@ -1,10 +1,12 @@
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v2.3.0
+  rev: v4.4.0
   hooks:
+  - id: check-json
   - id: check-yaml
   - id: end-of-file-fixer
   - id: pretty-format-json
+    args: [--no-sort-keys, --autofix, --indent, '4']
   - id: trailing-whitespace
 - repo: https://github.com/psf/black
   rev: 22.10.0
