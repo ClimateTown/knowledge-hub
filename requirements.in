@@ -5,6 +5,8 @@ jsonschema
 loguru
 numpy
 pandas
+pip-tools
+pre-commit
 pytest
 python-dotenv
 PyYAML

@@ -1,5 +1,5 @@
 name: Testing (YAML, and code)
-on: [push, pull_request]
+on: [push]
 
 jobs:
   test:

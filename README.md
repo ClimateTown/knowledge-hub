@@ -71,7 +71,7 @@ This codebase uses [pre-commit](https://pre-commit.com/) and [pre-commit CI](htt
 You can either set up pre-commit locally (completely optional; it will run on every commit, aborting a commit if the pre-commit workflow fails), or you do nothing and leave it up to pre-commit CI to take care of it (where it will run on every push to GitHub, and fixes changes in PRs).
 
 To set up pre-commit locally:
-- install pre-commit using `pip install pre-commit` (other installation methods are available [here](https://pre-commit.com/#install))
+- install the Python environment (which includes pre-commit)
 - `pre-commit install` to install the hooks
 
 To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
