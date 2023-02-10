@@ -4,7 +4,7 @@
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
 
-    import "../app.css"
+    import "../app.css";
 </script>
 
 <svelte:head>
@@ -17,16 +17,49 @@
 </svelte:head>
 
 <div class="body flex flex-col lg:flex-row w-full">
-    <div class="lg:w-fit w-full bg-green-500 flex flex-col p-5 min-h-max lg:min-h-screen">
-        <img class="w-48 self-center" src="{base}/images/knowledge-hub-logo.png" alt="Logo of Knowledge Hub" />
+    <div
+        class="lg:w-fit w-full bg-green-500 flex flex-col p-5 min-h-max lg:min-h-screen"
+    >
+        <img
+            class="w-48 self-center"
+            src="{base}/images/knowledge-hub-logo.png"
+            alt="Logo of Knowledge Hub"
+        />
         <nav class="gap-2 flex flex-wrap lg:flex-col">
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" href="{base}/">Home</a>
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" href="{base}/resources">Resources</a>
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" href="{base}/youtube">YouTube Feed</a>
-            <div class="h-4"></div>
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" target="_blank" rel="noreferrer" href="https://github.com/ClimateTown/knowledge-hub">✍ Contribute on GitHub</a>
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" target="_blank" rel="noreferrer" href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors">📣 Credits</a>
-            <a class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg" target="_blank" rel="noreferrer" href="https://www.climatetownproductions.com/">🌐 Main Website </a>
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                href="{base}/">Home</a
+            >
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                href="{base}/resources">Resources</a
+            >
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                href="{base}/youtube">YouTube Feed</a
+            >
+            <div class="h-4" />
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/ClimateTown/knowledge-hub"
+                >✍ Contribute on GitHub</a
+            >
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                target="_blank"
+                rel="noreferrer"
+                href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors"
+                >📣 Credits</a
+            >
+            <a
+                class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.climatetownproductions.com/"
+                >🌐 Main Website
+            </a>
         </nav>
     </div>
 
