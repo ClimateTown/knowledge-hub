@@ -120,16 +120,16 @@
             {#each tags as tag}
                 <!-- checkboxes -->
                 <div
-                    class="flex justify-between gap-2 py-2 px-3 rounded-full cursor-pointer bg-gray-300"
+                    class="flex justify-between gap-2 py-2 px-3 rounded-full bg-gray-300"
                 >
                     <input
                         type="checkbox"
-                        class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+                        class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
                         bind:checked={filterObject.tags[tag]}
                         id={removeWhitespace(tag)}
                         name={removeWhitespace(tag)}
                     />
-                    <label class="" for={removeWhitespace(tag)}>{tag}</label>
+                    <label class="cursor-pointer" for={removeWhitespace(tag)}>{tag}</label>
                 </div>
             {/each}
         </div>
