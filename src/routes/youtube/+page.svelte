@@ -126,7 +126,7 @@
 
 {#key rerender}
     <div
-        class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-2"
+        class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
     >
         {#each displayedVideos as video}
             <YoutubeVideo

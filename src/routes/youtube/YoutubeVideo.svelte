@@ -44,10 +44,9 @@
         />
         <div class="mx-2">
             <!-- Don't trim title on mobile, trim on desktop (probably a better way to do this with media queries) -->
-            <div class="hidden md:block text-sm font-semibold">
-                {@html trimString(title, 30)}
+            <div class="md:block text-sm font-semibold">
+                {@html title}
             </div>
-            <div class="md:hidden text-sm font-semibold">{@html title}</div>
             <a
                 class="text-sm text-gray-500"
                 href="https://www.youtube.com/{channelCustomName}"
