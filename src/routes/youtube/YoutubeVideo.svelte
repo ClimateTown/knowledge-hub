@@ -33,9 +33,9 @@
     }
 </script>
 
-<a href="https://youtu.be/{videoId}" target="_blank" rel="noreferrer">
+<a href="https://youtu.be/{videoId}" class="lg:hover:scale-105" target="_blank" rel="noreferrer">
     <div
-        class="flex w-full flex-row md:block md:w-32 md:h-44 shadow-md rounded-lg"
+        class="flex w-full flex-row md:block md:w-auto md:h-auto shadow-md rounded-lg"
     >
         <img
             class="rounded-l-lg md:rounded-bl-none md:rounded-t-lg md:w-full"
