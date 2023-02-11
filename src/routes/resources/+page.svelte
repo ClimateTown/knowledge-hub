@@ -107,7 +107,7 @@
 
     Filter
 </div>
-<div class="content">
+<div>
     <!-- begin form -->
     <form
         on:submit|preventDefault={filterResources}
@@ -128,7 +128,7 @@
                         id={removeWhitespace(tag)}
                         name={removeWhitespace(tag)}
                     />
-                    <label for={tag}>{tag}</label>
+                    <label class="" for={removeWhitespace(tag)}>{tag}</label>
                 </div>
             {/each}
         </div>
