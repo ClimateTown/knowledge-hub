@@ -8,7 +8,7 @@ const dev = process.argv.includes('dev');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: vitePreprocess(),
+    preprocess: vitePreprocess(),
     kit: {
         adapter: adapter({
             pages: 'build',
@@ -16,12 +16,13 @@ const config = {
             fallback: null,
             precompress: false
         }),
-		prerender: {
-			entries: ['*']
-		},
+        alias: { 'lib/': './src/lib/' },
+        prerender: {
+            entries: ['*']
+        },
         paths: {
-            base: dev ? '' : '/knowledge-hub'
-        }
+            base: dev ? '' : '/knowledge-hub',
+        },
     }
 };
 
