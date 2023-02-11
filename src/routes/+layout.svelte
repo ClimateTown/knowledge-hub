@@ -1,6 +1,7 @@
 <!-- Emoji support -->
 <script>
     import { base } from "$app/paths";
+    import { github_url, climate_town_url } from "$lib/constants";
     import { onMount } from "svelte";
     onMount(() => twemoji.parse(document.body));
 
@@ -43,21 +44,21 @@
                 class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
                 target="_blank"
                 rel="noreferrer"
-                href="https://github.com/ClimateTown/knowledge-hub"
+                href="{github_url}"
                 >✍ Contribute on GitHub</a
             >
             <a
                 class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
                 target="_blank"
                 rel="noreferrer"
-                href="https://github.com/ClimateTown/knowledge-hub/graphs/contributors"
+                href="{github_url}/graphs/contributors"
                 >📣 Credits</a
             >
             <a
                 class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
                 target="_blank"
                 rel="noreferrer"
-                href="https://www.climatetownproductions.com/"
+                href={climate_town_url}
                 >🌐 Main Website
             </a>
         </nav>
