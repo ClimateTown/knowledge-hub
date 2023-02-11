@@ -1,6 +1,7 @@
 <script>
     import { base } from "$app/paths";
-    import { PUBLIC_GITHUB_URL } from "$env/static/public";
+    import { github_url } from "$lib/constants";
+
 </script>
 
 <h1 class="font-bold text-5xl">Climate Town</h1>
@@ -21,12 +22,12 @@
         <div class="my-3 text-gray-500">
             A crowdsourced collection of a variety of climate resources. Want to
             suggest a resource? Please <a
-                href="{PUBLIC_GITHUB_URL}/issues/new/choose"
+                href="{github_url}/issues/new/choose"
                 class="underline">fill out our form</a
             >
             or
             <a
-                href="{PUBLIC_GITHUB_URL}"
+                href="{github_url}"
                 class="underline">edit on GitHub directly</a
             >
         </div>
