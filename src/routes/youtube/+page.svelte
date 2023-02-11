@@ -75,27 +75,59 @@
     }
 </script>
 
-<!-- begin form -->
-<form on:submit|preventDefault={filterResources}>
-    {#each channelData as channelInfo, index}
-        <div>
-            <input
-                type="checkbox"
-                bind:checked={filterObject[index].active}
-                id={channelInfo.channelId}
-            />
-            <label for={channelInfo.channelId}
-                >{channelInfo.channelName} ({semanticNumber(
-                    channelInfo.channelSubCount
-                )})</label
+<h1>ClimateTown YouTube Videos</h1>
+
+<form
+    on:submit|preventDefault={filterResources}
+    class="border-solid border-2 rounded-lg p-4 space-y-4"
+>
+    <!-- <label for="search">Search</label> -->
+    <!-- <input type="text" id="search" name="search" /> -->
+    <div class="flex flex-row flex-wrap gap-2">
+        {#each channelData as channelInfo, index}
+            <div
+                class="flex justify-between gap-2 py-2 px-3 rounded-full cursor-pointer bg-gray-300"
             >
-        </div>
-    {/each}
-    <button type="submit">Filter</button>
+                <input
+                    type="checkbox"
+                    class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+                    bind:checked={filterObject[index].active}
+                    id={channelInfo.channelId}
+                />
+                <label for={channelInfo.channelId}
+                    >{channelInfo.channelName} ({semanticNumber(
+                        channelInfo.channelSubCount
+                    )})</label
+                >
+            </div>
+        {/each}
+    </div>
+    <div class="flex flex-row-reverse">
+        <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 inline"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
+                />
+            </svg>
+
+            Filter
+        </button>
+    </div>
 </form>
 
 {#key rerender}
-    <div class="grid grid-flow-row xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-2">
+    <div
+        class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-2"
+    >
         {#each displayedVideos as video}
             <YoutubeVideo
                 {...video}
