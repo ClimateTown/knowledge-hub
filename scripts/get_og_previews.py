@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 resources_file = Path("data") / "resources.yml"
 
+
 # Somewhat copying the homework from this article
 def get_page(url):
     """Scrapes a URL and returns the HTML source.
