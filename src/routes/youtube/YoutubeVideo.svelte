@@ -33,9 +33,9 @@
     }
 </script>
 
-<a href="https://youtu.be/{videoId}" target="_blank" rel="noreferrer">
+<a href="https://youtu.be/{videoId}" class="lg:hover:scale-105" target="_blank" rel="noreferrer">
     <div
-        class="flex w-full flex-row md:block md:w-32 md:h-44 shadow-md rounded-lg"
+        class="flex w-full flex-row md:block md:w-auto md:h-auto shadow-md rounded-lg"
     >
         <img
             class="rounded-l-lg md:rounded-bl-none md:rounded-t-lg md:w-full"
@@ -44,10 +44,9 @@
         />
         <div class="mx-2">
             <!-- Don't trim title on mobile, trim on desktop (probably a better way to do this with media queries) -->
-            <div class="hidden md:block text-sm font-semibold">
-                {@html trimString(title, 30)}
+            <div class="md:block text-sm font-semibold">
+                {@html title}
             </div>
-            <div class="md:hidden text-sm font-semibold">{@html title}</div>
             <a
                 class="text-sm text-gray-500"
                 href="https://www.youtube.com/{channelCustomName}"
