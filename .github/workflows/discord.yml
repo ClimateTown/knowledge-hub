@@ -19,8 +19,8 @@ jobs:
     - name: Send message to Discord channel
       run: |
         python scripts/discord_integration.py \
-          --webhook-url ${{ secrets.DISCORD_WEBHOOK }} \
-          --issue-number ${{ github.event.issue.number }} \
-          --issue-title ${{ github.event.issue.title }} \
-          --issue-description ${{ github.event.issue.body }} \
-          --author ${{ github.event.issue.author }}
+          --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
+          --issue-number "${{ github.event.issue.number }}" \
+          --issue-title "$(printf '%q' "${{ github.event.issue.title }}")" \
+          --issue-description "$(printf '%q' "${{ github.event.issue.body }}")" \
+          --author "$(printf '%q' "${{ github.event.issue.user.login }}")"
