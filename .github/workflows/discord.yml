@@ -5,6 +5,10 @@ on:
     - opened
 jobs:
   send-message:
+    env:
+      ISSUE_TITLE: ${{ github.event.issue.title }}
+      ISSUE_DESCRIPTION: ${{ github.event.issue.body }}
+      ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -21,6 +25,6 @@ jobs:
         python scripts/discord_integration.py \
           --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
           --issue-number "${{ github.event.issue.number }}" \
-          --issue-title "$(printf '%q' "${{ github.event.issue.title }}")" \
-          --issue-description "$(printf '%q' "${{ github.event.issue.body }}")" \
-          --author "$(printf '%q' "${{ github.event.issue.user.login }}")"
+          --issue-title "$ISSUE_TITLE" \
+          --issue-description "$ISSUE_DESCRIPTION" \
+          --author "$ISSUE_AUTHOR"
