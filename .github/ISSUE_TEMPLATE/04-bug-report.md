@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: 🐞Bug Report
 about: Describe a bug in the Knowledge Hub
 title: "[BUG]"
 labels: ''
