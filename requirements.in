@@ -11,3 +11,4 @@ pytest
 python-dotenv
 PyYAML
 tqdm
+validators
