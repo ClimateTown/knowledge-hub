@@ -21,11 +21,14 @@
     <div
         class="lg:w-fit w-full bg-green-500 flex flex-col p-5 min-h-max lg:min-h-screen"
     >
-        <img
-            class="w-48 self-center"
-            src="{base}/images/knowledge-hub-logo.png"
-            alt="Logo of Knowledge Hub"
-        />
+        <a href="{base}/">
+            <img
+                class="w-48 self-center"
+                src="{base}/images/knowledge-hub-logo.png"
+                alt="Logo of Knowledge Hub"
+
+            />
+        </a>
         <nav class="gap-2 flex flex-wrap lg:flex-col">
             <a
                 class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
