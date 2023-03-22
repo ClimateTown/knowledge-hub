@@ -9,6 +9,8 @@
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/ClimateTown)
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
+[![All Contributors](https://img.shields.io/github/all-contributors/ClimateTown/knowledge-hub?color=ee8449&style=flat-square)](#✨contributors)
+
 
 
 ---
@@ -74,6 +76,21 @@ To set up pre-commit locally:
 - `pre-commit install` to install the hooks
 
 To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
+
+## ✨Contributors
+
+Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
 
 ## Acknowledgements
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
