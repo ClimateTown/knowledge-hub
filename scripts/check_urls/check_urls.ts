@@ -15,7 +15,9 @@ fs.readFile(filePath, "utf-8", (err, data) => {
 
   const checkUrl = async (url: UrlObject) => {
     try {
-      const response = await fetch(new URL(url.url).toString());
+      const response = await fetch(new URL(url.url).toString(), {
+        method: "HEAD",
+      });
       if (response.status == 200 && !response.redirected) {
         return { url: url.url, status: response.status };
       } else if (response.redirected) {
@@ -27,7 +29,8 @@ fs.readFile(filePath, "utf-8", (err, data) => {
       } else {
         return { url: url.url, status: response.status };
       }
-    } catch {
+    } catch (err) {
+      console.error(err);
       return { url: url.url, status: "Error" };
     }
   };
@@ -43,13 +46,13 @@ fs.readFile(filePath, "utf-8", (err, data) => {
 
     const errorLinks = links.filter((l) => l.status != 200);
     if (errorLinks.length > 0) {
-      console.log(" ");
       console.error("The following links are broken:");
       errorLinks.forEach((link) => {
         if (link.status == 301) {
           console.warn(`${link.url} redirects to -> ${link.redirect}`);
+        } else {
+          console.error(`${link.url} - ${link.status}`);
         }
-        console.error(`${link.url} - ${link.status}`);
       });
       process.exit(1);
     }
