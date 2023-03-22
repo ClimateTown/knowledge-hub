@@ -1,26 +1,17 @@
 name: Check URL Status
 
-on:
-  schedule:
-  - cron: 0 0 * * 0
+on: [push]
+
 
 jobs:
   check_urls:
     runs-on: ubuntu-latest
-    outputs:
-      result: ${{ steps.checkurl.outputs.result }}
-    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
-    strategy:
-      matrix:
-        otp: ['25.3']
-        elixir: [1.14.3]
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Setup BEAM
-      uses: erlef/setup-beam@v1
+    - name: Setup Python
+      uses: actions/setup-python@v2
       with:
-        otp-version: ${{matrix.otp}}
-        elixir-version: ${{matrix.elixir}}
+        python-version: '3.10'
     - name: Check URL
-      run: elixir scripts/check_urls.exs
+      run: python scripts/check_urls.py
