@@ -1,0 +1,12 @@
+{
+    "name": "url_check",
+    "version": "1.0.0",
+    "scripts": {
+        "check-urls": "ts-node check_urls.ts"
+    },
+    "dependencies": {
+        "ts-node": "^10.4.0",
+        "typescript": "^4.5.5",
+        "yaml": "^2.2.1"
+    }
+}

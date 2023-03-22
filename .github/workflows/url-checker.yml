@@ -2,16 +2,19 @@ name: Check URL Status
 
 on: [push]
 
-
 jobs:
   check_urls:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Setup Python
-      uses: actions/setup-python@v2
+    - name: Setup Node
+      uses: actions/setup-node@v3
       with:
-        python-version: '3.10'
+        node-version: '16'
+        cache: npm
+        cache-dependency-path: scripts/check_urls/package-lock.json
+    - name: Install Deps
+      run: npm install --prefix scripts/check_urls
     - name: Check URL
-      run: python scripts/check_urls.py
+      run: npm run check-urls --prefix scripts/check_urls
