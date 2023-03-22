@@ -71,7 +71,8 @@ To set up Python:
 
 This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`. To update your environment run `pip-sync`.
 
-## Loading Youtube Data (Important for working on Youtube Section)
+### OPTIONAL: Loading YouTube Data
+To set up the YouTube API (important for working on scripts with YouTube video scraping):
 
 - Follow the python installation steps above
 - Go to <https://console.cloud.google.com> and create account
