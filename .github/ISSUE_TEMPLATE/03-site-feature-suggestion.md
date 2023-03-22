@@ -1,5 +1,5 @@
 ---
-name: Site improvement suggestion
+name: 🔼Site Feature Suggestion
 about: Suggest an improvement for the Knowledge Hub (layout/feature/design).
 title: "[FEATURE] <title>"
 labels: enhancement
