@@ -75,7 +75,8 @@ defmodule CheckUrl do
         Logger.error(e)
       end)
 
-      System.stop()
+      Logger.debug("Exiting with errors")
+      System.stop(1)
     end
   end
 end
