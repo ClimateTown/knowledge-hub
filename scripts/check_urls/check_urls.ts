@@ -1,7 +1,6 @@
 import fs from "fs";
 import YAML from "yaml";
 
-// Define the interface for each URL object
 interface UrlObject {
   description: string;
   tags: string[];
@@ -35,9 +34,7 @@ fs.readFile(filePath, "utf-8", (err, data) => {
     }
   };
 
-  // Use Promise.all to check multiple URLs concurrently
   Promise.all(urls.map(checkUrl)).then((links) => {
-    // Print the list of failing links
     links
       .filter((l) => l.status == 200)
       .forEach((link) => {
