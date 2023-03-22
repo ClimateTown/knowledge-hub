@@ -16,7 +16,7 @@ defmodule CheckUrl do
 
       {:ok, %{status_code: 301} = res} ->
         Logger.warn("#{url} is OK, but redirects")
-        {:ok, url}
+        {:error, "#{url} is a redirect"}
 
       {:ok, %{status_code: code}} ->
         Logger.error("#{url} returned status code #{code}")
