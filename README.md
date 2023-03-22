@@ -10,7 +10,6 @@
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 
-⚠⚠This hub is still a WIP and not released.⚠⚠
 
 ---
 

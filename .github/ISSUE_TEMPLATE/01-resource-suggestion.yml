@@ -9,7 +9,8 @@ body:
     value: >+
       Suggest an online resource to add to the Knowledge Hub. This resource
       can be anything directly (or indirectly) related to the climate
-      movement.
+      movement. Have many resources to suggest? Create a blank issue with a title 
+      starting with "[RESOURCE ONBOARDING]" instead.
 
 
       Strict guidelines:
@@ -56,7 +57,9 @@ body:
     label: Resource Summary
     description: >-
       Provide a summary of the resource (<70 words). This will be displayed on
-      the website alongside the title.
+      the website alongside the title. Normally websites have an `og:description` 
+      tag in their HTML which you can go off (open "Inspect Element" in your browser 
+      and look for the tag).
   validations:
     required: true
 - type: textarea
