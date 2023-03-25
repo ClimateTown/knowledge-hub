@@ -26,6 +26,8 @@ click==8.1.3
     # via
     #   black
     #   pip-tools
+decorator==5.1.1
+    # via validators
 distlib==0.3.6
     # via virtualenv
 exceptiongroup==1.1.0
@@ -136,6 +138,8 @@ uritemplate==4.1.1
     # via google-api-python-client
 urllib3==1.26.13
     # via requests
+validators==0.20.0
+    # via -r requirements.in
 virtualenv==20.19.0
     # via pre-commit
 wheel==0.38.4

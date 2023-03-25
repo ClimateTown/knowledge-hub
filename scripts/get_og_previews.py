@@ -5,6 +5,7 @@ import yaml
 from bs4 import BeautifulSoup
 from loguru import logger
 from tqdm import tqdm
+import validators
 
 resources_file = Path("data") / "resources.yml"
 
@@ -72,7 +73,9 @@ def main():
             image = None
 
         if image:
-            resource["og_preview"] = image
+            # Check if image is valid URL
+            if validators.url(image):
+                resource["og_preview"] = image
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
