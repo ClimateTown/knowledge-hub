@@ -4,12 +4,23 @@ import fs from 'fs'
 const channelDataPath: string = "data/channel_data.json"
 const videoDataPath: string = "data/video_data.json"
 
-// Reading in channel and video data
-let file = fs.readFileSync(channelDataPath, 'utf8')
-const channelData = JSON.parse(file)
+// Function to read JSON file or return an empty array if the file doesn't exist
+function readJsonFile(filePath: string): any[] {
+  try {
+    const file = fs.readFileSync(filePath, 'utf8')
+    return JSON.parse(file)
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      return []
+    } else {
+      throw error
+    }
+  }
+}
 
-file = fs.readFileSync(videoDataPath, 'utf8')
-const videoData = JSON.parse(file)
+// Reading in channel and video data
+const channelData = readJsonFile(channelDataPath)
+const videoData = readJsonFile(videoDataPath)
 
 
 

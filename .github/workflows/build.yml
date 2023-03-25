@@ -21,7 +21,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/configure-pages@v3
@@ -39,8 +40,9 @@ jobs:
       run: |
         pip install -r requirements.txt
     - name: Scrape YouTube data
-      run: |
-        python scripts/youtube.py --api-key ${{ secrets.YOUTUBE_API_KEY }}
+      if: ${{ env.YOUTUBE_API_KEY != '' }}
+      run: | # Only run if the API key is set
+        python scripts/youtube.py --api-key $YOUTUBE_API_KEY
     - name: Get previews for resources
       run: |
         python scripts/get_og_previews.py
