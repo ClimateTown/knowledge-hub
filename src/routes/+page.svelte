@@ -62,7 +62,7 @@
             A feed of Climate Town videos, right here in the knowledge hub!
         </div>
         <a
-            href="{base}/resources"
+            href="{base}/youtube"
             class="block w-fit p-4 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
         >
             <svg
