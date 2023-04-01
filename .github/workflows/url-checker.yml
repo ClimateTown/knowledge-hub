@@ -15,8 +15,8 @@ jobs:
       with:
         node-version: '18.15'
         cache: npm
-        cache-dependency-path: scripts/check_urls/package-lock.json
+        cache-dependency-path: package-lock.json
     - name: Install Deps
-      run: npm install --prefix scripts/check_urls
+      run: npm install
     - name: Check URL
-      run: npm run check-urls --prefix scripts/check_urls
+      run: npm run broken-link-check
