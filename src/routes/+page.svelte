@@ -84,3 +84,7 @@
         </a>
     </div>
 </div>
+
+<div class="text-xs text-slate-400">
+    Legal Disclaimer: This website hosts content curated and managed by community members from the Climate Town Discord and is not directly managed by Climate Town YouTube. While every effort is made to ensure the quality of the content, we cannot guarantee its accuracy, completeness, or suitability for any purpose. The opinions and views expressed on this site are those of the individual contributors and do not necessarily reflect those of Climate Town YouTube. By using this website, you agree to hold the site administrators and contributors harmless from any liability arising from your use of the content.
+</div>
