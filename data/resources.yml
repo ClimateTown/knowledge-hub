@@ -255,7 +255,7 @@
   title: Climate Change Jobs (by Green Jobs Network)
   url: https://climatechangejobs.com/jobs
 - description: Tracks the climate action promises made by politicians across the world, whether they are being kept, and whether they are adequate.
-  tags: 
+  tags:
   - Politics/Global
   - Climate Accountability
   title: Climate Action Tracker
@@ -266,7 +266,7 @@
   title: CoolClimate Calculator
   url: https://coolclimate.org/calculator
 - description: A resource developed by MIT and Climate Interactive to visualize how various factors can steer the climate. You can move sliders to change the outcomes based on factors such as energy supply, transport, industry, and more.
-  tags: 
+  tags:
   - Tools
   - Climate Models
   title: En-ROADS
