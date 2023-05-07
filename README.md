@@ -16,6 +16,13 @@
 
 The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one stop shop" for important climate resources in the fight against climate change!
 
+## How to suggest a resource
+
+- [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) selecting "suggest a resource".
+- Fill out the form adhering to the instructions.
+- Get the resource approved (or discuss it futher in the issue).
+- Once approved, resource is then onboarded onto the website. Resource onboarding happens every Friday!!
+
 ## Contributing
 
 > TLDR; [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose), or edit the content directly and make a pull request.
