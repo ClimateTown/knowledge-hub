@@ -92,7 +92,7 @@
 - description: An interactive portal to view, subset, and download earth observation data from NASA's EOSDIS system. Google "EOSDIS api" to find ways to programmatically interface with NASA's systems.
   tags:
   - Climate Tech
-  title: NASA Eath Data
+  title: NASA Earth Data
   url: https://search.earthdata.nasa.gov/search
 - description: A country-agnostic guide on how to go about effectively contacting your political representatives.
   tags:
