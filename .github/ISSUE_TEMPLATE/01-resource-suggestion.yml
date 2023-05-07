@@ -48,10 +48,9 @@ body:
   attributes:
     label: Relevant tags (1 per line)
     description: >-
-      What tags would you like to apply to this resource? (try use existing
-      tags from the website, or applying one you feel is necessary)
-  validations:
-    required: true
+      What tags would you like to apply to this resource? Leave blank if you're not
+      sure and our mods will help out. Try use existing tags from the website,
+      or applying one you feel is necessary.
 - type: textarea
   attributes:
     label: Resource Summary
@@ -67,9 +66,7 @@ body:
     label: Relevance
     description: >-
       How is this resource relevant to the climate movement, or the
-      ClimateTown community?
-  validations:
-    required: true
+      ClimateTown community? Leave blank if already clear from other info.
 - type: textarea
   attributes:
     label: Other comments
