@@ -229,3 +229,45 @@
   - Community
   title: OneArmy
   url: https://www.onearmy.earth/
+- description: Browngirl Green is a community founded by Kristy Drutman. Their Green Jobs Board is a platform allowing climate concious job seekers connect with impactful work.
+  tags:
+  - 🍞 Rollie's Choice
+  - Climate Careers
+  title: Browngirl Green
+  url: https://www.browngirlgreen.com/
+- description: Volunteer with the Nature Conservancy of Canada, and protect Canada's species and natural habitats for generations to come.
+  tags:
+  - Organizations
+  - Collective Action
+  - location/Canada
+  title: Nature Conservancy of Canada
+  url: https://www.natureconservancy.ca/en/what-you-can-do/conservation-volunteers/
+- description: A newsletter to help climate newbies identify careers with the highest carbon emission impact. Written by Stanford MBA students Stella Liu, Joseff Kolman, and Georgia Kossoff.
+  tags:
+  - Climate Careers
+  - Climate Journalism
+  - Education
+  title: The Gigaton
+  url: https://thegigaton.substack.com/
+- description: Job site, established by the independent social enterprise Green Jobs Network in 2008.
+  tags:
+  - Climate Careers
+  title: Climate Change Jobs (by Green Jobs Network)
+  url: https://climatechangejobs.com/jobs
+- description: Tracks the climate action promises made by politicians across the world, whether they are being kept, and whether they are adequate.
+  tags:
+  - Politics/Global
+  - Climate Accountability
+  title: Climate Action Tracker
+  url: https://climateactiontracker.org/
+- description: Provides approximations and graphs of where most of your carbon emissions are coming from.
+  tags:
+  - Tools
+  title: CoolClimate Calculator
+  url: https://coolclimate.org/calculator
+- description: A resource developed by MIT and Climate Interactive to visualize how various factors can steer the climate. You can move sliders to change the outcomes based on factors such as energy supply, transport, industry, and more.
+  tags:
+  - Tools
+  - Climate Models
+  title: En-ROADS
+  url: https://en-roads.climateinteractive.org/
