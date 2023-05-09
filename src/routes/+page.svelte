@@ -34,7 +34,7 @@
 
         <a
             href="{base}/resources"
-            class="block w-fit p-4 rounded-lg border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white"
+            class="block w-fit p-4 rounded-lg border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white flex:1"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@
         <br />
         <a
             href="{base}/youtube"
-            class="block w-fit p-4 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+            class="block w-fit p-4 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white flex:1"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
