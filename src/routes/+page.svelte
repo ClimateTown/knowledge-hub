@@ -61,6 +61,7 @@
         <div class="my-3 text-gray-500">
             A feed of Climate Town videos, right here in the knowledge hub!
         </div>
+        <br />
         <a
             href="{base}/youtube"
             class="block w-fit p-4 rounded-lg border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
