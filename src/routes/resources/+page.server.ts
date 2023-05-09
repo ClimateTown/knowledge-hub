@@ -16,11 +16,13 @@ for (resource of yml_data) {
 }
 tags = [...new Set(tags)]
 
+//Sorting resources by newest (assuming newest is at the bottom of the file )
+const yml_data_sort = [...yml_data].reverse();
 
 export function load(params: PageServerLoad) {
   return {
     payload: {
-      resources: yml_data,
+      resources: yml_data_sort,
       tags: tags,
     }
   }
