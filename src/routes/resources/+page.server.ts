@@ -15,7 +15,7 @@ for (resource of yml_data) {
   tags.push(...resource.tags)
 }
 tags = [...new Set(tags.sort((a, b) => {
-  //Identifying emojis with charCode. Obviously this breaks or gets weird if 
+  //Identifying emojis with charCode. Obviously this breaks or gets weird if
   //there are multiple emojis in a tag or non alphanumeric characters start getting tossed in.
   let aEmojiCheck = a.charCodeAt(0) > 255;
   let bEmojiCheck = b.charCodeAt(0) > 255;
@@ -34,7 +34,7 @@ tags = [...new Set(tags.sort((a, b) => {
     )
     .replace(/\s+/g, ' ')
     .trim();
-    return aClean.localeCompare(bClean);  
+    return aClean.localeCompare(bClean);
   } else if (!aEmojiCheck && !bEmojiCheck) {
     return a.localeCompare(b);
   } else {
