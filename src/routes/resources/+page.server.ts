@@ -4,14 +4,6 @@ import fs from 'fs'
 
 let resources_path: string = "data/resources.yml"
 
-const cleanString = (str: string) => {
-  let stringArray = str.split("");
-  while (stringArray[0].charCodeAt(0) > 255) {
-    stringArray.shift();
-  }
-  return stringArray.join("");
-};
-
 // Reading in resources
 const file = fs.readFileSync(resources_path, 'utf8')
 const yml_data = parse(file) // TODO: Create interface for this, and then use it to validate edits during CI/CD
@@ -30,8 +22,18 @@ tags = [...new Set(tags.sort((a, b) => {
 
   //If both tags have emojis, remove the emojis and compare the strings
   if (aEmojiCheck && bEmojiCheck) {
-    const aClean = cleanString(a);
-    const bClean = cleanString(b);
+    const aClean = a.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ''
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
+    const bClean = b.replace(
+      /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+      ''
+    )
+    .replace(/\s+/g, ' ')
+    .trim();
     return aClean.localeCompare(bClean);  
   } else if (!aEmojiCheck && !bEmojiCheck) {
     return a.localeCompare(b);
