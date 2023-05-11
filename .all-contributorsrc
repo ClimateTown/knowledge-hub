@@ -5,6 +5,7 @@
   "repoHost": "https://github.com",
   "files": [
     "README.md"
+    ".all-contributorsrc"
   ],
   "imageSize": 100,
   "commit": true,
