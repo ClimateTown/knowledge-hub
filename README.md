@@ -141,4 +141,3 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 ## Acknowledgements
 
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
-
