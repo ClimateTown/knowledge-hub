@@ -6,7 +6,7 @@
   "files": [
     "README.md",
     ".all-contributorsrc"
-],
+  ],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "angular",
@@ -16,6 +16,15 @@
       "name": "Nick Tutterow",
       "avatar_url": "https://avatars.githubusercontent.com/u/1977859?v=4",
       "profile": "https://github.com/tutterown",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "VeckoTheGecko",
+      "name": "Vecko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36369090?v=4",
+      "profile": "https://github.com/VeckoTheGecko",
       "contributions": [
         "code"
       ]

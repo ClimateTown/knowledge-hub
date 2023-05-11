@@ -9,7 +9,7 @@
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
@@ -117,6 +117,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tutterown"><img src="https://avatars.githubusercontent.com/u/1977859?v=4?s=100" width="100px;" alt="Nick Tutterow"/><br /><sub><b>Nick Tutterow</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=tutterown" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/VeckoTheGecko"><img src="https://avatars.githubusercontent.com/u/36369090?v=4?s=100" width="100px;" alt="Vecko"/><br /><sub><b>Vecko</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=VeckoTheGecko" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
