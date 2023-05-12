@@ -11,5 +11,16 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "dmlb",
+      "name": "Danielle Bastien",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4835191?v=4",
+      "profile": "https://daniellemlbastien.com/",
+      "contributions": [
+        "a11y"
+      ]
+    }
+  ]
 }
