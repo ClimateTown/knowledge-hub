@@ -111,6 +111,13 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/GBT7"><img src="https://avatars.githubusercontent.com/u/1940589?v=4?s=60" width="60px;" alt="GBT7"/><br /><sub><b>GBT7</b></sub></a><br /><a href="#content-GBT7" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
