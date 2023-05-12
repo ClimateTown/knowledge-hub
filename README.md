@@ -111,6 +111,13 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/williamtaggart97"><img src="https://avatars.githubusercontent.com/u/49992113?v=4?s=60" width="60px;" alt="Billy Taggart"/><br /><sub><b>Billy Taggart</b></sub></a><br /><a href="#ideas-williamtaggart97" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
