@@ -11,5 +11,103 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "VeckoTheGecko",
+      "name": "Vecko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36369090?v=4",
+      "profile": "https://github.com/VeckoTheGecko",
+      "contributions": [
+        "code",
+        "content",
+        "ideas",
+        "maintenance",
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "azebramoomoo",
+      "name": "azebramoomoo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121310825?v=4",
+      "profile": "https://github.com/azebramoomoo",
+      "contributions": [
+        "content",
+        "design"
+      ]
+    },
+    {
+      "login": "Jacobjeevan",
+      "name": "Jacob John Jeevan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40040905?v=4",
+      "profile": "https://github.com/Jacobjeevan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Morzaram",
+      "name": "Chris King",
+      "avatar_url": "https://avatars.githubusercontent.com/u/70202379?v=4",
+      "profile": "https://github.com/Morzaram",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JarrodBaniqued",
+      "name": "JarrodBaniqued",
+      "avatar_url": "https://avatars.githubusercontent.com/u/132729879?v=4",
+      "profile": "https://github.com/JarrodBaniqued",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "dmlb",
+      "name": "Danielle Bastien",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4835191?v=4",
+      "profile": "https://daniellemlbastien.com/",
+      "contributions": [
+        "a11y"
+      ]
+    },
+    {
+      "login": "tutterown",
+      "name": "Nick Tutterow",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1977859?v=4",
+      "profile": "https://github.com/tutterown",
+      "contributions": [
+        "code",
+        "content"
+      ]
+    },
+    {
+      "login": "GBT7",
+      "name": "GBT7",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1940589?v=4",
+      "profile": "https://github.com/GBT7",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "williamtaggart97",
+      "name": "Billy Taggart",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49992113?v=4",
+      "profile": "https://github.com/williamtaggart97",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "Micahg05",
+      "name": "Micahg05",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28328628?v=4",
+      "profile": "https://github.com/Micahg05",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
 }
