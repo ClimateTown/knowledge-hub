@@ -11,5 +11,16 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "GBT7",
+      "name": "GBT7",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1940589?v=4",
+      "profile": "https://github.com/GBT7",
+      "contributions": [
+        "content"
+      ]
+    }
+  ]
 }
