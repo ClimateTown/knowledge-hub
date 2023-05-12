@@ -111,6 +111,13 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/azebramoomoo"><img src="https://avatars.githubusercontent.com/u/121310825?v=4?s=60" width="60px;" alt="azebramoomoo"/><br /><sub><b>azebramoomoo</b></sub></a><br /><a href="#content-azebramoomoo" title="Content">🖋</a> <a href="#design-azebramoomoo" title="Design">🎨</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
