@@ -11,5 +11,20 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "VeckoTheGecko",
+      "name": "Vecko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36369090?v=4",
+      "profile": "https://github.com/VeckoTheGecko",
+      "contributions": [
+        "maintenance",
+        "projectManagement",
+        "ideas",
+        "code",
+        "content"
+      ]
+    }
+  ]
 }
