@@ -11,5 +11,17 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "azebramoomoo",
+      "name": "azebramoomoo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/121310825?v=4",
+      "profile": "https://github.com/azebramoomoo",
+      "contributions": [
+        "content",
+        "design"
+      ]
+    }
+  ]
 }
