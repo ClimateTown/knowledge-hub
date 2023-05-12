@@ -111,6 +111,13 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Micahg05"><img src="https://avatars.githubusercontent.com/u/28328628?v=4?s=60" width="60px;" alt="Micahg05"/><br /><sub><b>Micahg05</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Micahg05" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
