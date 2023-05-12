@@ -11,5 +11,16 @@
   "projectOwner": "ClimateTown",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "commitConvention": "none"
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "JarrodBaniqued",
+      "name": "JarrodBaniqued",
+      "avatar_url": "https://avatars.githubusercontent.com/u/132729879?v=4",
+      "profile": "https://github.com/JarrodBaniqued",
+      "contributions": [
+        "content"
+      ]
+    }
+  ]
 }
