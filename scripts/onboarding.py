@@ -32,7 +32,8 @@ RESOURCE_ISSUE_PATTERN = r"""###\sResource\stitle\s*
 """
 
 SCRIPT_PATH = Path(__file__).resolve()
-RESOURCES_DATA_PATH = SCRIPT_PATH.parent / "data" / "resources.yml"
+RESOURCES_DATA_PATH = (SCRIPT_PATH.parent / "../data/resources.yml").resolve()
+
 REPO = "ClimateTown/knowledge-hub"
 
 
@@ -111,13 +112,16 @@ def resource_is_duplicated(issues: List[ResourceIssue]):
         current_resources = yaml.safe_load(file)
     current_urls = [resource["url"] for resource in current_resources]
 
+    found_duplicates = False
     for issue in issues:
         if issue.resource_url in current_urls:
             logger.critical(
                 f"{issue.resource_url} from issue {issue.issue_number} already exists in the database.\n"
                 f"Please close the issue and rerun this script."
             )
-            return True
+            found_duplicates = True
+    if found_duplicates:
+        return True
 
     # Top level domains which are allowed to be duplicated
     tl_domain_whitelist = [
@@ -137,7 +141,10 @@ def resource_is_duplicated(issues: List[ResourceIssue]):
                 f"Top level domain {tl_domain} from issue {issue.issue_number} already exists in the database.\n"
                 f"Please close the issue and rerun this script, or add this top level domain to the whitelist if the resource is good."
             )
-            return True
+            found_duplicates = True
+
+    if found_duplicates:
+        return True
     return False
 
 
@@ -175,8 +182,8 @@ def get_pr_message(issues: List[ResourceIssue]):
 
     message += (
         "\n\n"
-        "Thank you to our contributors for these resources! 🥳🌳\n"
-        "This PR was curated with the help of the onboarding script. 🤖"
+        "Thank you to our contributors for these resources! 🥳🌳\n\n"
+        f"This PR was curated with help from the `{SCRIPT_PATH.name}` script. 🤖"
     )
     return message
 
@@ -237,11 +244,12 @@ def main(ignore_issues=None):
         yaml.dump(
             onboarding_list, file, indent=2, width=float("inf"), allow_unicode=True
         )
+    logger.success(f"New resources written to file {RESOURCES_DATA_PATH}.")
 
-    with open(
-        SCRIPT_PATH.parent / "onboarding_pr_message.md", "w", encoding="utf-8"
-    ) as file:
+    pr_message_path = SCRIPT_PATH.parent / "onboarding_pr_message.md"
+    with open(pr_message_path, "w", encoding="utf-8") as file:
         file.write(get_pr_message(valid_issues))
+        logger.success(f"PR message written to file {pr_message_path}.")
 
 
 if __name__ == "__main__":
