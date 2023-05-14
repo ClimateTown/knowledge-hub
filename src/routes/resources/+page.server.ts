@@ -29,11 +29,19 @@ const removeEmojisFromStr = (str: string) => {
   return str.replace(/[\u1000-\uFFFF]+/g, '').trim();
 }
 
-const sortAlphabeticallyIgnoringEmojis = (a: string, b: string) => {
-  const aWithoutEmojis = removeEmojisFromStr(a);
-  const bWithoutEmojis = removeEmojisFromStr(b);
+const hasEmoji = (str: string) => {
+  return /[\u1000-\uFFFF]+/g.test(str);
+}
 
-  return aWithoutEmojis.localeCompare(bWithoutEmojis);
+const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
+  if(hasEmoji(a) && hasEmoji(b)){
+    const aWithoutEmojis = removeEmojisFromStr(a);
+    const bWithoutEmojis = removeEmojisFromStr(b);
+  
+    return aWithoutEmojis.localeCompare(bWithoutEmojis);
+  }
+
+  return a.localeCompare(b);
 }
 
 export function load(params: PageServerLoad) {
@@ -42,7 +50,7 @@ export function load(params: PageServerLoad) {
 
   const uniqueTags: string[] = generateUniqueTags(resources);
 
-  const uniqueTagsInAlphabeticalOrder = uniqueTags.sort(sortAlphabeticallyIgnoringEmojis);
+  const uniqueTagsInAlphabeticalOrder = uniqueTags.sort(sortAlphabeticallyEmojisFirst);
 
   const resourcesNewestToOldest = [...resources].reverse();
 
