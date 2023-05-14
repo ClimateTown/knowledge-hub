@@ -8,7 +8,7 @@
 <h2 class="font-semibold text-4xl pl-16">Knowledge Hub</h2>
 
 <p class="pt-16">
-    Welcome to the Climate Town Knowledge Hub, your “one stop shop” for
+    Welcome to the Climate Town Knowledge Hub, your “one-stop shop” for
     important resources in the fight against climate change! This website
     contains a collection of online resources, initiatives, and tools suggested
     by the Climate Town Discord community.
@@ -59,7 +59,7 @@
     >
         <h3>YouTube Feed</h3>
         <div class="my-3 text-gray-500">
-            A feed of Climate Town videos, right here in the knowledge hub!
+            A feed of Climate Town videos along with videos from other climate YouTubers with 100k+ subs, right here in the knowledge hub!
         </div>
         <a
             href="{base}/youtube"
