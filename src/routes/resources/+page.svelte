@@ -128,9 +128,9 @@
                         id={removeWhitespace(tag)}
                         name={removeWhitespace(tag)}
                       />
-                      <span>{tag}</span> 
+                      <span>{tag}</span>
                     </label>
-                  </div> 
+                  </div>
             {/each}
         </div>
         <div class="flex flex-row-reverse space-x-2">
