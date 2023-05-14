@@ -126,6 +126,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/GBT7"><img src="https://avatars.githubusercontent.com/u/1940589?v=4?s=60" width="60px;" alt="GBT7"/><br /><sub><b>GBT7</b></sub></a><br /><a href="#content-GBT7" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/williamtaggart97"><img src="https://avatars.githubusercontent.com/u/49992113?v=4?s=60" width="60px;" alt="Billy Taggart"/><br /><sub><b>Billy Taggart</b></sub></a><br /><a href="#ideas-williamtaggart97" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Micahg05"><img src="https://avatars.githubusercontent.com/u/28328628?v=4?s=60" width="60px;" alt="Micahg05"/><br /><sub><b>Micahg05</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Micahg05" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ForrestCinelli"><img src="https://avatars.githubusercontent.com/u/4729019?v=4?s=60" width="60px;" alt="Forrest Cinelli"/><br /><sub><b>Forrest Cinelli</b></sub></a><br /><a href="#content-ForrestCinelli" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
