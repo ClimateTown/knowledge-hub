@@ -14,7 +14,7 @@ const parseResourcesFromYaml = (filePath: string) => {
   const resources: Resource[] = parse(file)
   return resources;
 }
- 
+
 const generateUniqueTags = (resources: Resource[]) => {
   const tags: string[] = []
 
@@ -37,7 +37,7 @@ const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
   if(hasEmoji(a) && hasEmoji(b)){
     const aWithoutEmojis = removeEmojisFromStr(a);
     const bWithoutEmojis = removeEmojisFromStr(b);
-  
+
     return aWithoutEmojis.localeCompare(bWithoutEmojis);
   }
 
