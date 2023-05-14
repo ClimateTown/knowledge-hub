@@ -128,6 +128,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Micahg05"><img src="https://avatars.githubusercontent.com/u/28328628?v=4?s=60" width="60px;" alt="Micahg05"/><br /><sub><b>Micahg05</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Micahg05" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ForrestCinelli"><img src="https://avatars.githubusercontent.com/u/4729019?v=4?s=60" width="60px;" alt="Forrest Cinelli"/><br /><sub><b>Forrest Cinelli</b></sub></a><br /><a href="#content-ForrestCinelli" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/werner33"><img src="https://avatars.githubusercontent.com/u/692461?v=4?s=60" width="60px;" alt="Jordan Manley"/><br /><sub><b>Jordan Manley</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=werner33" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://discord.com/users/165584193093369856"><img src="https://pnggrid.com/wp-content/uploads/2021/05/Discord-Logo-Square.png?s=60" width="60px;" alt="cpufreak101"/><br /><sub><b>cpufreak101</b></sub></a><br /><a href="#design-cpufreak101#9442" title="Design">🎨</a></td>
     </tr>
   </tbody>
 </table>
