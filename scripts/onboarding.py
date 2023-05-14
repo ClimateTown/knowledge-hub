@@ -176,9 +176,9 @@ def get_pr_message(issues: List[ResourceIssue]):
 
     # Sorted list of unique authors
     authors = sorted(list(set([issue.author for issue in issues])))
-    message += "@all-contributors please add\n"
+    message += "@all-contributors\n"
     for author in authors:
-        message += f"@{author} for content\n"
+        message += f"please add @{author} for content\n"
 
     message += (
         "\n\n"
