@@ -117,6 +117,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "werner33",
+      "name": "Jordan Manley",
+      "avatar_url": "https://avatars.githubusercontent.com/u/692461?v=4",
+      "profile": "https://github.com/werner33",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
