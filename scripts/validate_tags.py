@@ -15,22 +15,18 @@ def main():
         resources = yaml.safe_load(f)
     logger.success("Read in `resources.yml` file.")
 
-    # for tag in tags:
-    #     logger.info(f"Getting of {tag['name']}")
-
     tags = [tag['name'] for tag in tagObjects]
-
-    logger.info(f"{tags}")
     
     for resource in resources:
-        # check that each tag is in the list of tags
         for tag in resource['tags']:
-            logger.info(f"{tag} from {resource['title']}")
             if tag not in tags:
                 logger.error(f"{tag} not in list of tags")
                 raise Exception(f"{tag} not in list of tags")
             else:
                 logger.success(f"{tag} is in list of tags")
+    
+    logger.success("All resource tags are found in resource_tags.yml")
+
 
 if __name__ == "__main__":
     main()

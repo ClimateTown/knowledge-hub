@@ -13,6 +13,25 @@ interface Tag {
   name: string,
 }
 
+const removeEmojisFromStr = (str: string) => {
+  return str.replace(/[\u1000-\uFFFF]+/g, '').trim();
+}
+
+const hasEmoji = (str: string) => {
+  return /[\u1000-\uFFFF]+/g.test(str);
+}
+
+const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
+  if(hasEmoji(a) && hasEmoji(b)){
+    const aWithoutEmojis = removeEmojisFromStr(a);
+    const bWithoutEmojis = removeEmojisFromStr(b);
+
+    return aWithoutEmojis.localeCompare(bWithoutEmojis);
+  }
+
+  return a.localeCompare(b);
+}
+
 const parseResources = () => {
   const file = fs.readFileSync('data/resources.yml', 'utf8')
   const resources: Resource[] = parse(file)
@@ -22,6 +41,7 @@ const parseResources = () => {
 const parseTags = () => {
   const file = fs.readFileSync('data/resource_tags.yml', 'utf8');
   const tags = parse(file).map((tag: Tag) => tag.name);
+  tags.sort(sortAlphabeticallyEmojisFirst);
   return tags;
 }
 
@@ -29,7 +49,7 @@ export function load(params: PageServerLoad) {
 
   const resources: Resource[] = parseResources();
 
-  const tags  = parseTags();
+  const tags = parseTags();
 
   return {
     payload: {
