@@ -1,5 +1,8 @@
 from pathlib import Path
 
+import yaml
+from loguru import logger
+
 resource_tags_file = Path("data") / "resource_tags.yml"
 resources_file = Path("data") / "resources.yml"
 
@@ -12,7 +15,7 @@ def main():
         resources = yaml.safe_load(f)
     logger.success("Read in `resources.yml` file.")
 
-    for tag in resource_tags_file:
+    for tag in tags:
         logger.info(f"Getting of {tag['name']}")
 
     #for each resource
