@@ -13,7 +13,7 @@
 - name: Community
 - name: Contacting representatives
 - name: Discord
-- name: Drug Helps
+- name: Drug Help
 - name: Education
 - name: Healthy Living
 - name: Individual Action
@@ -26,6 +26,7 @@
 - name: Politics/Global
 - name: Politics/UK
 - name: Politics/US
+- name: Politics/Canada
 - name: Professional Networking
 - name: Research
 - name: Sustainable Food
