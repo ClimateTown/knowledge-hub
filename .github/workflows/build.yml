@@ -39,10 +39,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-    - name: Scrape YouTube data
-      if: ${{ env.YOUTUBE_API_KEY != '' }}
-      run: | # Only run if the API key is set
-        python scripts/youtube.py --api-key $YOUTUBE_API_KEY
+    # - name: Scrape YouTube data
+    #   if: ${{ env.YOUTUBE_API_KEY != '' }}
+    #   run: | # Only run if the API key is set
+    #     python scripts/youtube.py --api-key $YOUTUBE_API_KEY
     - name: Get previews for resources
       run: |
         python scripts/get_og_previews.py
