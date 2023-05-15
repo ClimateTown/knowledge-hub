@@ -9,55 +9,32 @@ interface Resource {
   tags: string[]
 }
 
-const parseResourcesFromYaml = (filePath: string) => {
-  const file = fs.readFileSync(filePath, 'utf8')
+interface Tag {
+  name: string,
+}
+
+const parseResources = () => {
+  const file = fs.readFileSync('data/resources.yml', 'utf8')
   const resources: Resource[] = parse(file)
-  return resources;
+  return resources.reverse();
 }
 
-const generateUniqueTags = (resources: Resource[]) => {
-  const tags: string[] = []
-
-  for (const resource of resources) {
-    tags.push(...resource.tags);
-  }
-
-  return [...new Set(tags)]
-}
-
-const removeEmojisFromStr = (str: string) => {
-  return str.replace(/[\u1000-\uFFFF]+/g, '').trim();
-}
-
-const hasEmoji = (str: string) => {
-  return /[\u1000-\uFFFF]+/g.test(str);
-}
-
-const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
-  if(hasEmoji(a) && hasEmoji(b)){
-    const aWithoutEmojis = removeEmojisFromStr(a);
-    const bWithoutEmojis = removeEmojisFromStr(b);
-
-    return aWithoutEmojis.localeCompare(bWithoutEmojis);
-  }
-
-  return a.localeCompare(b);
+const parseTags = () => {
+  const file = fs.readFileSync('data/resource_tags.yml', 'utf8');
+  const tags = parse(file).map((tag: Tag) => tag.name);
+  return tags;
 }
 
 export function load(params: PageServerLoad) {
 
-  const resources: Resource[] = parseResourcesFromYaml('data/resources.yml');
+  const resources: Resource[] = parseResources();
 
-  const uniqueTags: string[] = generateUniqueTags(resources);
-
-  const uniqueTagsInAlphabeticalOrder = uniqueTags.sort(sortAlphabeticallyEmojisFirst);
-
-  const resourcesNewestToOldest = [...resources].reverse();
+  const tags  = parseTags();
 
   return {
     payload: {
-      resources: resourcesNewestToOldest,
-      tags: uniqueTagsInAlphabeticalOrder,
+      resources: resources,
+      tags: tags
     }
   }
 }
