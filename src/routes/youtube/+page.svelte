@@ -86,18 +86,23 @@
     <div class="flex flex-row flex-wrap gap-2">
         {#each channelData as channelInfo, index}
             <div
-                class="flex justify-between gap-2 py-2 px-3 rounded-full cursor-pointer bg-gray-300"
+                class="flex justify-between gap-2 rounded-full cursor-pointer bg-gray-300"
             >
-                <input
-                    type="checkbox"
-                    class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-                    bind:checked={filterObject[index].active}
-                    id={channelInfo.channelId}
-                />
-                <label for={channelInfo.channelId}
-                    >{channelInfo.channelName} ({semanticNumber(
-                        channelInfo.channelSubCount
-                    )})</label
+                <label
+                    class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
+                    for={channelInfo.channelId}
+                >
+                    <input
+                        type="checkbox"
+                        class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+                        bind:checked={filterObject[index].active}
+                        id={channelInfo.channelId}
+                    />
+                    <span
+                        >{channelInfo.channelName} ({semanticNumber(
+                            channelInfo.channelSubCount
+                        )})</span
+                    ></label
                 >
             </div>
         {/each}

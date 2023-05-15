@@ -7,6 +7,9 @@ __pycache__
 data/video_data.json
 data/channel_data.json
 
+# Exclude script-generated files
+scripts/onboarding_pr_message.md
+
 # Svelte
 .DS_Store
 node_modules
