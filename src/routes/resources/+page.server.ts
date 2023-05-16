@@ -4,26 +4,39 @@ import fs from 'fs'
 
 let resources_path: string = "data/resources.yml"
 
+interface Resource {
+  description: string
+  title: string
+  tags: string[]
+  url: string
+}
+
+function sortAlphabeticallyIgnoringEmojis(a: string, b: string) {
+  const a_no_emojis = a.replace(/[\u1000-\uFFFF]/g, '').trim();
+  const b_no_emojis = b.replace(/[\u1000-\uFFFF]/g, '').trim();
+  return a_no_emojis.localeCompare(b_no_emojis);
+}
+
 // Reading in resources
 const file = fs.readFileSync(resources_path, 'utf8')
-const yml_data = parse(file) // TODO: Create interface for this, and then use it to validate edits during CI/CD
+const resources: Resource[] = parse(file) // TODO: use it to validate edits during CI/CD
 
 // Creating a list of unique tags
-let tags: string[] = [];
-let resource;
-for (resource of yml_data) {
-  tags.push(...resource.tags)
+const tags = new Set<string>();
+for (const resource of resources) {
+  resource.tags.forEach(tags.add, tags)
 }
-tags = [...new Set(tags)]
+
+const sortedTags = [...tags].sort(sortAlphabeticallyIgnoringEmojis);
 
 //Sorting resources by newest (assuming newest is at the bottom of the file )
-const yml_data_sort = [...yml_data].reverse();
+const sortedResources = [...resources].reverse();
 
 export function load(params: PageServerLoad) {
   return {
     payload: {
-      resources: yml_data_sort,
-      tags: tags,
+      resources: sortedResources,
+      tags: sortedTags,
     }
   }
 }
