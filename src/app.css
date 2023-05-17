@@ -11,3 +11,18 @@ h2 {
 h3 {
     @apply text-2xl;
 }
+
+/* reset native el styles */
+details > summary {
+    list-style: none;
+}
+
+details > summary::marker,
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+/* animate svg on native el open state change */
+details:not([open]) > summary svg {
+    transform: rotate(-90deg);
+}

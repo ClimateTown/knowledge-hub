@@ -69,7 +69,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/4835191?v=4",
       "profile": "https://daniellemlbastien.com/",
       "contributions": [
-        "a11y"
+        "a11y",
+        "code"
       ]
     },
     {
@@ -143,6 +144,15 @@
       "profile": "https://github.com/Veeltu",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "macaugh",
+      "name": "Matthew Caughman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69660071?v=4",
+      "profile": "http://hackerone.com",
+      "contributions": [
+        "review"
       ]
     }
   ]
