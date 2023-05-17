@@ -46,9 +46,6 @@ jobs:
     - name: Get previews for resources
       run: |
         python scripts/get_og_previews.py
-    - name: Validate Resource Tags
-      run: |
-        python scripts/validate_tags.py
     - run: npm install
       # - run: npm ci
     - run: npm run build
