@@ -144,6 +144,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "macaugh",
+      "name": "Matthew Caughman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69660071?v=4",
+      "profile": "http://hackerone.com",
+      "contributions": [
+        "review"
+      ]
     }
   ]
 }
