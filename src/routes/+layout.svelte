@@ -14,6 +14,7 @@
   <meta property="og:site_name" content="Climate Town Knowledge Hub" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#22c55e">
   <meta
     name="description"
     content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
