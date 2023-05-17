@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 h1 {
-    @apply text-4xl;
+  @apply text-4xl;
 }
 h2 {
-    @apply text-3xl;
+  @apply text-3xl;
 }
 h3 {
-    @apply text-2xl;
+  @apply text-2xl;
 }
 
 /* reset native el styles */
 details > summary {
-    list-style: none;
+  list-style: none;
 }
 
 details > summary::marker,
 details > summary::-webkit-details-marker {
-    display: none;
+  display: none;
 }
 
 /* animate svg on native el open state change */
 details:not([open]) > summary svg {
-    transform: rotate(-90deg);
+  transform: rotate(-90deg);
 }

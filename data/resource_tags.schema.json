@@ -1,23 +1,21 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "name": {
-                "type": "string"
-            },
-            "description": {
-                "type": "string"
-            },
-            "color": {
-                "type": "string",
-                "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
-            }
-        },
-        "required": [
-            "name"
-        ],
-        "additionalProperties": false
-    }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "color": {
+        "type": "string",
+        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+      }
+    },
+    "required": ["name"],
+    "additionalProperties": false
+  }
 }

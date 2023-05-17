@@ -1,30 +1,26 @@
-import type { PageServerLoad } from './$types'
-import fs from 'fs'
+import type { PageServerLoad } from "./$types";
+import fs from "fs";
 
-const channelDataPath: string = "data/channel_data.json"
-const videoDataPath: string = "data/video_data.json"
+const channelDataPath: string = "data/channel_data.json";
+const videoDataPath: string = "data/video_data.json";
 
 // Function to read JSON file or return an empty array if the file doesn't exist
 function readJsonFile(filePath: string): any[] {
   try {
-    const file = fs.readFileSync(filePath, 'utf8')
-    return JSON.parse(file)
+    const file = fs.readFileSync(filePath, "utf8");
+    return JSON.parse(file);
   } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
-      return []
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return [];
     } else {
-      throw error
+      throw error;
     }
   }
 }
 
 // Reading in channel and video data
-const channelData = readJsonFile(channelDataPath)
-const videoData = readJsonFile(videoDataPath)
-
-
-
-
+const channelData = readJsonFile(channelDataPath);
+const videoData = readJsonFile(videoDataPath);
 
 // // Creating a list of unique tags
 // let tags: string[] = [];
@@ -34,12 +30,11 @@ const videoData = readJsonFile(videoDataPath)
 // }
 // tags = [...new Set(tags)]
 
-
 export function load(params: PageServerLoad) {
   return {
     payload: {
       videoData: videoData,
       channelData: channelData,
-    }
-  }
+    },
+  };
 }

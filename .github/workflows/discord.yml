@@ -2,7 +2,7 @@ name: GitHub Discord Integration
 on:
   issues:
     types:
-    - opened
+      - opened
 jobs:
   send-message:
     env:
@@ -11,20 +11,20 @@ jobs:
       ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-    - name: Send message to Discord channel
-      run: |
-        python scripts/discord_integration.py \
-          --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
-          --issue-number "${{ github.event.issue.number }}" \
-          --issue-title "$ISSUE_TITLE" \
-          --issue-description "$ISSUE_DESCRIPTION" \
-          --author "$ISSUE_AUTHOR"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Send message to Discord channel
+        run: |
+          python scripts/discord_integration.py \
+            --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
+            --issue-number "${{ github.event.issue.number }}" \
+            --issue-title "$ISSUE_TITLE" \
+            --issue-description "$ISSUE_DESCRIPTION" \
+            --author "$ISSUE_AUTHOR"
