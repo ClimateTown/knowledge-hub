@@ -1,79 +1,79 @@
 name: ✨Resource Suggestion
 description: Suggest adding a resource to the Knowledge Hub.
-title: '[RESOURCE] <descriptive title>'
+title: "[RESOURCE] <descriptive title>"
 labels:
-- suggestion/resource
+  - suggestion/resource
 body:
-- type: markdown
-  attributes:
-    value: >+
-      Suggest an online resource to add to the Knowledge Hub. This resource
-      can be anything directly (or indirectly) related to the climate
-      movement. Have many resources to suggest? Create a blank issue with a title
-      starting with "[RESOURCE ONBOARDING]" instead.
+  - type: markdown
+    attributes:
+      value: >+
+        Suggest an online resource to add to the Knowledge Hub. This resource
+        can be anything directly (or indirectly) related to the climate
+        movement. Have many resources to suggest? Create a blank issue with a title
+        starting with "[RESOURCE ONBOARDING]" instead.
 
 
-      Strict guidelines:
+        Strict guidelines:
 
-      - All resources must be legal (e.g. no linking to SciHub, Libgen, or any
-      other resources that infringe on  copyright of research or books)
-
-
-
-      Other considerations:
-
-      - Try suggest resources that are "timeless", and not going to quickly go
-      out of date.
-
-      - Avoid linking of specific articles, or YouTube videos (unless they are
-      particularly iconic/important)
-
-      - **Title, tags, and resource summary data are used directly in the website**.
-      Ensure to follow guidelines provided here in the form. Resource summary should be
-      plain text (no markdown formatting or links). Include additional info in
-      Relevance/Other comments field if appropriate.
+        - All resources must be legal (e.g. no linking to SciHub, Libgen, or any
+        other resources that infringe on  copyright of research or books)
 
 
-      We will be somewhat liberal with including resources, prioritising
-      making many resources available in an easily filterable way.
 
-- type: input
-  attributes:
-    label: Resource title
-    description: Give an appropriate title for the resource (<50 characters)
-  validations:
-    required: true
-- type: input
-  attributes:
-    label: URL
-    description: URL to the resource
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Relevant tags (1 per line)
-    description: >-
-      What tags would you like to apply to this resource? Leave blank if you're not
-      sure and our mods will help out. Try use existing tags from the website,
-      or applying one you feel is necessary.
-- type: textarea
-  attributes:
-    label: Resource Summary
-    description: >-
-      Provide a summary of the resource (<300 characters). This will be displayed on
-      the website alongside the title. Normally websites have an `og:description`
-      tag in their HTML which you can go off (open "Inspect Element" in your browser
-      and look for the tag).
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Relevance
-    description: >-
-      How is this resource relevant to the climate movement, or the
-      ClimateTown community? Leave blank if already clear/self
-      explanatory from other info.
-- type: textarea
-  attributes:
-    label: Other comments
-    description: Add any additional info you see fit
+        Other considerations:
+
+        - Try suggest resources that are "timeless", and not going to quickly go
+        out of date.
+
+        - Avoid linking of specific articles, or YouTube videos (unless they are
+        particularly iconic/important)
+
+        - **Title, tags, and resource summary data are used directly in the website**.
+        Ensure to follow guidelines provided here in the form. Resource summary should be
+        plain text (no markdown formatting or links). Include additional info in
+        Relevance/Other comments field if appropriate.
+
+
+        We will be somewhat liberal with including resources, prioritising
+        making many resources available in an easily filterable way.
+
+  - type: input
+    attributes:
+      label: Resource title
+      description: Give an appropriate title for the resource (<50 characters)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: URL
+      description: URL to the resource
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Relevant tags (1 per line)
+      description: >-
+        What tags would you like to apply to this resource? Leave blank if you're not
+        sure and our mods will help out. Try use existing tags from the website,
+        or applying one you feel is necessary.
+  - type: textarea
+    attributes:
+      label: Resource Summary
+      description: >-
+        Provide a summary of the resource (<300 characters). This will be displayed on
+        the website alongside the title. Normally websites have an `og:description`
+        tag in their HTML which you can go off (open "Inspect Element" in your browser
+        and look for the tag).
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Relevance
+      description: >-
+        How is this resource relevant to the climate movement, or the
+        ClimateTown community? Leave blank if already clear/self
+        explanatory from other info.
+  - type: textarea
+    attributes:
+      label: Other comments
+      description: Add any additional info you see fit

@@ -1,10 +1,10 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "array",
-    "items": {
-        "description": "The channel ID for the YouTuber.",
-        "type": "string",
-        "minLength": 24,
-        "maxLength": 24
-    }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "items": {
+    "description": "The channel ID for the YouTuber.",
+    "type": "string",
+    "minLength": 24,
+    "maxLength": 24
+  }
 }

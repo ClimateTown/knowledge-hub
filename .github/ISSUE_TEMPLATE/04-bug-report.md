@@ -2,9 +2,8 @@
 name: 🐞Bug Report
 about: Describe a bug in the Knowledge Hub
 title: "[BUG]"
-labels: ''
-assignees: ''
-
+labels: ""
+assignees: ""
 ---
 
 **Describe the bug**
@@ -12,6 +11,7 @@ Description of what the bug is...
 
 **To Reproduce**
 Steps to reproduce the bug:
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'

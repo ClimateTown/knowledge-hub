@@ -10,8 +10,6 @@
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 [![All Contributors](https://img.shields.io/github/all-contributors/ClimateTown/knowledge-hub?color=ee8449&style=flat-square)](#✨contributors)
 
-
-
 ---
 
 The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one stop shop" for important climate resources in the fight against climate change!
@@ -80,6 +78,7 @@ To set up Python:
 This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`. To update your environment run `pip-sync`.
 
 ### OPTIONAL: Loading YouTube Data
+
 To set up the YouTube API (important for working on scripts with YouTube video scraping):
 
 - Follow the python installation steps above

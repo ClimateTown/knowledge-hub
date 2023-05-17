@@ -2,52 +2,52 @@ name: 📺YouTuber Suggestion
 description: >-
   Suggest adding a YouTuber's videos to the climate YouTube feed in the
   Knowledge Hub.
-title: '[YOUTUBER] <channel name>'
+title: "[YOUTUBER] <channel name>"
 labels:
-- suggestion/youtuber
+  - suggestion/youtuber
 body:
-- type: markdown
-  attributes:
-    value: >-
-      Suggest a YouTuber to add to the subscription feed displayed on the ClimateTown Knowledge Hub.
+  - type: markdown
+    attributes:
+      value: >-
+        Suggest a YouTuber to add to the subscription feed displayed on the ClimateTown Knowledge Hub.
 
 
-      Your suggestion will be considered, but not necessarily accepted.
-      Inclusion of YouTubers in the feed is up to the discretion of the mod
-      team (and ultimately Rollie's team).
+        Your suggestion will be considered, but not necessarily accepted.
+        Inclusion of YouTubers in the feed is up to the discretion of the mod
+        team (and ultimately Rollie's team).
 
 
-      Suggest away! 😍
-- type: input
-  id: channel-name
-  attributes:
-    label: YouTube channel name
-    description: What is the name of the YouTuber?
-  validations:
-    required: true
-- type: input
-  attributes:
-    label: Channel link
-    description: URL to the YouTube channel
-  validations:
-    required: true
-- type: input
-  attributes:
-    label: Channel ID
-    description: >-
-      What is the channel ID of the YouTuber? Use [this online
-      tool](https://commentpicker.com/youtube-channel-id.php) to find out.
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Description
-    description: >-
-      Briefly describe (<100 words or so) the content uploaded by this
-      YouTuber
-  validations:
-    required: true
-- type: textarea
-  attributes:
-    label: Other comments
-    description: Add any additional info you see fit
+        Suggest away! 😍
+  - type: input
+    id: channel-name
+    attributes:
+      label: YouTube channel name
+      description: What is the name of the YouTuber?
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Channel link
+      description: URL to the YouTube channel
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Channel ID
+      description: >-
+        What is the channel ID of the YouTuber? Use [this online
+        tool](https://commentpicker.com/youtube-channel-id.php) to find out.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: >-
+        Briefly describe (<100 words or so) the content uploaded by this
+        YouTuber
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Other comments
+      description: Add any additional info you see fit
