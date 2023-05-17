@@ -54,7 +54,7 @@
                 class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
                 target="_blank"
                 rel="noreferrer"
-                href="{github_url}/graphs/contributors"
+                href="{github_url}/#contributors"
                 >📣 Credits</a
             >
             <a
