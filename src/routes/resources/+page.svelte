@@ -72,9 +72,9 @@
 </script>
 
 
-<h1 class="pb-3">Resources</h1>
-<div class="text-sm">
-    <i>Number of resources (e.g. <b> {resources.length}</b> resources and counting!!)</i>
+<h1>Resources</h1>
+<div class="py-1">
+    <i>{resources.length} resources and counting!!</i>
 </div>
 <div class="flex flex-wrap gap-2 pb-3">
     <a
@@ -166,9 +166,7 @@
                             name={removeWhitespace(tag)}
                         />
                         <span>
-                            {#each Object.entries(tags_count) as [tag_name, tag_count]}
-                                {#if tag == tag_name}{tag_name}: ({tag_count}) {/if}
-                            {/each}
+                            {tag} <span class="text-gray-500 italic">({tags_count[tag]})</span>
                         </span>
                     </label>
                   </div>
