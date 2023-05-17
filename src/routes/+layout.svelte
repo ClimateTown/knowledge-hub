@@ -10,6 +10,20 @@
 
 <svelte:head>
   <title>Climate Town Knowledge Hub</title>
+  <meta name="og:title" content="Climate Town Knowledge Hub" />
+  <meta property="og:site_name" content="Climate Town Knowledge Hub" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta
+    name="description"
+    content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
+  />
+  <meta
+    name="og:description"
+    content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
+  />
+  <meta property="og:image" content="{base}/images/knowledge-hub-image.png" />
+
   <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
   <script
     src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
