@@ -28,6 +28,11 @@ body:
       - Avoid linking of specific articles, or YouTube videos (unless they are
       particularly iconic/important)
 
+      - **Title, tags, and resource summary data are used directly in the website**.
+      Ensure to follow guidelines provided here in the form. Resource summary should be
+      plain text (no markdown formatting or links). Include additional info in
+      Relevance/Other comments field if appropriate.
+
 
       We will be somewhat liberal with including resources, prioritising
       making many resources available in an easily filterable way.
@@ -35,7 +40,7 @@ body:
 - type: input
   attributes:
     label: Resource title
-    description: Give an appropriate title for the resource
+    description: Give an appropriate title for the resource (<50 characters)
   validations:
     required: true
 - type: input
@@ -55,7 +60,7 @@ body:
   attributes:
     label: Resource Summary
     description: >-
-      Provide a summary of the resource (<70 words). This will be displayed on
+      Provide a summary of the resource (<300 characters). This will be displayed on
       the website alongside the title. Normally websites have an `og:description`
       tag in their HTML which you can go off (open "Inspect Element" in your browser
       and look for the tag).
@@ -66,7 +71,8 @@ body:
     label: Relevance
     description: >-
       How is this resource relevant to the climate movement, or the
-      ClimateTown community? Leave blank if already clear from other info.
+      ClimateTown community? Leave blank if already clear/self
+      explanatory from other info.
 - type: textarea
   attributes:
     label: Other comments

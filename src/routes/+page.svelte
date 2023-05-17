@@ -8,11 +8,24 @@
 <h2 class="font-semibold text-4xl pl-16">Knowledge Hub</h2>
 
 <p class="pt-16">
-    Welcome to the Climate Town Knowledge Hub, your “one stop shop” for
+    Welcome to the Climate Town Knowledge Hub, your one-stop shop for
     important resources in the fight against climate change! This website
     contains a collection of online resources, initiatives, and tools suggested
     by the Climate Town Discord community.
 </p>
+
+<p class="pt-6 pb-3">
+    Some of the resource tags in the Knowledge Hub are special. These are prefaced with emojis:
+</p>
+<ul class="list-disc">
+    <li>
+        <span class="font-semibold">📚 Knowledge Hubs:</span> These are initiatives similar to the Climate Town Knowledge Hub. These initiatives curate varied lists of climate related resources, lists which may even be more specific in topic than the list of resources provided here. Taking full advantage of the network effect!
+    </li>
+    <li><span class="font-semibold">🍞 Rollie's Choice:</span> These are resources endorsed by the Climate Town team.</li>
+    <li><span class="font-semibold">✨ Mod Choice:</span> These are resources endorsed by the moderators of the Climate Town Discord.</li>
+</ul>
+
+
 
 <div class="grid grid-cols-2 pb-10">
     <div
