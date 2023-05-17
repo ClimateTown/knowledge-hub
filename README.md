@@ -131,6 +131,9 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://discord.com/users/165584193093369856"><img src="https://pnggrid.com/wp-content/uploads/2021/05/Discord-Logo-Square.png?s=60" width="60px;" alt="cpufreak101"/><br /><sub><b>cpufreak101</b></sub></a><br /><a href="#design-cpufreak101#9442" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Veeltu"><img src="https://avatars.githubusercontent.com/u/88980422?v=4?s=60" width="60px;" alt="Paweł Andrys"/><br /><sub><b>Paweł Andrys</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Veeltu" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://hackerone.com"><img src="https://avatars.githubusercontent.com/u/69660071?v=4?s=60" width="60px;" alt="Matthew Caughman"/><br /><sub><b>Matthew Caughman</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/pulls?q=is%3Apr+reviewed-by%3Amacaugh" title="Reviewed Pull Requests">👀</a></td>
+    </tr>
   </tbody>
 </table>
 
