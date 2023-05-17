@@ -10,6 +10,7 @@
     $: tagLogic = tagLogicAnd ? "and" : "or";
 
     let tags = data.payload.tags;
+    let tags_count = data.payload.tags_count;
     // Creating filter object
     let filterObject: any = {};
     filterObject["tags"] = {};
@@ -70,7 +71,11 @@
     import ListItem from "./ListItem.svelte";
 </script>
 
-<h1 class="pb-3">Resources</h1>
+
+<h1>Resources</h1>
+<div class="py-1">
+    <i>{resources.length} resources and counting!!</i>
+</div>
 <div class="flex flex-wrap gap-2 pb-3">
     <a
         class="p-2 rounded-lg border-2 border-green-500 text-green-500"
@@ -153,14 +158,16 @@
                 <!-- checkboxes -->
                 <div class="flex justify-between gap-2 rounded-full bg-gray-300" >
                     <label class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2" for={removeWhitespace(tag)}>
-                      <input
-                        type="checkbox"
-                        class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-                        bind:checked={filterObject.tags[tag]}
-                        id={removeWhitespace(tag)}
-                        name={removeWhitespace(tag)}
-                      />
-                      <span>{tag}</span>
+                        <input
+                            type="checkbox"
+                            class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+                            bind:checked={filterObject.tags[tag]}
+                            id={removeWhitespace(tag)}
+                            name={removeWhitespace(tag)}
+                        />
+                        <span>
+                            {tag} <span class="text-gray-500 italic">({tags_count[tag]})</span>
+                        </span>
                     </label>
                   </div>
             {/each}
