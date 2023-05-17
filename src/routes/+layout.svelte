@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Climate Town Knowledge Hub" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#22c55e">
+  <meta name="theme-color" content="#22c55e" />
   <meta
     name="description"
     content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
@@ -37,8 +37,14 @@
   >
     <a href="{base}/">
       <picture class="w-48 self-center">
-        <source type="image/avif" srcset="{base}/images/knowledge-hub-logo.avif">
-        <source type="image/webp" srcset="{base}/images/knowledge-hub-logo.webp">
+        <source
+          type="image/avif"
+          srcset="{base}/images/knowledge-hub-logo.avif"
+        />
+        <source
+          type="image/webp"
+          srcset="{base}/images/knowledge-hub-logo.webp"
+        />
         <img
           height="180"
           width="180"
@@ -65,13 +71,15 @@
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
-        href={github_url}>✍ Contribute on GitHub <span class="sr-only">in a new tab</span></a
+        href={github_url}
+        >✍ Contribute on GitHub <span class="sr-only">in a new tab</span></a
       >
       <a
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
-        href="{github_url}/#contributors">📣 Credits <span class="sr-only">in a new tab</span></a
+        href="{github_url}/#contributors"
+        >📣 Credits <span class="sr-only">in a new tab</span></a
       >
       <a
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
