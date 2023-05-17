@@ -61,6 +61,18 @@
 		return intersection;
 	}
 
+	function getTagResourceCount(tag: string) {
+		const resourcesCopy = [...resources];
+
+		const filteredResourcesByTags = resourcesCopy.filter((resource) => {
+			const tagsSet = new Set(resource.tags);
+
+			return tagsSet.has(tag);
+		});
+
+		return filteredResourcesByTags.length;
+	}
+
 	import ListItem from "./ListItem.svelte";
 	// Collapsable
 	onMount(() => {
@@ -126,8 +138,7 @@
 					<label class="cursor-pointer" for={removeWhitespace(tag)}>{tag}</label
 					>
 					<div class="text-gray-500">
-						({resources.filter((resource) => resource.tags.includes(tag))
-							.length})
+						({getTagResourceCount(tag)})
 					</div>
 				</div>
 			{/each}
