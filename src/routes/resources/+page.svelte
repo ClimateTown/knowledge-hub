@@ -71,7 +71,7 @@
 </script>
 
 <h1 class="pb-3">Resources</h1>
-<div class="flex flex-wrap justify-end gap-2 pb-3">
+<div class="flex flex-wrap gap-2 pb-3">
     <a
         class="p-2 rounded-lg border-2 border-green-500 text-green-500"
         href="{github_url}/issues/new/choose"
@@ -121,8 +121,8 @@
     </a>
 </div>
 
-<details open>
-<summary class="cursor-pointer text-2xl rounded-lg p-2 border-2">
+<details class="rounded-lg border-2" open>
+<summary class="cursor-pointer text-2xl p-2">
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -144,7 +144,7 @@
     <!-- begin form -->
     <form
         on:submit|preventDefault={filterResources}
-        class="border-solid border-2 rounded-lg p-4 space-y-4"
+        class="border-solid p-4 space-y-4"
     >
         <!-- <label for="search">Search</label> -->
         <!-- <input type="text" id="search" name="search" /> -->
