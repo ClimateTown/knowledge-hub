@@ -15,7 +15,7 @@
   <meta property="twitter:site" content="@ClimateTown" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#22c55e">
+  <meta name="theme-color" content="#22c55e" />
   <meta
     name="description"
     content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
@@ -25,7 +25,10 @@
     content="Your one-stop shop for important climate resources that you wish you knew about yesterday. The resource database spans multiple categories from activism, climate accountability, politics, climate tech/open source, climate journalism, and more."
   />
   <meta property="og:image" content="{base}/images/knowledge-hub-image.png" />
-  <meta property="og:image:alt" content="seascape mountain ranges in the background with an open book centered in the foreground below a bright green tree at sunrise" />
+  <meta
+    property="og:image:alt"
+    content="seascape mountain ranges in the background with an open book centered in the foreground below a bright green tree at sunrise"
+  />
 
   <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
   <script
