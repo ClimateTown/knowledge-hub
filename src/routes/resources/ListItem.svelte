@@ -12,6 +12,9 @@
   <div class="rounded-lg shadow-lg transition ease-in-out hover:scale-105">
     {#if og_preview}
       <img
+        height="190"
+        width="330"
+        loading="lazy"
         class="object-cover rounded-t-lg object-center h-48 w-full"
         alt="Website preview"
         src={og_preview}
@@ -23,6 +26,8 @@
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
+          height="64"
+          width="64"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
@@ -48,6 +53,8 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
+            height="24"
+            width="24"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
