@@ -30,7 +30,13 @@
     content="seascape mountain ranges in the background with an open book centered in the foreground below a bright green tree at sunrise"
   />
 
+  <!-- yt thumbnails, crossbrowser preconnect hint -->
+  <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+
   <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
+  <link rel="preload" href="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" as="script" />
   <script
     src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
     crossorigin="anonymous"></script>
