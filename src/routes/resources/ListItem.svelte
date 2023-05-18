@@ -14,6 +14,7 @@
       <img
         height="190"
         width="330"
+        loading="lazy"
         class="object-cover rounded-t-lg object-center h-48 w-full"
         alt="Website preview"
         src={og_preview}

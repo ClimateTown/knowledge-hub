@@ -43,6 +43,7 @@
     class="flex w-full flex-row md:block md:w-auto md:h-auto shadow-md rounded-lg"
   >
     <img
+      loading="lazy"
       class="rounded-l-lg md:rounded-bl-none md:rounded-t-lg md:w-full"
       height="90"
       width="120"
