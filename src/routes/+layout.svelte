@@ -46,15 +46,26 @@
 </svelte:head>
 
 <div class="body flex flex-col lg:flex-row w-full">
-  <div
+  <header
     class="lg:w-fit w-full bg-green-500 flex flex-col p-5 min-h-max lg:min-h-screen"
   >
     <a href="{base}/">
-      <img
-        class="w-48 self-center"
-        src="{base}/images/knowledge-hub-logo.png"
-        alt="Logo of Knowledge Hub"
-      />
+      <picture class="w-48 self-center">
+        <source
+          type="image/avif"
+          srcset="{base}/images/knowledge-hub-logo.avif"
+        />
+        <source
+          type="image/webp"
+          srcset="{base}/images/knowledge-hub-logo.webp"
+        />
+        <img
+          height="180"
+          width="180"
+          src="{base}/images/knowledge-hub-logo.png"
+          alt="Climate Town Knowledge Hub"
+        />
+      </picture>
     </a>
     <nav class="gap-2 flex flex-wrap lg:flex-col">
       <a
@@ -74,27 +85,29 @@
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
-        href={github_url}>✍ Contribute on GitHub</a
+        href={github_url}
+        >✍ Contribute on GitHub <span class="sr-only">in a new tab</span></a
       >
       <a
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
-        href="{github_url}/#contributors">📣 Credits</a
+        href="{github_url}/#contributors"
+        >📣 Credits <span class="sr-only">in a new tab</span></a
       >
       <a
         class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
         href={climate_town_url}
-        >🌐 Main Website
+        >🌐 Main Website <span class="sr-only">in a new tab</span>
       </a>
     </nav>
-  </div>
+  </header>
 
-  <div class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8">
+  <main class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8">
     <slot />
-  </div>
+  </main>
 </div>
 
 <style>
