@@ -2,37 +2,72 @@
 - name: ✨ Mod Choice
 - name: 🍞 Rollie's Choice
 - name: Activism
+  color: '#c8cdea'
 - name: Article
+  color: '#f1d7c0'
 - name: Bypass Paywalls
+  color: '#f1d7c0'
 - name: Climate Accountability
+  color: '#e0e9c9'
 - name: Climate Careers
+  color: '#e0e9c9'
 - name: Climate Journalism
+  color: '#e0e9c9'
 - name: Climate Models
+  color: '#e0e9c9'
 - name: Climate Tech
+  color: '#e0e9c9'
 - name: Collective Action
+  color: '#c8cdea'
 - name: Community
+  color: '#c8cdea'
 - name: Contacting representatives
+  color: '#e9cac9'
 - name: Discord
+  color: '#cfe2e0'
 - name: Drug Help
+  color: '#efebc2'
 - name: Education
+  color: '#efebc2'
 - name: Healthy Living
+  color: '#efebc2'
 - name: Individual Action
+  color: '#c8cdea'
 - name: location/Canada
+  color: '#dccdea'
 - name: location/Global
+  color: '#dccdea'
 - name: location/US
+  color: '#dccdea'
 - name: location/US/NYC
+  color: '#dccdea'
 - name: Organizations
+  color: '#cfe2e0'
 - name: Politics
+  color: '#e9cac9'
 - name: Politics/Global
+  color: '#e9cac9'
 - name: Politics/UK
+  color: '#e9cac9'
 - name: Politics/US
+  color: '#e9cac9'
 - name: Politics/Canada
+  color: '#e9cac9'
 - name: Professional Networking
+  color: '#cfe2e0'
 - name: Research
+  color: '#efebc2'
 - name: Sustainable Food
+  color: '#efebc2'
 - name: Tools
+  color: '#cfe2e0'
 - name: Unionize
+  color: '#c8cdea'
 - name: Vegan
+  color: '#efebc2'
 - name: Workers' rights
+  color: '#c8cdea'
 - name: Food Waste
+  color: '#efebc2'
 - name: Greenwashing
+  color: '#e0e9c9'

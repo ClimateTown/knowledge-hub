@@ -3,13 +3,14 @@
   export let url: string;
   export let description: string;
   export let og_preview: string | undefined;
-  export let tags: Array<string>;
+  export let tagInfo: Array<Tag>;
 
   import { base } from "$app/paths";
+    import type { Tag } from "./+page.server";
 </script>
 
 <a href={url} target="_blank" rel="noreferrer">
-  <div class="rounded-lg shadow-lg transition ease-in-out hover:scale-105">
+  <div class="flex flex-col rounded-lg shadow-lg transition ease-in-out hover:scale-105 h-full">
     {#if og_preview}
       <img
         height="190"
@@ -42,7 +43,7 @@
       </div>
     {/if}
 
-    <div class="m-3">
+    <div class="flex flex-col grow m-3">
       <div class="text-xl font-medium text-gray-900 mt-3">
         <span>
           {title}
@@ -68,11 +69,11 @@
           </svg>
         </span>
       </div>
-      <p class="mt-2 text-gray-700">{description}</p>
+      <p class="mt-2 text-gray-700 grow">{description}</p>
       <div class="flex flex-wrap text-xs py-2">
-        {#each tags as tag}
-          <div class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 ">
-            {tag}
+        {#each tagInfo as tag}
+          <div class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 " style:background-color={tag.color}>
+            {tag.name}
           </div>
         {/each}
       </div>

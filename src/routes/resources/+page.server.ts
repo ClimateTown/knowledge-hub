@@ -7,10 +7,12 @@ interface Resource {
   description: string;
   url: string;
   tags: string[];
+  tagInfo?: Tag[];
 }
 
-interface Tag {
+export interface Tag {
   name: string;
+  color?: string;
 }
 
 const removeEmojisFromStr = (str: string) => {
@@ -21,27 +23,34 @@ const hasEmoji = (str: string) => {
   return /[\u1000-\uFFFF]+/g.test(str);
 };
 
-const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
-  if (hasEmoji(a) && hasEmoji(b)) {
-    const aWithoutEmojis = removeEmojisFromStr(a);
-    const bWithoutEmojis = removeEmojisFromStr(b);
+const sortAlphabeticallyEmojisFirst = (a: Tag, b: Tag) => {
+  if (hasEmoji(a.name) && hasEmoji(b.name)) {
+    const aWithoutEmojis = removeEmojisFromStr(a.name);
+    const bWithoutEmojis = removeEmojisFromStr(b.name);
 
     return aWithoutEmojis.localeCompare(bWithoutEmojis);
   }
 
-  return a.localeCompare(b);
+  return a.name.localeCompare(b.name);
 };
 
-const parseResources = () => {
+const parseResources = (tags: Tag[]) => {
   const file = fs.readFileSync("data/resources.yml", "utf8");
   const resources: Resource[] = parse(file);
+  for(const resource of resources) {
+    resource.tagInfo = []
+    for(const resTag of resource.tags) {
+      let matchIdx = tags.findIndex((tag: Tag) => tag.name === resTag)
+      resource.tagInfo.push(tags[matchIdx])
+    }
+  }
   return resources.reverse();
 };
 
-const getTagCounts = (tags: string[], yml_data: Resource[]) => {
+const getTagCounts = (tags: Tag[], yml_data: Resource[]) => {
   let tag_count: { [key: string]: number } = {};
   for (const tag of tags) {
-    tag_count[tag] = 0;
+    tag_count[tag.name] = 0;
   }
   for (const resource of yml_data) {
     for (const tag of resource.tags) {
@@ -53,15 +62,15 @@ const getTagCounts = (tags: string[], yml_data: Resource[]) => {
 
 const parseTags = () => {
   const file = fs.readFileSync("data/resource_tags.yml", "utf8");
-  const tags = parse(file).map((tag: Tag) => tag.name);
+  const tags: Tag[] = parse(file);
   tags.sort(sortAlphabeticallyEmojisFirst);
   return tags;
 };
 
 export function load(params: PageServerLoad) {
-  const resources: Resource[] = parseResources();
+  const tags: Tag[] = parseTags();
 
-  const tags = parseTags();
+  const resources: Resource[] = parseResources(tags);
 
   const tag_count = getTagCounts(tags, resources);
 
