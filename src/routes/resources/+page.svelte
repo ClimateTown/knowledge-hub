@@ -4,7 +4,41 @@
   export let data: PageData;
 
   let resources = data.payload.resources;
-  let displayedResources = resources;
+  var beginCount = 0;
+  var lastElem = 20;
+  const numOFDisplayElements = 5
+  let displayedResources = resources.slice(beginCount, lastElem);
+  
+
+  let currentPage = 1
+   console.log(currentPage, 'currentPage')
+  const totalOfPages =  Math.ceil(displayedResources.length / numOFDisplayElements)
+  console.log(totalOfPages, 'total')
+ 
+
+  function handelPageForward () {
+     if(currentPage < totalOfPages){
+      currentPage += 1
+       beginCount+= numOFDisplayElements
+       lastElem += numOFDisplayElements
+       displayedResources = resources.slice(beginCount, lastElem)
+     }
+    
+
+  }
+
+   function handelPageBack () {
+     if(currentPage > 1){
+       currentPage -= 1
+       beginCount-= numOFDisplayElements
+       lastElem -= numOFDisplayElements
+       displayedResources = resources.slice(beginCount, lastElem)
+     }
+  }
+  console.log(currentPage, 'currentPage')
+
+
+
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
   $: tagLogic = tagLogicAnd ? "and" : "or";
@@ -202,4 +236,12 @@
   {:else}
     <div>No resources here!</div>
   {/each}
+
+   {#if currentPage > 1}
+   <button on:click={handelPageBack}>back</button> 
+   {/if}
+   {currentPage}
+    {#if currentPage < 4}
+   <button on:click={handelPageForward}>next</button>
+    {/if}
 </div>
