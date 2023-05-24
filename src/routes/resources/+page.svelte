@@ -236,12 +236,17 @@
   {:else}
     <div>No resources here!</div>
   {/each}
-
-   {#if currentPage > 1}
-   <button on:click={handelPageBack}>back</button> 
-   {/if}
-   {currentPage}
-    {#if currentPage < 4}
-   <button on:click={handelPageForward}>next</button>
-    {/if}
+ 
 </div>
+
+ <div class='flex justify-center mt-8 mb-7'>
+      {#if currentPage > 1}
+      
+      {/if}
+      <div class='px-52 text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
+      <div class='px-52'>{currentPage}</div>
+      <div class='px-52 text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
+        {#if currentPage < 4}
+      
+        {/if}
+  </div>
