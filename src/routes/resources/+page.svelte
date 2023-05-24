@@ -239,14 +239,8 @@
  
 </div>
 
- <div class='flex justify-center mt-8 mb-7'>
-      {#if currentPage > 1}
-      
-      {/if}
-      <div class='px-52 text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
-      <div class='px-52'>{currentPage}</div>
-      <div class='px-52 text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
-        {#if currentPage < 4}
-      
-        {/if}
+ <div class='flex justify-between mt-8 mb-7'>
+      <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
+      <div>{currentPage}</div>
+      <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
   </div>
