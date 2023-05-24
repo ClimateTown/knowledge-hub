@@ -6,33 +6,31 @@
   let resources = data.payload.resources;
   var beginCount = 0;
   var lastElem = 20;
-  const numOFDisplayElements = 5
+  const numOFDisplayElements = 5;
   let displayedResources = resources.slice(beginCount, lastElem);
-  
 
-  let currentPage = 1
-  const totalOfPages =  Math.ceil(displayedResources.length / numOFDisplayElements)
- 
-  function handelPageForward () {
-     if(currentPage < totalOfPages){
-      currentPage += 1
-       beginCount+= numOFDisplayElements
-       lastElem += numOFDisplayElements
-       displayedResources = resources.slice(beginCount, lastElem)
-     }
+  let currentPage = 1;
+  const totalOfPages = Math.ceil(
+    displayedResources.length / numOFDisplayElements
+  );
+
+  function handelPageForward() {
+    if (currentPage < totalOfPages) {
+      currentPage += 1;
+      beginCount += numOFDisplayElements;
+      lastElem += numOFDisplayElements;
+      displayedResources = resources.slice(beginCount, lastElem);
+    }
   }
 
-   function handelPageBack () {
-     if(currentPage > 1){
-       currentPage -= 1
-       beginCount-= numOFDisplayElements
-       lastElem -= numOFDisplayElements
-       displayedResources = resources.slice(beginCount, lastElem)
-     }
+  function handelPageBack() {
+    if (currentPage > 1) {
+      currentPage -= 1;
+      beginCount -= numOFDisplayElements;
+      lastElem -= numOFDisplayElements;
+      displayedResources = resources.slice(beginCount, lastElem);
+    }
   }
-
-
-
 
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
@@ -231,11 +229,14 @@
   {:else}
     <div>No resources here!</div>
   {/each}
- 
 </div>
 
-<div class='flex justify-between mt-8 mb-7'>
-    <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
-    <div>{currentPage}</div>
-    <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
+<div class="flex justify-between mt-8 mb-7">
+  <div class="text-[#3f3cbb] text-2xl cursor-wait " on:click={handelPageBack}>
+    ⬅
+  </div>
+  <div>{currentPage}</div>
+  <div class="text-[#3f3cbb] text-2xl cursor-wait" on:click={handelPageForward}>
+    ➡
+  </div>
 </div>
