@@ -11,11 +11,8 @@
   
 
   let currentPage = 1
-   console.log(currentPage, 'currentPage')
   const totalOfPages =  Math.ceil(displayedResources.length / numOFDisplayElements)
-  console.log(totalOfPages, 'total')
  
-
   function handelPageForward () {
      if(currentPage < totalOfPages){
       currentPage += 1
@@ -23,8 +20,6 @@
        lastElem += numOFDisplayElements
        displayedResources = resources.slice(beginCount, lastElem)
      }
-    
-
   }
 
    function handelPageBack () {
@@ -35,7 +30,7 @@
        displayedResources = resources.slice(beginCount, lastElem)
      }
   }
-  console.log(currentPage, 'currentPage')
+
 
 
 
@@ -239,8 +234,8 @@
  
 </div>
 
- <div class='flex justify-between mt-8 mb-7'>
-      <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
-      <div>{currentPage}</div>
-      <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
-  </div>
+<div class='flex justify-between mt-8 mb-7'>
+    <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
+    <div>{currentPage}</div>
+    <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
+</div>
