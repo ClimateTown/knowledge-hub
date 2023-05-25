@@ -4,34 +4,33 @@
   export let data: PageData;
 
   let resources = data.payload.resources;
+  let currentPage = 1
   var beginCount = 0;
   var lastElem = 18;
-  const numOFDisplayElements = 5
+  const numOFDisplayElements = 18
+  const totalOfPages =  Math.ceil(resources.length / numOFDisplayElements)
   let displayedResources = resources.slice(beginCount, lastElem);
-  
-
-  let currentPage = 1
-  const totalOfPages =  Math.ceil(displayedResources.length / numOFDisplayElements)
- 
-  function handelPageForward () {
+    
+  function handelLoadMore () {
      if(currentPage < totalOfPages){
       currentPage += 1
-       beginCount+= numOFDisplayElements
        lastElem += numOFDisplayElements
        displayedResources = resources.slice(beginCount, lastElem)
      }
   }
 
-   function handelPageBack () {
-     if(currentPage > 1){
-       currentPage -= 1
-       beginCount-= numOFDisplayElements
-       lastElem -= numOFDisplayElements
-       displayedResources = resources.slice(beginCount, lastElem)
-     }
+  function scrollToTop() {
+   const scrollDuration = 1000; // Duration in milliseconds
+   const scrollStep = -window.scrollY / (scrollDuration / 15);
+  
+    const scrollInterval = setInterval(() => {
+      if (window.scrollY !== 0) {
+        window.scrollBy(0, scrollStep);
+      } else {
+        clearInterval(scrollInterval);
+      }
+    }, 15);
   }
-
-
 
 
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
@@ -233,8 +232,23 @@
   {/each}
 </div>
 
-<div class='flex justify-between mt-8 mb-7'>
-    <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
-    <div>{currentPage}</div>
-    <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
+
+<div class='flex flex-col mt-8 mb-7'>
+   {#if currentPage !== totalOfPages}
+        <div class='flex justify-center'>
+          <div class='text-[20px] cursor-pointer w-[200px] p-2 mt-[20px] mb-[10px] bg-[#2F5AAE] text-white flex justify-center rounded-full hover: bg-blue-500 shadow-lg shadow-blue-500/50  ' 
+          on:click={handelLoadMore}>Load More...</div>
+        </div>
+        {:else}
+         <div class='flex justify-center'>
+            <div class='text-[20px]  w-[200px] p-2 mt-[20px] mb-[10px] bg-[#cccccc] text-gray-700 flex justify-center rounded-full  ' 
+             >No more Results</div>
+           </div>
+        {/if}
+        <div class='flex justify-center mt-[10px] mb-[10px] text-[#888888]  ' >{currentPage} - {totalOfPages}</div>
+</div>
+
+<div class='flex justify-end' >
+    <div class='fixed bottom-20 flex justify-center items-center bg-sky-500/[0.7] hover:bg-[#3B82F6] w-[50px] h-[50px] text-white rounded-r-[5px] rounded-l-[5px] cursor-pointer'
+      on:click={scrollToTop}>Top</div>
 </div>
