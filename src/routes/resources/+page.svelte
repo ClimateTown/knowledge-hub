@@ -232,11 +232,17 @@
 </div>
 
 <div class="flex justify-center text-green-500">
-  <button class="p-3 m-4 border-2 border-green-500 rounded-lg" on:click={handelPageBack}>
+  <button
+    class="p-3 m-4 border-2 border-green-500 rounded-lg"
+    on:click={handelPageBack}
+  >
     Previous page
   </button>
   <div class="p-3 m-4">{currentPage}</div>
-  <button class="p-3 m-4 border-2 border-green-500 rounded-lg" on:click={handelPageForward}>
+  <button
+    class="p-3 m-4 border-2 border-green-500 rounded-lg"
+    on:click={handelPageForward}
+  >
     Next page
   </button>
 </div>
