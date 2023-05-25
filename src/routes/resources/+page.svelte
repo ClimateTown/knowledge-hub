@@ -231,12 +231,12 @@
   {/each}
 </div>
 
-<div class="flex justify-between mt-8 mb-7">
-  <div class="text-[#3f3cbb] text-2xl cursor-wait " on:click={handelPageBack}>
-    ⬅
-  </div>
-  <div>{currentPage}</div>
-  <div class="text-[#3f3cbb] text-2xl cursor-wait" on:click={handelPageForward}>
-    ➡
-  </div>
+<div class="flex justify-center text-green-500">
+  <button class="p-3 m-4 border-2 border-green-500 rounded-lg" on:click={handelPageBack}>
+    Previous page
+  </button>
+  <div class="p-3 m-4">{currentPage}</div>
+  <button class="p-3 m-4 border-2 border-green-500 rounded-lg" on:click={handelPageForward}>
+    Next page
+  </button>
 </div>
