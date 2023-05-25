@@ -9,7 +9,7 @@
 </script>
 
 <a href={url} target="_blank" rel="noreferrer">
-  <div class="rounded-lg shadow-lg transition ease-in-out hover:scale-105">
+  <div class="rounded-lg shadow-lg min-h-[100%] transition ease-in-out hover:scale-105">
     {#if og_preview}
       <img
         height="190"
@@ -43,7 +43,7 @@
     {/if}
 
     <div class="m-3">
-      <div class="text-xl font-medium text-gray-900 mt-3">
+      <div class="text-xl font-medium text-gray-900 mt-3 h-[75px] ">
         <span>
           {title}
         </span>
@@ -68,7 +68,7 @@
           </svg>
         </span>
       </div>
-      <p class="mt-2 text-gray-700">{description}</p>
+      <div class="mt-[8%]  text-gray-700  h-[25%]">{description}</div>
       <div class="flex flex-wrap text-xs py-2">
         {#each tags as tag}
           <div class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 ">
