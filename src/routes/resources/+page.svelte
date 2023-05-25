@@ -5,39 +5,33 @@
 
   let resources = data.payload.resources;
   var beginCount = 0;
-  var lastElem = 18;
-  const numOFDisplayElements = 18
-  const totalOfPages =  Math.ceil(resources.length / numOFDisplayElements)
-
+  var lastElem = 20;
+  const numOFDisplayElements = 5
   let displayedResources = resources.slice(beginCount, lastElem);
+  
 
   let currentPage = 1
-  function scrollToTop() {
-      const scrollDuration = 1000; // Duration in milliseconds
-      const scrollStep = -window.scrollY / (scrollDuration / 15);
-      
-      const scrollInterval = setInterval(() => {
-        if (window.scrollY !== 0) {
-          window.scrollBy(0, scrollStep);
-        } else {
-          clearInterval(scrollInterval);
-        }
-      }, 15);
+  const totalOfPages =  Math.ceil(displayedResources.length / numOFDisplayElements)
+ 
+  function handelPageForward () {
+     if(currentPage < totalOfPages){
+      currentPage += 1
+       beginCount+= numOFDisplayElements
+       lastElem += numOFDisplayElements
+       displayedResources = resources.slice(beginCount, lastElem)
+     }
   }
-  function handelLoadMore () {
-    if(currentPage === totalOfPages) {
-      currentPage = 1
-      beginCount = 0;
-      lastElem = 18;
-      displayedResources = resources.slice(beginCount, lastElem)
-    }else{
-        if(currentPage < totalOfPages){
-              currentPage += 1
-              lastElem += numOFDisplayElements
-              displayedResources = resources.slice(beginCount, lastElem)
-            }
-    }  
+
+   function handelPageBack () {
+     if(currentPage > 1){
+       currentPage -= 1
+       beginCount-= numOFDisplayElements
+       lastElem -= numOFDisplayElements
+       displayedResources = resources.slice(beginCount, lastElem)
+     }
   }
+
+
 
 
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
@@ -237,21 +231,10 @@
   {:else}
     <div>No resources here!</div>
   {/each}
- 
 </div>
 
-<div class='flex justify-center mt-16 mb-10'>
-   <div class='flex flex-col-reverse items-center'>
-       <div class='text-[#888888] mt-5'>{currentPage} - {totalOfPages}</div>
-       {#if currentPage !== totalOfPages}
-       <div class='text-[#3f3cbb] text-2xl cursor-wait w-[240px] h-[50px] bg-indigo-500 flex justify-center items-center rounded-full text-white bg-black-500 shadow-lg shadow-indigo-500/50 ' 
-             on:click={handelLoadMore}>Load More...</div>
-             {:else}<div class='text-[#3f3cbb] text-2xl cursor-wait w-[240px] h-[50px] bg-indigo-500 flex justify-center items-center rounded-full text-white' 
-             >No More Results</div>
-             {/if}
-   </div>
-</div>
-<div  class='mt-[50px] mb-[10px] h-[50px] ' >
-   <div  class='mt-[-50px] h-[50px] w-[50px] cursor-wait bg-indigo-500 flex justify-center items-center text-white rounded-r-lg rounded-l-lg hover:bg-sky-700 ' 
-          on:click={scrollToTop}>Top</div>
+<div class='flex justify-between mt-8 mb-7'>
+    <div class='text-[#3f3cbb] text-2xl cursor-wait ' on:click={handelPageBack}>⬅</div> 
+    <div>{currentPage}</div>
+    <div class='text-[#3f3cbb] text-2xl cursor-wait' on:click={handelPageForward}>➡</div>
 </div>
