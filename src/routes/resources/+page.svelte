@@ -5,7 +5,7 @@
 
   let resources = data.payload.resources;
   var beginCount = 0;
-  var lastElem = 20;
+  var lastElem = 18;
   const numOFDisplayElements = 5
   let displayedResources = resources.slice(beginCount, lastElem);
   
