@@ -6,8 +6,8 @@
   export let data: PageData;
 
   // Constants for infinite scroll/lazy loading
-  const DEFAULT_DISPLAY_LIMIT = 5;
-  const SCROLL_THRESHOLD = 200;
+  const DEFAULT_DISPLAY_LIMIT = 6;
+  const SCROLL_THRESHOLD = 600;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
 
@@ -226,10 +226,10 @@
   </div>
 </details>
 
-<div
-  class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
->
-  <IntersectionObserver let:intersecting top={200}>
+<IntersectionObserver let:intersecting top={200} >
+  <div
+    class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
+  >
     {#if intersecting}
       {#each displayedResources.slice(0, displayedResourceLimit) as resource}
         <ListItem {...resource} />
@@ -238,5 +238,5 @@
         <div>No resources here!</div>
       {/if}
     {/if}
+  </div>
   </IntersectionObserver>
-</div>
