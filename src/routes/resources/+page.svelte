@@ -75,10 +75,10 @@
   function updateDisplayLimit() {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     const currentPosition = scrollTop + clientHeight;
-    
+
     if (currentPosition >= scrollHeight - SCROLL_THRESHOLD) {
       displayedResourceLimit += DEFAULT_DISPLAY_LIMIT;
-      console.log("updateLimit")
+      console.log("updateLimit");
     }
   }
 
@@ -86,8 +86,7 @@
   function handleScroll() {
     scrollPosition = document.documentElement.scrollTop;
 
-    if(scrollPosition >= SCROLL_THRESHOLD )
-      updateDisplayLimit();
+    if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
 
   // Hook into component lifecycle events
