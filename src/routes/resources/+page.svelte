@@ -1,7 +1,15 @@
 <script lang="ts">
   import { github_url } from "$lib/constants";
   import type { PageData } from "./$types";
+  import IntersectionObserver from "./IntersectionObserver.svelte";
+  import { onMount } from "svelte";
   export let data: PageData;
+
+  // Constants for infinite scroll/lazy loading
+  const DEFAULT_DISPLAY_LIMIT = 5;
+  const SCROLL_THRESHOLD = 200;
+  let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
+  let scrollPosition = 0;
 
   let resources = data.payload.resources;
   let displayedResources = resources;
@@ -62,6 +70,30 @@
     }
     return intersection;
   }
+
+  // Update the displayedResourceLimit based on the scroll position
+  function updateDisplayLimit() {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    const currentPosition = scrollTop + clientHeight;
+    
+    if (currentPosition >= scrollHeight - SCROLL_THRESHOLD) {
+      displayedResourceLimit += DEFAULT_DISPLAY_LIMIT;
+      console.log("updateLimit")
+    }
+  }
+
+  // Event listener for scroll events and update limit
+  function handleScroll() {
+    scrollPosition = document.documentElement.scrollTop;
+
+    if(scrollPosition >= SCROLL_THRESHOLD )
+      updateDisplayLimit();
+  }
+
+  // Hook into component lifecycle events
+  onMount(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
 
   import ListItem from "./ListItem.svelte";
 </script>
@@ -197,9 +229,14 @@
 <div
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
 >
-  {#each displayedResources as resource}
-    <ListItem {...resource} />
-  {:else}
-    <div>No resources here!</div>
-  {/each}
+  <IntersectionObserver let:intersecting top={200}>
+    {#if intersecting}
+      {#each displayedResources.slice(0, displayedResourceLimit) as resource}
+        <ListItem {...resource} />
+      {/each}
+      {#if displayedResources.length === 0}
+        <div>No resources here!</div>
+      {/if}
+    {/if}
+  </IntersectionObserver>
 </div>
