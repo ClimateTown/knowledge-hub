@@ -225,7 +225,7 @@
   </div>
 </details>
 
-<IntersectionObserver let:intersecting top={200} >
+<IntersectionObserver let:intersecting top={200}>
   <div
     class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
   >
@@ -238,4 +238,4 @@
       {/if}
     {/if}
   </div>
-  </IntersectionObserver>
+</IntersectionObserver>
