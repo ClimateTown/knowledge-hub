@@ -10,6 +10,7 @@
   const SCROLL_THRESHOLD = 1200;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
+  let showButton = false; 
 
   let resources = data.payload.resources;
   let displayedResources = resources;
@@ -85,7 +86,7 @@
   // Event listener for scroll events and update limit
   function handleScroll() {
     scrollPosition = document.documentElement.scrollTop;
-
+    showButton = scrollPosition >= window.innerHeight * 2;
     if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
 
@@ -93,6 +94,14 @@
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
   });
+
+  // for button
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
   import ListItem from "./ListItem.svelte";
 </script>
@@ -225,9 +234,14 @@
   </div>
 </details>
 
+<button class="p-2 hover:bg-green-500 hover:text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50 rounded-lg border-2 border-green-500 text-green-500" on:click={scrollToTop} class:hidden={!showButton}>
+  Back to Top
+</button>
+
+
 <IntersectionObserver let:intersecting top={200}>
   <div
-    class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
+    class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 z-0 gap-x-4 gap-y-4 mt-3"
   >
     {#if intersecting}
       {#each displayedResources.slice(0, displayedResourceLimit) as resource}
@@ -239,3 +253,7 @@
     {/if}
   </div>
 </IntersectionObserver>
+
+
+
+
