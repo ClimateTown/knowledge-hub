@@ -9,7 +9,9 @@
 </script>
 
 <a href={url} target="_blank" rel="noreferrer">
-  <div class="rounded-lg flex flex-col h-full shadow-lg transition ease-in-out hover:scale-105">
+  <div
+    class="rounded-lg flex flex-col h-full shadow-lg transition ease-in-out hover:scale-105"
+  >
     {#if og_preview}
       <img
         height="190"
