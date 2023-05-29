@@ -195,10 +195,11 @@
 </details>
 
 <div
-  class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
+  class="grid xl:grid-cols-3 md:grid-cols-2 auto-rows-max grid-flow-row sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
 >
-  {#each displayedResources as resource}
-    <ListItem {...resource} />
+
+{#each displayedResources as resource}
+  <ListItem {...resource} />
   {:else}
     <div>No resources here!</div>
   {/each}

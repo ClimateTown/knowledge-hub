@@ -9,7 +9,7 @@
 </script>
 
 <a href={url} target="_blank" rel="noreferrer">
-  <div class="rounded-lg shadow-lg transition ease-in-out hover:scale-105">
+  <div class="rounded-lg flex flex-col h-full shadow-lg transition ease-in-out hover:scale-105">
     {#if og_preview}
       <img
         height="190"
@@ -42,12 +42,12 @@
       </div>
     {/if}
 
-    <div class="m-3">
+    <div class="card m-3 h-full flex flex-col justify-between ">
       <div class="text-xl font-medium text-gray-900 mt-3">
-        <span>
+        <div class="mb-2">
           {title}
-        </span>
-        <span
+        </div>
+        <div
           class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500"
         >
           <svg
@@ -66,9 +66,10 @@
               d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
             />
           </svg>
-        </span>
+        </div>
+        <p class="mt-2 text-gray-700">{description}</p>
       </div>
-      <p class="mt-2 text-gray-700">{description}</p>
+
       <div class="flex flex-wrap text-xs py-2">
         {#each tags as tag}
           <div class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 ">
