@@ -69,7 +69,6 @@
         </div>
         <p class="mt-2 text-gray-700">{description}</p>
       </div>
-
       <div class="flex flex-wrap text-xs py-2">
         {#each tags as tag}
           <div class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 ">
