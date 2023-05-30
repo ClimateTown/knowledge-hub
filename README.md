@@ -47,9 +47,12 @@ To suggest changes anywhere else in the site, you can use GitHub's search functi
 
 We're always looking to publicise awesome climate resources. Got a resource to share? The easiest way is to create an issue, filling out the "resource suggestion" form. This will create a discussion around the resource, and if it's a good fit for the Knowledge Hub, we'll add it to the site.
 
-### Site suggestions
+### Site improvements
 
-This website is powered by coders from the community. Have a suggestion to make the site better? Create an issue and we'll discuss it! If the feature sounds good, we'll look at adding it to the site. The feature is much more likely to be added if you are willing to help with the development.
+This website is powered by coders from the community. If you want to contribute to the website, please follow the following guidelines:
+
+- Create suggestions as issues in the repo. Discuss suggestions before submitting a pull request (unless the improvement is objectively good; e.g. performance, accessibility).
+- If you want to work on an issue, drop a comment on the issue (this helps prevent double up of work). If someone working on an issue hasn't updated the issue in a few weeks, feel free to drop a comment of your own if you want to try it out.
 
 ## Development installation
 
