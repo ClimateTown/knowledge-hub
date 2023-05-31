@@ -407,3 +407,27 @@
     - Politics/US
   title: Center for Biological Diversity
   url: https://www.biologicaldiversity.org/about/
+- description: The Fossil Fuel Policy Tracker is an open source tool to help monitor fossil fuel related policies in all countries globally, to identify best practice, and identify which countries are leaders or laggards.
+  tags:
+    - Climate Accountability
+    - Tools
+  title: Fossil Fuel Non-Proliferation Tracker
+  url: https://www.fossilfueltracker.org/app/ffnpt
+- description: Too Good To Go helps connects restaurants and stores to their local community to reduce food waste nearing their best before date. Founded in 2016 in Copenhagen, Too Good to Go is now in 17 countries.
+  tags:
+    - Food Waste
+    - location/US
+    - location/Canada
+  title: Too Good to Go
+  url: https://toogoodtogo.com/
+- description: Use Flash Food to prevent food waste, and get savings on fresh food items nearing their best before date in Canada and the U.S.
+  tags:
+    - Food Waste
+    - location/Global
+  title: Flash Food
+  url: https://www.flashfood.com/
+- description: Prevent food waste with Love Food Hate Waste, and their ultimate A-Z food storage and usage guide.
+  tags:
+    - Food Waste
+  title: Love Food Hate Waste Guide
+  url: https://lovefoodhatewaste.ca/a-z/
