@@ -46,6 +46,9 @@ jobs:
       - name: Get previews for resources
         run: |
           python scripts/get_og_previews.py
+      - name: Convert resources to CSV
+        run: |
+          python scripts/resource_converter.py -i data/resources.yml -o static/ClimateTown-Knowledge-Hub-resources.csv
       - run: npm install
         # - run: npm ci
       - run: npm run build
