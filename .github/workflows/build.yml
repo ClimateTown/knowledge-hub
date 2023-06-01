@@ -40,7 +40,7 @@ jobs:
         run: |
           pip install -r requirements.txt
       - name: Scrape YouTube data
-        if: ${{ env.YOUTUBE_API_KEY != '' }}
+        if: ${{ env.YOUTUBE_API_KEY != '' && github.event_name != 'pull_request' }}
         run: | # Only run if the API key is set
           python scripts/youtube.py --api-key $YOUTUBE_API_KEY
       - name: Get previews for resources
