@@ -20,9 +20,9 @@
 <ul class="list-disc">
   <li>
     <span class="font-semibold">📚 Knowledge Hubs:</span> These are initiatives similar
-    to the Climate Town Knowledge Hub. These initiatives curate various lists of climate-related
-    resources, lists which may even be more specific in topic than the list
-    of resources provided here, taking full advantage of the network effect!
+    to the Climate Town Knowledge Hub. These initiatives curate various lists of
+    climate-related resources, lists which may even be more specific in topic than
+    the list of resources provided here, taking full advantage of the network effect!
   </li>
   <li>
     <span class="font-semibold">🍞 Rollie's Choice:</span> These are resources endorsed
