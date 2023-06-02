@@ -135,6 +135,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://hackerone.com"><img src="https://avatars.githubusercontent.com/u/69660071?v=4?s=60" width="60px;" alt="Matthew Caughman"/><br /><sub><b>Matthew Caughman</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/pulls?q=is%3Apr+reviewed-by%3Amacaugh" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lasercar"><img src="https://avatars.githubusercontent.com/u/64717068?v=4?s=60" width="60px;" alt="LaserCar"/><br /><sub><b>LaserCar</b></sub></a><br /><a href="#content-LaserCar" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
