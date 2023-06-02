@@ -442,3 +442,25 @@
     - Greenwashing
   title: Carbon Capture and Storage Facts
   url: https://www.carboncapturefacts.org/
+- description: DeSmog was founded in January 2006 to clear the PR pollution that clouds science and solutions to climate change. Their team provides accurate, fact-based information regarding global warming misinformation campaigns.
+  tags:
+    - Climate Journalism
+  title: DeSmog
+  url: https://www.desmog.com/
+- description: Climate change news, analysis, commentary, video and podcasts focused on developments in global climate politics.
+  tags:
+    - Climate Journalism
+  title: Climate Home News
+  url: https://www.climatechangenews.com/
+- description: Registry of national contributions to the Paris agreement maintained by the secretrait of the United Nations.
+  tags:
+    - Climate Accountability
+    - Tools
+  title: UN Nationally Determined Contributions Registry
+  url: https://unfccc.int/NDCREG
+- description: Website for the United Nations Framework Convention on Climate Change (UNFCCC), tasked with supporting the global response to the threat of climate change.
+  tags:
+    - ✨ Mod Choice
+    - location/Global
+  title: UN Climate Change
+  url: https://unfccc.int/
