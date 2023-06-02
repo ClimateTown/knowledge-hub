@@ -407,20 +407,20 @@
     - Politics/US
   title: Center for Biological Diversity
   url: https://www.biologicaldiversity.org/about/
-- description: The Fossil Fuel Policy Tracker is an open source tool to help monitor fossil fuel related policies in all countries globally, to identify best practice, and identify which countries are leaders or laggards.
+- description: The Fossil Fuel Policy Tracker is an open source tool to help monitor fossil fuel-related policies in all countries globally, to identify best practices, and identify which countries are leaders or laggards.
   tags:
     - Climate Accountability
     - Tools
   title: Fossil Fuel Non-Proliferation Tracker
   url: https://www.fossilfueltracker.org/app/ffnpt
-- description: Too Good To Go helps connects restaurants and stores to their local community to reduce food waste nearing their best before date. Founded in 2016 in Copenhagen, Too Good to Go is now in 17 countries.
+- description: Too Good To Go helps connect restaurants and stores to their local community to reduce food waste nearing their 'best before' dates. Founded in 2016 in Copenhagen, Too Good to Go is now in 17 countries.
   tags:
     - Food Waste
     - location/US
     - location/Canada
   title: Too Good to Go
   url: https://toogoodtogo.com/
-- description: Use Flash Food to prevent food waste, and get savings on fresh food items nearing their best before date in Canada and the U.S.
+- description: Use Flash Food to prevent food waste, and get savings on fresh food items nearing their 'best before' dates in Canada and the U.S.
   tags:
     - Food Waste
     - location/Global
@@ -431,15 +431,16 @@
     - Food Waste
   title: Love Food Hate Waste Guide
   url: https://lovefoodhatewaste.ca/a-z/
-- description: Answering the question "who is doing what where for the environment" including hyper-local action groups, job boards, and lists of lists.
+- description: Answering the question "who is doing what where for the environment"; includes hyper-local action groups, job boards, and lists of lists.
   tags:
     - 📚 Knowledge Hubs
   title: Environment.Wiki
   url: https://environment.wiki
-- description: An independent, investigative perspective on “carbon capture and storage” (CCS). The site provides peer-reviewed studies and verifiable facts, many of which refute misleading information about CCS that is being promoted by pipeline and fossil-fuel corporations and their supporters.
+- description: An independent, investigative perspective on “carbon capture and storage” (CCS). The site provides peer-reviewed studies and verifiable facts, many of which refute misleading information about CCS that is being promoted by pipeline and fossil fuel corporations and their supporters.
   tags:
     - Climate Tech
     - Greenwashing
+    - Climate Accountability
   title: Carbon Capture and Storage Facts
   url: https://www.carboncapturefacts.org/
 - description: DeSmog was founded in January 2006 to clear the PR pollution that clouds science and solutions to climate change. Their team provides accurate, fact-based information regarding global warming misinformation campaigns.
@@ -452,7 +453,7 @@
     - Climate Journalism
   title: Climate Home News
   url: https://www.climatechangenews.com/
-- description: Registry of national contributions to the Paris agreement maintained by the secretrait of the United Nations.
+- description: Registry of national contributions to the Paris Agreement maintained by the secretariat of the United Nations.
   tags:
     - Climate Accountability
     - Tools
