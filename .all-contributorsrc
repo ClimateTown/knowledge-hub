@@ -154,6 +154,16 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "LaserCar",
+      "name": "LaserCar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64717068?v=4",
+      "profile": "https://github.com/Lasercar",
+      "contributions": [
+        "content"
+      ]
     }
-  ]
+  ],
+  "commitType": "docs"
 }
