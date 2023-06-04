@@ -7,7 +7,7 @@
 
   // Constants for infinite scroll/lazy loading
   const DEFAULT_DISPLAY_LIMIT = 6;
-  const SCROLL_THRESHOLD = 1200;
+  const SCROLL_THRESHOLD = 200;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
   let showButton = false; 
