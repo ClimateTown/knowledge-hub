@@ -10,7 +10,7 @@
   const SCROLL_THRESHOLD = 200;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
-  let showButton = false; 
+  let showButton = false;
 
   let resources = data.payload.resources;
   let displayedResources = resources;
@@ -99,7 +99,7 @@
   function scrollToTop() {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
 
@@ -234,10 +234,13 @@
   </div>
 </details>
 
-<button class="p-2 hover:bg-green-500 hover:text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50 rounded-lg border-2 border-green-500 text-green-500" on:click={scrollToTop} class:hidden={!showButton}>
+<button
+  class="p-2 hover:bg-green-500 hover:text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50 rounded-lg border-2 border-green-500 text-green-500"
+  on:click={scrollToTop}
+  class:hidden={!showButton}
+>
   Back to Top
 </button>
-
 
 <IntersectionObserver let:intersecting top={200}>
   <div
@@ -253,7 +256,3 @@
     {/if}
   </div>
 </IntersectionObserver>
-
-
-
-
