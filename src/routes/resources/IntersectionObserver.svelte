@@ -67,5 +67,3 @@
   <!-- Slot content that will be shown when intersecting is true -->
   <slot {intersecting} />
 </div>
-
-
