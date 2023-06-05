@@ -37,11 +37,11 @@ const sortAlphabeticallyEmojisFirst = (a: Tag, b: Tag) => {
 const parseResources = (tags: Tag[]) => {
   const file = fs.readFileSync("data/resources.yml", "utf8");
   const resources: Resource[] = parse(file);
-  for(const resource of resources) {
-    resource.tagInfo = []
-    for(const resTag of resource.tags) {
-      let matchIdx = tags.findIndex((tag: Tag) => tag.name === resTag)
-      resource.tagInfo.push(tags[matchIdx])
+  for (const resource of resources) {
+    resource.tagInfo = [];
+    for (const resTag of resource.tags) {
+      let matchIdx = tags.findIndex((tag: Tag) => tag.name === resTag);
+      resource.tagInfo.push(tags[matchIdx]);
     }
   }
   return resources.reverse();

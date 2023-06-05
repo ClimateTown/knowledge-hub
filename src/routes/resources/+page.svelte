@@ -12,7 +12,7 @@
   $: tagLogic = tagLogicAnd ? "and" : "or";
 
   let tags = data.payload.tags;
-  let tag_names: string[] = tags.map((tag: Tag) => tag.name)
+  let tag_names: string[] = tags.map((tag: Tag) => tag.name);
   let tags_count = data.payload.tags_count;
   // Creating filter object
   let filterObject: any = {};
@@ -175,7 +175,10 @@
       <div class="flex flex-row flex-wrap gap-2">
         {#each tags as tag}
           <!-- checkboxes -->
-          <div class="flex justify-between gap-2 rounded-full bg-gray-300" style:background-color={tag.color}>
+          <div
+            class="flex justify-between gap-2 rounded-full bg-gray-300"
+            style:background-color={tag.color}
+          >
             <label
               class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
               for={removeWhitespace(tag.name)}
@@ -189,7 +192,9 @@
               />
               <span>
                 {tag.name}
-                <span class="text-gray-500 italic">({tags_count[tag.name]})</span>
+                <span class="text-gray-500 italic"
+                  >({tags_count[tag.name]})</span
+                >
               </span>
             </label>
           </div>
