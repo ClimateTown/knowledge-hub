@@ -465,3 +465,18 @@
     - location/Global
   title: UN Climate Change
   url: https://unfccc.int/
+- description: Strong Towns is a nonprofit media advocacy organization founded by civil engineer Chuck Marohn. They produce content that analyzes the failures of the post-war North American development pattern while giving people the knowledge and tools to start making their places better today.
+  tags:
+    - Climate Journalism
+  title: Strong Towns
+  url: https://www.strongtowns.org/
+- description: "Heatmap is a new media company founded by Nico Lauricella and Robinson Meyer, focused on the biggest story in the world: the great climate and energy transition."
+  tags:
+    - Climate Journalism
+  title: Heatmap
+  url: https://heatmap.news/about-us
+- description: Climate Whistleblowers protects individuals who expose wrongdoings that worsen the climate crisis and helps them have a greater impact. Their "Blow the Whistle" initiative provides secure communication channels to report climate wrongdoing.
+  tags:
+    - Climate Accountability
+  title: Climate Whistleblowers
+  url: https://www.climatewhistleblowers.org/
