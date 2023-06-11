@@ -2,6 +2,7 @@
   import { base } from "$app/paths";
   import { github_url } from "$lib/constants";
   import type { PageData } from "./$types";
+  import type { Tag } from "$lib/interfaces";
   export let data: PageData;
 
   let resources = data.payload.resources;
@@ -10,14 +11,13 @@
   // TODO: make this a user preference
   $: tagLogic = tagLogicAnd ? "and" : "or";
 
-  let tags = data.payload.tags;
+  let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
   // Creating filter object
   let filterObject: any = {};
   filterObject["tags"] = {};
-  let tag: string;
-  for (tag of tags) {
-    filterObject.tags[tag] = false;
+  for (const tag of tags) {
+    filterObject.tags[tag.name] = false;
   }
 
   let removeWhitespace = (str: string) => {
@@ -38,7 +38,7 @@
     filterTags = new Set(filterTags);
 
     let minCommonTags = tagLogic ? filterTags.size : 1;
-    let resourceTags: Set<string>;
+    let resourceTags: Set<Tag>;
     for (resource of resources) {
       // Resource tags
       resourceTags = new Set(resource.tags);
@@ -174,21 +174,26 @@
       <div class="flex flex-row flex-wrap gap-2">
         {#each tags as tag}
           <!-- checkboxes -->
-          <div class="flex justify-between gap-2 rounded-full bg-gray-300">
+          <div
+            class="flex justify-between gap-2 rounded-full bg-gray-300"
+            style:background-color={tag.color}
+          >
             <label
               class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
-              for={removeWhitespace(tag)}
+              for={removeWhitespace(tag.name)}
             >
               <input
                 type="checkbox"
                 class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-                bind:checked={filterObject.tags[tag]}
-                id={removeWhitespace(tag)}
-                name={removeWhitespace(tag)}
+                bind:checked={filterObject.tags[tag.name]}
+                id={removeWhitespace(tag.name)}
+                name={removeWhitespace(tag.name)}
               />
               <span>
-                {tag}
-                <span class="text-gray-500 italic">({tags_count[tag]})</span>
+                {tag.name}
+                <span class="text-gray-500 italic"
+                  >({tags_count[tag.name]})</span
+                >
               </span>
             </label>
           </div>
@@ -222,7 +227,7 @@
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
 >
   {#each displayedResources as resource}
-    <ListItem {...resource} />
+    <ListItem {resource} />
   {:else}
     <div>No resources here!</div>
   {/each}
