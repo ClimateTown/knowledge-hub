@@ -2,7 +2,7 @@
   import { base } from "$app/paths";
   import { github_url } from "$lib/constants";
   import type { PageData } from "./$types";
-  import type { Tag } from "./+page.server";
+  import type { Tag } from "$lib/interfaces";
   export let data: PageData;
 
   let resources = data.payload.resources;
@@ -11,14 +11,13 @@
   // TODO: make this a user preference
   $: tagLogic = tagLogicAnd ? "and" : "or";
 
-  let tags = data.payload.tags;
-  let tag_names: string[] = tags.map((tag: Tag) => tag.name);
+  let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
   // Creating filter object
   let filterObject: any = {};
   filterObject["tags"] = {};
-  for (const tag in tag_names) {
-    filterObject.tags[tag] = false;
+  for (const tag of tags) {
+    filterObject.tags[tag.name] = false;
   }
 
   let removeWhitespace = (str: string) => {
@@ -39,7 +38,7 @@
     filterTags = new Set(filterTags);
 
     let minCommonTags = tagLogic ? filterTags.size : 1;
-    let resourceTags: Set<string>;
+    let resourceTags: Set<Tag>;
     for (resource of resources) {
       // Resource tags
       resourceTags = new Set(resource.tags);
@@ -228,7 +227,7 @@
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
 >
   {#each displayedResources as resource}
-    <ListItem {...resource} />
+    <ListItem {resource} />
   {:else}
     <div>No resources here!</div>
   {/each}

@@ -1,26 +1,21 @@
 <script lang="ts">
-  export let title: string;
-  export let url: string;
-  export let description: string;
-  export let og_preview: string | undefined;
-  export let tagInfo: Array<Tag>;
-
   import { base } from "$app/paths";
-  import type { Tag } from "./+page.server";
+  import type { Resource } from "$lib/interfaces";
+  export let resource: Resource;
 </script>
 
-<a href={url} target="_blank" rel="noreferrer">
+<a href={resource.url} target="_blank" rel="noreferrer">
   <div
     class="flex flex-col rounded-lg shadow-lg transition ease-in-out hover:scale-105 h-full"
   >
-    {#if og_preview}
+    {#if resource.og_preview}
       <img
         height="190"
         width="330"
         loading="lazy"
         class="object-cover rounded-t-lg object-center h-48 w-full"
         alt="Website preview"
-        src={og_preview}
+        src={resource.og_preview}
       />
     {:else}
       <div
@@ -48,7 +43,7 @@
     <div class="flex flex-col grow m-3">
       <div class="text-xl font-medium text-gray-900 mt-3">
         <span>
-          {title}
+          {resource.title}
         </span>
         <span
           class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500"
@@ -71,9 +66,9 @@
           </svg>
         </span>
       </div>
-      <p class="mt-2 text-gray-700 grow">{description}</p>
+      <p class="mt-2 text-gray-700 grow">{resource.description}</p>
       <div class="flex flex-wrap text-xs py-2">
-        {#each tagInfo as tag}
+        {#each resource.tags as tag}
           <div
             class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 "
             style:background-color={tag.color}

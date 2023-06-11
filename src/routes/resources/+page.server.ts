@@ -1,19 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import { parse } from "yaml";
 import fs from "fs";
-
-interface Resource {
-  title: string;
-  description: string;
-  url: string;
-  tags: string[];
-  tagInfo?: Tag[];
-}
-
-export interface Tag {
-  name: string;
-  color?: string;
-}
+import type { Tag, Resource } from "$lib/interfaces";
 
 const removeEmojisFromStr = (str: string) => {
   return str.replace(/[\u1000-\uFFFF]+/g, "").trim();
@@ -23,27 +11,35 @@ const hasEmoji = (str: string) => {
   return /[\u1000-\uFFFF]+/g.test(str);
 };
 
-const sortAlphabeticallyEmojisFirst = (a: Tag, b: Tag) => {
-  if (hasEmoji(a.name) && hasEmoji(b.name)) {
-    const aWithoutEmojis = removeEmojisFromStr(a.name);
-    const bWithoutEmojis = removeEmojisFromStr(b.name);
+const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
+  if (hasEmoji(a) && hasEmoji(b)) {
+    const aWithoutEmojis = removeEmojisFromStr(a);
+    const bWithoutEmojis = removeEmojisFromStr(b);
 
     return aWithoutEmojis.localeCompare(bWithoutEmojis);
   }
 
-  return a.name.localeCompare(b.name);
+  return a.localeCompare(b);
 };
 
 const parseResources = (tags: Tag[]) => {
+  // Create mapping of tag name to tag object
+  let tagMap: { [name: string]: Tag } = {};
+  tags.forEach((tag) => {
+    tagMap[tag.name] = tag;
+  });
+
   const file = fs.readFileSync("data/resources.yml", "utf8");
-  const resources: Resource[] = parse(file);
-  for (const resource of resources) {
-    resource.tagInfo = [];
-    for (const resTag of resource.tags) {
-      let matchIdx = tags.findIndex((tag: Tag) => tag.name === resTag);
-      resource.tagInfo.push(tags[matchIdx]);
-    }
+  const resources_raw = parse(file);
+  for (const resource of resources_raw) {
+    // Convert string in resources.yml to full tag object
+    resource.tags = resource.tags.map((tag_name: string) => {
+      return tagMap[tag_name];
+    });
   }
+
+  let resources = resources_raw as Resource[];
+
   return resources.reverse();
 };
 
@@ -54,7 +50,7 @@ const getTagCounts = (tags: Tag[], yml_data: Resource[]) => {
   }
   for (const resource of yml_data) {
     for (const tag of resource.tags) {
-      tag_count[tag] += 1;
+      tag_count[tag.name] += 1;
     }
   }
   return tag_count;
@@ -63,7 +59,9 @@ const getTagCounts = (tags: Tag[], yml_data: Resource[]) => {
 const parseTags = () => {
   const file = fs.readFileSync("data/resource_tags.yml", "utf8");
   const tags: Tag[] = parse(file);
-  tags.sort(sortAlphabeticallyEmojisFirst);
+  tags.sort((tag1, tag2) => {
+    return sortAlphabeticallyEmojisFirst(tag1.name, tag2.name);
+  });
   return tags;
 };
 
