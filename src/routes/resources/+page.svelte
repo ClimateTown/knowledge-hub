@@ -38,10 +38,10 @@
     filterTags = new Set(filterTags);
 
     let minCommonTags = tagLogic ? filterTags.size : 1;
-    let resourceTags: Set<Tag>;
+    let resourceTags: Set<string>;
     for (resource of resources) {
       // Resource tags
-      resourceTags = new Set(resource.tags);
+      resourceTags = new Set(resource.tags.map((tag: Tag) => tag.name));
 
       if (setIntersection(filterTags, resourceTags).size >= minCommonTags) {
         displayedResources.push(resource);
