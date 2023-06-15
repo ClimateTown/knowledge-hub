@@ -13,10 +13,14 @@
   interface Channel {
     channelId: string;
     channelSubCount: number;
-  }
-  interface channelFilterItem { 
+  };
+  interface ChannelFilterItem { 
     channelId: string;
     active: boolean;
+  };
+  interface Video {
+    channelId: string;
+    [key: string]: any;
   };
 
   function sortChannelBySubCount(a: Channel, b: Channel) {
@@ -41,38 +45,33 @@
 
 
   // Creating initial filter object and state
-  const channelArr: channelFilterItem[] = [];
+  const channelArr: ChannelFilterItem[] = [];
   for (const channelInfo of channelData) {
     channelArr.push({ channelId: channelInfo.channelId, active: true });
   }
 
-  function filterResources() {
-    // Filter videos based on channel selection in form
-
-    // Reset displayed videos
-    displayedVideos = [];
-
-    // Channels
+  function filterResources(videoData: Video[], channelArr: ChannelFilterItem[]): Video[] {
+    
     const filteredActiveChannelIds: string[] = channelArr
       .filter((channel) => channel.active === true) 
       .map((channel) => channel.channelId);
 
-    for (const video of videoData) {
-      if (filteredActiveChannelIds.includes(video.channelId)) {
-        displayedVideos.push(video);
-      }
-    }
+    const filteredVideos: Video[] = videoData.filter((video) =>
+      filteredActiveChannelIds.includes(video.channelId)
+    );
 
     // Force svelte re-render
     rerender = !rerender;
+    
+    return filteredVideos;
   }
 
-  function formatChannelSubCount(num: number) {
-    if (num < 1000) {
+  function formatChannelSubCount(subCount: number) {
+    if (subCount < 1000) {
       return "<1k";
     }
-    if (num >= 1000) {
-      return `${Math.floor(num / 1000)}k`;
+    if (subCount >= 1000) {
+      return `${Math.floor(subCount / 1000)}k`;
     }
   }
 </script>
@@ -80,7 +79,7 @@
 <h1>ClimateTown YouTube Videos</h1>
 
 <form
-  on:submit|preventDefault={filterResources}
+  on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
   class="border-solid border-2 rounded-lg p-4 space-y-4"
 >
   <!-- <label for="search">Search</label> -->
