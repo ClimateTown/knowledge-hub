@@ -1,0 +1,34 @@
+name: 📦Resource Onboarding
+description: Suggest adding multiple resources to the Knowledge Hub.
+title: "[RESOURCE ONBOARDING] <descriptive title>"
+labels:
+  - suggestion/resource-onboarding
+body:
+  - type: markdown
+    attributes:
+      value: >+
+        This form is an extension of the "Resourse Suggestion" form. Here you
+        can easily suggest many resources to be onboarded onto the knowledge hub!!
+
+
+        Just download [the template CSV](https://raw.githubusercontent.com/ClimateTown/knowledge-hub/main/data/resource_onboarding_template.csv)
+        (`Ctrl+S` to save as CSV), fill it out, and then attach it by dragging
+        and dropping it into the form box below. Want to check out how the current resources
+        look like in CSV format? Click "Download resources" on the
+        [Knowledge Hub resources page](https://climatetown.github.io/knowledge-hub/resources).
+
+
+        Want to discuss the resources as you curate them? Just submit this form without the
+        resources CSV and we can discuss it in the comment section of the issue.
+
+
+        Please check out the resource guidelines listed in the "Resource Suggestion" form
+        (the forms are listed [here](https://github.com/ClimateTown/knowledge-hub/issues/new/choose)).
+
+
+  - type: textarea
+    attributes:
+      label: Text
+      description: Your very own text box to write anything you want, and attach any resources.
+    validations:
+      required: true
