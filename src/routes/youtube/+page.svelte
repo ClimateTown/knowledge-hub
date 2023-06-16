@@ -65,12 +65,19 @@
   }
 
   function semanticNumber(number: number) {
-    // if number between 1 and 99
+    // number less than 1000
     if (number < 1000) {
-      return "<1k";
+      return number.toString();
     }
-    if (number >= 1000) {
-      return `${Math.floor(number / 1000)}k`;
+    // number between 1k and 1M
+    else if (number >= 1000 && number < 1000000) {
+      return `${(number / 1000).toFixed(0)}k`;
+    }
+    // number between 1M and 1B
+    else if (number >= 1000000 && number < 1_000000000) {
+      return `${(number / 1000000).toFixed(1)}M`;
+    } else {
+      return ">1B";
     }
   }
 </script>
