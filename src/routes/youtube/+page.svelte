@@ -4,15 +4,28 @@
 
   export let data: PageData;
 
-  let videoData = data.payload.videoData;
-  let channelData = data.payload.channelData;
+  const videoData = data.payload.videoData;
+  const channelData = data.payload.channelData;
   let displayedVideos = videoData;
 
   let rerender: boolean = false;
+  
+  interface Channel {
+    channelId: string;
+    channelSubCount: number;
+  };
+  interface ChannelFilterItem { 
+    channelId: string;
+    active: boolean;
+  };
+  interface Video {
+    channelId: string;
+    [key: string]: any;
+  };
 
-  // Sort channel data by subcount (bubbling Climate Town to the top)
-  function channelSort(a: any, b: any) {
+  function sortChannelBySubCount(a: Channel, b: Channel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
+    
     if (a.channelId === ClimateTownChannelId) {
       return -1;
     }
@@ -20,10 +33,9 @@
       return 1;
     }
 
-    // Normal sort
     return b.channelSubCount - a.channelSubCount;
   }
-  channelData.sort(channelSort);
+  channelData.sort(sortChannelBySubCount);
   channelData.reverse();
 
   function getChannelData(channelId: string) {
@@ -31,37 +43,27 @@
     return channelData.find((channel) => channel.channelId === channelId);
   }
 
-  // Creating filter object
-  type channelFilterItem = { channelId: string; active: boolean };
 
   // Creating initial filter object and state
-  let filterObject: channelFilterItem[] = [];
-  for (let channelInfo of channelData) {
-    filterObject.push({ channelId: channelInfo.channelId, active: true });
+  const channelArr: ChannelFilterItem[] = [];
+  for (const channelInfo of channelData) {
+    channelArr.push({ channelId: channelInfo.channelId, active: true });
   }
 
-  function filterResources(event) {
-    // Filter videos based on channel selection in form
+  function filterResources(videoData: Video[], channelArr: ChannelFilterItem[]): Video[] {
+    
+    const filteredActiveChannelIds: string[] = channelArr
+      .filter((channel) => channel.active === true) 
+      .map((channel) => channel.channelId);
 
-    // Reset displayed videos
-    displayedVideos = [];
-
-    // Channels
-    let channelList: string[] = filterObject
-      .filter((channel) => channel.active === true) // Filter out inactive channels
-      .map((channel) => channel.channelId); // Get channel IDs
-
-    for (let video of videoData) {
-      console.log(video.channelId);
-      if (channelList.includes(video.channelId)) {
-        displayedVideos.push(video);
-      }
-    }
-    console.log(channelList);
-    console.log(displayedVideos);
+    const filteredVideos: Video[] = videoData.filter((video) =>
+      filteredActiveChannelIds.includes(video.channelId)
+    );
 
     // Force svelte re-render
     rerender = !rerender;
+    
+    return filteredVideos;
   }
 
   function semanticNumber(number: number) {
@@ -85,7 +87,7 @@
 <h1>ClimateTown YouTube Videos</h1>
 
 <form
-  on:submit|preventDefault={filterResources}
+  on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
   class="border-solid border-2 rounded-lg p-4 space-y-4"
 >
   <!-- <label for="search">Search</label> -->
@@ -102,11 +104,11 @@
           <input
             type="checkbox"
             class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-            bind:checked={filterObject[index].active}
+            bind:checked={channelArr[index].active}
             id={channelInfo.channelId}
           />
           <span
-            >{channelInfo.channelName} ({semanticNumber(
+            >{channelInfo.channelName} ({formatChannelSubCount(
               channelInfo.channelSubCount
             )})</span
           ></label
