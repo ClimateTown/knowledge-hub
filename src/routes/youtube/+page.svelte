@@ -1,7 +1,11 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import type { Channel, ChannelFilterItem, Video } from "lib//interfaces";
-  import YoutubeVideo from "./YoutubeVideo.svelte";
+  import type {
+    YoutubeChannel,
+    YoutubeVideo,
+    YoutubeChannelFilterItem,
+  } from "$lib/interfaces";
+  import YoutubeThumbnail from "./YoutubeThumbnail.svelte";
 
   export let data: PageData;
 
@@ -11,7 +15,7 @@
 
   let rerender: boolean = false;
 
-  function sortChannelBySubCount(a: Channel, b: Channel) {
+  function sortChannelBySubCount(a: YoutubeChannel, b: YoutubeChannel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
 
     if (a.channelId === ClimateTownChannelId) {
@@ -33,20 +37,20 @@
   }
 
   // Creating initial filter object and state
-  const channelArr: ChannelFilterItem[] = [];
+  const channelArr: YoutubeChannelFilterItem[] = [];
   for (const channelInfo of channelData) {
     channelArr.push({ channelId: channelInfo.channelId, active: true });
   }
 
   function filterResources(
-    videoData: Video[],
-    channelArr: ChannelFilterItem[]
-  ): Video[] {
+    videoData: YoutubeVideo[],
+    channelArr: YoutubeChannelFilterItem[]
+  ): YoutubeVideo[] {
     const filteredActiveChannelIds: string[] = channelArr
       .filter((channel) => channel.active === true)
       .map((channel) => channel.channelId);
 
-    const filteredVideos: Video[] = videoData.filter((video) =>
+    const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
       filteredActiveChannelIds.includes(video.channelId)
     );
 
@@ -133,7 +137,10 @@
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
     {#each displayedVideos as video}
-      <YoutubeVideo {...video} channelInfo={getChannelData(video.channelId)} />
+      <YoutubeThumbnail
+        {...video}
+        channelInfo={getChannelData(video.channelId)}
+      />
     {:else}
       <div>No videos here!</div>
     {/each}
