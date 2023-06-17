@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 from typing import List
 import datetime as dt
+import aiohttp
+import asyncio
 
 from loguru import logger
 from tqdm import tqdm
@@ -16,7 +18,6 @@ from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from dataclasses import dataclass
 import dataclasses
-import requests
 
 YOUTUBE_CHANNEL_IDS = Path("data") / "youtube_channel_ids.yml"
 VIDEO_DATA = Path("data") / "video_data.json"
@@ -56,15 +57,16 @@ class EnhancedJSONEncoder(json.JSONEncoder):
         return super().default(o)
 
 
-def is_youtube_short(video_id: str) -> bool:
+async def is_youtube_short(video_id: str) -> bool:
     url = f"https://www.youtube.com/shorts/{video_id}"
-    response = requests.head(url)
-    is_short = True if response.status_code == 200 else False
-    logger.info(f"Checking if {video_id} is a short: {is_short}")
-    return is_short
+    async with aiohttp.ClientSession() as session:
+        async with session.head(url) as response:
+            is_short = True if response.status == 200 else False
+            logger.info(f"Checking if {video_id} is a short: {is_short}")
+            return is_short
 
 
-def get_videos_from_channels(channel_ids: List[str], youtube: build):
+async def get_videos_from_channels(channel_ids: List[str], youtube: build):
     # Create a service object to make API requests
 
     # Initialize an empty list to store the videos
@@ -93,11 +95,14 @@ def get_videos_from_channels(channel_ids: List[str], youtube: build):
             reverse=True,
         )
         logger.debug(f"Youtube videos for channel {channel_id}:\n{channel_videos!r}")
-        channel_videos = filter(
-            lambda video: not is_youtube_short(video.videoId), channel_videos
+        shorts_bools = await asyncio.gather(
+            *[is_youtube_short(video.videoId) for video in channel_videos]
         )
-        channel_videos = list(channel_videos)[:VIDEOS_PER_CHANNEL]
-        videos.extend(channel_videos)
+        channel_videos = [
+            v for v, is_short in zip(channel_videos, shorts_bools) if not is_short
+        ]
+
+        videos.extend(channel_videos[:VIDEOS_PER_CHANNEL])
 
     return videos
 
@@ -152,14 +157,14 @@ def save_channel_data(channel_ids: List[str], youtube: build):
     return
 
 
-def save_video_data(channel_ids: List[str], youtube: build):
+async def save_video_data(channel_ids: List[str], youtube: build):
     """
     Uses the API to find the videos from the channels, and records the data in a JSON file.
     """
 
     # Call the get_videos_from_channels function to get a list of videos from the specified channels
     logger.info("Getting videos from YouTube API...")
-    videos = get_videos_from_channels(channel_ids, youtube)
+    videos = await get_videos_from_channels(channel_ids, youtube)
     logger.success(f"Retrieved {len(videos)} videos from YouTube API")
 
     # Sort on timestamp reverse chronological
@@ -176,7 +181,7 @@ def save_video_data(channel_ids: List[str], youtube: build):
     return
 
 
-def main():
+async def main():
     logger.info("Starting YouTube Python script")
     parser = argparse.ArgumentParser()
     parser.add_argument("--api-key", help="Your YouTube Data API key")
@@ -208,11 +213,11 @@ def main():
     logger.success(f"Retrieved channel IDs from {YOUTUBE_CHANNEL_IDS}")
     logger.debug(f"Channel IDs: {channel_ids}")
 
-    save_video_data(channel_ids, youtube)
+    await save_video_data(channel_ids, youtube)
     save_channel_data(channel_ids, youtube)
 
     return
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
