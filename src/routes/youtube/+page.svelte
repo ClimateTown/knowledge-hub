@@ -29,7 +29,6 @@
     return b.channelSubCount - a.channelSubCount;
   }
   channelData.sort(sortChannelBySubCount);
-  channelData.reverse();
 
   function getChannelData(channelId: string) {
     // Given a channel ID, return the channel data from the array
