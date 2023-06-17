@@ -4,6 +4,8 @@
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import type { Tag } from "$lib/interfaces";
+  import Collapsible from "$lib/components/Collapsible.svelte";
+  import ListItem from "./ListItem.svelte";
   export let data: PageData;
 
   // Constants for infinite scroll/lazy loading
@@ -103,8 +105,6 @@
       behavior: "smooth",
     });
   }
-
-  import ListItem from "./ListItem.svelte";
 </script>
 
 <h1>Resources</h1>
@@ -184,84 +184,59 @@
   </a>
 </div>
 
-<details class="rounded-lg border-2" open>
-  <summary class="cursor-pointer text-2xl p-2">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6 inline transition-transform duration-100 ease-in-out"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-      />
-    </svg>
-
-    Filter
-  </summary>
-  <div>
-    <!-- begin form -->
-    <form
-      on:submit|preventDefault={filterResources}
-      class="border-solid p-4 space-y-4"
-    >
-      <!-- <label for="search">Search</label> -->
-      <!-- <input type="text" id="search" name="search" /> -->
-      <div class="flex flex-row flex-wrap gap-2">
-        {#each tags as tag}
-          <!-- checkboxes -->
-          <div
-            class="flex justify-between gap-2 rounded-full bg-gray-300"
-            style:background-color={tag.color}
+<Collapsible label="Filter">
+  <!-- begin form -->
+  <form on:submit|preventDefault={filterResources} class="p-4 space-y-4">
+    <!-- <label for="search">Search</label> -->
+    <!-- <input type="text" id="search" name="search" /> -->
+    <div class="flex flex-row flex-wrap gap-2">
+      {#each tags as tag}
+        <!-- checkboxes -->
+        <div
+          class="flex justify-between gap-2 rounded-full bg-gray-300"
+          style:background-color={tag.color}
+        >
+          <label
+            class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
+            for={removeWhitespace(tag.name)}
           >
-            <label
-              class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
-              for={removeWhitespace(tag.name)}
-            >
-              <input
-                type="checkbox"
-                class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-                bind:checked={filterObject.tags[tag.name]}
-                id={removeWhitespace(tag.name)}
-                name={removeWhitespace(tag.name)}
-              />
-              <span>
-                {tag.name}
-                <span class="text-gray-500 italic"
-                  >({tags_count[tag.name]})</span
-                >
-              </span>
-            </label>
-          </div>
-        {/each}
-      </div>
-      <div class="flex justify-end">
-        <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6 inline"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
+            <input
+              type="checkbox"
+              class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+              bind:checked={filterObject.tags[tag.name]}
+              id={removeWhitespace(tag.name)}
+              name={removeWhitespace(tag.name)}
             />
-          </svg>
+            <span>
+              {tag.name}
+              <span class="text-gray-500 italic">({tags_count[tag.name]})</span>
+            </span>
+          </label>
+        </div>
+      {/each}
+    </div>
+    <div class="flex justify-end">
+      <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 inline"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
+          />
+        </svg>
 
-          Filter
-        </button>
-      </div>
-    </form>
-  </div>
-</details>
+        Filter
+      </button>
+    </div>
+  </form>
+</Collapsible>
 
 <button
   class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-500 text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50"

@@ -1,153 +1,176 @@
+"""
+Scrapes video and channel data from YouTube using the YouTube API.
+"""
+
 import argparse
 import os
 import yaml
 import json
 from pathlib import Path
 from typing import List
-import time
+import datetime as dt
+import aiohttp
+import asyncio
 
 from loguru import logger
 from tqdm import tqdm
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
+from dataclasses import dataclass
+import dataclasses
 
 YOUTUBE_CHANNEL_IDS = Path("data") / "youtube_channel_ids.yml"
 VIDEO_DATA = Path("data") / "video_data.json"
 CHANNEL_DATA = Path("data") / "channel_data.json"
 
 NUMBER_OF_VIDEOS = 200
+VIDEOS_PER_CHANNEL = 5
 
 
-def get_videos_from_channels(channel_ids: List[str], youtube: build):
-    # Create a service object to make API requests
+# Mirror of the YouTube interfaces defined in `src/lib/interfaces.ts`
+@dataclass
+class YoutubeChannel:
+    channelId: str
+    channelCustomName: str
+    channelName: str
+    channelPic: str
+    channelSubCount: int
 
-    # Initialize an empty list to store the videos
-    videos = []
 
-    # Loop through the list of channel IDs
+@dataclass
+class YoutubeVideo:
+    channelId: str
+    publishedAt: str
+    videoId: str
+    title: str
+
+    @property
+    def published_dt(self):
+        return dt.datetime.strptime(self.publishedAt, "%Y-%m-%dT%H:%M:%SZ")
+
+
+class EnhancedJSONEncoder(json.JSONEncoder):
+    # https://stackoverflow.com/a/51286749
+    def default(self, o):
+        if dataclasses.is_dataclass(o):
+            return dataclasses.asdict(o)
+        return super().default(o)
+
+
+async def is_youtube_short(video_id: str) -> bool:
+    url = f"https://www.youtube.com/shorts/{video_id}"
+    async with aiohttp.ClientSession() as session:
+        async with session.head(url) as response:
+            is_short = True if response.status == 200 else False
+            logger.info(f"Checking if {video_id} is a short: {is_short}")
+            return is_short
+
+
+async def get_videos_from_channels(channel_ids: List[str], youtube: build):
+    videos: List[YoutubeVideo] = []
+
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
     for channel_id in channel_ids:
         pbar.set_description(f"Getting videos from {channel_id=}")
         response = get_videos_from_channel(channel_id, youtube)
 
-        # Append to list of videos
-        videos.extend([extract_key_video_info(item) for item in response["items"]])
+        channel_videos = []
+        for item in response["items"]:
+            video = YoutubeVideo(
+                publishedAt=item["snippet"]["publishedAt"],
+                videoId=item["id"]["videoId"],
+                channelId=item["snippet"]["channelId"],
+                title=item["snippet"]["title"],
+            )
+            channel_videos.append(video)
 
-    # Return the list of videos
+        # Remove shorts from videos list and trim number of videos per channel
+        channel_videos.sort(
+            key=lambda x: x.published_dt,
+            reverse=True,
+        )
+        logger.debug(f"Youtube videos for channel {channel_id}:\n{channel_videos!r}")
+        shorts_bools = await asyncio.gather(
+            *[is_youtube_short(video.videoId) for video in channel_videos]
+        )
+        channel_videos = [
+            v for v, is_short in zip(channel_videos, shorts_bools) if not is_short
+        ]
+
+        videos.extend(channel_videos[:VIDEOS_PER_CHANNEL])
+
     return videos
 
 
 def get_videos_from_channel(channel_id: str, service: build):
     """
     Get a list of video IDs from the specified channel using the YouTube data API.
-    """
 
-    # Use the search.list method to get a list of all videos from the specified channel
+    https://developers.google.com/youtube/v3/docs/search/list
+    """
     request = service.search().list(
         part="id,snippet", channelId=channel_id, type="video", maxResults=50
     )
-
-    # Execute the request and store the response
     response = request.execute()
-
-    # Return the list of videos
     return response
-
-
-def extract_key_video_info(item: dict):
-    """
-    Extract the key information from a video item using YouTube's search API endpoint
-    https://developers.google.com/youtube/v3/docs/search/list
-
-    """
-    return {
-        "publishedAt": item["snippet"]["publishedAt"],
-        "videoId": item["id"]["videoId"],
-        "channelId": item["snippet"]["channelId"],
-        "title": item["snippet"]["title"],
-    }
-
-
-def extract_key_channel_info(item: dict):
-    """
-    Extract the key information from a YouTube channel using YouTube's channel list API endpoint
-    https://developers.google.com/youtube/v3/docs/channels/list
-
-    """
-    return {
-        "channelId": item["id"],
-        "channelCustomName": item["snippet"]["customUrl"],
-        "channelName": item["snippet"]["title"],
-        "channelPic": item["snippet"]["thumbnails"]["default"]["url"].split("=")[
-            0
-        ],  # Can set ?s= on the end to get a custom resolution
-        "channelSubCount": int(item["statistics"]["subscriberCount"]),
-    }
 
 
 def save_channel_data(channel_ids: List[str], youtube: build):
     """
-    Uses the API to find the channels, and records the data in a JSON file.
-    The link is can be given by
-
-    Data:
-    - Channel ID
-    - Channel custom name #! (might cause bugs down the line. If so, get link by www.youtube.com/channel/{channelId})
-    - Channel name
-    - Channel profile picture url
-    - subcount
+    Uses YouTube API to find the channels, and record data in a JSON file.
     """
-    channels = []
+    channels: List[YoutubeChannel] = []
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
     for channel_id in pbar:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
-        # Execute the request and store the response
         response = request.execute()
 
         assert len(response["items"]) == 1, "More than one channel returned"
 
-        # Append to list of channels
-        channels.extend([extract_key_channel_info(item) for item in response["items"]])
+        item = response["items"][0]
+        youtube_channel = YoutubeChannel(
+            channelId=item["id"],
+            channelCustomName=item["snippet"]["customUrl"],
+            channelName=item["snippet"]["title"],
+            channelPic=item["snippet"]["thumbnails"]["default"]["url"].split("=")[
+                0
+            ],  # Can set ?s= on the end to get a custom resolution
+            channelSubCount=int(item["statistics"]["subscriberCount"]),
+        )
+        channels.append(youtube_channel)
 
-    # Return the list of channels
+    logger.debug(f"Youtube channels:\n{channels!r}")
     logger.success(f"Retrieved {len(channels)} channels from YouTube API")
 
-    channels.sort(key=lambda x: x["channelSubCount"], reverse=True)
-
     with open(CHANNEL_DATA, "w") as f:
-        json.dump(channels, f, indent=4)
-
-    logger.success(f"Saved video data to {VIDEO_DATA}")
-    return channels
-
-
-def save_video_data(channel_ids: List[str], youtube: build):
-    """
-    Uses the API to find the videos from the channels, and records the data in a JSON file.
-    """
-
-    # Call the get_videos_from_channels function to get a list of videos from the specified channels
-    logger.info("Getting videos from YouTube API...")
-    videos = get_videos_from_channels(channel_ids, youtube)
-    logger.success(f"Retrieved {len(videos)} videos from YouTube API")
-
-    # Sort on timestamp
-    videos.sort(
-        key=lambda x: time.mktime(
-            time.strptime(x["publishedAt"], "%Y-%m-%dT%H:%M:%SZ")
-        ),
-        reverse=True,
-    )
-    videos = videos[:NUMBER_OF_VIDEOS]
-
-    with open(VIDEO_DATA, "w") as f:
-        json.dump(videos, f, indent=4)
+        json.dump(channels, f, indent=4, cls=EnhancedJSONEncoder)
 
     logger.success(f"Saved video data to {VIDEO_DATA}")
     return
 
 
-def main():
+async def save_video_data(channel_ids: List[str], youtube: build):
+    """
+    Uses the API to find the videos from the channels, and records the data in a JSON file.
+    """
+    logger.info("Getting videos from YouTube API...")
+    videos = await get_videos_from_channels(channel_ids, youtube)
+    logger.success(f"Retrieved {len(videos)} videos from YouTube API")
+
+    videos.sort(
+        key=lambda x: x.published_dt,
+        reverse=True,
+    )
+    videos = videos[:NUMBER_OF_VIDEOS]
+
+    with open(VIDEO_DATA, "w") as f:
+        json.dump(videos, f, indent=4, cls=EnhancedJSONEncoder)
+
+    logger.success(f"Saved video data to {VIDEO_DATA}")
+    return
+
+
+async def main():
     logger.info("Starting YouTube Python script")
     parser = argparse.ArgumentParser()
     parser.add_argument("--api-key", help="Your YouTube Data API key")
@@ -172,18 +195,17 @@ def main():
     youtube = build("youtube", "v3", developerKey=api_key)
     logger.success("YouTube API instance created")
 
-    # Read yaml file with YouTube channel IDs
     with open(YOUTUBE_CHANNEL_IDS, "r") as f:
         channel_ids = yaml.safe_load(f)
 
     logger.success(f"Retrieved channel IDs from {YOUTUBE_CHANNEL_IDS}")
     logger.debug(f"Channel IDs: {channel_ids}")
 
-    save_video_data(channel_ids, youtube)
+    await save_video_data(channel_ids, youtube)
     save_channel_data(channel_ids, youtube)
 
     return
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
