@@ -16,7 +16,7 @@ The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.g
 
 ## How to suggest a resource
 
-- [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) and select "suggest a resource".
+- [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) and select "✨Resource Suggestion".
 - Fill out the form. Please adhere to the instructions.
 - Get the resource approved (or discuss it further in the issue).
 - Once approved, resource is then onboarded onto the website. Resource onboarding happens every Friday!!
@@ -39,7 +39,7 @@ For any discussion or questions about the Knowledge Hub, join us in the `#💬kn
 
 ### Small edits/typos
 
-Resources data (e.g. title, URL, description, tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
+Resources data (titles, URLs, descriptions, and tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
 
 To suggest changes anywhere else in the site, you can use GitHub's search functionality to find the exact file in which to suggest them.
 
@@ -91,7 +91,7 @@ To set up the YouTube API (important for working on scripts with YouTube video s
 - Enable Youtube API v3 <https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com>
 - Make a .env file in root folder (where this file is)
 - Add YOUTUBE_API_KEY=YourApiKeyHere
-- Run Python scripts/youtube.py
+- Run `python scripts/youtube.py`
 
 ### OPTIONAL: Pre-commit
 
@@ -120,7 +120,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/azebramoomoo"><img src="https://avatars.githubusercontent.com/u/121310825?v=4?s=60" width="60px;" alt="azebramoomoo"/><br /><sub><b>azebramoomoo</b></sub></a><br /><a href="#content-azebramoomoo" title="Content">🖋</a> <a href="#design-azebramoomoo" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jacobjeevan"><img src="https://avatars.githubusercontent.com/u/40040905?v=4?s=60" width="60px;" alt="Jacob John Jeevan"/><br /><sub><b>Jacob John Jeevan</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Jacobjeevan" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Morzaram"><img src="https://avatars.githubusercontent.com/u/70202379?v=4?s=60" width="60px;" alt="Chris King"/><br /><sub><b>Chris King</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Morzaram" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JarrodBaniqued"><img src="https://avatars.githubusercontent.com/u/132729879?v=4?s=60" width="60px;" alt="Jarrod Baniqued"/><br /><sub><b>Jarrod Baniqued</b></sub></a><br /><a href="#content-JarrodBaniqued" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JarrodBaniqued"><img src="https://avatars.githubusercontent.com/u/132729879?v=4?s=60" width="60px;" alt="JarrodBaniqued"/><br /><sub><b>JarrodBaniqued</b></sub></a><br /><a href="#content-JarrodBaniqued" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://daniellemlbastien.com/"><img src="https://avatars.githubusercontent.com/u/4835191?v=4?s=60" width="60px;" alt="Danielle Bastien"/><br /><sub><b>Danielle Bastien</b></sub></a><br /><a href="#a11y-dmlb" title="Accessibility">️️️️♿️</a> <a href="https://github.com/ClimateTown/knowledge-hub/commits?author=dmlb" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tutterown"><img src="https://avatars.githubusercontent.com/u/1977859?v=4?s=60" width="60px;" alt="Nick Tutterow"/><br /><sub><b>Nick Tutterow</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=tutterown" title="Code">💻</a> <a href="#content-tutterown" title="Content">🖋</a></td>
     </tr>
