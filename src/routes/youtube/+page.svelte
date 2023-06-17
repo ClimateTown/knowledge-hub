@@ -1,18 +1,23 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import YoutubeVideo from "./YoutubeVideo.svelte";
+  import type {
+    YoutubeChannel,
+    YoutubeVideo,
+    YoutubeChannelFilterItem,
+  } from "$lib/interfaces";
+  import YoutubeThumbnail from "./YoutubeThumbnail.svelte";
 
   export let data: PageData;
 
-  let videoData = data.payload.videoData;
-  let channelData = data.payload.channelData;
+  const videoData = data.payload.videoData;
+  const channelData = data.payload.channelData;
   let displayedVideos = videoData;
 
   let rerender: boolean = false;
 
-  // Sort channel data by subcount (bubbling Climate Town to the top)
-  function channelSort(a: any, b: any) {
+  function sortChannelBySubCount(a: YoutubeChannel, b: YoutubeChannel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
+
     if (a.channelId === ClimateTownChannelId) {
       return -1;
     }
@@ -23,54 +28,51 @@
     // Normal sort
     return b.channelSubCount - a.channelSubCount;
   }
-  channelData.sort(channelSort);
-  channelData.reverse();
+  channelData.sort(sortChannelBySubCount);
 
   function getChannelData(channelId: string) {
     // Given a channel ID, return the channel data from the array
     return channelData.find((channel) => channel.channelId === channelId);
   }
 
-  // Creating filter object
-  type channelFilterItem = { channelId: string; active: boolean };
-
   // Creating initial filter object and state
-  let filterObject: channelFilterItem[] = [];
-  for (let channelInfo of channelData) {
-    filterObject.push({ channelId: channelInfo.channelId, active: true });
+  const channelArr: YoutubeChannelFilterItem[] = [];
+  for (const channelInfo of channelData) {
+    channelArr.push({ channelId: channelInfo.channelId, active: true });
   }
 
-  function filterResources(event) {
-    // Filter videos based on channel selection in form
+  function filterResources(
+    videoData: YoutubeVideo[],
+    channelArr: YoutubeChannelFilterItem[]
+  ): YoutubeVideo[] {
+    const filteredActiveChannelIds: string[] = channelArr
+      .filter((channel) => channel.active === true)
+      .map((channel) => channel.channelId);
 
-    // Reset displayed videos
-    displayedVideos = [];
-
-    // Channels
-    let channelList: string[] = filterObject
-      .filter((channel) => channel.active === true) // Filter out inactive channels
-      .map((channel) => channel.channelId); // Get channel IDs
-
-    for (let video of videoData) {
-      console.log(video.channelId);
-      if (channelList.includes(video.channelId)) {
-        displayedVideos.push(video);
-      }
-    }
-    console.log(channelList);
-    console.log(displayedVideos);
+    const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
+      filteredActiveChannelIds.includes(video.channelId)
+    );
 
     // Force svelte re-render
     rerender = !rerender;
+
+    return filteredVideos;
   }
 
   function semanticNumber(number: number) {
-    // if number between 1 and 99
+    // number less than 1000
     if (number < 1000) {
-      return "<1k";
+      return number.toString();
     }
-    if (number >= 1000) {
-      return `${Math.floor(number / 1000)}k`;
+    // number between 1k and 1M
+    else if (number >= 1000 && number < 1000000) {
+      return `${(number / 1000).toFixed(0)}k`;
+    }
+    // number between 1M and 1B
+    else if (number >= 1000000 && number < 1_000000000) {
+      return `${(number / 1000000).toFixed(1)}M`;
+    } else {
+      return ">1B";
     }
   }
 </script>
@@ -78,7 +80,7 @@
 <h1>ClimateTown YouTube Videos</h1>
 
 <form
-  on:submit|preventDefault={filterResources}
+  on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
   class="border-solid border-2 rounded-lg p-4 space-y-4"
 >
   <!-- <label for="search">Search</label> -->
@@ -95,7 +97,7 @@
           <input
             type="checkbox"
             class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
-            bind:checked={filterObject[index].active}
+            bind:checked={channelArr[index].active}
             id={channelInfo.channelId}
           />
           <span
@@ -134,7 +136,10 @@
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
     {#each displayedVideos as video}
-      <YoutubeVideo {...video} channelInfo={getChannelData(video.channelId)} />
+      <YoutubeThumbnail
+        {...video}
+        channelInfo={getChannelData(video.channelId)}
+      />
     {:else}
       <div>No videos here!</div>
     {/each}

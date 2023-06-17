@@ -407,3 +407,90 @@
     - Politics/US
   title: Center for Biological Diversity
   url: https://www.biologicaldiversity.org/about/
+- description: The Fossil Fuel Policy Tracker is an open source tool to help monitor fossil fuel-related policies in all countries globally, to identify best practices, and identify which countries are leaders or laggards.
+  tags:
+    - Climate Accountability
+    - Tools
+  title: Fossil Fuel Non-Proliferation Tracker
+  url: https://www.fossilfueltracker.org/app/ffnpt
+- description: Too Good To Go helps connect restaurants and stores to their local community to reduce food waste nearing their 'best before' dates. Founded in 2016 in Copenhagen, Too Good to Go is now in 17 countries.
+  tags:
+    - Food Waste
+    - location/US
+    - location/Canada
+  title: Too Good to Go
+  url: https://toogoodtogo.com/
+- description: Use Flash Food to prevent food waste, and get savings on fresh food items nearing their 'best before' dates in Canada and the U.S.
+  tags:
+    - Food Waste
+    - location/Global
+  title: Flash Food
+  url: https://www.flashfood.com/
+- description: Prevent food waste with Love Food Hate Waste, and their ultimate A-Z food storage and usage guide.
+  tags:
+    - Food Waste
+  title: Love Food Hate Waste Guide
+  url: https://lovefoodhatewaste.ca/a-z/
+- description: Answering the question "who is doing what where for the environment"; includes hyper-local action groups, job boards, and lists of lists.
+  tags:
+    - 📚 Knowledge Hubs
+  title: Environment.Wiki
+  url: https://environment.wiki
+- description: An independent, investigative perspective on “carbon capture and storage” (CCS). The site provides peer-reviewed studies and verifiable facts, many of which refute misleading information about CCS that is being promoted by pipeline and fossil fuel corporations and their supporters.
+  tags:
+    - Climate Tech
+    - Greenwashing
+    - Climate Accountability
+  title: Carbon Capture and Storage Facts
+  url: https://www.carboncapturefacts.org/
+- description: DeSmog was founded in January 2006 to clear the PR pollution that clouds science and solutions to climate change. Their team provides accurate, fact-based information regarding global warming misinformation campaigns.
+  tags:
+    - Climate Journalism
+  title: DeSmog
+  url: https://www.desmog.com/
+- description: Climate change news, analysis, commentary, video and podcasts focused on developments in global climate politics.
+  tags:
+    - Climate Journalism
+  title: Climate Home News
+  url: https://www.climatechangenews.com/
+- description: Registry of national contributions to the Paris Agreement maintained by the secretariat of the United Nations.
+  tags:
+    - Climate Accountability
+    - Tools
+  title: UN Nationally Determined Contributions Registry
+  url: https://unfccc.int/NDCREG
+- description: Website for the United Nations Framework Convention on Climate Change (UNFCCC), tasked with supporting the global response to the threat of climate change.
+  tags:
+    - ✨ Mod Choice
+    - location/Global
+  title: UN Climate Change
+  url: https://unfccc.int/
+- description: Strong Towns is a nonprofit media advocacy organization founded by civil engineer Chuck Marohn. They produce content that analyzes the failures of the post-war North American development pattern while giving people the knowledge and tools to start making their places better today.
+  tags:
+    - Climate Journalism
+  title: Strong Towns
+  url: https://www.strongtowns.org/
+- description: "Heatmap is a new media company founded by Nico Lauricella and Robinson Meyer, focused on the biggest story in the world: the great climate and energy transition."
+  tags:
+    - Climate Journalism
+  title: Heatmap
+  url: https://heatmap.news/about-us
+- description: Climate Whistleblowers protects individuals who expose wrongdoings that worsen the climate crisis and helps them have a greater impact. Their "Blow the Whistle" initiative provides secure communication channels to report climate wrongdoing.
+  tags:
+    - Climate Accountability
+  title: Climate Whistleblowers
+  url: https://www.climatewhistleblowers.org/
+- description: Find ethical and sustainable banks in your area, and check whether your current bank invests in climate-destroying activities.
+  tags:
+    - ✨ Mod Choice
+    - Finance
+    - Tools
+    - location/Global
+  title: bank.green
+  url: https://bank.green
+- description: A report curated by various organisations on the impact that banking has on the climate crisis.
+  tags:
+    - ✨ Mod Choice
+    - Finance
+  title: Banking on Climate Chaos
+  url: https://www.bankingonclimatechaos.org/

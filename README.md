@@ -12,44 +12,47 @@
 
 ---
 
-The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one stop shop" for important climate resources in the fight against climate change!
+The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one-stop shop" for important online resources in the fight against climate change!
 
 ## How to suggest a resource
 
-- [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) selecting "suggest a resource".
-- Fill out the form adhering to the instructions.
-- Get the resource approved (or discuss it futher in the issue).
+- [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) and select "✨Resource Suggestion".
+- Fill out the form. Please adhere to the instructions.
+- Get the resource approved (or discuss it further in the issue).
 - Once approved, resource is then onboarded onto the website. Resource onboarding happens every Friday!!
 
 ## Contributing
 
-> TLDR; [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose), or edit the content directly and make a pull request.
+> TLDR: [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose), or edit the content directly and make a pull request.
 
-All contributions welcome! Everything from:
+All contributions welcome! We embrace:
 
 - suggestions
 - fixing typos
 - writing content
-- helping with website development
-- discussing content on the hub (check out the channels on Discord for this!)
+- helping with website development, and
+- discussing content on the Hub (check out the channels on Discord for this!)
 
 The following sections go through how you can make different contributions. These will require you having a GitHub account.
 
-For any discussion or questions about the Knowledge Hub, join us in `#💬knowledge-hub-discussion` in the ClimateTown Discord.
+For any discussion or questions about the Knowledge Hub, join us in the `#💬knowledge-hub-discussion` channel in the Climate Town Discord.
 
 ### Small edits/typos
 
-Resources data (title, URL, description, tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
+Resources data (titles, URLs, descriptions, and tags) are stored in the `data/resources.yml` file, which is then used to populate the resource on the website. To make small edits, you can [directly edit this file](https://github.com/ClimateTown/knowledge-hub/edit/main/data/resources.yml) or you can create an issue.
 
-To suggest changes anywhere else in the site, you can use GitHub's search functionality to find the exact file which to suggest the change.
+To suggest changes anywhere else in the site, you can use GitHub's search functionality to find the exact file in which to suggest them.
 
 ### Resource suggestions
 
 We're always looking to publicise awesome climate resources. Got a resource to share? The easiest way is to create an issue, filling out the "resource suggestion" form. This will create a discussion around the resource, and if it's a good fit for the Knowledge Hub, we'll add it to the site.
 
-### Site suggestions
+### Site improvements
 
-This website is powered by coders from the community. Have a suggestion to make the site better? Create an issue and we'll discuss it! If the feature sounds good, we'll look at adding it to the site. The feature is much more likely to be added if you are willing to help with the development.
+This website is powered by coders from the community. If you want to contribute to the website, please follow the following guidelines:
+
+- Create suggestions as issues in the repository. Discuss suggestions before submitting a pull request (unless the improvement is objectively good; e.g. performance, accessibility).
+- If you want to work on an issue, drop a comment on it (this helps prevent unnecessary doubling up of work). If someone working on an issue hasn't updated the issue in a few weeks, feel free to drop a comment of your own if you want to try it out.
 
 ## Development installation
 
@@ -63,7 +66,7 @@ The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://ki
 
 ### OPTIONAL: Python
 
-Some of the tools in the codebase (eg. YouTube API, JSON schema validation) use Python. For most changes to the site Python is not required.
+Some of the tools in the codebase (eg. YouTube API, JSON schema validation) use Python. For most changes to the site, Python is not required.
 
 To set up Python:
 
@@ -88,7 +91,7 @@ To set up the YouTube API (important for working on scripts with YouTube video s
 - Enable Youtube API v3 <https://console.cloud.google.com/marketplace/product/google/youtube.googleapis.com>
 - Make a .env file in root folder (where this file is)
 - Add YOUTUBE_API_KEY=YourApiKeyHere
-- Run python scripts/youtube.py
+- Run `python scripts/youtube.py`
 
 ### OPTIONAL: Pre-commit
 
@@ -117,7 +120,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/azebramoomoo"><img src="https://avatars.githubusercontent.com/u/121310825?v=4?s=60" width="60px;" alt="azebramoomoo"/><br /><sub><b>azebramoomoo</b></sub></a><br /><a href="#content-azebramoomoo" title="Content">🖋</a> <a href="#design-azebramoomoo" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Jacobjeevan"><img src="https://avatars.githubusercontent.com/u/40040905?v=4?s=60" width="60px;" alt="Jacob John Jeevan"/><br /><sub><b>Jacob John Jeevan</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Jacobjeevan" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Morzaram"><img src="https://avatars.githubusercontent.com/u/70202379?v=4?s=60" width="60px;" alt="Chris King"/><br /><sub><b>Chris King</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Morzaram" title="Code">💻</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JarrodBaniqued"><img src="https://avatars.githubusercontent.com/u/132729879?v=4?s=60" width="60px;" alt="JarrodBaniqued"/><br /><sub><b>JarrodBaniqued</b></sub></a><br /><a href="#content-JarrodBaniqued" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JarrodBaniqued"><img src="https://avatars.githubusercontent.com/u/132729879?v=4?s=60" width="60px;" alt="Jarrod Baniqued"/><br /><sub><b>Jarrod Baniqued</b></sub></a><br /><a href="#content-JarrodBaniqued" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://daniellemlbastien.com/"><img src="https://avatars.githubusercontent.com/u/4835191?v=4?s=60" width="60px;" alt="Danielle Bastien"/><br /><sub><b>Danielle Bastien</b></sub></a><br /><a href="#a11y-dmlb" title="Accessibility">️️️️♿️</a> <a href="https://github.com/ClimateTown/knowledge-hub/commits?author=dmlb" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tutterown"><img src="https://avatars.githubusercontent.com/u/1977859?v=4?s=60" width="60px;" alt="Nick Tutterow"/><br /><sub><b>Nick Tutterow</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=tutterown" title="Code">💻</a> <a href="#content-tutterown" title="Content">🖋</a></td>
     </tr>
@@ -132,6 +135,8 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://hackerone.com"><img src="https://avatars.githubusercontent.com/u/69660071?v=4?s=60" width="60px;" alt="Matthew Caughman"/><br /><sub><b>Matthew Caughman</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/pulls?q=is%3Apr+reviewed-by%3Amacaugh" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lasercar"><img src="https://avatars.githubusercontent.com/u/64717068?v=4?s=60" width="60px;" alt="LaserCar"/><br /><sub><b>LaserCar</b></sub></a><br /><a href="#content-LaserCar" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/isidro-molina-b20497215/"><img src="https://avatars.githubusercontent.com/u/86175612?v=4?s=60" width="60px;" alt="Isidro Molina"/><br /><sub><b>Isidro Molina</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=imolina212" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -141,7 +146,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
+This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are, again, welcome!
 
 ## Acknowledgements
 

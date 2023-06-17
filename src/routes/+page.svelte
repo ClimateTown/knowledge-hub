@@ -20,9 +20,9 @@
 <ul class="list-disc">
   <li>
     <span class="font-semibold">📚 Knowledge Hubs:</span> These are initiatives similar
-    to the Climate Town Knowledge Hub. These initiatives curate varied lists of climate
-    related resources, lists which may even be more specific in topic than the list
-    of resources provided here. Taking full advantage of the network effect!
+    to the Climate Town Knowledge Hub. These initiatives curate various lists of
+    climate-related resources, lists which may even be more specific in topic than
+    the list of resources provided here, taking full advantage of the network effect!
   </li>
   <li>
     <span class="font-semibold">🍞 Rollie's Choice:</span> These are resources endorsed
@@ -76,7 +76,7 @@
   >
     <h3>YouTube Feed</h3>
     <div class="my-3 text-gray-500">
-      A feed of Climate Town videos, right here in the knowledge hub!
+      A feed of Climate Town videos, right here in the Knowledge Hub!
     </div>
     <a
       href="{base}/youtube"

@@ -56,7 +56,7 @@
     },
     {
       "login": "JarrodBaniqued",
-      "name": "JarrodBaniqued",
+      "name": "Jarrod Baniqued",
       "avatar_url": "https://avatars.githubusercontent.com/u/132729879?v=4",
       "profile": "https://github.com/JarrodBaniqued",
       "contributions": [
@@ -154,6 +154,25 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "LaserCar",
+      "name": "LaserCar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/64717068?v=4",
+      "profile": "https://github.com/Lasercar",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "imolina212",
+      "name": "Isidro Molina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86175612?v=4",
+      "profile": "https://www.linkedin.com/in/isidro-molina-b20497215/",
+      "contributions": [
+        "code"
+      ]
     }
-  ]
+  ],
+  "commitType": "docs"
 }
