@@ -13,7 +13,7 @@
 
   function sortChannelBySubCount(a: Channel, b: Channel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
-    
+
     if (a.channelId === ClimateTownChannelId) {
       return -1;
     }
@@ -38,10 +38,12 @@
     channelArr.push({ channelId: channelInfo.channelId, active: true });
   }
 
-  function filterResources(videoData: Video[], channelArr: ChannelFilterItem[]): Video[] {
-    
+  function filterResources(
+    videoData: Video[],
+    channelArr: ChannelFilterItem[]
+  ): Video[] {
     const filteredActiveChannelIds: string[] = channelArr
-      .filter((channel) => channel.active === true) 
+      .filter((channel) => channel.active === true)
       .map((channel) => channel.channelId);
 
     const filteredVideos: Video[] = videoData.filter((video) =>
@@ -50,7 +52,7 @@
 
     // Force svelte re-render
     rerender = !rerender;
-    
+
     return filteredVideos;
   }
 

@@ -16,7 +16,7 @@ export interface Channel {
   channelSubCount: number;
 }
 
-export interface ChannelFilterItem { 
+export interface ChannelFilterItem {
   channelId: string;
   active: boolean;
 }
