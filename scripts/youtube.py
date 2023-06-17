@@ -67,18 +67,13 @@ async def is_youtube_short(video_id: str) -> bool:
 
 
 async def get_videos_from_channels(channel_ids: List[str], youtube: build):
-    # Create a service object to make API requests
-
-    # Initialize an empty list to store the videos
     videos: List[YoutubeVideo] = []
 
-    # Loop through the list of channel IDs
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
     for channel_id in channel_ids:
         pbar.set_description(f"Getting videos from {channel_id=}")
         response = get_videos_from_channel(channel_id, youtube)
 
-        # Append to list of videos
         channel_videos = []
         for item in response["items"]:
             video = YoutubeVideo(
@@ -89,7 +84,7 @@ async def get_videos_from_channels(channel_ids: List[str], youtube: build):
             )
             channel_videos.append(video)
 
-        # Remove shorts and trim number of videos
+        # Remove shorts from videos list and trim number of videos per channel
         channel_videos.sort(
             key=lambda x: x.published_dt,
             reverse=True,
@@ -144,11 +139,8 @@ def save_channel_data(channel_ids: List[str], youtube: build):
         )
         channels.append(youtube_channel)
 
-    # Return the list of channels
     logger.debug(f"Youtube channels:\n{channels!r}")
     logger.success(f"Retrieved {len(channels)} channels from YouTube API")
-
-    channels.sort(key=lambda x: x.channelSubCount, reverse=True)
 
     with open(CHANNEL_DATA, "w") as f:
         json.dump(channels, f, indent=4, cls=EnhancedJSONEncoder)
@@ -161,13 +153,10 @@ async def save_video_data(channel_ids: List[str], youtube: build):
     """
     Uses the API to find the videos from the channels, and records the data in a JSON file.
     """
-
-    # Call the get_videos_from_channels function to get a list of videos from the specified channels
     logger.info("Getting videos from YouTube API...")
     videos = await get_videos_from_channels(channel_ids, youtube)
     logger.success(f"Retrieved {len(videos)} videos from YouTube API")
 
-    # Sort on timestamp reverse chronological
     videos.sort(
         key=lambda x: x.published_dt,
         reverse=True,
@@ -206,7 +195,6 @@ async def main():
     youtube = build("youtube", "v3", developerKey=api_key)
     logger.success("YouTube API instance created")
 
-    # Read yaml file with YouTube channel IDs
     with open(YOUTUBE_CHANNEL_IDS, "r") as f:
         channel_ids = yaml.safe_load(f)
 
