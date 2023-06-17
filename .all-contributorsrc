@@ -163,6 +163,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "imolina212",
+      "name": "Isidro Molina",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86175612?v=4",
+      "profile": "https://www.linkedin.com/in/isidro-molina-b20497215/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "commitType": "docs"
