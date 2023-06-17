@@ -219,7 +219,7 @@
             style:background-color={tag.color}
           >
             <label
-              class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
+              class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
               for={removeWhitespace(tag.name)}
             >
               <input

@@ -77,7 +77,12 @@
   }
 </script>
 
-<h1>ClimateTown YouTube Videos</h1>
+<h1>Climate YouTube</h1>
+<div class="my-3">
+  Enjoy thoughtful climate-related discussions from your favorite climate
+  YouTubers. The feed is updated daily at midnight and noon UTC, and showcases
+  the five latest long-form videos from each YouTuber.
+</div>
 
 <form
   on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
@@ -91,7 +96,7 @@
         class="flex justify-between gap-2 rounded-full cursor-pointer bg-gray-300"
       >
         <label
-          class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2"
+          class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
           for={channelInfo.channelId}
         >
           <input
