@@ -2,13 +2,12 @@
   import { base } from "$app/paths";
   import { github_url } from "$lib/constants";
   import type { PageData } from "./$types";
-  import IntersectionObserver from "./IntersectionObserver.svelte";
   import { onMount } from "svelte";
   import type { Tag } from "$lib/interfaces";
   export let data: PageData;
 
   // Constants for infinite scroll/lazy loading
-  const DEFAULT_DISPLAY_LIMIT = 6;
+  const DEFAULT_DISPLAY_LIMIT = 18;
   const SCROLL_THRESHOLD = 200;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
@@ -41,10 +40,11 @@
     let tag: string;
 
     // Tags of interest
-    let filterTags: string[] | Set<string> = Object.keys(
-      filterObject.tags
-    ).filter((tag) => filterObject.tags[tag] === true);
-    filterTags = new Set(filterTags);
+    let filterTags: Set<string> = new Set(
+      Object.keys(filterObject.tags).filter(
+        (tag) => filterObject.tags[tag] === true
+      )
+    );
 
     let minCommonTags = tagLogic ? filterTags.size : 1;
     let resourceTags: Set<string>;
@@ -264,24 +264,32 @@
 </details>
 
 <button
-  class="p-2 hover:bg-green-500 hover:text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50 rounded-lg border-2 border-green-500 text-green-500"
+  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-500 text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50"
   on:click={scrollToTop}
   class:hidden={!showButton}
 >
-  Back to Top
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    viewBox="0 0 16 16"
+    class="bi bi-chevron-up w-6 h-6 inline bg-center"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
+    />
+  </svg>
 </button>
 
-<IntersectionObserver let:intersecting top={200}>
-  <div
-    class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 z-0 gap-x-4 gap-y-4 mt-3"
-  >
-    {#if intersecting}
-      {#each displayedResources.slice(0, displayedResourceLimit) as resource}
-        <ListItem {resource} />
-      {/each}
-      {#if displayedResources.length === 0}
-        <div>No resources here!</div>
-      {/if}
-    {/if}
-  </div>
-</IntersectionObserver>
+<div
+  class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
+>
+  {#each displayedResources.slice(0, displayedResourceLimit) as resource}
+    <ListItem {resource} />
+  {:else}
+    <div>No resources here!</div>
+  {/each}
+</div>
+<div class="italic text-center m-4">Those are all the resources!</div>
