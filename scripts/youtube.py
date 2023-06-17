@@ -8,7 +8,7 @@ import yaml
 import json
 from pathlib import Path
 from typing import List
-import time
+import datetime as dt
 
 from loguru import logger
 from tqdm import tqdm
@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from dataclasses import dataclass
 import dataclasses
+import requests
 
 YOUTUBE_CHANNEL_IDS = Path("data") / "youtube_channel_ids.yml"
 VIDEO_DATA = Path("data") / "video_data.json"
@@ -42,6 +43,10 @@ class YoutubeVideo:
     videoId: str
     title: str
 
+    @property
+    def published_dt(self):
+        return dt.datetime.strptime(self.publishedAt, "%Y-%m-%dT%H:%M:%SZ")
+
 
 class EnhancedJSONEncoder(json.JSONEncoder):
     # https://stackoverflow.com/a/51286749
@@ -49,6 +54,14 @@ class EnhancedJSONEncoder(json.JSONEncoder):
         if dataclasses.is_dataclass(o):
             return dataclasses.asdict(o)
         return super().default(o)
+
+
+def is_youtube_short(video_id: str) -> bool:
+    url = f"https://www.youtube.com/shorts/{video_id}"
+    response = requests.head(url)
+    is_short = True if response.status_code == 200 else False
+    logger.info(f"Checking if {video_id} is a short: {is_short}")
+    return is_short
 
 
 def get_videos_from_channels(channel_ids: List[str], youtube: build):
@@ -64,14 +77,27 @@ def get_videos_from_channels(channel_ids: List[str], youtube: build):
         response = get_videos_from_channel(channel_id, youtube)
 
         # Append to list of videos
-        for item in response["items"][:VIDEOS_PER_CHANNEL]:
+        channel_videos = []
+        for item in response["items"]:
             video = YoutubeVideo(
                 publishedAt=item["snippet"]["publishedAt"],
                 videoId=item["id"]["videoId"],
                 channelId=item["snippet"]["channelId"],
                 title=item["snippet"]["title"],
             )
-            videos.append(video)
+            channel_videos.append(video)
+
+        # Remove shorts and trim number of videos
+        channel_videos.sort(
+            key=lambda x: x.published_dt,
+            reverse=True,
+        )
+        logger.debug(f"Youtube videos for channel {channel_id}:\n{channel_videos!r}")
+        channel_videos = filter(
+            lambda video: not is_youtube_short(video.videoId), channel_videos
+        )
+        channel_videos = list(channel_videos)[:VIDEOS_PER_CHANNEL]
+        videos.extend(channel_videos)
 
     return videos
 
@@ -114,6 +140,7 @@ def save_channel_data(channel_ids: List[str], youtube: build):
         channels.append(youtube_channel)
 
     # Return the list of channels
+    logger.debug(f"Youtube channels:\n{channels!r}")
     logger.success(f"Retrieved {len(channels)} channels from YouTube API")
 
     channels.sort(key=lambda x: x.channelSubCount, reverse=True)
@@ -137,7 +164,7 @@ def save_video_data(channel_ids: List[str], youtube: build):
 
     # Sort on timestamp reverse chronological
     videos.sort(
-        key=lambda x: time.mktime(time.strptime(x.publishedAt, "%Y-%m-%dT%H:%M:%SZ")),
+        key=lambda x: x.published_dt,
         reverse=True,
     )
     videos = videos[:NUMBER_OF_VIDEOS]
