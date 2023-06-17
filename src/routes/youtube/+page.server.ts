@@ -1,5 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import fs from "fs";
+import type { YoutubeChannel, YoutubeVideo } from "$lib/interfaces";
 
 const channelDataPath: string = "data/channel_data.json";
 const videoDataPath: string = "data/video_data.json";
@@ -19,8 +20,8 @@ function readJsonFile(filePath: string): any[] {
 }
 
 // Reading in channel and video data
-const channelData = readJsonFile(channelDataPath);
-const videoData = readJsonFile(videoDataPath);
+const channelData: YoutubeChannel[] = readJsonFile(channelDataPath);
+const videoData: YoutubeVideo[] = readJsonFile(videoDataPath);
 
 // // Creating a list of unique tags
 // let tags: string[] = [];
