@@ -76,7 +76,7 @@
   >
     <h3>YouTube Feed</h3>
     <div class="my-3 text-gray-500">
-      A feed of Climate Town videos, right here in the Knowledge Hub!
+      A feed of Climate Town videos (plus some of our popular favorites), right here in the Knowledge Hub!
     </div>
     <a
       href="{base}/youtube"
