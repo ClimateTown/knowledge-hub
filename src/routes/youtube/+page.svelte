@@ -87,7 +87,9 @@
 
 <Collapsible label="Filter">
   <form
-    on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
+    on:submit|preventDefault={() => {
+      displayedVideos = filterResources(videoData, channelArr);
+    }}
     class="p-4 space-y-4"
   >
     <!-- <label for="search">Search</label> -->
