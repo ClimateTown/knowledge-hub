@@ -82,12 +82,14 @@
 <div class="my-3">
   Enjoy thoughtful climate-related discussions from your favorite climate
   YouTubers. The feed is updated daily at midnight and noon UTC, and showcases
-  the five latest long-form videos from each YouTuber.
+  the latest long-form videos from each YouTuber.
 </div>
 
 <Collapsible label="Filter">
   <form
-    on:submit|preventDefault={filterResources(displayedVideos, channelArr)}
+    on:submit|preventDefault={() => {
+      displayedVideos = filterResources(videoData, channelArr);
+    }}
     class="p-4 space-y-4"
   >
     <!-- <label for="search">Search</label> -->
