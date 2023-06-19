@@ -82,7 +82,7 @@
 <div class="my-3">
   Enjoy thoughtful climate-related discussions from your favorite climate
   YouTubers. The feed is updated daily at midnight and noon UTC, and showcases
-  the five latest long-form videos from each YouTuber.
+  the latest long-form videos from each YouTuber.
 </div>
 
 <Collapsible label="Filter">
