@@ -67,12 +67,14 @@
           <span class="sr-only">in new tab</span>
         </span>
       </div>
-      <p class="mt-2 text-zinc-700 dark:text-zinc-400 grow">{resource.description}</p>
+      <p class="mt-2 text-zinc-700 dark:text-zinc-400 grow">
+        {resource.description}
+      </p>
       <div class="flex flex-wrap text-xs py-2">
         {#each resource.tags as tag}
           <div
             class="bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white rounded-lg whitespace-nowrap p-1 my-1 mr-2"
-            class:tag-color={(tag.color || tag.darkColor)}
+            class:tag-color={tag.color || tag.darkColor}
             style:--tag-color={tag.color}
             style:--tag-color-dark={tag.darkColor}
           >

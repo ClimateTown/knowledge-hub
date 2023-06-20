@@ -45,7 +45,9 @@
     crossorigin="anonymous"></script>
 </svelte:head>
 
-<div class="body flex flex-col lg:flex-row w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50">
+<div
+  class="body flex flex-col lg:flex-row w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50"
+>
   <header
     class="lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex flex-col p-5 min-h-max lg:min-h-screen"
   >

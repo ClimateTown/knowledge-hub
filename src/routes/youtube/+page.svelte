@@ -119,7 +119,10 @@
       {/each}
     </div>
     <div class="flex flex-row-reverse">
-      <button type="submit" class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75">
+      <button
+        type="submit"
+        class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -146,12 +149,14 @@
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
     {#each displayedVideos as video}
-      <li><YoutubeThumbnail
-        {...video}
-        channelInfo={getChannelData(video.channelId)}
-      /></li>
+      <li>
+        <YoutubeThumbnail
+          {...video}
+          channelInfo={getChannelData(video.channelId)}
+        />
+      </li>
     {:else}
       <li>No videos here!</li>
     {/each}
-</ol>
+  </ol>
 {/key}

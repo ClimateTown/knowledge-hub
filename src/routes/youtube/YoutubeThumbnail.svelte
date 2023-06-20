@@ -52,7 +52,9 @@
     />
     <div class="mx-2">
       <!-- Don't trim title on mobile, trim on desktop (probably a better way to do this with media queries) -->
-      <div class="md:block text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <div
+        class="md:block text-sm font-semibold text-zinc-900 dark:text-zinc-100"
+      >
         {@html title}
       </div>
       <a

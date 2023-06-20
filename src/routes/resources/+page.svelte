@@ -93,12 +93,12 @@
     if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
 
-  let mainH1El: HTMLHeadingElement | null
+  let mainH1El: HTMLHeadingElement | null;
 
   // Hook into component lifecycle events
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
-    mainH1El = document.querySelector('main > h1')
+    mainH1El = document.querySelector("main > h1");
   });
 
   // for button
@@ -108,8 +108,8 @@
       behavior: "smooth",
     });
     // return keyboard focus to top
-    mainH1El?.setAttribute('tabIndex', '0')
-    mainH1El?.focus()
+    mainH1El?.setAttribute("tabIndex", "0");
+    mainH1El?.focus();
   }
 </script>
 
@@ -200,7 +200,7 @@
         <!-- checkboxes -->
         <div
           class="input-wrapper-focus flex justify-between gap-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
-          class:tag-color={(tag.color || tag.darkColor)}
+          class:tag-color={tag.color || tag.darkColor}
           style:--tag-color={tag.color}
           style:--tag-color-dark={tag.darkColor}
         >
@@ -217,14 +217,19 @@
             />
             <span>
               {tag.name}
-              <span class="text-zinc-700 dark:text-zinc-300 italic">({tags_count[tag.name]})</span>
+              <span class="text-zinc-700 dark:text-zinc-300 italic"
+                >({tags_count[tag.name]})</span
+              >
             </span>
           </label>
         </div>
       {/each}
     </div>
     <div class="flex justify-end">
-      <button type="submit" class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75">
+      <button
+        type="submit"
+        class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -258,7 +263,9 @@
 <div class="italic text-center m-4">Those are all the resources!</div>
 
 <button
-  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-700 dark:bg-green-900/75 text-white cursor-pointer fixed transition-opacity bottom-10 right-10 z-50 outline-offset-2 {showButton ? 'opacity-100' : 'opacity-0'}"
+  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-700 dark:bg-green-900/75 text-white cursor-pointer fixed transition-opacity bottom-10 right-10 z-50 outline-offset-2 {showButton
+    ? 'opacity-100'
+    : 'opacity-0'}"
   on:click={scrollToTop}
 >
   <svg
