@@ -31,7 +31,7 @@
   }
 
   let removeWhitespace = (str: string) => {
-    return str.replace(/\s/g, "");
+    return str.replace(/\W+/g, "");
   };
 
   function filterResources(event) {
@@ -93,9 +93,12 @@
     if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
 
+  let mainH1El: HTMLHeadingElement | null
+
   // Hook into component lifecycle events
   onMount(() => {
     window.addEventListener("scroll", handleScroll);
+    mainH1El = document.querySelector('main > h1')
   });
 
   // for button
@@ -104,16 +107,19 @@
       top: 0,
       behavior: "smooth",
     });
+    // return keyboard focus to top
+    mainH1El?.setAttribute('tabIndex', '0')
+    mainH1El?.focus()
   }
 </script>
 
 <h1>Resources</h1>
-<div class="py-1">
-  <i>{resources.length} resources and counting!!</i>
+<div class="py-1 dark:text-zinc-200">
+  <p class="italic">{resources.length} resources and counting!!</p>
 </div>
-<div class="flex flex-wrap gap-2 pb-3">
+<nav aria-label="Resource Navigation" class="flex flex-wrap gap-2 pb-3">
   <a
-    class="p-2 rounded-lg border-2 border-green-500 text-green-500"
+    class="p-2 rounded-lg border-2 border-green-500  dark:border-green-700 text-green-700 dark:text-green-500"
     href="{github_url}/issues/new/choose"
     target="_blank"
     rel="noreferrer"
@@ -137,7 +143,7 @@
   </a>
 
   <a
-    class="p-2 rounded-lg border-2 border-green-500 text-green-500"
+    class="p-2 rounded-lg border-2 border-green-500  dark:border-green-700 text-green-700 dark:text-green-500"
     href="{github_url}/edit/main/data/resources.yml"
     target="_blank"
     rel="noreferrer"
@@ -161,7 +167,7 @@
   </a>
 
   <a
-    class="p-2 rounded-lg border-2 border-green-500 text-green-500"
+    class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500"
     href="{base}/ClimateTown-Knowledge-Hub-resources.csv"
     download
   >
@@ -182,7 +188,7 @@
     </svg>
     Download resources
   </a>
-</div>
+</nav>
 
 <Collapsible label="Filter">
   <!-- begin form -->
@@ -193,8 +199,10 @@
       {#each tags as tag}
         <!-- checkboxes -->
         <div
-          class="flex justify-between gap-2 rounded-full bg-gray-300"
-          style:background-color={tag.color}
+          class="input-wrapper-focus flex justify-between gap-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
+          class:tag-color={(tag.color || tag.darkColor)}
+          style:--tag-color={tag.color}
+          style:--tag-color-dark={tag.darkColor}
         >
           <label
             class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
@@ -202,21 +210,21 @@
           >
             <input
               type="checkbox"
-              class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+              class="appearance-none cursor-pointer w-6 h-6  rounded-full bg-white dark:bg-black checked:bg-black dark:checked:bg-green-600 transition duration-200"
               bind:checked={filterObject.tags[tag.name]}
               id={removeWhitespace(tag.name)}
               name={removeWhitespace(tag.name)}
             />
             <span>
               {tag.name}
-              <span class="text-gray-500 italic">({tags_count[tag.name]})</span>
+              <span class="text-zinc-700 dark:text-zinc-300 italic">({tags_count[tag.name]})</span>
             </span>
           </label>
         </div>
       {/each}
     </div>
     <div class="flex justify-end">
-      <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">
+      <button type="submit" class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -238,10 +246,20 @@
   </form>
 </Collapsible>
 
+<ol
+  class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
+>
+  {#each displayedResources.slice(0, displayedResourceLimit) as resource}
+    <li><ListItem {resource} /></li>
+  {:else}
+    <li>No resources here!</li>
+  {/each}
+</ol>
+<div class="italic text-center m-4">Those are all the resources!</div>
+
 <button
-  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-500 text-white cursor-pointer fixed ease-in-out bottom-10 right-10 z-50"
+  class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-green-700 dark:bg-green-900/75 text-white cursor-pointer fixed transition-opacity bottom-10 right-10 z-50 outline-offset-2 {showButton ? 'opacity-100' : 'opacity-0'}"
   on:click={scrollToTop}
-  class:hidden={!showButton}
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -256,15 +274,5 @@
       d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
     />
   </svg>
+  <span class="sr-only">Back to Top</span>
 </button>
-
-<div
-  class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
->
-  {#each displayedResources.slice(0, displayedResourceLimit) as resource}
-    <ListItem {resource} />
-  {:else}
-    <div>No resources here!</div>
-  {/each}
-</div>
-<div class="italic text-center m-4">Those are all the resources!</div>

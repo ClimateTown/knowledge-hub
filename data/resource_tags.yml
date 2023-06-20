@@ -3,73 +3,109 @@
 - name: 🍞 Rollie's Choice
 - name: Activism
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: Article
   color: "#f1d7c0"
+  darkColor: "#3f250e"
 - name: Bypass Paywalls
   color: "#f1d7c0"
+  darkColor: "#3f250e"
 - name: Climate Accountability
   color: "#e0e9c9"
+  darkColor: "#2d3616"
 - name: Climate Careers
   color: "#e0e9c9"
+  darkColor: "#2d3616"
 - name: Climate Journalism
   color: "#e0e9c9"
+  darkColor: "#2d3616"
 - name: Climate Models
   color: "#e0e9c9"
+  darkColor: "#2d3616"
 - name: Climate Tech
   color: "#e0e9c9"
+  darkColor: "#2d3616"
 - name: Collective Action
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: Community
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: Contacting representatives
   color: "#e9cac9"
+  darkColor: "#2d3616"
 - name: Discord
   color: "#cfe2e0"
+  darkColor: "#1d302e"
 - name: Drug Help
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Education
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Finance
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Healthy Living
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Individual Action
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: location/Canada
   color: "#dccdea"
+  darkColor: "#29183a"
 - name: location/Global
   color: "#dccdea"
+  darkColor: "#29183a"
 - name: location/US
   color: "#dccdea"
+  darkColor: "#29183a"
 - name: location/US/NYC
   color: "#dccdea"
+  darkColor: "#29183a"
 - name: Organizations
   color: "#cfe2e0"
+  darkColor: "#1d302e"
 - name: Politics
   color: "#e9cac9"
+  darkColor: "#361716"
 - name: Politics/Global
   color: "#e9cac9"
+  darkColor: "#361716"
 - name: Politics/UK
   color: "#e9cac9"
+  darkColor: "#361716"
 - name: Politics/US
   color: "#e9cac9"
+  darkColor: "#361716"
 - name: Politics/Canada
   color: "#e9cac9"
+  darkColor: "#361716"
 - name: Professional Networking
   color: "#cfe2e0"
+  darkColor: "#1d302e"
 - name: Research
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Sustainable Food
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Tools
   color: "#cfe2e0"
+  darkColor: "#1d302e"
 - name: Unionize
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: Vegan
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Workers' rights
   color: "#c8cdea"
+  darkColor: "#141a38"
 - name: Food Waste
   color: "#efebc2"
+  darkColor: "#3c3910"
 - name: Greenwashing
   color: "#e0e9c9"
+  darkColor: "#2d3616"

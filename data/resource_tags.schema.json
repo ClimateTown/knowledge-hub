@@ -14,6 +14,11 @@
         "type": "string",
         "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
         "description": "please choose a color pairing with black text"
+      },
+      "darkColor": {
+        "type": "string",
+        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+        "description": "please choose a color pairing with white text"
       }
     },
     "required": ["name"],

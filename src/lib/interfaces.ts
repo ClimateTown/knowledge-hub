@@ -10,6 +10,7 @@ export interface Resource {
 export interface Tag {
   name: string;
   color?: string;
+  darkColor?: string
 }
 
 // YouTube page
