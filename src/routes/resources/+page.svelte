@@ -23,7 +23,8 @@
 
   let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
-  let isDirty = false;
+  let isFilterDirty = false;
+
   // Creating filter object
   let filterObject: any = {};
   filterObject["tags"] = {};
@@ -36,21 +37,17 @@
   };
 
   function clearAllFilters() {
-    isDirty = false;
+    isFilterDirty = false;
     for (const key in filterObject.tags) {
       // set all filters to false
       filterObject.tags[key] = false;
     }
-    // reset the resources to display all
-    displayedResources = resources;
+    filterResources();
   }
 
-  function filterResources(event) {
+  function filterResources() {
     // Reset displayed resources
     displayedResources = [];
-
-    let resource;
-    let tag: string;
 
     // Tags of interest
     let filterTags: Set<string> = new Set(
@@ -59,20 +56,21 @@
       )
     );
 
-    let minCommonTags = tagLogic ? filterTags.size : 1;
-    let resourceTags: Set<string>;
-    for (resource of resources) {
+    // ! Need to refactor later to make more readable
+    // When union is implemented for filter...
+    // let minCommonTags = tagLogic == "and" ? filterTags.size : 1; // For union, minCommonTags = 1
+    let minCommonTags = filterTags.size; // Intersection only
+
+    for (let resource of resources) {
       // Resource tags
-      resourceTags = new Set(resource.tags.map((tag: Tag) => tag.name));
+      let resourceTags = new Set(resource.tags.map((tag: Tag) => tag.name));
 
       if (setIntersection(filterTags, resourceTags).size >= minCommonTags) {
         displayedResources.push(resource);
       }
-      console.log(resource.title, setIntersection(filterTags, resourceTags));
     }
 
     // Force svelte re-render
-    console.log(filterTags);
     displayedResources = displayedResources;
   }
 
@@ -216,7 +214,7 @@
               class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
               bind:checked={filterObject.tags[tag.name]}
               on:change={() => {
-                isDirty = true;
+                isFilterDirty = true;
               }}
               id={removeWhitespace(tag.name)}
               name={removeWhitespace(tag.name)}
@@ -233,7 +231,7 @@
       <button
         on:click|preventDefault={clearAllFilters}
         class="mr-2 p-2 rounded-lg border-2 border-green-500 text-green-500 disabled:text-gray-500 disabled:border-gray-300 disabled:cursor-not-allowed"
-        disabled={!isDirty}
+        disabled={!isFilterDirty}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
