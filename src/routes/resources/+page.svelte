@@ -23,7 +23,6 @@
 
   let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
-  let isFilterDirty = false;
 
   // Creating filter object
   let filterObject: any = {};
@@ -32,12 +31,15 @@
     filterObject.tags[tag.name] = false;
   }
 
+  $: isFilterDirty = Object.values(filterObject.tags).some(
+    (tag_active) => tag_active === true
+  );
+
   let removeWhitespace = (str: string) => {
     return str.replace(/\s/g, "");
   };
 
   function clearAllFilters() {
-    isFilterDirty = false;
     for (const key in filterObject.tags) {
       // set all filters to false
       filterObject.tags[key] = false;
@@ -213,9 +215,6 @@
               type="checkbox"
               class="appearance-none cursor-pointer w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
               bind:checked={filterObject.tags[tag.name]}
-              on:change={() => {
-                isFilterDirty = true;
-              }}
               id={removeWhitespace(tag.name)}
               name={removeWhitespace(tag.name)}
             />
