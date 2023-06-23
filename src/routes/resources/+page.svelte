@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import { github_url } from "$lib/constants";
+  import { lightColors, darkColors } from "$lib/resources";
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import type { Tag } from "$lib/interfaces";
@@ -211,9 +212,9 @@
         <!-- checkboxes -->
         <div
           class="input-wrapper-focus flex justify-between gap-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
-          class:tag-color={tag.color || tag.darkColor}
-          style:--tag-color={tag.color}
-          style:--tag-color-dark={tag.darkColor}
+          class:tag-color={lightColors[tag.color] || darkColors[tag.color]}
+          style:--tag-color={lightColors[tag.color]}
+          style:--tag-color-dark={darkColors[tag.color]}
         >
           <label
             class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
