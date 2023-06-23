@@ -1,12 +1,13 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import type { Resource } from "$lib/interfaces";
+  import { lightColors, darkColors } from "$lib/resources";
   export let resource: Resource;
 </script>
 
 <a href={resource.url} target="_blank" rel="noreferrer">
   <div
-    class="flex flex-col rounded-lg shadow-lg transition ease-in-out hover:scale-105 h-full"
+    class="flex flex-col bg-white dark:bg-zinc-800 rounded-lg shadow-lg dark:shadow-zinc-900 transition ease-in-out hover:scale-105 h-full"
   >
     {#if resource.og_preview}
       <img
@@ -19,7 +20,7 @@
       />
     {:else}
       <div
-        class="object-cover rounded-t-lg object-center h-48 w-full bg-gray-500 inline-flex items-center justify-center"
+        class="object-cover rounded-t-lg object-center h-48 w-full bg-zinc-500 dark:bg-zinc-900 inline-flex items-center justify-center"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +30,7 @@
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="w-16 h-16 text text-gray-300"
+          class="w-16 h-16 text text-zinc-300 dark:text-zinc-500"
         >
           <path
             stroke-linecap="round"
@@ -41,22 +42,22 @@
     {/if}
 
     <div class="flex flex-col grow m-3">
-      <div class="text-xl font-medium text-gray-900 mt-3">
+      <div class="text-xl font-medium text-zinc-900 dark:text-zinc-100 mt-3">
         <span>
           {resource.title}
         </span>
         <span
-          class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500"
+          class="p-2 inline-flex items-center justify-center rounded-full bg-indigo-50 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-200"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            height="24"
-            width="24"
+            height="18"
+            width="18"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-6 h-6 inline bg-center"
+            class="w-5 h-5 inline bg-center"
           >
             <path
               stroke-linecap="round"
@@ -64,14 +65,19 @@
               d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"
             />
           </svg>
+          <span class="sr-only">in new tab</span>
         </span>
       </div>
-      <p class="mt-2 text-gray-700 grow">{resource.description}</p>
+      <p class="mt-2 text-zinc-700 dark:text-zinc-400 grow">
+        {resource.description}
+      </p>
       <div class="flex flex-wrap text-xs py-2">
         {#each resource.tags as tag}
           <div
-            class="bg-gray-200 rounded-lg whitespace-nowrap p-1 my-1 mr-2 "
-            style:background-color={tag.color}
+            class="bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white rounded-lg whitespace-nowrap p-1 my-1 mr-2"
+            class:tag-color={lightColors[tag.color] || darkColors[tag.color]}
+            style:--tag-color={lightColors[tag.color]}
+            style:--tag-color-dark={darkColors[tag.color]}
           >
             {tag.name}
           </div>

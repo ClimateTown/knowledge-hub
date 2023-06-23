@@ -26,3 +26,21 @@ details > summary::-webkit-details-marker {
 details:not([open]) > summary svg {
   transform: rotate(-90deg);
 }
+
+/* show entire label parent keyboard outline when inner input focused */
+.input-wrapper-focus:focus-within {
+  outline: auto;
+}
+
+/* user prefered / OS colour scheme for tag colors */
+@media (prefers-color-scheme: light) {
+  .tag-color {
+    background-color: var(--tag-color) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tag-color {
+    background-color: var(--tag-color-dark) !important;
+  }
+}

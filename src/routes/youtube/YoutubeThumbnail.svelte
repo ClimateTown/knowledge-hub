@@ -40,7 +40,7 @@
   rel="noreferrer"
 >
   <div
-    class="flex w-full flex-row md:block md:w-auto md:h-auto shadow-md rounded-lg"
+    class="flex w-full flex-row bg-white dark:bg-zinc-800 md:block md:w-auto md:h-auto shadow-md dark:shadow-zinc-900 rounded-lg"
   >
     <img
       loading="lazy"
@@ -52,11 +52,13 @@
     />
     <div class="mx-2">
       <!-- Don't trim title on mobile, trim on desktop (probably a better way to do this with media queries) -->
-      <div class="md:block text-sm font-semibold">
+      <div
+        class="md:block text-sm font-semibold text-zinc-900 dark:text-zinc-100"
+      >
         {@html title}
       </div>
       <a
-        class="text-sm text-gray-500"
+        class="text-sm text-zinc-700 dark:text-zinc-400"
         href="https://www.youtube.com/{channelCustomName}"
         target="_blank"
         rel="noreferrer"

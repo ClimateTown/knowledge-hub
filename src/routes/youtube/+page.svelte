@@ -79,7 +79,7 @@
 </script>
 
 <h1>Climate YouTube</h1>
-<div class="my-3">
+<div class="my-3 dark:text-zinc-200">
   Enjoy thoughtful climate-related discussions from your favorite climate
   YouTubers. The feed is updated daily at midnight and noon UTC, and showcases
   the latest long-form videos from each YouTuber.
@@ -97,7 +97,7 @@
     <div class="flex flex-row flex-wrap gap-2">
       {#each channelData as channelInfo, index}
         <div
-          class="flex justify-between gap-2 rounded-full cursor-pointer bg-gray-300"
+          class="input-wrapper-focus flex justify-between gap-2 rounded-full cursor-pointer bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
         >
           <label
             class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
@@ -105,7 +105,7 @@
           >
             <input
               type="checkbox"
-              class="appearance-none w-6 h-6 bg-white rounded-full checked:bg-black transition duration-200"
+              class="appearance-none cursor-pointer w-6 h-6 rounded-full bg-white dark:bg-black checked:bg-black dark:checked:bg-green-600 transition duration-200"
               bind:checked={channelArr[index].active}
               id={channelInfo.channelId}
             />
@@ -119,7 +119,10 @@
       {/each}
     </div>
     <div class="flex flex-row-reverse">
-      <button type="submit" class="p-2 rounded-lg bg-green-500 text-white">
+      <button
+        type="submit"
+        class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -142,16 +145,18 @@
 </Collapsible>
 
 {#key rerender}
-  <div
+  <ol
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
     {#each displayedVideos as video}
-      <YoutubeThumbnail
-        {...video}
-        channelInfo={getChannelData(video.channelId)}
-      />
+      <li>
+        <YoutubeThumbnail
+          {...video}
+          channelInfo={getChannelData(video.channelId)}
+        />
+      </li>
     {:else}
-      <div>No videos here!</div>
+      <li>No videos here!</li>
     {/each}
-  </div>
+  </ol>
 {/key}

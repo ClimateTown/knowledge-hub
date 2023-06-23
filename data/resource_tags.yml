@@ -2,74 +2,74 @@
 - name: ✨ Mod Choice
 - name: 🍞 Rollie's Choice
 - name: Activism
-  color: "#c8cdea"
+  color: "lavender"
 - name: Article
-  color: "#f1d7c0"
+  color: "orange"
 - name: Bypass Paywalls
-  color: "#f1d7c0"
+  color: "orange"
 - name: Climate Accountability
-  color: "#e0e9c9"
+  color: "green"
 - name: Climate Careers
-  color: "#e0e9c9"
+  color: "green"
 - name: Climate Journalism
-  color: "#e0e9c9"
+  color: "green"
 - name: Climate Models
-  color: "#e0e9c9"
+  color: "green"
 - name: Climate Tech
-  color: "#e0e9c9"
+  color: "green"
 - name: Collective Action
-  color: "#c8cdea"
+  color: "lavender"
 - name: Community
-  color: "#c8cdea"
+  color: "lavender"
 - name: Contacting representatives
-  color: "#e9cac9"
+  color: "red"
 - name: Discord
-  color: "#cfe2e0"
+  color: "teal"
 - name: Drug Help
-  color: "#efebc2"
+  color: "yellow"
 - name: Education
-  color: "#efebc2"
+  color: "yellow"
 - name: Finance
-  color: "#efebc2"
+  color: "yellow"
 - name: Healthy Living
-  color: "#efebc2"
+  color: "yellow"
 - name: Individual Action
-  color: "#c8cdea"
+  color: "lavender"
 - name: location/Canada
-  color: "#dccdea"
+  color: "purple"
 - name: location/Global
-  color: "#dccdea"
+  color: "purple"
 - name: location/US
-  color: "#dccdea"
+  color: "purple"
 - name: location/US/NYC
-  color: "#dccdea"
+  color: "purple"
 - name: Organizations
-  color: "#cfe2e0"
+  color: "teal"
 - name: Politics
-  color: "#e9cac9"
+  color: "red"
 - name: Politics/Global
-  color: "#e9cac9"
+  color: "red"
 - name: Politics/UK
-  color: "#e9cac9"
+  color: "red"
 - name: Politics/US
-  color: "#e9cac9"
+  color: "red"
 - name: Politics/Canada
-  color: "#e9cac9"
+  color: "red"
 - name: Professional Networking
-  color: "#cfe2e0"
+  color: "teal"
 - name: Research
-  color: "#efebc2"
+  color: "yellow"
 - name: Sustainable Food
-  color: "#efebc2"
+  color: "yellow"
 - name: Tools
-  color: "#cfe2e0"
+  color: "teal"
 - name: Unionize
-  color: "#c8cdea"
+  color: "lavender"
 - name: Vegan
-  color: "#efebc2"
+  color: "yellow"
 - name: Workers' rights
-  color: "#c8cdea"
+  color: "lavender"
 - name: Food Waste
-  color: "#efebc2"
+  color: "yellow"
 - name: Greenwashing
-  color: "#e0e9c9"
+  color: "green"

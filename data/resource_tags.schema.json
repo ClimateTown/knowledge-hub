@@ -12,8 +12,16 @@
       },
       "color": {
         "type": "string",
-        "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-        "description": "please choose a color pairing with black text"
+        "enum": [
+          "green",
+          "lavender",
+          "orange",
+          "purple",
+          "red",
+          "teal",
+          "yellow"
+        ],
+        "description": "please choose a color listed in `resources.ts`"
       }
     },
     "required": ["name"],

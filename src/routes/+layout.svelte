@@ -45,9 +45,11 @@
     crossorigin="anonymous"></script>
 </svelte:head>
 
-<div class="body flex flex-col lg:flex-row w-full">
+<div
+  class="body flex flex-col lg:flex-row w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50"
+>
   <header
-    class="lg:w-fit w-full bg-green-500 flex flex-col p-5 min-h-max lg:min-h-screen"
+    class="lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex flex-col p-5 min-h-max lg:min-h-screen"
   >
     <a href="{base}/">
       <picture class="w-48 self-center">
@@ -69,34 +71,34 @@
     </a>
     <nav class="gap-2 flex flex-wrap lg:flex-col">
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         href="{base}/">Home</a
       >
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         href="{base}/resources">Resources</a
       >
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         href="{base}/youtube">YouTube Feed</a
       >
       <div class="h-4" />
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
         href={github_url}
         >✍ Contribute on GitHub <span class="sr-only">in a new tab</span></a
       >
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
         href="{github_url}/#contributors"
         >📣 Credits <span class="sr-only">in a new tab</span></a
       >
       <a
-        class="p-2 text-slate-200 bg-green-600 font-bold rounded-lg"
+        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         target="_blank"
         rel="noreferrer"
         href={climate_town_url}

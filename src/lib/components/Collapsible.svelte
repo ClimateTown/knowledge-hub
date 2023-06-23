@@ -2,7 +2,10 @@
   export let label: string;
 </script>
 
-<details class="rounded-lg border-2" open>
+<details
+  class="rounded-lg border-2 dark:border-zinc-950 dark:text-zinc-200"
+  open
+>
   <summary class="cursor-pointer text-2xl p-2">
     <svg
       xmlns="http://www.w3.org/2000/svg"
