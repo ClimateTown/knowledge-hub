@@ -138,6 +138,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lasercar"><img src="https://avatars.githubusercontent.com/u/64717068?v=4?s=60" width="60px;" alt="LaserCar"/><br /><sub><b>LaserCar</b></sub></a><br /><a href="#content-LaserCar" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/isidro-molina-b20497215/"><img src="https://avatars.githubusercontent.com/u/86175612?v=4?s=60" width="60px;" alt="Isidro Molina"/><br /><sub><b>Isidro Molina</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=imolina212" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/christina-loiacono/"><img src="https://avatars.githubusercontent.com/u/65386414?v=4?s=60" width="60px;" alt="Christina Loiacono"/><br /><sub><b>Christina Loiacono</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=christina-ml" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rivermizell"><img src="https://avatars.githubusercontent.com/u/97765376?v=4?s=60" width="60px;" alt="River Mizell"/><br /><sub><b>River Mizell</b></sub></a><br /><a href="#content-rivermizell" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
