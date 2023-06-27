@@ -127,6 +127,7 @@ def resource_is_duplicated(issues: List[ResourceIssue]):
     tl_domain_whitelist = [
         "discord.gg",
         "nasa.gov",
+        "substack.com",
         "youtube.com",
         "youtu.be",
     ]
