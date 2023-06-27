@@ -173,19 +173,21 @@ def get_pr_message(issues: List[ResourceIssue]):
     for issue in issues:
         message += f"- Closes #{issue.issue_number} (from @{issue.author})\n"
 
-    message += "\n\n"
-
-    # Sorted list of unique authors
-    authors = sorted(list(set([issue.author for issue in issues])))
-    message += "@all-contributors\n"
-    for author in authors:
-        message += f"please add @{author} for content\n"
-
     message += (
         "\n\n"
         "Thank you to our contributors for these resources! 🥳🌳\n\n"
         f"This PR was curated with help from the `{SCRIPT_PATH.name}` script. 🤖"
     )
+    return message
+
+
+def get_all_contributors_message(issues: List[ResourceIssue]):
+    # Sorted list of unique authors
+    message = "@all-contributors\n"
+
+    authors = sorted(list(set([issue.author for issue in issues])))
+    for author in authors:
+        message += f"please add @{author} for content\n"
     return message
 
 
@@ -251,6 +253,11 @@ def main(ignore_issues=None):
     with open(pr_message_path, "w", encoding="utf-8") as file:
         file.write(get_pr_message(valid_issues))
         logger.success(f"PR message written to file {pr_message_path}.")
+
+    logger.info(
+        f"Add the contributors by commenting the following on the PR:\n"
+        f"{get_all_contributors_message(valid_issues)}"
+    )
 
 
 if __name__ == "__main__":
