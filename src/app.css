@@ -32,15 +32,11 @@ details:not([open]) > summary svg {
   outline: auto;
 }
 
-/* user prefered / OS colour scheme for tag colors */
-@media (prefers-color-scheme: light) {
-  .tag-color {
-    background-color: var(--tag-color) !important;
-  }
+
+.tag-color {
+  background-color: var(--tag-color) !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  .tag-color {
-    background-color: var(--tag-color-dark) !important;
-  }
+.dark .tag-color {
+  background-color: var(--tag-color-dark) !important;
 }

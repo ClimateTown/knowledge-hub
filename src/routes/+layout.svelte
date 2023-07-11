@@ -1,9 +1,32 @@
 <!-- Emoji support -->
 <script>
+  import { browser } from "$app/environment";
   import { base } from "$app/paths";
   import { github_url, climate_town_url } from "$lib/constants";
   import { onMount } from "svelte";
   onMount(() => twemoji.parse(document.body));
+
+  $: darkMode = browser
+    ? localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    : false;
+  const setColorMode = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+      darkMode = false;
+      if (browser) {
+        localStorage.theme = "light";
+      }
+    } else {
+      document.documentElement.classList.add("dark");
+      darkMode = true;
+      if (browser) {
+        localStorage.theme = "dark";
+      }
+    }
+    return;
+  };
 
   import "../app.css";
 </script>
@@ -42,7 +65,8 @@
   />
   <script
     src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"
+  ></script>
 </svelte:head>
 
 <div
@@ -69,7 +93,7 @@
         />
       </picture>
     </a>
-    <nav class="gap-2 flex flex-wrap lg:flex-col">
+    <nav class="gap-2 flex flex-wrap lg:flex-col grow">
       <a
         class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         href="{base}/">Home</a
@@ -105,6 +129,15 @@
         >🌐 Main Website <span class="sr-only">in a new tab</span>
       </a>
     </nav>
+    <div>
+      <button
+        type="button"
+        class="p-2 w-full text-left text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
+        on:click={setColorMode}
+      >
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+    </div>
   </header>
 
   <main class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8">
