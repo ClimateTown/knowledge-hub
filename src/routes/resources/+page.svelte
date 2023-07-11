@@ -129,25 +129,40 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <nav aria-label="Resource Navigation" class="flex flex-wrap gap-2 pb-3">
-  <ButtonLinks link={true} url="{github_url}/issues/new/choose" version="hollow" color="green" newTab={true}>
-    <svg slot="icon"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    class="w-6 h-6 inline"
+  <ButtonLinks
+    link={true}
+    url="{github_url}/issues/new/choose"
+    version="hollow"
+    color="green"
+    newTab={true}
   >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-    />
-  </svg>
-    <span slot="label">Suggest resource</span></ButtonLinks>
+    <svg
+      slot="icon"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-6 h-6 inline"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
+      />
+    </svg>
+    <span slot="label">Suggest resource</span></ButtonLinks
+  >
 
-    <ButtonLinks link={true} url="{github_url}/edit/main/data/resources.yml" version="hollow" color="green" newTab={true}>
-      <svg slot="icon"
+  <ButtonLinks
+    link={true}
+    url="{github_url}/edit/main/data/resources.yml"
+    version="hollow"
+    color="green"
+    newTab={true}
+  >
+    <svg
+      slot="icon"
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -162,10 +177,17 @@
       />
     </svg>
     <span slot="label">Edit</span>
-    </ButtonLinks> 
+  </ButtonLinks>
 
-    <ButtonLinks link={true} download={true} url="{base}/ClimateTown-Knowledge-Hub-resources.csv" version="hollow" color="green">
-      <svg slot="icon"
+  <ButtonLinks
+    link={true}
+    download={true}
+    url="{base}/ClimateTown-Knowledge-Hub-resources.csv"
+    version="hollow"
+    color="green"
+  >
+    <svg
+      slot="icon"
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"
@@ -181,7 +203,7 @@
       />
     </svg>
     <span slot="label">Download resources</span>
-    </ButtonLinks> 
+  </ButtonLinks>
 </nav>
 
 <Collapsible label="Filter">
@@ -205,8 +227,15 @@
       {/each}
     </div>
     <div class="flex gap-2 justify-end">
-      <ButtonLinks type="reset" on:click={clearAllFilters} disabled={!isFilterDirty} version="filled" color="green">
-        <svg slot="icon"
+      <ButtonLinks
+        type="reset"
+        on:click={clearAllFilters}
+        disabled={!isFilterDirty}
+        version="filled"
+        color="green"
+      >
+        <svg
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -222,9 +251,10 @@
         </svg>
         <span slot="label">Clear All</span>
       </ButtonLinks>
-      
+
       <ButtonLinks type="submit" version="filled" color="green">
-        <svg slot="icon"
+        <svg
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -255,10 +285,18 @@
 </ol>
 <div class="italic text-center m-4">Those are all the resources!</div>
 
-<ButtonLinks type="button" version="filled" color="green" isCircle={true} on:click={scrollToTop} extraClasses="w-10 h-10 justify-center rounded-full fixed transition-opacity bottom-10 right-10 z-50 outline-offset-2 {showButton
-  ? 'opacity-100'
-  : 'opacity-0'}">
-  <svg slot="icon"
+<ButtonLinks
+  type="button"
+  version="filled"
+  color="green"
+  isCircle={true}
+  on:click={scrollToTop}
+  extraClasses="w-10 h-10 justify-center rounded-full fixed transition-opacity bottom-10 right-10 z-50 outline-offset-2 {showButton
+    ? 'opacity-100'
+    : 'opacity-0'}"
+>
+  <svg
+    slot="icon"
     xmlns="http://www.w3.org/2000/svg"
     width="16"
     height="16"

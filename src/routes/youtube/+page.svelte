@@ -93,7 +93,8 @@
 </div>
 
 <Collapsible label="Filter">
-  <form bind:this={form}
+  <form
+    bind:this={form}
     on:submit|preventDefault={() => {
       displayedVideos = filterResources(videoData, channelArr);
     }}
@@ -118,8 +119,15 @@
       {/each}
     </div>
     <div class="flex gap-2 justify-end">
-      <ButtonLinks type="reset" on:click={() => form.requestSubmit()} disabled={!isFilterDirty} version="filled" color="green">
-        <svg slot="icon"
+      <ButtonLinks
+        type="reset"
+        on:click={() => form.requestSubmit()}
+        disabled={!isFilterDirty}
+        version="filled"
+        color="green"
+      >
+        <svg
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -135,9 +143,10 @@
         </svg>
         <span slot="label">Clear All</span>
       </ButtonLinks>
-      
+
       <ButtonLinks type="submit" version="filled" color="green">
-        <svg slot="icon"
+        <svg
+          slot="icon"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

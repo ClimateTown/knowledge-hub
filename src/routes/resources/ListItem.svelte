@@ -73,7 +73,7 @@
       </p>
       <div class="flex flex-wrap text-xs py-2">
         {#each resource.tags as tag}
-          <TagWrapper tag={tag} extraClasses="whitespace-nowrap p-1 my-1 mr-2">
+          <TagWrapper {tag} extraClasses="whitespace-nowrap p-1 my-1 mr-2">
             {tag.name}
           </TagWrapper>
         {/each}

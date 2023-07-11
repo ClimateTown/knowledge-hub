@@ -32,7 +32,6 @@ details:not([open]) > summary svg {
   outline: auto;
 }
 
-
 .tag-color {
   background-color: var(--tag-color) !important;
 }

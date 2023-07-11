@@ -65,8 +65,7 @@
   />
   <script
     src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
-    crossorigin="anonymous"
-  ></script>
+    crossorigin="anonymous"></script>
 </svelte:head>
 
 <div
