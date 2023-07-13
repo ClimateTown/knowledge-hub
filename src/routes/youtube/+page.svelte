@@ -7,6 +7,7 @@
   } from "$lib/interfaces";
   import YoutubeThumbnail from "./YoutubeThumbnail.svelte";
   import Collapsible from "lib//components/Collapsible.svelte";
+    import Filters from "lib//components/Filters.svelte";
 
   export let data: PageData;
 
@@ -15,6 +16,13 @@
   let displayedVideos = videoData;
 
   let rerender: boolean = false;
+
+  const DEFAULT_CHECKED = true;
+  // Creating initial filter object and state
+  const filterObject: { channels: { [key: string]: boolean } } = { channels: {} };
+  for (const channel of channelData) {
+    filterObject.channels[channel.channelId] = DEFAULT_CHECKED;
+  }
 
   function sortChannelBySubCount(a: YoutubeChannel, b: YoutubeChannel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
@@ -36,28 +44,10 @@
     return channelData.find((channel) => channel.channelId === channelId);
   }
 
-  // Creating initial filter object and state
-  const channelArr: YoutubeChannelFilterItem[] = [];
-  for (const channelInfo of channelData) {
-    channelArr.push({ channelId: channelInfo.channelId, active: true });
-  }
-
-  function filterResources(
-    videoData: YoutubeVideo[],
-    channelArr: YoutubeChannelFilterItem[]
-  ): YoutubeVideo[] {
-    const filteredActiveChannelIds: string[] = channelArr
-      .filter((channel) => channel.active === true)
-      .map((channel) => channel.channelId);
-
-    const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-      filteredActiveChannelIds.includes(video.channelId)
+  function filterVideos(): void {
+    displayedVideos = videoData.filter((video) =>
+      filterObject.channels[video.channelId]
     );
-
-    // Force svelte re-render
-    rerender = !rerender;
-
-    return filteredVideos;
   }
 
   function semanticNumber(number: number) {
@@ -85,64 +75,15 @@
   the latest long-form videos from each YouTuber.
 </div>
 
-<Collapsible label="Filter">
-  <form
-    on:submit|preventDefault={() => {
-      displayedVideos = filterResources(videoData, channelArr);
-    }}
-    class="p-4 space-y-4"
-  >
-    <!-- <label for="search">Search</label> -->
-    <!-- <input type="text" id="search" name="search" /> -->
-    <div class="flex flex-row flex-wrap gap-2">
-      {#each channelData as channelInfo, index}
-        <div
-          class="input-wrapper-focus flex justify-between gap-2 rounded-full cursor-pointer bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
-        >
-          <label
-            class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
-            for={channelInfo.channelId}
-          >
-            <input
-              type="checkbox"
-              class="appearance-none cursor-pointer w-6 h-6 rounded-full bg-white dark:bg-black checked:bg-black dark:checked:bg-green-600 transition duration-200"
-              bind:checked={channelArr[index].active}
-              id={channelInfo.channelId}
-            />
-            <span
-              >{channelInfo.channelName} ({semanticNumber(
-                channelInfo.channelSubCount
-              )})</span
-            ></label
-          >
-        </div>
-      {/each}
-    </div>
-    <div class="flex flex-row-reverse">
-      <button
-        type="submit"
-        class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6 inline"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
-          />
-        </svg>
-
-        Filter
-      </button>
-    </div>
-  </form>
-</Collapsible>
+<Filters 
+  onSubmit={filterVideos}
+  filterOptions={channelData}
+  checkboxMapping={filterObject.channels}
+  labelCount={(d) => semanticNumber(d.channelSubCount)}
+  labelDisplayField="channelName"
+  labelIdField="channelId"
+  defaultChecked={DEFAULT_CHECKED}
+></Filters>
 
 {#key rerender}
   <ol

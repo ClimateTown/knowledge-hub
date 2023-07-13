@@ -75,9 +75,9 @@
         {#each resource.tags as tag}
           <div
             class="bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white rounded-lg whitespace-nowrap p-1 my-1 mr-2"
-            class:tag-color={lightColors[tag.color] || darkColors[tag.color]}
-            style:--tag-color={lightColors[tag.color]}
-            style:--tag-color-dark={darkColors[tag.color]}
+            class:option-color={lightColors[tag.color] || darkColors[tag.color]}
+            style:--option-color={lightColors[tag.color]}
+            style:--option-color-dark={darkColors[tag.color]}
           >
             {tag.name}
           </div>

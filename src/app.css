@@ -34,13 +34,13 @@ details:not([open]) > summary svg {
 
 /* user prefered / OS colour scheme for tag colors */
 @media (prefers-color-scheme: light) {
-  .tag-color {
-    background-color: var(--tag-color) !important;
+  .option-color {
+    background-color: var(--option-color) !important;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  .tag-color {
-    background-color: var(--tag-color-dark) !important;
+  .option-color {
+    background-color: var(--option-color-dark) !important;
   }
 }

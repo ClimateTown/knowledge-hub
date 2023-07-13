@@ -1,8 +1,8 @@
 import type { PageServerLoad } from "./$types";
 import { parse } from "yaml";
 import fs from "fs";
-import type { Tag, Resource } from "$lib/interfaces";
-
+import type { Tag, Resource, TagWithCount } from "$lib/interfaces";
+ 
 const removeEmojisFromStr = (str: string) => {
   return str.replace(/[\u1000-\uFFFF]+/g, "").trim();
 };
@@ -43,7 +43,7 @@ const parseResources = (tags: Tag[]) => {
   return resources.reverse();
 };
 
-const getTagCounts = (tags: Tag[], yml_data: Resource[]) => {
+const getTagCounts = (tags: Tag[], yml_data: Resource[]): TagWithCount[] => {
   let tag_count: { [key: string]: number } = {};
   for (const tag of tags) {
     tag_count[tag.name] = 0;
@@ -53,12 +53,16 @@ const getTagCounts = (tags: Tag[], yml_data: Resource[]) => {
       tag_count[tag.name] += 1;
     }
   }
-  return tag_count;
+
+  return tags.map((tag) => ({
+    ...tag,
+    count: tag_count[tag.name]
+  }));
 };
 
 const parseTags = () => {
   const file = fs.readFileSync("data/resource_tags.yml", "utf8");
-  const tags: Tag[] = parse(file);
+  const tags: { name: string, color: string }[] = parse(file);
   tags.sort((tag1, tag2) => {
     return sortAlphabeticallyEmojisFirst(tag1.name, tag2.name);
   });
@@ -70,13 +74,12 @@ export function load(params: PageServerLoad) {
 
   const resources: Resource[] = parseResources(tags);
 
-  const tag_count = getTagCounts(tags, resources);
+  const tag_w_count: TagWithCount[] = getTagCounts(tags, resources);
 
   return {
     payload: {
       resources: resources,
-      tags: tags,
-      tags_count: tag_count,
+      tags: tag_w_count,
     },
   };
 }

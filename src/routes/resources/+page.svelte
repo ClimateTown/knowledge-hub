@@ -5,8 +5,9 @@
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import type { Tag } from "$lib/interfaces";
-  import Collapsible from "$lib/components/Collapsible.svelte";
+  import Filters from "$lib/components/Filters.svelte";
   import ListItem from "./ListItem.svelte";
+  import { removeWhitespace } from "$lib/utils";
   export let data: PageData;
 
   // Constants for infinite scroll/lazy loading
@@ -23,29 +24,11 @@
   $: tagLogic = tagLogicAnd ? "and" : "or";
 
   let tags: Tag[] = data.payload.tags;
-  let tags_count = data.payload.tags_count;
 
   // Creating filter object
-  let filterObject: any = {};
-  filterObject["tags"] = {};
+  const filterObject: { tags: { [key: string]: boolean } } = { tags: {} };
   for (const tag of tags) {
     filterObject.tags[tag.name] = false;
-  }
-
-  $: isFilterDirty = Object.values(filterObject.tags).some(
-    (tag_active) => tag_active === true
-  );
-
-  let removeWhitespace = (str: string) => {
-    return str.replace(/\W+/g, "");
-  };
-
-  function clearAllFilters() {
-    for (const key in filterObject.tags) {
-      // set all filters to false
-      filterObject.tags[key] = false;
-    }
-    filterResources();
   }
 
   function filterResources() {
@@ -202,88 +185,14 @@
   </a>
 </nav>
 
-<Collapsible label="Filter">
-  <!-- begin form -->
-  <form on:submit|preventDefault={filterResources} class="p-4 space-y-4">
-    <!-- <label for="search">Search</label> -->
-    <!-- <input type="text" id="search" name="search" /> -->
-    <div class="flex flex-row flex-wrap gap-2">
-      {#each tags as tag}
-        <!-- checkboxes -->
-        <div
-          class="input-wrapper-focus flex justify-between gap-2 rounded-full bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white"
-          class:tag-color={lightColors[tag.color] || darkColors[tag.color]}
-          style:--tag-color={lightColors[tag.color]}
-          style:--tag-color-dark={darkColors[tag.color]}
-        >
-          <label
-            class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
-            for={removeWhitespace(tag.name)}
-          >
-            <input
-              type="checkbox"
-              class="appearance-none cursor-pointer w-6 h-6  rounded-full bg-white dark:bg-black checked:bg-black dark:checked:bg-green-600 transition duration-200"
-              bind:checked={filterObject.tags[tag.name]}
-              id={removeWhitespace(tag.name)}
-              name={removeWhitespace(tag.name)}
-            />
-            <span>
-              {tag.name}
-              <span class="text-zinc-700 dark:text-zinc-300 italic"
-                >({tags_count[tag.name]})</span
-              >
-            </span>
-          </label>
-        </div>
-      {/each}
-    </div>
-    <div class="flex justify-end">
-      <button
-        on:click|preventDefault={clearAllFilters}
-        class="mr-2 p-2 rounded-lg border-2 border-green-500 text-green-500 disabled:text-gray-500 disabled:border-gray-500 disabled:cursor-not-allowed"
-        disabled={!isFilterDirty}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6 inline"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-          />
-        </svg>
-
-        Clear All
-      </button>
-      <button
-        type="submit"
-        class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6 inline"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z"
-          />
-        </svg>
-
-        Filter
-      </button>
-    </div>
-  </form>
-</Collapsible>
+<Filters 
+  onSubmit={filterResources}
+  filterOptions={tags}
+  checkboxMapping={filterObject.tags}
+  labelCount={(d) => d.count}
+  labelDisplayField="name"
+  labelIdField="name"
+></Filters>
 
 <ol
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
