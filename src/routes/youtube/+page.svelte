@@ -2,12 +2,9 @@
   import type { PageData } from "./$types";
   import type {
     YoutubeChannel,
-    YoutubeVideo,
-    YoutubeChannelFilterItem,
   } from "$lib/interfaces";
   import YoutubeThumbnail from "./YoutubeThumbnail.svelte";
-  import Collapsible from "lib//components/Collapsible.svelte";
-    import Filters from "lib//components/Filters.svelte";
+  import Filters from "$lib/components/Filters.svelte";
 
   export let data: PageData;
 
@@ -15,14 +12,15 @@
   const channelData = data.payload.channelData;
   let displayedVideos = videoData;
 
-  let rerender: boolean = false;
-
-  const DEFAULT_CHECKED = true;
   // Creating initial filter object and state
-  const filterObject: { channels: { [key: string]: boolean } } = { channels: {} };
+  const DEFAULT_CHECKED = true;
+  const filterObject: { channels: { [key: string]: boolean } } = {
+    channels: {},
+  };
   for (const channel of channelData) {
     filterObject.channels[channel.channelId] = DEFAULT_CHECKED;
   }
+  channelData.sort(sortChannelBySubCount);
 
   function sortChannelBySubCount(a: YoutubeChannel, b: YoutubeChannel) {
     const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
@@ -37,16 +35,14 @@
     // Normal sort
     return b.channelSubCount - a.channelSubCount;
   }
-  channelData.sort(sortChannelBySubCount);
 
   function getChannelData(channelId: string) {
-    // Given a channel ID, return the channel data from the array
     return channelData.find((channel) => channel.channelId === channelId);
   }
 
   function filterVideos(): void {
-    displayedVideos = videoData.filter((video) =>
-      filterObject.channels[video.channelId]
+    displayedVideos = videoData.filter(
+      (video) => filterObject.channels[video.channelId]
     );
   }
 
@@ -75,29 +71,28 @@
   the latest long-form videos from each YouTuber.
 </div>
 
-<Filters 
+<Filters
   onSubmit={filterVideos}
   filterOptions={channelData}
   checkboxMapping={filterObject.channels}
-  labelCount={(d) => semanticNumber(d.channelSubCount)}
-  labelDisplayField="channelName"
-  labelIdField="channelId"
+  optionCount={(d) => semanticNumber(d.channelSubCount)}
+  optionDisplay="channelName"
+  optionId="channelId"
   defaultChecked={DEFAULT_CHECKED}
-></Filters>
+/>
 
-{#key rerender}
-  <ol
-    class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
-  >
-    {#each displayedVideos as video}
-      <li>
-        <YoutubeThumbnail
-          {...video}
-          channelInfo={getChannelData(video.channelId)}
-        />
-      </li>
-    {:else}
-      <li>No videos here!</li>
-    {/each}
-  </ol>
-{/key}
+<ol
+  class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
+>
+  {#each displayedVideos as video}
+    <li>
+      <YoutubeThumbnail
+        title={video.title}
+        videoId={video.videoId}
+        channelInfo={getChannelData(video.channelId)}
+      />
+    </li>
+  {:else}
+    <li>No videos here!</li>
+  {/each}
+</ol>

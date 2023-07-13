@@ -1,35 +1,40 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { base } from "$app/paths";
   import { github_url } from "$lib/constants";
-  import { lightColors, darkColors } from "$lib/resources";
   import type { PageData } from "./$types";
-  import { onMount } from "svelte";
   import type { Tag } from "$lib/interfaces";
   import Filters from "$lib/components/Filters.svelte";
   import ListItem from "./ListItem.svelte";
-  import { removeWhitespace } from "$lib/utils";
+
   export let data: PageData;
 
-  // Constants for infinite scroll/lazy loading
+  // Setup for infinite scroll/lazy loading
   const DEFAULT_DISPLAY_LIMIT = 18;
   const SCROLL_THRESHOLD = 200;
   let displayedResourceLimit = DEFAULT_DISPLAY_LIMIT;
   let scrollPosition = 0;
   let showButton = false;
+  let mainH1El: HTMLHeadingElement | null;
 
-  let resources = data.payload.resources;
+  const resources = data.payload.resources;
   let displayedResources = resources;
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
   $: tagLogic = tagLogicAnd ? "and" : "or";
 
-  let tags: Tag[] = data.payload.tags;
+  const tags: Tag[] = data.payload.tags;
 
   // Creating filter object
   const filterObject: { tags: { [key: string]: boolean } } = { tags: {} };
   for (const tag of tags) {
     filterObject.tags[tag.name] = false;
   }
+
+  onMount(() => {
+    window.addEventListener("scroll", handleScroll);
+    mainH1El = document.querySelector("main > h1");
+  });
 
   function filterResources() {
     // Reset displayed resources
@@ -77,7 +82,6 @@
 
     if (currentPosition >= scrollHeight - SCROLL_THRESHOLD) {
       displayedResourceLimit += DEFAULT_DISPLAY_LIMIT;
-      console.log("updateLimit");
     }
   }
 
@@ -87,16 +91,7 @@
     showButton = scrollPosition >= window.innerHeight * 2;
     if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
-
-  let mainH1El: HTMLHeadingElement | null;
-
-  // Hook into component lifecycle events
-  onMount(() => {
-    window.addEventListener("scroll", handleScroll);
-    mainH1El = document.querySelector("main > h1");
-  });
-
-  // for button
+  
   function scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -114,7 +109,7 @@
 </div>
 <nav aria-label="Resource Navigation" class="flex flex-wrap gap-2 pb-3">
   <a
-    class="p-2 rounded-lg border-2 border-green-500  dark:border-green-700 text-green-700 dark:text-green-500"
+    class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500"
     href="{github_url}/issues/new/choose"
     target="_blank"
     rel="noreferrer"
@@ -138,7 +133,7 @@
   </a>
 
   <a
-    class="p-2 rounded-lg border-2 border-green-500  dark:border-green-700 text-green-700 dark:text-green-500"
+    class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500"
     href="{github_url}/edit/main/data/resources.yml"
     target="_blank"
     rel="noreferrer"
@@ -185,14 +180,14 @@
   </a>
 </nav>
 
-<Filters 
+<Filters
   onSubmit={filterResources}
   filterOptions={tags}
   checkboxMapping={filterObject.tags}
-  labelCount={(d) => d.count}
-  labelDisplayField="name"
-  labelIdField="name"
-></Filters>
+  optionCount={(d) => d.count}
+  optionDisplay="name"
+  optionId="name"
+/>
 
 <ol
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"

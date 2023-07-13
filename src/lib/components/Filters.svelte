@@ -6,18 +6,28 @@
   interface FilterOption {
     [key: string]: any;
   }
-
+  
   export let onSubmit: () => void;
   export let filterOptions: FilterOption[]; // create special filter object tpe
   export let checkboxMapping: { [key: string]: boolean } = {};
   export let defaultChecked: boolean = false;
-  export let labelDisplayField: string;
-  export let labelIdField: string;
-  export let labelCount: (d: FilterOption) => string;
+  export let optionDisplay: string | ((d: FilterOption) => string);
+  export let optionId: string | ((d: FilterOption) => string);
+  export let optionCount: string | ((d: FilterOption) => string);
 
   $: isFilterDirty = Object.values(checkboxMapping).some(
     (checkbox_selected) => checkbox_selected !== defaultChecked
   );
+
+  function resolveInputValue(filterOption: FilterOption, functionOrField: string | ((d: FilterOption) => string)): string {
+    if (typeof functionOrField === "string") {
+      const field = functionOrField;
+      return filterOption[field];
+    } else {
+      const function_ = functionOrField;
+      return function_(filterOption);
+    }
+  };
 
   function resetFilters() {
     for (const key in checkboxMapping) {
@@ -26,8 +36,6 @@
     }
     onSubmit();
   }
-
-  // TODO: add any functionality that should exist here
 </script>
 
 <Collapsible label="Filter">
@@ -43,19 +51,19 @@
         >
           <label
             class="cursor-pointer py-2 px-3 rounded-full flex items-center gap-2 text-sm"
-            for={removeWhitespace(filterOption[labelIdField])}
+            for={removeWhitespace(resolveInputValue(filterOption, optionId))}
           >
             <input
               type="checkbox"
               class="appearance-none cursor-pointer w-6 h-6 rounded-full bg-white dark:bg-black checked:bg-black dark:checked:bg-green-600 transition duration-200"
-              bind:checked={checkboxMapping[filterOption[labelIdField]]}
-              id={removeWhitespace(filterOption[labelIdField])}
-              name={removeWhitespace(filterOption[labelDisplayField])}
+              bind:checked={checkboxMapping[resolveInputValue(filterOption, optionId)]}
+              id={removeWhitespace(resolveInputValue(filterOption, optionId))}
+              name={removeWhitespace(resolveInputValue(filterOption, optionDisplay))}
             />
             <span>
-              {filterOption[labelDisplayField]}
+              {resolveInputValue(filterOption, optionDisplay)}
               <span class="text-zinc-700 dark:text-zinc-300 italic"
-                >({labelCount(filterOption)})</span
+                >({resolveInputValue(filterOption, optionCount)})</span
               >
             </span>
           </label>
@@ -91,7 +99,6 @@
             <path d="m4 1v4h-4" transform="matrix(1 0 0 -1 0 6)" />
           </g>
         </svg>
-
         Reset
       </button>
       <button

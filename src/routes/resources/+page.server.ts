@@ -2,14 +2,7 @@ import type { PageServerLoad } from "./$types";
 import { parse } from "yaml";
 import fs from "fs";
 import type { Tag, Resource, TagWithCount } from "$lib/interfaces";
- 
-const removeEmojisFromStr = (str: string) => {
-  return str.replace(/[\u1000-\uFFFF]+/g, "").trim();
-};
-
-const hasEmoji = (str: string) => {
-  return /[\u1000-\uFFFF]+/g.test(str);
-};
+import { hasEmoji, removeEmojisFromStr } from "$lib/utils";
 
 const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
   if (hasEmoji(a) && hasEmoji(b)) {
