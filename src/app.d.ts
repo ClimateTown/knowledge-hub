@@ -14,7 +14,7 @@ declare namespace App {
           url: string;
           summary: string;
           tags: string[];
-        }
+        },
       ];
     };
   }
@@ -27,7 +27,7 @@ declare namespace App {
         channel_username: string;
         channel_id: string;
         upload_date: Date;
-      }
+      },
     ];
   }
   // interface Platform {}

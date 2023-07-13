@@ -49,7 +49,7 @@ export let lightColors = colorData.reduce<{ [key: string]: string }>(
     obj[item.name] = item.lightHex;
     return obj;
   },
-  {}
+  {},
 );
 
 export let darkColors = colorData.reduce<{ [key: string]: string }>(
@@ -57,5 +57,5 @@ export let darkColors = colorData.reduce<{ [key: string]: string }>(
     obj[item.name] = item.darkHex;
     return obj;
   },
-  {}
+  {},
 );
