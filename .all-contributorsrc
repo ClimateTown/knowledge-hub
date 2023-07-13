@@ -191,6 +191,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "monedula",
+      "name": "monedula",
+      "avatar_url": "https://avatars.githubusercontent.com/u/139066628?v=4",
+      "profile": "https://github.com/monedula",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "commitType": "docs"
