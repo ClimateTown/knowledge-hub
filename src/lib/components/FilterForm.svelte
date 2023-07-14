@@ -59,7 +59,7 @@
             </div>
             <div class="flex gap-2 justify-end">
                 {#if showFilterLogic}
-                <label
+                <label aria-label={filterLogic}
                     for="switch"
                     class="inline-flex items-center rounded-md cursor-pointer text-white border-2 border-green-700 dark:border-green-900/75"
                 >
@@ -69,15 +69,15 @@
                         type="checkbox"
                         class="hidden peer"
                     />
-                    <span
-                        class="px-4 py-2 rounded-l-sm
-                        bg-zinc-50 text-black dark:text-white dark:bg-zinc-800 peer-checked:bg-green-700 peer-checked:text-white dark:peer-checked:bg-green-900/75"
+                    <span aria-hidden={!filterLogicAnd}
+                        class="px-4 py-2 rounded-l-sm 
+                        bg-white text-zinc-500 dark:text-zinc-400 dark:bg-zinc-800 peer-checked:bg-green-700 peer-checked:text-white dark:peer-checked:bg-green-900/75"
                         >And</span
                     >
-                    <span
-                        class="px-4 py-2 rounded-r-sm
+                    <span aria-hidden={filterLogicAnd}
+                        class="px-4 py-2 rounded-r-sm 
                         bg-green-700 dark:bg-green-900/75
-                        peer-checked:text-black peer-checked:bg-zinc-50 dark:peer-checked:bg-zinc-800 dark:peer-checked:text-white"
+                        peer-checked:text-zinc-500 peer-checked:bg-white dark:peer-checked:bg-zinc-800 dark:peer-checked:text-zinc-400"
                         >Or</span
                     >
                 </label>
