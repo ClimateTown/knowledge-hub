@@ -1,34 +1,13 @@
 <!-- Emoji support -->
 <script>
-  import { browser } from "$app/environment";
   import { base } from "$app/paths";
   import { github_url, climate_town_url } from "$lib/constants";
+  import DarkModeControl from "$lib/components/DarkModeControl.svelte";
   import { onMount } from "svelte";
   onMount(() => twemoji.parse(document.body));
 
-  $: darkMode = browser
-    ? localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    : false;
-  const setColorMode = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove("dark");
-      darkMode = false;
-      if (browser) {
-        localStorage.theme = "light";
-      }
-    } else {
-      document.documentElement.classList.add("dark");
-      darkMode = true;
-      if (browser) {
-        localStorage.theme = "dark";
-      }
-    }
-    return;
-  };
-
   import "../app.css";
+    
 </script>
 
 <svelte:head>
@@ -72,10 +51,10 @@
   class="body flex flex-col lg:flex-row w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50"
 >
   <header
-    class="lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex flex-col p-5 min-h-max lg:min-h-screen"
+    class="relative lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex items-center md:flex-col p-5 min-h-max lg:min-h-screen"
   >
     <a href="{base}/">
-      <picture class="w-48 self-center">
+      <picture class="block w-32 lg:w-48 self-center object-contain">
         <source
           type="image/avif"
           srcset="{base}/images/knowledge-hub-logo.avif"
@@ -85,6 +64,7 @@
           srcset="{base}/images/knowledge-hub-logo.webp"
         />
         <img
+          class="w-full h-full object-contain"
           height="180"
           width="180"
           src="{base}/images/knowledge-hub-logo.png"
@@ -92,7 +72,9 @@
         />
       </picture>
     </a>
-    <nav class="gap-2 flex flex-wrap lg:flex-col grow">
+    <DarkModeControl cssClass="absolute w-fit top-1 right-1 border-2 border-current rounded-md p-2 bg-zinc-50 text-black dark:bg-zinc-900 dark:text-white"></DarkModeControl>
+
+    <nav class="gap-2 flex flex-wrap lg:flex-col">
       <a
         class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
         href="{base}/">Home</a
@@ -128,15 +110,6 @@
         >🌐 Main Website <span class="sr-only">in a new tab</span>
       </a>
     </nav>
-    <div>
-      <button
-        type="button"
-        class="p-2 w-full text-left text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        on:click={setColorMode}
-      >
-        {darkMode ? "Light Mode" : "Dark Mode"}
-      </button>
-    </div>
   </header>
 
   <main class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8">

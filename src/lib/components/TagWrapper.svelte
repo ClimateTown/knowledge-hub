@@ -1,14 +1,13 @@
 <script lang="ts">
   import { lightColors, darkColors } from "$lib/resources";
-  import type { Tag } from "$lib/interfaces";
-  export let tag: Tag | undefined = undefined;
+  export let tagColor: string | undefined = undefined; 
   export let extraClasses: string = "";
 
   let lightTagColor: string | undefined, darkTagColor: string | undefined;
 
-  if (tag && tag.color !== undefined) {
-    lightTagColor = lightColors[tag.color];
-    darkTagColor = darkColors[tag.color];
+  if (tagColor !== undefined) {
+    lightTagColor = lightColors[tagColor];
+    darkTagColor = darkColors[tagColor];
   }
 </script>
 
