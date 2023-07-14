@@ -70,12 +70,12 @@
                         class="hidden peer"
                     />
                     <span
-                        class="px-4 py-2 rounded-l-sm 
+                        class="px-4 py-2 rounded-l-sm
                         bg-zinc-50 text-black dark:text-white dark:bg-zinc-800 peer-checked:bg-green-700 peer-checked:text-white dark:peer-checked:bg-green-900/75"
                         >And</span
                     >
                     <span
-                        class="px-4 py-2 rounded-r-sm 
+                        class="px-4 py-2 rounded-r-sm
                         bg-green-700 dark:bg-green-900/75
                         peer-checked:text-black peer-checked:bg-zinc-50 dark:peer-checked:bg-zinc-800 dark:peer-checked:text-white"
                         >Or</span

@@ -7,7 +7,7 @@
   onMount(() => twemoji.parse(document.body));
 
   import "../app.css";
-    
+
 </script>
 
 <svelte:head>

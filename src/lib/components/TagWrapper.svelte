@@ -1,6 +1,6 @@
 <script lang="ts">
   import { lightColors, darkColors } from "$lib/resources";
-  export let tagColor: string | undefined = undefined; 
+  export let tagColor: string | undefined = undefined;
   export let extraClasses: string = "";
 
   let lightTagColor: string | undefined, darkTagColor: string | undefined;

@@ -29,11 +29,13 @@ export interface YoutubeVideo {
 }
 
 export interface FilterOption extends Tag {
-    count: number | string;
-    active: boolean;
-    id?: string;
+  count: number | string;
+  active: boolean;
+  id?: string;
 }
 
-export type FilterLogic = "and" | "or"
+export type FilterLogic = "and" | "or";
 
-export type CustomFilterEvent = {filter:{filterOptions: FilterOption[], filterLogic: FilterLogic }}
+export type CustomFilterEvent = {
+  filter: { filterOptions: FilterOption[]; filterLogic: FilterLogic };
+};

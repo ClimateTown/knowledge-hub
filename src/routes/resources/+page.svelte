@@ -26,7 +26,7 @@
       count: tags_count[tag.name],
       active: false
     }
-    if (tag.color) tagOption['color'] = tag.color    
+    if (tag.color) tagOption['color'] = tag.color
     filterObject.push(tagOption)
   }
 
@@ -44,7 +44,7 @@
     // ! Need to refactor later to make more readable
     // For Intersection filterTags.size
     // For union, minCommonTags = 1
-    let minCommonTags = filterLogic === "and" ? filterTags.size : 1; 
+    let minCommonTags = filterLogic === "and" ? filterTags.size : 1;
 
     for (let resource of resources) {
       // Resource tags
@@ -54,7 +54,7 @@
         displayedResources.push(resource);
       }
     }
-    
+
     // Force svelte re-render
     displayedResources = displayedResources;
   }
