@@ -6,7 +6,7 @@
   interface FilterOption {
     [key: string]: any;
   }
-  
+
   export let onSubmit: () => void;
   export let filterOptions: FilterOption[]; // create special filter object tpe
   export let checkboxMapping: { [key: string]: boolean } = {};

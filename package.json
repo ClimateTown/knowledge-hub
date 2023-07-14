@@ -33,6 +33,7 @@
   "type": "module",
   "dependencies": {
     "ts-node": "^10.4.0",
+    "twemoji": "^14.0.2",
     "vitest": "^0.26.2"
   }
 }

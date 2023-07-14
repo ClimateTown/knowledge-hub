@@ -91,7 +91,7 @@
     showButton = scrollPosition >= window.innerHeight * 2;
     if (scrollPosition >= SCROLL_THRESHOLD) updateDisplayLimit();
   }
-  
+
   function scrollToTop() {
     window.scrollTo({
       top: 0,

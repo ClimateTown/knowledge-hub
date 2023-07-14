@@ -3,6 +3,8 @@
   import { base } from "$app/paths";
   import { github_url, climate_town_url } from "$lib/constants";
   import { onMount } from "svelte";
+  import twemoji from "twemoji";
+
   onMount(() => twemoji.parse(document.body));
 
   import "../app.css";

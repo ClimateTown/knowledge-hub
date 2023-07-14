@@ -49,13 +49,13 @@ const getTagCounts = (tags: Tag[], yml_data: Resource[]): TagWithCount[] => {
 
   return tags.map((tag) => ({
     ...tag,
-    count: tag_count[tag.name]
+    count: tag_count[tag.name],
   }));
 };
 
 const parseTags = () => {
   const file = fs.readFileSync("data/resource_tags.yml", "utf8");
-  const tags: { name: string, color: string }[] = parse(file);
+  const tags: { name: string; color: string }[] = parse(file);
   tags.sort((tag1, tag2) => {
     return sortAlphabeticallyEmojisFirst(tag1.name, tag2.name);
   });
