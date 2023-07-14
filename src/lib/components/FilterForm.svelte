@@ -70,12 +70,12 @@
                         class="hidden peer"
                     />
                     <span aria-hidden={!filterLogicAnd}
-                        class="px-4 py-2 rounded-l-sm 
+                        class="px-4 py-2 rounded-l-sm
                         bg-white text-zinc-500 dark:text-zinc-400 dark:bg-zinc-800 peer-checked:bg-green-700 peer-checked:text-white dark:peer-checked:bg-green-900/75"
                         >And</span
                     >
                     <span aria-hidden={filterLogicAnd}
-                        class="px-4 py-2 rounded-r-sm 
+                        class="px-4 py-2 rounded-r-sm
                         bg-green-700 dark:bg-green-900/75
                         peer-checked:text-zinc-500 peer-checked:bg-white dark:peer-checked:bg-zinc-800 dark:peer-checked:text-zinc-400"
                         >Or</span
