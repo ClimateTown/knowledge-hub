@@ -153,4 +153,5 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 
 ## Acknowledgements
 
+- [Bootstrap Icons](https://icons.getbootstrap.com/) for icons
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
