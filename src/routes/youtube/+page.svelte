@@ -94,5 +94,6 @@
     {/each}
   </ol>
 {/key}
+<p class="italic text-center m-4">Those are all the videos!</p>
 
 <ScrollTopButton on:updateLimit={updateLimit} />
