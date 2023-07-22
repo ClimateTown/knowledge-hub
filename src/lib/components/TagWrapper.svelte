@@ -3,7 +3,8 @@
   export let tagColor: string | undefined = undefined;
   export let extraClasses: string = "";
 
-  let lightTagColor: string | undefined, darkTagColor: string | undefined;
+  let lightTagColor: string | undefined;
+  let darkTagColor: string | undefined;
 
   if (tagColor !== undefined) {
     lightTagColor = lightColors[tagColor];
