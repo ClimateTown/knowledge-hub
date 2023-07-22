@@ -42,7 +42,7 @@
     );
 
     // ! Need to refactor later to make more readable
-    // For Intersection filterTags.size
+    // For intersection, minCommonTags = filterTags.size
     // For union, minCommonTags = 1
     let minCommonTags = filterLogic === "and" ? filterTags.size : 1;
 

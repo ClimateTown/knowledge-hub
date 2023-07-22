@@ -3,7 +3,7 @@ import type { YoutubeChannel } from "./interfaces";
 /**
  * format subcount for user display
  * @param number
- * @returns
+ * @returns number as string
  */
 export const semanticNumber = (number: number): string => {
   // number less than 1000

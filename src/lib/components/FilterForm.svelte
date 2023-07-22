@@ -39,19 +39,19 @@
             class="p-4 space-y-4"
         >
             <div class="flex flex-row flex-wrap gap-2">
-                {#each filterOptions as option}
+                {#each filterOptions as filterOption}
                     <!-- checkboxes -->
                     <TagWrapper
-                        tagColor={option.color}
+                        tagColor={filterOption.color}
                         extraClasses="input-wrapper-focus flex justify-between gap-2"
                     >
                         <Checkbox
-                            name={option.name}
-                            bind:checked={option.active}
+                            name={filterOption.name}
+                            bind:checked={filterOption.active}
                         >
                             <span
                                 class="text-zinc-700 dark:text-zinc-300 italic"
-                                >({option.count})</span
+                                >({filterOption.count})</span
                             >
                         </Checkbox>
                     </TagWrapper>
