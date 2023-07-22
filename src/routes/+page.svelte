@@ -1,5 +1,9 @@
 <script>
   import { base } from "$app/paths";
+
+  import Book from "svelte-bootstrap-icons/lib/Book.svelte";
+  import Play from "svelte-bootstrap-icons/lib/Play.svelte";
+
   import { github_url } from "$lib/constants";
 </script>
 
@@ -53,21 +57,7 @@
       href="{base}/resources"
       class="block w-fit p-4 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 hover:text-black hover:bg-green-500 dark:hover:text-white dark:hover:bg-green-900 transition-colors"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 inline"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-        />
-      </svg>
-
+      <Book class="w-6 h-6 inline" />
       Resources
     </a>
   </div>
@@ -83,21 +73,7 @@
       href="{base}/youtube"
       class="block w-fit p-4 rounded-lg border-2 border-red-500 dark:border-red-700 text-red-500 dark:text-red-400 hover:bg-red-500 hover:text-black dark:hover:text-white dark:hover:bg-red-900 transition-colors"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 inline"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-        />
-      </svg>
-
+      <Play class="w-6 h-6 inline" />
       YouTube Feed
     </a>
   </div>

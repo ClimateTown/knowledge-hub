@@ -1,5 +1,8 @@
 <script lang="ts">
     import { createEventDispatcher, onMount } from "svelte";
+
+    import ChevronUp from "svelte-bootstrap-icons/lib/ChevronUp.svelte";
+
     import { DEFAULT_DISPLAY_LIMIT, SCROLL_THRESHOLD } from "$lib/constants";
     import ButtonLinks from "$lib/components/ButtonLinks.svelte";
 
@@ -56,19 +59,6 @@
         ? 'opacity-100'
         : 'opacity-0'}"
 >
-    <svg
-        slot="icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-        class="bi bi-chevron-up w-6 h-6 inline bg-center"
-    >
-        <path
-            fill-rule="evenodd"
-            d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"
-        />
-    </svg>
+    <ChevronUp class="w-6 h-6 inline bg-center" />
     <span slot="label" class="sr-only">Back to Top</span>
 </ButtonLinks>
