@@ -27,6 +27,17 @@
       ]
     },
     {
+      "login": "dmlb",
+      "name": "Danielle Bastien",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4835191?v=4",
+      "profile": "https://daniellemlbastien.com/",
+      "contributions": [
+        "a11y",
+        "code",
+        "maintenance"
+      ]
+    },
+    {
       "login": "azebramoomoo",
       "name": "azebramoomoo",
       "avatar_url": "https://avatars.githubusercontent.com/u/121310825?v=4",
@@ -62,16 +73,6 @@
       "contributions": [
         "content",
         "bug"
-      ]
-    },
-    {
-      "login": "dmlb",
-      "name": "Danielle Bastien",
-      "avatar_url": "https://avatars.githubusercontent.com/u/4835191?v=4",
-      "profile": "https://daniellemlbastien.com/",
-      "contributions": [
-        "a11y",
-        "code"
       ]
     },
     {

@@ -65,28 +65,30 @@
             </div>
             <div class="flex gap-2 justify-end">
                 {#if showFilterLogic}
-                <label aria-label={filterLogic}
+                <label aria-label="filter with and / or"
                     for="switch"
-                    class="inline-flex items-center rounded-md cursor-pointer text-white border-2 border-green-700 dark:border-green-900/75"
+                    class="inline-flex items-center rounded-md cursor-pointer outline-2 outline-offset-1 focus-within:outline text-white border-2 border-green-700 dark:border-green-900/75"
                 >
                     <input
                         bind:checked={filterLogicAnd}
+                        aria-checked={filterLogicAnd}
                         id="switch"
+                        role="switch"
                         type="checkbox"
-                        class="hidden peer"
+                        class="opacity-0 absolute peer"
                     />
-                    <span aria-hidden={!filterLogicAnd}
+                    <span
                         class="px-4 py-3 rounded-l-sm
                         bg-white text-zinc-500 dark:text-zinc-400 dark:bg-zinc-800 peer-checked:bg-green-700 peer-checked:text-white dark:peer-checked:bg-green-900/75"
                         >
-                        <Intersect /></span
+                        <Intersect aria-hidden="true" /><span class="sr-only">and</span></span
                     >
-                    <span aria-hidden={filterLogicAnd}
+                    <span
                     class="px-4 py-3 rounded-r-sm
                     bg-green-700 dark:bg-green-900/75
                     peer-checked:text-zinc-500 peer-checked:bg-white dark:peer-checked:bg-zinc-800 dark:peer-checked:text-zinc-400"
                     >
-                        <Union /></span
+                        <Union aria-hidden="true" /><span class="sr-only">or</span></span
                     >
                 </label>
                 {/if}
