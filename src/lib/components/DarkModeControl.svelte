@@ -32,9 +32,9 @@
 
 <button type="button" role="switch" aria-checked={darkMode} class={cssClass} on:click={setColorMode}>
     {#if darkMode}
-        <MoonStarsFill aria-hidden="true"/><span class="sr-only">Light</span>
+        <MoonStarsFill aria-hidden="true"/><span class="sr-only">Dark mode</span>
     {:else}
-        <SunFill aria-hidden="true"/><span class="sr-only">Dark</span>
+        <SunFill aria-hidden="true"/><span class="sr-only">Light mode</span>
     {/if}
     <span class="sr-only">&nbsp;Colour Scheme Mode</span>
 </button>
