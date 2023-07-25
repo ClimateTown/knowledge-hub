@@ -1,7 +1,7 @@
 <script lang="ts">
   import { base } from "$app/paths";
   import type { Resource } from "$lib/interfaces";
-  import { lightColors, darkColors } from "$lib/resources";
+  import TagWrapper from "$lib/components/TagWrapper.svelte";
   export let resource: Resource;
 </script>
 
@@ -73,14 +73,9 @@
       </p>
       <div class="flex flex-wrap text-xs py-2">
         {#each resource.tags as tag}
-          <div
-            class="bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white rounded-lg whitespace-nowrap p-1 my-1 mr-2"
-            class:tag-color={lightColors[tag.color] || darkColors[tag.color]}
-            style:--tag-color={lightColors[tag.color]}
-            style:--tag-color-dark={darkColors[tag.color]}
-          >
+          <TagWrapper tagColor={tag.color} extraClasses="whitespace-nowrap p-1 my-1 mr-2">
             {tag.name}
-          </div>
+          </TagWrapper>
         {/each}
       </div>
     </div>

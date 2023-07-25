@@ -21,14 +21,21 @@ export interface YoutubeChannel {
   channelSubCount: number;
 }
 
-export interface YoutubeChannelFilterItem {
-  channelId: string;
-  active: boolean;
-}
-
 export interface YoutubeVideo {
   channelId: string;
   publishedAt: string;
   videoId: string;
   title: string;
 }
+
+export interface FilterOption extends Tag {
+  count: number | string;
+  active: boolean;
+  id?: string;
+}
+
+export type FilterLogic = "and" | "or";
+
+export type CustomFilterEvent = {
+  filter: { filterOptions: FilterOption[]; filterLogic: FilterLogic };
+};
