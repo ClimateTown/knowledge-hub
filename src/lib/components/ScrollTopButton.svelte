@@ -59,6 +59,6 @@
         ? 'opacity-100'
         : 'opacity-0'}"
 >
-    <ChevronUp class="w-6 h-6 inline bg-center" />
+    <ChevronUp slot="icon" class="w-6 h-6 inline bg-center" />
     <span slot="label" class="sr-only">Back to Top</span>
 </ButtonLinks>
