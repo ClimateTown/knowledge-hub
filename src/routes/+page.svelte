@@ -1,5 +1,10 @@
 <script>
   import { base } from "$app/paths";
+
+  import Book from "svelte-bootstrap-icons/lib/Book.svelte";
+  import Play from "svelte-bootstrap-icons/lib/Play.svelte";
+  import ButtonLinks from "$lib/components/ButtonLinks.svelte";
+
   import { github_url } from "$lib/constants";
 </script>
 
@@ -36,10 +41,10 @@
 
 <div class="grid grid-cols-2 pb-10">
   <div
-    class="rounded-lg shadow-xl border-b-4 border-r-4 m-5 p-3 border-zinc-200 dark:border-zinc-900 md:col-span-1 col-span-2"
+    class="rounded-lg shadow-xl border-b-4 border-r-4 m-5 p-3 border-zinc-200 dark:border-zinc-900 md:col-span-1 col-span-2 flex flex-col"
   >
     <h3>Resources</h3>
-    <div class="my-3 text-zinc-600 dark:text-zinc-300">
+    <div class="my-3 text-zinc-600 dark:text-zinc-300 grow">
       A crowdsourced collection of a variety of climate resources. Want to
       suggest a resource? Please <a
         href="{github_url}/issues/new/choose"
@@ -49,57 +54,24 @@
       <a href={github_url} class="underline">edit on GitHub directly</a>
     </div>
 
-    <a
-      href="{base}/resources"
-      class="block w-fit p-4 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 hover:text-black hover:bg-green-500 dark:hover:text-white dark:hover:bg-green-900 transition-colors"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 inline"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-        />
-      </svg>
-
-      Resources
-    </a>
+    <ButtonLinks link={true} url="{base}/resources" version="hollow" color="green" extraClasses="block w-fit !p-4 !gap-3">
+      <Book slot="icon" class="w-6 h-6 inline" />
+      <span slot="label">Resources</span>
+    </ButtonLinks>
   </div>
   <div
-    class="rounded-lg shadow-xl border-b-4 border-r-4 m-5 p-3 border-zinc-200 dark:border-zinc-900 md:col-span-1 col-span-2"
+    class="rounded-lg shadow-xl border-b-4 border-r-4 m-5 p-3 border-zinc-200 dark:border-zinc-900 md:col-span-1 col-span-2 flex flex-col"
   >
     <h3>YouTube Feed</h3>
-    <div class="my-3  text-zinc-600 dark:text-zinc-300">
+    <div class="my-3  text-zinc-600 dark:text-zinc-300 grow">
       A feed of Climate Town and various other popular climate YouTuber videos,
       right here in the Knowledge Hub!
     </div>
-    <a
-      href="{base}/youtube"
-      class="block w-fit p-4 rounded-lg border-2 border-red-500 dark:border-red-700 text-red-500 dark:text-red-400 hover:bg-red-500 hover:text-black dark:hover:text-white dark:hover:bg-red-900 transition-colors"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 inline"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
-        />
-      </svg>
 
-      YouTube Feed
-    </a>
+    <ButtonLinks link={true} url="{base}/youtube" version="hollow" color="red" extraClasses="block w-fit !p-4">
+      <Play slot="icon" class="w-6 h-6 inline" />
+      <span slot="label">YouTube Feed</span>
+    </ButtonLinks>
   </div>
 </div>
 

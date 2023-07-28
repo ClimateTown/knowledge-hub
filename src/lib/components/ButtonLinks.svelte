@@ -13,7 +13,7 @@
   export let link: boolean = false;
   export let url: string = "#";
   export let newTab: boolean = false;
-  export let download: boolean = false;
+  export let download: boolean | undefined = undefined;
 
   let target: "_blank" | undefined;
   let rel: string | undefined;

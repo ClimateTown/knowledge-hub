@@ -153,5 +153,5 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 
 ## Acknowledgements
 
-- [Bootstrap Icons](https://icons.getbootstrap.com/) for icons
+- [Bootstrap Icons](https://icons.getbootstrap.com/) for icons via [svelte-bootstrap-icons](https://www.npmjs.com/package/svelte-bootstrap-icons)
 - [Twemoji](https://twemoji.twitter.com/) for emoji support
