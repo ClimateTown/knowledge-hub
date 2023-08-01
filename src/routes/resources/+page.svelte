@@ -2,8 +2,10 @@
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
-  import type { Tag, FilterOption, FilterLogic } from "$lib/interfaces";
+  import type { Tag, FilterOption, FilterLogic, Resource } from "$lib/interfaces";
   import { setIntersection } from "$lib/utils";
+  import Collapsible from "$lib/components/Collapsible.svelte";
+  import Search from "lib//components/Search.svelte";
   import ListItem from "./ListItem.svelte";
   import ResourceNav from "$lib/components/ResourceNav.svelte";
   import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
@@ -14,7 +16,12 @@
   $: displayedResourceLimit
   let resources = data.payload.resources;
   let displayedResources = resources;
-  let tagLogicAnd: boolean = true;
+  let searchResults: Resource[];
+  let filterByTags: Resource[];
+  let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
+  // TODO: make this a user preference
+  $: tagLogic = tagLogicAnd ? "and" : "or";
+
   let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
 
@@ -30,8 +37,28 @@
     filterObject.push(tagOption)
   }
 
+  function filterBySearchInput(event: CustomEvent<{searchTerm: string}>) {
+    const { searchTerm } = event.detail;
+    // check if filterByTags has at least 1 item
+    // var for resources or filter
+    let resourcesOrFilter = resources;
+
+    if (filterByTags ){
+      resourcesOrFilter = filterByTags;
+    }
+
+    // console.log("filterBySearchInput:", searchTerm)
+    let searchResults = resourcesOrFilter.filter(({description, title}) => {
+     return  description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      title.toLowerCase().includes(searchTerm.toLowerCase());
+    } )
+
+    displayedResources = searchResults;
+  }
+  
   const filterResources = (event: CustomEvent<{filterOptions: FilterOption[], filterLogic: FilterLogic}>) => {
     const {filterOptions, filterLogic} = event.detail
+    
     // Reset displayed resources
     displayedResources = [];
 
@@ -55,14 +82,21 @@
       }
     }
 
+    // search to rely on displayedResources
+    filterByTags = displayedResources;
+
     // Force svelte re-render
     displayedResources = displayedResources;
   }
 
+  // Update the displayedResourceLimit based on the scroll position
   const updateLimit = (event: CustomEvent<{displayLimit: number}>) => {
     const {displayLimit} = event.detail
     displayedResourceLimit = displayLimit
   }
+
+  let mainH1El: HTMLHeadingElement | null;
+
 </script>
 
 <h1>Resources</h1>
@@ -70,6 +104,7 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <ResourceNav />
+<Search on:search={filterBySearchInput}></Search>
 <FilterForm filterOptions={filterObject} filterLogicAnd={tagLogicAnd} on:filter={filterResources} />
 
 <ol
