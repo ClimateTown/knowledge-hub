@@ -55,10 +55,10 @@
 
     displayedResources = searchResults;
   }
-  
+
   const filterResources = (event: CustomEvent<{filterOptions: FilterOption[], filterLogic: FilterLogic}>) => {
     const {filterOptions, filterLogic} = event.detail
-    
+
     // Reset displayed resources
     displayedResources = [];
 
