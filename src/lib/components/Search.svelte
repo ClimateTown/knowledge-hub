@@ -11,7 +11,7 @@
 
 </script>
 
-<form on:submit|preventDefault={onSubmit} class="p-4 space-y-4">
+<form on:submit|preventDefault={onSubmit} class="mb-3">
 	<label for="search" />
 	<input
 		type="text"
@@ -19,7 +19,7 @@
 		placeholder="Search by keyword"
 		id="search"
 		name="search"
-		class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500"
+		class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 dark:bg-transparent"
 	/>
 	<button
 		type="submit"
