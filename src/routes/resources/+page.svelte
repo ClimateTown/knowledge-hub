@@ -4,8 +4,7 @@
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
   import type { Tag, FilterOption, FilterLogic, Resource } from "$lib/interfaces";
   import { setIntersection } from "$lib/utils";
-  import Collapsible from "$lib/components/Collapsible.svelte";
-  import Search from "lib//components/Search.svelte";
+  import Search from "$lib/components/Search.svelte";
   import ListItem from "./ListItem.svelte";
   import ResourceNav from "$lib/components/ResourceNav.svelte";
   import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
@@ -16,7 +15,6 @@
   $: displayedResourceLimit
   let resources = data.payload.resources;
   let displayedResources = resources;
-  let searchResults: Resource[];
   let filterByTags: Resource[];
   let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
@@ -94,9 +92,6 @@
     const {displayLimit} = event.detail
     displayedResourceLimit = displayLimit
   }
-
-  let mainH1El: HTMLHeadingElement | null;
-
 </script>
 
 <h1>Resources</h1>
