@@ -11,10 +11,11 @@
 
 </script>
 
-<form on:submit|preventDefault={onSubmit} class="mb-3">
+<form on:submit|preventDefault={onSubmit} class="mb-3" role="search">
 	<label for="search" />
 	<input
-		type="text"
+		type="search"
+		aria-label="search text"
 		bind:value={searchTerm}
 		placeholder="Search by keyword"
 		id="search"
