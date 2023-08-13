@@ -30,7 +30,7 @@ jobs:
         if: (github.ref == 'refs/heads/main') && (github.repository == 'ClimateTown/knowledge-hub')
       - uses: actions/setup-node@v3
         with:
-          node-version: 19
+          node-version: ">=18"
           cache: npm
       - name: Setup Python
         uses: actions/setup-python@v2
