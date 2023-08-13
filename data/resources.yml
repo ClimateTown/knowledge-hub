@@ -92,6 +92,7 @@
 - description: An interactive portal to view, subset, and download Earth observation data from NASA's EOSDIS system. Google "EOSDIS api" to find ways to programmatically interface with NASA's systems.
   tags:
     - Climate Tech
+    - NASA
   title: NASA Earth Data
   url: https://search.earthdata.nasa.gov/search
 - description: A country-agnostic guide on how to go about effectively contacting your political representatives.
@@ -317,6 +318,7 @@
 - description: The NASA Worldview app provides satellite imagery of Earth as it looks today and in the past through daily satellite images. Includes data on fires, droughts, floods, storms, pollution, and vegetation, with the ability to overlay, animate, and download the data.
   tags:
     - Tools
+    - NASA
   title: NASA WorldView (EOSDIS)
   url: https://worldview.earthdata.nasa.gov/
 - description: Search job openings across the Breakthrough Energy Ventures network, an initiative founded by Bill Gates.
