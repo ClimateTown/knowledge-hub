@@ -43,6 +43,8 @@
   color: "purple"
 - name: location/US/NYC
   color: "purple"
+- name: NASA
+  color: "teal"
 - name: Organizations
   color: "teal"
 - name: Politics
