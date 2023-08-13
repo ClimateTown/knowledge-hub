@@ -523,3 +523,43 @@
     - Politics/UK
   title: VoteClimate
   url: https://voteclimate.uk/
+- description: Links to many US based environmental organizations and online resources.
+  tags:
+    - 📚 Knowledge Hubs
+  title: Go Green Save Green
+  url: https://linktr.ee/gogreen_savegreen_
+- description: Examines the science and arguments of global warming skepticism. Common objections like 'global warming is caused by the sun', or 'temperature has changed naturally in the past' are examined to see what the science really says.
+  tags:
+    - Climate Skepticism
+  title: Skeptical Science
+  url: https://skepticalscience.com/
+- description: In the USA, more than 1,500 state-level lobbyists are playing both sides of the climate crisis. Use F Minus' database to discover the extent to which fossil fuel lobbyists are also representing victims of the climate crisis in your state.
+  tags:
+    - Climate Accountability
+    - Politics/US
+  title: F Minus
+  url: https://fminus.org/
+- description: The Climate Action Against Disinformation (CAAD) coalition is an effort of over 50 organizations committed to addressing misleading content, which perpetuates false narratives on our environment and dilutes productive conversations on the climate.
+  tags:
+    - Climate Skepticism
+    - Climate Journalism
+  title: Climate Action Against Disinformation (CAAD)
+  url: https://caad.info/
+- description: Climate Analytics is a global climate science and policy institute engaged around the world in driving and supporting climate action aligned to the 1.5°C warming limit. They produce policy-relevant science and analysis on climate impacts, the energy transition, adaptation and loss and damage.
+  tags:
+    - Climate Journalism
+  title: Climate Analytics
+  url: https://climateanalytics.org/
+- description: Global Energy Monitor studies the evolving international energy landscape, creating databases, reports, and interactive tools that enhance understanding.
+  tags:
+    - Research
+    - Education
+    - Climate Accountability
+  title: Global Energy Monitor
+  url: https://globalenergymonitor.org/
+- description: This is the online version of NASA's Earth Information Center in Washington DC, it provides tools to visualize and interpret agriculture, air pollution, biodiversity, disasters, energy, greenhouse gases, sea level rise, water resources, and wildfires.
+  tags:
+    - Education
+    - Climate Models
+  title: NASA Earth Information Center
+  url: https://gis.earthdata.nasa.gov/portal/apps/sites/#/earth-information-center
