@@ -52,7 +52,7 @@
     const searchResults = results.map((result) => {
       return result.item;
     })
-    
+
     displayedResources = searchResults;
   }
 
