@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ButtonLinks from "./ButtonLinks.svelte";
 	import { createEventDispatcher } from "svelte";
 
     let searchTerm = '';
@@ -22,10 +23,11 @@
 		name="search"
 		class="p-2 rounded-lg border-2 border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 dark:bg-transparent"
 	/>
-	<button
+	<ButtonLinks
 		type="submit"
-		class="p-2 rounded-lg bg-green-700 text-white dark:bg-green-900/75"
+		version="filled"
+		color="green"
 	>
-		Search
-	</button>
+		<span slot="label">Search</span>
+	</ButtonLinks>
 </form>
