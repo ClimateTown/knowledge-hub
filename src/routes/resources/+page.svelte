@@ -10,6 +10,7 @@
   import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
   import FilterForm from "$lib/components/FilterForm.svelte";
   export let data: PageData;
+  import Fuse from 'fuse.js';
 
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT;
   $: displayedResourceLimit
@@ -37,20 +38,21 @@
 
   function filterBySearchInput(event: CustomEvent<{searchTerm: string}>) {
     const { searchTerm } = event.detail;
-    // check if filterByTags has at least 1 item
-    // var for resources or filter
-    let resourcesOrFilter = resources;
 
-    if (filterByTags ){
-      resourcesOrFilter = filterByTags;
+    const options = {
+      includeScore: true,
+      threshold: 0.25,
+      keys: ['description', 'tags', 'title']
     }
 
-    // console.log("filterBySearchInput:", searchTerm)
-    let searchResults = resourcesOrFilter.filter(({description, title}) => {
-     return  description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      title.toLowerCase().includes(searchTerm.toLowerCase());
-    } )
+    const fuse = new Fuse(resources, options);
 
+    const results = fuse.search(searchTerm);
+
+    const searchResults = results.map((result) => {
+      return result.item;
+    })
+    
     displayedResources = searchResults;
   }
 

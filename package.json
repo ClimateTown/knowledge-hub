@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
+    "fuse.js": "^6.6.2",
     "ts-node": "^10.4.0",
     "vitest": "^0.26.2"
   }
