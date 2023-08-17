@@ -41,9 +41,7 @@ body:
   - type: input
     attributes:
       label: Resource title
-      description: Give an appropriate title for the resource (<50 characters)
-    validations:
-      required: true
+      description: Give an appropriate title for the resource ([<50 characters](https://wordcounter.net/character-count))
   - type: input
     attributes:
       label: URL
@@ -56,25 +54,25 @@ body:
       description: >-
         What tags would you like to apply to this resource? Leave blank if you're not
         sure and our mods will help out. Try use existing tags from the website,
-        or applying one you feel is necessary.
+        or applying one you feel is necessary. See a full list of existing tags
+        [here](https://github.com/ClimateTown/knowledge-hub/blob/main/data/resource_tags.yml).
   - type: textarea
     attributes:
       label: Resource Summary
       description: >-
-        Provide a summary of the resource (<300 characters). This will be displayed on
+        Provide a summary of the resource ([<300 characters](https://wordcounter.net/character-count)). This will be displayed on
         the website alongside the title. Normally websites have an `og:description`
         tag in their HTML which you can go off (open "Inspect Element" in your browser
         and look for the tag).
-    validations:
-      required: true
   - type: textarea
     attributes:
       label: Relevance
       description: >-
         How is this resource relevant to the climate movement, or the
         ClimateTown community? Leave blank if already clear/self
-        explanatory from other info.
+        explanatory from other info. This field is only used for
+        discussion in the onboarding process.
   - type: textarea
     attributes:
       label: Other comments
-      description: Add any additional info you see fit
+      description: Add any additional info you see fit.
