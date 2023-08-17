@@ -29,7 +29,7 @@ jobs:
           echo "FILE_CONTENT<<$EOF" >> $GITHUB_OUTPUT
           echo $(cat ${{ env.LYCHEE_REPORT_FILE }}) >> $GITHUB_OUTPUT
           echo "$EOF" >> $GITHUB_OUTPUT
-
+      - run: echo ${{ steps.readReport.outputs.FILE_CONTENT }}
       - name: Update link tracking issue (update invalid links)
         if: env.lychee_exit_code != 0
         uses: actions-cool/issues-helper@v3
