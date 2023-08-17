@@ -1,22 +1,45 @@
 name: Check URL Status
 
 on:
+  push:
+  workflow_dispatch:
   schedule:
     - cron: 0 0 * * 0
+env:
+  LINK_TRACKING_ISSUE_NUMBER: 322
+permissions:
+  issues: write
 
 jobs:
-  check_urls:
+  linkChecker:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.8.0
+
+      - name: Update link tracking issue (update invalid links)
+        if: env.lychee_exit_code != 0
+        uses: actions-cool/issues-helper@v3
+        env:
+          FILE_CONTENT: $(cat ./lychee/out.md)
         with:
-          node-version: "18.15"
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install Deps
-        run: npm install
-      - name: Check URL
-        run: npm run broken-link-check
+          actions: "update-issue"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ env.LINK_TRACKING_ISSUE_NUMBER }}
+          state: "open"
+          body: ${{ env.FILE_CONTENT }}
+          update-mode: "replace"
+
+      - name: Update link tracking issue (no invalid links)
+        if: env.lychee_exit_code == 0
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: "update-issue"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ env.link_tracking_issue_number }}
+          state: "closed"
+          body: "No invalid links found! 🤖"
+          update-mode: "replace"
