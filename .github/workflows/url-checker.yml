@@ -24,7 +24,9 @@ jobs:
       - name: Read Lychee report
         if: env.lychee_exit_code != 0
         id: readReport
-        run: echo "::set-output name=FILE_CONTENT::$(cat ${{ env.LYCHEE_REPORT_FILE }})"
+        run: |
+          echo "FILE_CONTENT=$(cat ${{ env.LYCHEE_REPORT_FILE }})" >> $GITHUB_OUTPUT
+          cat ${{ env.LYCHEE_REPORT_FILE }}
 
       - name: Update link tracking issue (update invalid links)
         if: env.lychee_exit_code != 0
