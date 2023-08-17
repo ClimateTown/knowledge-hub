@@ -7,6 +7,7 @@ on:
     - cron: 0 0 * * 0
 env:
   LINK_TRACKING_ISSUE_NUMBER: 322
+  LYCHEE_REPORT_FILE: ./lychee/out.md
 permissions:
   issues: write
 
@@ -23,7 +24,7 @@ jobs:
       - name: Read Lychee report
         if: env.lychee_exit_code != 0
         id: readReport
-        run: echo "::set-output name=FILE_CONTENT::$(cat ./lychee/out.md)"
+        run: echo "::set-output name=FILE_CONTENT::$(cat ${{ env.LYCHEE_REPORT_FILE }})"
 
       - name: Update link tracking issue (update invalid links)
         if: env.lychee_exit_code != 0
@@ -46,3 +47,9 @@ jobs:
           state: "closed"
           body: "No invalid links found! 🤖"
           update-mode: "replace"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: lychee-report
+          path: ${{ env.LYCHEE_REPORT_FILE }}
