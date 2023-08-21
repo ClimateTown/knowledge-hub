@@ -3,15 +3,18 @@ name: Check URL Status
 on:
   workflow_dispatch:
   schedule:
-    - cron: 0 0 * * 0
+    - cron: 0 0 * * 0 # run at midnight every Sunday
+
 env:
   LINK_TRACKING_ISSUE_NUMBER: 322
-  LYCHEE_REPORT_FILE: ./lychee/out.md
+
 permissions:
   issues: write
 
 jobs:
-  linkChecker:
+  check-urls:
+    env:
+      LYCHEE_REPORT_FILE: ./lychee/out.md
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -46,7 +49,7 @@ jobs:
         with:
           actions: "update-issue"
           token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ env.link_tracking_issue_number }}
+          issue-number: ${{ env.LINK_TRACKING_ISSUE_NUMBER }}
           state: "closed"
           body: "No invalid links found! 🤖"
           update-mode: "replace"
