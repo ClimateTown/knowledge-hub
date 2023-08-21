@@ -140,6 +140,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/christina-loiacono/"><img src="https://avatars.githubusercontent.com/u/65386414?v=4?s=60" width="60px;" alt="Christina Loiacono"/><br /><sub><b>Christina Loiacono</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=christina-ml" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/rivermizell"><img src="https://avatars.githubusercontent.com/u/97765376?v=4?s=60" width="60px;" alt="River Mizell"/><br /><sub><b>River Mizell</b></sub></a><br /><a href="#content-rivermizell" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/monedula"><img src="https://avatars.githubusercontent.com/u/139066628?v=4?s=60" width="60px;" alt="monedula"/><br /><sub><b>monedula</b></sub></a><br /><a href="#content-monedula" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/thanks"><img src="https://avatars.githubusercontent.com/u/1121545?v=4?s=60" width="60px;" alt="Thanks"/><br /><sub><b>Thanks</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/pulls?q=is%3Apr+reviewed-by%3AThanks" title="Reviewed Pull Requests">👀</a></td>
     </tr>
   </tbody>
 </table>
