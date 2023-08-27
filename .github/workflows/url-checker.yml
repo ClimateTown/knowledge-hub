@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   check-urls:
+    if: ${{ !github.event.repository.fork }}
     env:
       LYCHEE_REPORT_FILE: ./lychee/out.md
     runs-on: ubuntu-latest
