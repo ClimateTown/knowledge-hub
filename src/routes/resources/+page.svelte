@@ -42,7 +42,7 @@
     const options = {
       includeScore: true,
       threshold: 0.25,
-      keys: ['description', 'tags', 'title']
+      keys: ['description', 'title']
     }
 
     const fuse = new Fuse(resources, options);
