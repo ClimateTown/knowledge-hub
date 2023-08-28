@@ -2,19 +2,25 @@
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
-  import type { Tag, FilterOption, FilterLogic } from "$lib/interfaces";
+  import type { Tag, FilterOption, FilterLogic, Resource } from "$lib/interfaces";
   import { setIntersection } from "$lib/utils";
+  import Search from "$lib/components/Search.svelte";
   import ListItem from "./ListItem.svelte";
   import ResourceNav from "$lib/components/ResourceNav.svelte";
   import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
   import FilterForm from "$lib/components/FilterForm.svelte";
   export let data: PageData;
+  import Fuse from 'fuse.js';
 
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT;
   $: displayedResourceLimit
   let resources = data.payload.resources;
   let displayedResources = resources;
-  let tagLogicAnd: boolean = true;
+  let filterByTags: Resource[];
+  let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
+  // TODO: make this a user preference
+  $: tagLogic = tagLogicAnd ? "and" : "or";
+
   let tags: Tag[] = data.payload.tags;
   let tags_count = data.payload.tags_count;
 
@@ -30,8 +36,29 @@
     filterObject.push(tagOption)
   }
 
+  function filterBySearchInput(event: CustomEvent<{searchTerm: string}>) {
+    const { searchTerm } = event.detail;
+
+    const options = {
+      includeScore: true,
+      threshold: 0.25,
+      keys: ['description', 'title']
+    }
+
+    const fuse = new Fuse(resources, options);
+
+    const results = fuse.search(searchTerm);
+
+    const searchResults = results.map((result) => {
+      return result.item;
+    })
+
+    displayedResources = searchResults;
+  }
+
   const filterResources = (event: CustomEvent<{filterOptions: FilterOption[], filterLogic: FilterLogic}>) => {
     const {filterOptions, filterLogic} = event.detail
+
     // Reset displayed resources
     displayedResources = [];
 
@@ -55,10 +82,14 @@
       }
     }
 
+    // search to rely on displayedResources
+    filterByTags = displayedResources;
+
     // Force svelte re-render
     displayedResources = displayedResources;
   }
 
+  // Update the displayedResourceLimit based on the scroll position
   const updateLimit = (event: CustomEvent<{displayLimit: number}>) => {
     const {displayLimit} = event.detail
     displayedResourceLimit = displayLimit
@@ -70,6 +101,7 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <ResourceNav />
+<Search on:search={filterBySearchInput}></Search>
 <FilterForm filterOptions={filterObject} filterLogicAnd={tagLogicAnd} on:filter={filterResources} />
 
 <ol
