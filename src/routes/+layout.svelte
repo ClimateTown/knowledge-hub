@@ -54,7 +54,7 @@
     class="relative lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex items-center md:flex-col p-5 min-h-max lg:min-h-screen"
   >
 
-    <a href="#main-content" 
+    <a href="#main-content"
       class="absolute p-10 mt-8 rounded-lg bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50 -translate-x-[999%] focus:translate-x-0 hover:bg-zinc-800 hover:text-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-800 transition-all duration-200 ease-in-out uppercase">
         Skip to content.
     </a>
