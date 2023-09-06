@@ -156,6 +156,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/139066628?v=4",
       "profile": "https://github.com/monedula",
       "contributions": ["content"]
+    },
+    {
+      "login": "commitsovercoffee",
+      "name": "Sourav Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/129554482?v=4",
+      "profile": "http://commitsovercoffee.com",
+      "contributions": ["code"]
     }
   ],
   "commitType": "docs"
