@@ -19,7 +19,7 @@ The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.g
 - [Create an issue](https://github.com/ClimateTown/knowledge-hub/issues/new/choose) and select "✨Resource Suggestion".
 - Fill out the form. Please adhere to the instructions.
 - Get the resource approved (or discuss it further in the issue).
-- Once approved, resource is then onboarded onto the website. Resource onboarding happens every Friday!!
+- Once approved, resource is then onboarded onto the website. Resource onboarding happens at least once a month (on the first Sunday)!
 
 ## Contributing
 
