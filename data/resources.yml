@@ -563,3 +563,32 @@
     - Climate Models
   title: NASA Earth Information Center
   url: https://gis.earthdata.nasa.gov/portal/apps/sites/#/earth-information-center
+- description: The Intergovernmental Panel on Climate Change (IPCC) is the United Nations body for assessing the science related to climate change.
+  tags:
+    - Organizations
+  title: Intergovernmental Panel on Climate Change (IPCC)
+  url: https://www.ipcc.ch/
+- description: The National Caucus of Environmental Legislators’ (NCEL) mission is to empower a nonpartisan network of legislative champions to protect, conserve, and improve the natural and human environment through research, education, and networking.
+  tags:
+    - Politics
+    - Education
+    - Research
+  title: NCEL
+  url: https://www.ncelenviro.org/
+- description: The Energy and Policy Institute is a watchdog organization working to expose attacks on renewable energy and counter misinformation by fossil fuel and utility interests.
+  tags:
+    - Climate Accountability
+    - Education
+  title: Energy and Policy Institute
+  url: https://energyandpolicy.org/
+- description: World Weather Attribution uses weather observations and climate models to understand how climate change influences the intensity and likelihood of extreme weather events. The studies also assess the role of vulnerability and exposure in the extent of the impacts.
+  tags:
+    - Research
+  title: World Weather Attribution
+  url: https://www.worldweatherattribution.org/
+- description: An archival database of hard-to-find news, information and documents about climate change and its perpetrators, found through a 20-year effort.
+  tags:
+    - Climate Accountability
+    - Climate Journalism
+  title: Climate Files
+  url: https://www.climatefiles.com/about-2/
