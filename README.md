@@ -54,9 +54,19 @@ This website is powered by coders from the community. If you want to contribute 
 - Create suggestions as issues in the repository. Discuss suggestions before submitting a pull request (unless the improvement is objectively good; e.g. performance, accessibility).
 - If you want to work on an issue, drop a comment on it (this helps prevent unnecessary doubling up of work). If someone working on an issue hasn't updated the issue in a few weeks, feel free to drop a comment of your own if you want to try it out.
 
-## Development installation
+## Development setup
 
-The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/). A dev environment can be easily set up using Node and npm:
+The site is primarily built using [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/), using Python for some additional tools in the codebase (eg. YouTube API, JSON schema validation). The following sections go through two options for installation, how to add Python dependencies, and setting up the YouTube API key.
+
+### Install option 1: Dev container
+
+This repo provides a [dev container](https://code.visualstudio.com/docs/devcontainers/containers) to streamline local development (assuming you're familiar with Docker and have it installed). Building and running this container will install all dependencies for the project, and run the development server in the background piping the output to `nohup.out`.
+
+### Install option 2: Manual installation
+
+Alternatively, you can install all project dependencies manually in the OS of your choice.
+
+#### Node and npm (for Svelte and SvelteKit)
 
 - [install Node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
 - `git clone https://github.com/ClimateTown/knowledge-hub.git`
@@ -64,13 +74,11 @@ The site is built using [Svelte](https://svelte.dev/) and [SvelteKit](https://ki
 - `npm install`
 - `npm run dev`
 
-### OPTIONAL: Python
+#### OPTIONAL: Python
 
-Some of the tools in the codebase (eg. YouTube API, JSON schema validation) use Python. For most changes to the site, Python is not required.
+As mentioned above, Python is only responsible for some tooling in the codebase. For most changes to the site, Python is not required.
 
-To set up Python:
-
-- install Python from [here](https://www.python.org/downloads/) if you haven't already (minimum version 3.7)
+- [install Python](https://www.python.org/downloads/) if you haven't already (minimum version 3.7)
 - create a virtual environment, then activate it (optional, but recommended)
   - `python -m venv venv`
   - activate the environment using either:
@@ -78,9 +86,24 @@ To set up Python:
     - `venv\Scripts\activate.bat` (Windows)
 - `pip install -r requirements.txt`
 
+#### OPTIONAL: Pre-commit
+
+This codebase uses [pre-commit](https://pre-commit.com/) and [pre-commit CI](https://pre-commit.ci/) to run linting on code, format Python code, and generally have help with code quality.
+
+To set up pre-commit locally:
+
+- install the Python environment (which includes pre-commit)
+- `pre-commit install` to install the hooks
+
+To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
+
+---
+
+### Adding Python dependencies
+
 This codebase uses [`pip-tools`](https://pypi.org/project/pip-tools/) to manage dependencies. If you add a new dependency, you can add it to `requirements.in` and run `pip-compile` to update `requirements.txt`. To update your environment run `pip-sync`.
 
-### OPTIONAL: Loading YouTube Data
+### YouTube API Keys
 
 To set up the YouTube API (important for working on scripts with YouTube video scraping):
 
@@ -93,18 +116,6 @@ To set up the YouTube API (important for working on scripts with YouTube video s
 - Add YOUTUBE_API_KEY=YourApiKeyHere
 - Run `python scripts/youtube.py`
 
-### OPTIONAL: Pre-commit
-
-This codebase uses [pre-commit](https://pre-commit.com/) and [pre-commit CI](https://pre-commit.ci/) to run linting on code, format Python code, and generally have help with code quality.
-
-You can either set up pre-commit locally (completely optional; it will run on every commit, aborting a commit if the pre-commit workflow fails), or you do nothing and leave it up to pre-commit CI to take care of it (where it will run on every push to GitHub, and fixes changes in PRs).
-
-To set up pre-commit locally:
-
-- install the Python environment (which includes pre-commit)
-- `pre-commit install` to install the hooks
-
-To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
 
 ## ✨Contributors
 
