@@ -116,7 +116,6 @@ To set up the YouTube API (important for working on scripts with YouTube video s
 - Add YOUTUBE_API_KEY=YourApiKeyHere
 - Run `python scripts/youtube.py`
 
-
 ## ✨Contributors
 
 Thanks go to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
