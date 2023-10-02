@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<div class="text-xs text-zinc-500 dark:text-zinc-400">
+<div class="text-xs text-zinc-500 dark:text-zinc-400 pb-5">
   Legal Disclaimer: This website hosts content curated and managed by community
   members from the Climate Town Discord and is not directly managed by Climate
   Town YouTube. While every effort is made to ensure the quality of the content,
@@ -84,4 +84,13 @@
   individual contributors and do not necessarily reflect those of Climate Town
   YouTube. By using this website, you agree to hold the site administrators and
   contributors harmless from any liability arising from your use of the content.
+</div>
+
+<div class="text-xs text-zinc-500 dark:text-zinc-400">
+  Data Disclaimer: By using this website, you consent to the collection of usage
+  data, including clicks on "resources", search terms used, and pages visited.
+  This data is solely used to monitor site usage, and to enhance the reach of
+  the project. As this project is open source, you can inspect the usage of
+  analytics. Our analytics platform is Mixpanel, with data being stored in the
+  EU.
 </div>
