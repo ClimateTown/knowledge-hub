@@ -1,13 +1,13 @@
 <script lang="ts">
   const removeWhitespace = (str: string) => {
-    return str.replace(/\W+/g, "");
-  };
+    return str.replace(/\W+/g, "")
+  }
 
-  export let name: string;
-  export let id: string | undefined = undefined;
-  export let checked: boolean;
+  export let name: string
+  export let id: string | undefined = undefined
+  export let checked: boolean
 
-  let checkboxId: string = id ? id : removeWhitespace(name);
+  let checkboxId: string = id ? id : removeWhitespace(name)
 </script>
 
 <label

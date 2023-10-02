@@ -1,4 +1,4 @@
-import type { YoutubeChannel } from "./interfaces";
+import type { YoutubeChannel } from "./interfaces"
 
 /**
  * format subcount for user display
@@ -8,19 +8,19 @@ import type { YoutubeChannel } from "./interfaces";
 export const semanticNumber = (number: number): string => {
   // number less than 1000
   if (number < 1000) {
-    return number.toString();
+    return number.toString()
   }
   // number between 1k and 1M
   else if (number >= 1000 && number < 1000000) {
-    return `${(number / 1000).toFixed(0)}k`;
+    return `${(number / 1000).toFixed(0)}k`
   }
   // number between 1M and 1B
   else if (number >= 1000000 && number < 1_000000000) {
-    return `${(number / 1000000).toFixed(1)}M`;
+    return `${(number / 1000000).toFixed(1)}M`
   } else {
-    return ">1B";
+    return ">1B"
   }
-};
+}
 
 /**
  * channels sorted by subcount, climate town always first
@@ -30,20 +30,20 @@ export const semanticNumber = (number: number): string => {
  */
 export const sortChannelBySubCount = (
   a: YoutubeChannel,
-  b: YoutubeChannel,
+  b: YoutubeChannel
 ): number => {
-  const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA";
+  const ClimateTownChannelId = "UCuVLG9pThvBABcYCm7pkNkA"
 
   if (a.channelId === ClimateTownChannelId) {
-    return -1;
+    return -1
   }
   if (b.channelId === ClimateTownChannelId) {
-    return 1;
+    return 1
   }
 
   // Normal sort
-  return b.channelSubCount - a.channelSubCount;
-};
+  return b.channelSubCount - a.channelSubCount
+}
 
 /**
  * Given a channel ID, return the channel data from the array
@@ -53,10 +53,10 @@ export const sortChannelBySubCount = (
  */
 export const getChannelData = (
   channelData: YoutubeChannel[],
-  channelId: string,
+  channelId: string
 ): YoutubeChannel | undefined => {
-  return channelData.find((channel) => channel.channelId === channelId);
-};
+  return channelData.find((channel) => channel.channelId === channelId)
+}
 
 /**
  * compare sets and return a new set with any found matches
@@ -65,11 +65,11 @@ export const getChannelData = (
  * @returns new Set()
  */
 export const setIntersection = (set1: Set<any>, set2: Set<any>) => {
-  let intersection = new Set();
+  let intersection = new Set()
   for (let element of set2) {
     if (set1.has(element)) {
-      intersection.add(element);
+      intersection.add(element)
     }
   }
-  return intersection;
-};
+  return intersection
+}

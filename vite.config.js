@@ -1,4 +1,4 @@
-import { sveltekit } from "@sveltejs/kit/vite";
+import { sveltekit } from "@sveltejs/kit/vite"
 
 /** @type {import('vite').UserConfig} */
 const config = {
@@ -6,6 +6,6 @@ const config = {
   test: {
     include: ["**/*.{test,spec}.{js,ts}"],
   },
-};
+}
 
-export default config;
+export default config
