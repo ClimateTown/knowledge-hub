@@ -1,4 +1,7 @@
 <script lang="ts">
+  import mixpanel from 'mixpanel-browser';
+  import Fuse from 'fuse.js';
+
   import type { PageData } from "./$types";
   import { onMount } from "svelte";
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
@@ -10,7 +13,6 @@
   import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
   import FilterForm from "$lib/components/FilterForm.svelte";
   export let data: PageData;
-  import Fuse from 'fuse.js';
 
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT;
   $: displayedResourceLimit
@@ -38,6 +40,11 @@
 
   function filterBySearchInput(event: CustomEvent<{searchTerm: string}>) {
     const { searchTerm } = event.detail;
+
+    // Analytics
+    mixpanel.track("Resource Search", {
+			"search term": searchTerm,
+		});
 
     const options = {
       includeScore: true,
@@ -67,6 +74,12 @@
         (option: FilterOption) => option.active === true
       ).map((option: FilterOption) => option.name)
     );
+
+    // Analytics
+    mixpanel.track("Resource Filter", {
+      "filter tags": Array.from(filterTags),
+      "filter logic": filterLogic,
+    })
 
     // ! Need to refactor later to make more readable
     // For intersection, minCommonTags = filterTags.size
