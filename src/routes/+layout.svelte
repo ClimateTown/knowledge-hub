@@ -4,6 +4,19 @@
   import { github_url, climate_town_url } from "$lib/constants";
   import DarkModeControl from "$lib/components/DarkModeControl.svelte";
   import { onMount } from "svelte";
+  import mixpanel from 'mixpanel-browser';
+
+  // Mixpanel
+  let prodToken = "8a77db5f474c225c17451f1bf5b2bca0";
+  let devToken = "b14569fe907cb8e8ce3e19459c085225";
+  let debug = process.env.NODE_ENV === "development";
+  let token = process.env.NODE_ENV === "development" ? devToken : prodToken;
+  mixpanel.init(token, {
+    debug: debug,
+    track_pageview: true,
+    persistence: 'localStorage'
+  });
+
   onMount(() => twemoji.parse(document.body));
 
   import "../app.css";
