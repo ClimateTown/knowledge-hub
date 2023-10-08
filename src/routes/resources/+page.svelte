@@ -1,97 +1,121 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
-  import { onMount } from "svelte";
-  import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants";
-  import type { Tag, FilterOption, FilterLogic, Resource } from "$lib/interfaces";
-  import { setIntersection } from "$lib/utils";
-  import Search from "$lib/components/Search.svelte";
-  import ListItem from "./ListItem.svelte";
-  import ResourceNav from "$lib/components/ResourceNav.svelte";
-  import ScrollTopButton from "$lib/components/ScrollTopButton.svelte";
-  import FilterForm from "$lib/components/FilterForm.svelte";
-  export let data: PageData;
-  import Fuse from 'fuse.js';
+  import mixpanel from "mixpanel-browser"
+  import Fuse from "fuse.js"
 
-  let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT;
+  import type { PageData } from "./$types"
+  import { onMount } from "svelte"
+  import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants"
+  import type {
+    Tag,
+    FilterOption,
+    FilterLogic,
+    Resource,
+  } from "$lib/interfaces"
+  import { setIntersection } from "$lib/utils"
+  import Search from "$lib/components/Search.svelte"
+  import ListItem from "./ListItem.svelte"
+  import ResourceNav from "$lib/components/ResourceNav.svelte"
+  import ScrollTopButton from "$lib/components/ScrollTopButton.svelte"
+  import FilterForm from "$lib/components/FilterForm.svelte"
+  export let data: PageData
+
+  let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedResourceLimit
-  let resources = data.payload.resources;
-  let displayedResources = resources;
-  let filterByTags: Resource[];
-  let tagLogicAnd: boolean = true; // Whether all the selected tags must match the resource (vs any of the selected tags)
+  let resources = data.payload.resources
+  let displayedResources = resources
+  let filterByTags: Resource[]
+  let tagLogicAnd: boolean = true // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
-  $: tagLogic = tagLogicAnd ? "and" : "or";
+  $: tagLogic = tagLogicAnd ? "and" : "or"
 
-  let tags: Tag[] = data.payload.tags;
-  let tags_count = data.payload.tags_count;
+  let tags: Tag[] = data.payload.tags
+  let tags_count = data.payload.tags_count
 
   // Creating form filter options, default view
-  let filterObject: FilterOption[] = [];
+  let filterObject: FilterOption[] = []
   for (const tag of tags) {
     let tagOption: FilterOption = {
       name: tag.name,
       count: tags_count[tag.name],
-      active: false
+      active: false,
     }
-    if (tag.color) tagOption['color'] = tag.color
+    if (tag.color) tagOption["color"] = tag.color
     filterObject.push(tagOption)
   }
 
-  function filterBySearchInput(event: CustomEvent<{searchTerm: string}>) {
-    const { searchTerm } = event.detail;
+  function filterBySearchInput(event: CustomEvent<{ searchTerm: string }>) {
+    const { searchTerm } = event.detail
+
+    // Analytics
+    mixpanel.track("Resource Search", {
+      "search term": searchTerm,
+    })
 
     const options = {
       includeScore: true,
       threshold: 0.25,
-      keys: ['description', 'title']
+      keys: ["description", "title"],
     }
 
-    const fuse = new Fuse(resources, options);
+    const fuse = new Fuse(resources, options)
 
-    const results = fuse.search(searchTerm);
+    const results = fuse.search(searchTerm)
 
     const searchResults = results.map((result) => {
-      return result.item;
+      return result.item
     })
 
-    displayedResources = searchResults;
+    displayedResources = searchResults
   }
 
-  const filterResources = (event: CustomEvent<{filterOptions: FilterOption[], filterLogic: FilterLogic}>) => {
-    const {filterOptions, filterLogic} = event.detail
+  const filterResources = (
+    event: CustomEvent<{
+      filterOptions: FilterOption[]
+      filterLogic: FilterLogic
+    }>
+  ) => {
+    const { filterOptions, filterLogic } = event.detail
 
     // Reset displayed resources
-    displayedResources = [];
+    displayedResources = []
 
     // Tags of interest
-    let filterTags: Set<string> = new Set(filterOptions.filter(
-        (option: FilterOption) => option.active === true
-      ).map((option: FilterOption) => option.name)
-    );
+    let filterTags: Set<string> = new Set(
+      filterOptions
+        .filter((option: FilterOption) => option.active === true)
+        .map((option: FilterOption) => option.name)
+    )
+
+    // Analytics
+    mixpanel.track("Resource Filter", {
+      "filter tags": Array.from(filterTags),
+      "filter logic": filterLogic,
+    })
 
     // ! Need to refactor later to make more readable
     // For intersection, minCommonTags = filterTags.size
     // For union, minCommonTags = 1
-    let minCommonTags = filterLogic === "and" ? filterTags.size : 1;
+    let minCommonTags = filterLogic === "and" ? filterTags.size : 1
 
     for (let resource of resources) {
       // Resource tags
-      let resourceTags = new Set(resource.tags.map((tag: Tag) => tag.name));
+      let resourceTags = new Set(resource.tags.map((tag: Tag) => tag.name))
 
       if (setIntersection(filterTags, resourceTags).size >= minCommonTags) {
-        displayedResources.push(resource);
+        displayedResources.push(resource)
       }
     }
 
     // search to rely on displayedResources
-    filterByTags = displayedResources;
+    filterByTags = displayedResources
 
     // Force svelte re-render
-    displayedResources = displayedResources;
+    displayedResources = displayedResources
   }
 
   // Update the displayedResourceLimit based on the scroll position
-  const updateLimit = (event: CustomEvent<{displayLimit: number}>) => {
-    const {displayLimit} = event.detail
+  const updateLimit = (event: CustomEvent<{ displayLimit: number }>) => {
+    const { displayLimit } = event.detail
     displayedResourceLimit = displayLimit
   }
 </script>
@@ -102,7 +126,11 @@
 </div>
 <ResourceNav />
 <Search on:search={filterBySearchInput}></Search>
-<FilterForm filterOptions={filterObject} filterLogicAnd={tagLogicAnd} on:filter={filterResources} />
+<FilterForm
+  filterOptions={filterObject}
+  filterLogicAnd={tagLogicAnd}
+  on:filter={filterResources}
+/>
 
 <ol
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"

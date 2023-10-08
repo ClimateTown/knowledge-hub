@@ -1,27 +1,27 @@
-import type { PageServerLoad } from "./$types";
-import fs from "fs";
-import type { YoutubeChannel, YoutubeVideo } from "$lib/interfaces";
+import type { PageServerLoad } from "./$types"
+import fs from "fs"
+import type { YoutubeChannel, YoutubeVideo } from "$lib/interfaces"
 
-const channelDataPath: string = "data/channel_data.json";
-const videoDataPath: string = "data/video_data.json";
+const channelDataPath: string = "data/channel_data.json"
+const videoDataPath: string = "data/video_data.json"
 
 // Function to read JSON file or return an empty array if the file doesn't exist
 function readJsonFile(filePath: string): any[] {
   try {
-    const file = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(file);
+    const file = fs.readFileSync(filePath, "utf8")
+    return JSON.parse(file)
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return [];
+      return []
     } else {
-      throw error;
+      throw error
     }
   }
 }
 
 // Reading in channel and video data
-const channelData: YoutubeChannel[] = readJsonFile(channelDataPath);
-const videoData: YoutubeVideo[] = readJsonFile(videoDataPath);
+const channelData: YoutubeChannel[] = readJsonFile(channelDataPath)
+const videoData: YoutubeVideo[] = readJsonFile(videoDataPath)
 
 // // Creating a list of unique tags
 // let tags: string[] = [];
@@ -37,5 +37,5 @@ export function load(params: PageServerLoad) {
       videoData: videoData,
       channelData: channelData,
     },
-  };
+  }
 }

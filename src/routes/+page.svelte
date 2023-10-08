@@ -1,11 +1,11 @@
 <script>
-  import { base } from "$app/paths";
+  import { base } from "$app/paths"
 
-  import Book from "svelte-bootstrap-icons/lib/Book.svelte";
-  import Play from "svelte-bootstrap-icons/lib/Play.svelte";
-  import ButtonLinks from "$lib/components/ButtonLinks.svelte";
+  import Book from "svelte-bootstrap-icons/lib/Book.svelte"
+  import Play from "svelte-bootstrap-icons/lib/Play.svelte"
+  import ButtonLinks from "$lib/components/ButtonLinks.svelte"
 
-  import { github_url } from "$lib/constants";
+  import { github_url } from "$lib/constants"
 </script>
 
 <h1 class="font-bold text-5xl">Climate Town</h1>
@@ -54,7 +54,13 @@
       <a href={github_url} class="underline">edit on GitHub directly</a>
     </div>
 
-    <ButtonLinks link={true} url="{base}/resources" version="hollow" color="green" extraClasses="block w-fit !p-4 !gap-3">
+    <ButtonLinks
+      link={true}
+      url="{base}/resources"
+      version="hollow"
+      color="green"
+      extraClasses="block w-fit !p-4 !gap-3"
+    >
       <Book slot="icon" class="w-6 h-6 inline" />
       <span slot="label">Resources</span>
     </ButtonLinks>
@@ -63,19 +69,25 @@
     class="rounded-lg shadow-xl border-b-4 border-r-4 m-5 p-3 border-zinc-200 dark:border-zinc-900 md:col-span-1 col-span-2 flex flex-col"
   >
     <h3>YouTube Feed</h3>
-    <div class="my-3  text-zinc-600 dark:text-zinc-300 grow">
+    <div class="my-3 text-zinc-600 dark:text-zinc-300 grow">
       A feed of Climate Town and various other popular climate YouTuber videos,
       right here in the Knowledge Hub!
     </div>
 
-    <ButtonLinks link={true} url="{base}/youtube" version="hollow" color="red" extraClasses="block w-fit !p-4">
+    <ButtonLinks
+      link={true}
+      url="{base}/youtube"
+      version="hollow"
+      color="red"
+      extraClasses="block w-fit !p-4"
+    >
       <Play slot="icon" class="w-6 h-6 inline" />
       <span slot="label">YouTube Feed</span>
     </ButtonLinks>
   </div>
 </div>
 
-<div class="text-xs text-zinc-500 dark:text-zinc-400">
+<div class="text-xs text-zinc-500 dark:text-zinc-400 pb-5">
   Legal Disclaimer: This website hosts content curated and managed by community
   members from the Climate Town Discord and is not directly managed by Climate
   Town YouTube. While every effort is made to ensure the quality of the content,
@@ -84,4 +96,13 @@
   individual contributors and do not necessarily reflect those of Climate Town
   YouTube. By using this website, you agree to hold the site administrators and
   contributors harmless from any liability arising from your use of the content.
+</div>
+
+<div class="text-xs text-zinc-500 dark:text-zinc-400">
+  Data Disclaimer: By using this website, you consent to the collection of usage
+  data, including clicks on "resources", search terms used, and pages visited.
+  This data is solely used to monitor site usage, and to enhance the reach of
+  the project. As this project is open source, you can inspect the usage of
+  analytics. Our analytics platform is Mixpanel, with data being stored in the
+  EU.
 </div>

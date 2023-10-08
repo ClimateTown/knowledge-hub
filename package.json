@@ -17,10 +17,13 @@
     "@sveltejs/adapter-static": "^1.0.0",
     "@sveltejs/kit": "^1.0.0",
     "@types/lodash.partition": "^4.6.7",
+    "@types/mixpanel-browser": "^2.47.2",
     "all-contributors-cli": "^6.25.0",
     "autoprefixer": "^10.4.13",
     "lodash.partition": "^4.6.0",
     "postcss": "^8.4.20",
+    "prettier": "^3.0.3",
+    "prettier-plugin-svelte": "^3.0.3",
     "svelte": "^3.54.0",
     "svelte-bootstrap-icons": "^3.0.0",
     "svelte-check": "^2.9.2",
@@ -34,6 +37,7 @@
   "type": "module",
   "dependencies": {
     "fuse.js": "^6.6.2",
+    "mixpanel-browser": "^2.47.0",
     "ts-node": "^10.4.0",
     "vitest": "^0.26.2"
   }

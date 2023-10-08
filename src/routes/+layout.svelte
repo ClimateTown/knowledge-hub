@@ -1,13 +1,25 @@
 <!-- Emoji support -->
 <script>
-  import { base } from "$app/paths";
-  import { github_url, climate_town_url } from "$lib/constants";
-  import DarkModeControl from "$lib/components/DarkModeControl.svelte";
-  import { onMount } from "svelte";
-  onMount(() => twemoji.parse(document.body));
+  import { base } from "$app/paths"
+  import { github_url, climate_town_url } from "$lib/constants"
+  import DarkModeControl from "$lib/components/DarkModeControl.svelte"
+  import { onMount } from "svelte"
+  import mixpanel from "mixpanel-browser"
 
-  import "../app.css";
+  // Mixpanel
+  let prodToken = "8a77db5f474c225c17451f1bf5b2bca0"
+  let devToken = "b14569fe907cb8e8ce3e19459c085225"
+  let debug = process.env.NODE_ENV === "development"
+  let token = process.env.NODE_ENV === "development" ? devToken : prodToken
+  mixpanel.init(token, {
+    debug: debug,
+    track_pageview: true,
+    persistence: "localStorage",
+  })
 
+  onMount(() => twemoji.parse(document.body))
+
+  import "../app.css"
 </script>
 
 <svelte:head>
@@ -44,7 +56,8 @@
   />
   <script
     src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"
+  ></script>
 </svelte:head>
 
 <div
@@ -53,10 +66,11 @@
   <header
     class="relative lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex items-center md:flex-col p-5 min-h-max lg:min-h-screen"
   >
-
-    <a href="#main-content"
-      class="absolute p-10 mt-8 rounded-lg bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50 -translate-x-[999%] focus:translate-x-0 hover:bg-zinc-800 hover:text-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-800 transition-all duration-200 ease-in-out uppercase">
-        Skip to content.
+    <a
+      href="#main-content"
+      class="absolute p-10 mt-8 rounded-lg bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50 -translate-x-[999%] focus:translate-x-0 hover:bg-zinc-800 hover:text-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-800 transition-all duration-200 ease-in-out uppercase"
+    >
+      Skip to content.
     </a>
 
     <a href="{base}/">
@@ -78,7 +92,9 @@
         />
       </picture>
     </a>
-    <DarkModeControl cssClass="absolute w-fit top-1 right-1 border-2 border-current rounded-md p-2 bg-zinc-50 text-black dark:bg-zinc-900 dark:text-white"></DarkModeControl>
+    <DarkModeControl
+      cssClass="absolute w-fit top-1 right-1 border-2 border-current rounded-md p-2 bg-zinc-50 text-black dark:bg-zinc-900 dark:text-white"
+    ></DarkModeControl>
 
     <nav class="gap-2 flex flex-wrap lg:flex-col">
       <a
@@ -118,7 +134,10 @@
     </nav>
   </header>
 
-  <main id="main-content" class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8">
+  <main
+    id="main-content"
+    class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8"
+  >
     <slot />
   </main>
 </div>

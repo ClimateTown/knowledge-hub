@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let label: string;
+  export let label: string
   import ChevronDown from "svelte-bootstrap-icons/lib/ChevronDown.svelte"
 </script>
 
@@ -8,7 +8,9 @@
   open
 >
   <summary class="cursor-pointer text-2xl p-2">
-    <ChevronDown class="w-6 h-6 inline transition-transform duration-100 ease-in-out"/>
+    <ChevronDown
+      class="w-6 h-6 inline transition-transform duration-100 ease-in-out"
+    />
     {label}
   </summary>
   <div>

@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let title: string;
-  export let videoId: string;
-  export let channelInfo: any; // Contains channel data for the video uploader
+  export let title: string
+  export let videoId: string
+  export let channelInfo: any // Contains channel data for the video uploader
   // export let realeasedDatetime: string;
 
-  const thumbnail = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
-  const { channelCustomName, channelName } = channelInfo;
+  const thumbnail = `https://i.ytimg.com/vi/${videoId}/default.jpg`
+  const { channelCustomName, channelName } = channelInfo
 
   function trimString(str: string, maxLength: number): string {
     /**
@@ -14,22 +14,22 @@
 
     // Check if the length of the input string is already less than or equal to maxLength
     if (str.length <= maxLength) {
-      return str;
+      return str
     }
 
     // Trim the string to maxLength characters
-    let trimmedString = str.substring(0, maxLength);
+    let trimmedString = str.substring(0, maxLength)
 
     // Find the last occurrence of a space character in the trimmed string
-    let lastIndex = trimmedString.lastIndexOf(" ");
+    let lastIndex = trimmedString.lastIndexOf(" ")
 
     // If a space character is found, trim the string again to remove everything after the space character
     if (lastIndex !== -1) {
-      trimmedString = trimmedString.substring(0, lastIndex);
+      trimmedString = trimmedString.substring(0, lastIndex)
     }
 
     // Add an ellipsis to indicate that the string has been trimmed
-    return trimmedString + "...";
+    return trimmedString + "..."
   }
 </script>
 

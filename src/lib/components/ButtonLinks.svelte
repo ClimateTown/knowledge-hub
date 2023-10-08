@@ -1,41 +1,43 @@
 <script lang="ts">
   // DESIGN
-  export let version: "hollow" | "filled" = "hollow";
-  export let color: "green" | "red" = "green";
-  export let isCircle: boolean = false;
-  export let extraClasses: string = "";
+  export let version: "hollow" | "filled" = "hollow"
+  export let color: "green" | "red" = "green"
+  export let isCircle: boolean = false
+  export let extraClasses: string = ""
 
   // button el
-  export let disabled: boolean = false;
-  export let type: "button" | "reset" | "submit" = "button";
+  export let disabled: boolean = false
+  export let type: "button" | "reset" | "submit" = "button"
 
   // anchor el
-  export let link: boolean = false;
-  export let url: string = "#";
-  export let newTab: boolean = false;
-  export let download: boolean | undefined = undefined;
+  export let link: boolean = false
+  export let url: string = "#"
+  export let newTab: boolean = false
+  export let download: boolean | undefined = undefined
 
-  let target: "_blank" | undefined;
-  let rel: string | undefined;
+  let target: "_blank" | undefined
+  let rel: string | undefined
 
   if (newTab) {
-    target = "_blank";
-    rel = "noreferrer";
+    target = "_blank"
+    rel = "noreferrer"
   }
 
-  let designClasses: string = isCircle ? "rounded-full" : "rounded-lg";
+  let designClasses: string = isCircle ? "rounded-full" : "rounded-lg"
 
   const designClassesMap = {
     hollow: {
-      green: "border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 hover:text-black hover:bg-green-500 dark:hover:text-white dark:hover:bg-green-900",
+      green:
+        "border-green-500 dark:border-green-700 text-green-700 dark:text-green-500 hover:text-black hover:bg-green-500 dark:hover:text-white dark:hover:bg-green-900",
       red: "border-red-500 dark:border-red-700 text-red-500 dark:text-red-400 hover:bg-red-500 hover:text-black dark:hover:text-white dark:hover:bg-red-900",
     },
     filled: {
-      green: "bg-green-700 text-white dark:bg-green-900/75 border-green-700 hover:border-green-500 dark:hover:border-green-700 dark:border-green-900/75",
+      green:
+        "bg-green-700 text-white dark:bg-green-900/75 border-green-700 hover:border-green-500 dark:hover:border-green-700 dark:border-green-900/75",
       red: "bg-red-700 text-white dark:bg-red-900/75 border-red-700 hover:border-red-500 dark:hover:border-red-700 dark:border-red-900/75",
     },
-  };
-  designClasses = `${designClasses} ${designClassesMap[version][color]}`;
+  }
+  designClasses = `${designClasses} ${designClassesMap[version][color]}`
 </script>
 
 {#if link}

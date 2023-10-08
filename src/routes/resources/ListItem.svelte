@@ -1,15 +1,30 @@
 <script lang="ts">
-  import { base } from "$app/paths";
+  import { base } from "$app/paths"
 
-  import Link45Deg from "svelte-bootstrap-icons/lib/Link45deg.svelte";
-  import CardImage from "svelte-bootstrap-icons/lib/CardImage.svelte";
+  import Link45Deg from "svelte-bootstrap-icons/lib/Link45deg.svelte"
+  import CardImage from "svelte-bootstrap-icons/lib/CardImage.svelte"
 
-  import type { Resource } from "$lib/interfaces";
-  import TagWrapper from "$lib/components/TagWrapper.svelte";
-  export let resource: Resource;
+  import type { Resource } from "$lib/interfaces"
+  import TagWrapper from "$lib/components/TagWrapper.svelte"
+  import mixpanel from "mixpanel-browser"
+  export let resource: Resource
+
+  const trackResourceClick = (resource: Resource) => {
+    mixpanel.track("Resource Click", {
+      "Resource Title": resource.title,
+      "Resource URL": resource.url,
+      "Resource Description": resource.description,
+      "Resource Tags": resource.tags.map((tag) => tag.name),
+    })
+  }
 </script>
 
-<a href={resource.url} target="_blank" rel="noreferrer">
+<a
+  href={resource.url}
+  target="_blank"
+  rel="noreferrer"
+  on:click={() => trackResourceClick(resource)}
+>
   <div
     class="flex flex-col bg-white dark:bg-zinc-800 rounded-lg shadow-lg dark:shadow-zinc-900 transition ease-in-out hover:scale-105 h-full"
   >
@@ -47,7 +62,10 @@
       </p>
       <div class="flex flex-wrap text-xs py-2">
         {#each resource.tags as tag}
-          <TagWrapper tagColor={tag.color} extraClasses="whitespace-nowrap p-1 my-1 mr-2">
+          <TagWrapper
+            tagColor={tag.color}
+            extraClasses="whitespace-nowrap p-1 my-1 mr-2"
+          >
             {tag.name}
           </TagWrapper>
         {/each}

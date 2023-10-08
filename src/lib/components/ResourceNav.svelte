@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { base } from "$app/paths";
-  import { github_url } from "$lib/constants";
+  import { base } from "$app/paths"
+  import { github_url } from "$lib/constants"
 
-  import Download from "svelte-bootstrap-icons/lib/Download.svelte";
-  import FileEarmarkPlus from "svelte-bootstrap-icons/lib/FileEarmarkPlus.svelte";
-  import PencilSquare from "svelte-bootstrap-icons/lib/PencilSquare.svelte";
+  import Download from "svelte-bootstrap-icons/lib/Download.svelte"
+  import FileEarmarkPlus from "svelte-bootstrap-icons/lib/FileEarmarkPlus.svelte"
+  import PencilSquare from "svelte-bootstrap-icons/lib/PencilSquare.svelte"
 
-  import ButtonLinks from "$lib/components/ButtonLinks.svelte";
+  import ButtonLinks from "$lib/components/ButtonLinks.svelte"
 </script>
 
 <nav aria-label="Resource Navigation" class="flex flex-wrap gap-2 pb-3">

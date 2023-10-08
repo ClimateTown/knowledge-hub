@@ -1,7 +1,7 @@
 interface Color {
-  name: string;
-  lightHex: string;
-  darkHex: string;
+  name: string
+  lightHex: string
+  darkHex: string
 }
 
 // ! Keep in sync with `data/resource_tags.schema.json` which determines valid colors
@@ -41,21 +41,21 @@ let colorData: Color[] = [
     lightHex: "#dccdea",
     darkHex: "#29183a",
   },
-];
+]
 
 // Mappings of human readable color names to hex values for light and dark modes
 export let lightColors = colorData.reduce<{ [key: string]: string }>(
   (obj, item: Color) => {
-    obj[item.name] = item.lightHex;
-    return obj;
+    obj[item.name] = item.lightHex
+    return obj
   },
-  {},
-);
+  {}
+)
 
 export let darkColors = colorData.reduce<{ [key: string]: string }>(
   (obj, item: Color) => {
-    obj[item.name] = item.darkHex;
-    return obj;
+    obj[item.name] = item.darkHex
+    return obj
   },
-  {},
-);
+  {}
+)
