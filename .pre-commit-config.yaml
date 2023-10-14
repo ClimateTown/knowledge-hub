@@ -22,5 +22,5 @@ repos:
         args: [--write] # edit files in-place
         additional_dependencies:
           - prettier
-          - prettier-plugin-svelte@v2.7.1
+          - prettier-plugin-svelte@v3.0.3
           - svelte
