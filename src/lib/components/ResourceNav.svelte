@@ -34,7 +34,7 @@
 
   <ButtonLinks
     link={true}
-    download={true}
+    download={""}
     url="{base}/ClimateTown-Knowledge-Hub-resources.csv"
     version="hollow"
     color="green"
