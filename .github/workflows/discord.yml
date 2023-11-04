@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - name: Install dependencies
@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Send message to Discord channel
         run: |
-          python scripts/discord_integration.py \
+          python3 scripts/discord_integration.py \
             --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
             --issue-number "${{ github.event.issue.number }}" \
             --issue-title "$ISSUE_TITLE" \

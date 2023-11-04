@@ -42,13 +42,13 @@ jobs:
       - name: Scrape YouTube data
         if: ${{ env.YOUTUBE_API_KEY != '' && github.event_name != 'pull_request' }}
         run: | # Only run if the API key is set
-          python scripts/youtube.py --api-key $YOUTUBE_API_KEY
+          python3 scripts/youtube.py --api-key $YOUTUBE_API_KEY
       - name: Get previews for resources
         run: |
-          python scripts/get_og_previews.py
+          python3 scripts/get_og_previews.py
       - name: Convert resources to CSV
         run: |
-          python scripts/resource_converter.py -i data/resources.yml -o static/ClimateTown-Knowledge-Hub-resources.csv
+          python3 scripts/resource_converter.py -i data/resources.yml -o static/ClimateTown-Knowledge-Hub-resources.csv
       - run: npm install
         # - run: npm ci
       - run: npm run build

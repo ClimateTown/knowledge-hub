@@ -1,0 +1,16 @@
+{
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "svelte.svelte-vscode"]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [5173],
+  "postCreateCommand": "npm install && pip3 install -r requirements.txt && pre-commit install --install-hooks",
+  "postStartCommand": "nohup bash -c 'npm run dev &'"
+}
