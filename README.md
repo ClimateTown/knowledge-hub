@@ -6,7 +6,6 @@
 
 [![YouTube subs](https://img.shields.io/youtube/channel/subscribers/UCuVLG9pThvBABcYCm7pkNkA?label=ClimateTown&style=for-the-badge)](https://www.youtube.com/@ClimateTown)
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/ClimateTown)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ClimateTown/knowledge-hub)
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
 [![All Contributors](https://img.shields.io/github/all-contributors/ClimateTown/knowledge-hub?color=ee8449&style=flat-square)](#✨contributors)
@@ -61,11 +60,11 @@ The site is primarily built using [Svelte](https://svelte.dev/) and [SvelteKit](
 
 ### ⚡QUICK SETUP⚡
 
-TLDR; simply click the "Open in Codespaces" badge at the top of this README
+TLDR; simply click this badge to spin up a Codespaces cloud environment 🕺
 
-This repo provides a [dev container](https://code.visualstudio.com/docs/devcontainers/containers) to streamline local development (assuming you're familiar with Docker and have it installed). Building and running this container will install all dependencies for the project, and run the development server in the background piping the output to `nohup.out`.
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ClimateTown/knowledge-hub)
 
-Either use the dev container locally, or simply click the "Open in Codespaces" badge at the top of this README.
+For local development, this repo provides a [dev container](https://code.visualstudio.com/docs/devcontainers/containers) to streamline installation (assuming you're familiar with Docker and have it installed). Building and running this container will install all dependencies for the project, and run the development server in the background piping the output to `nohup.out`.
 
 ### Manual installation
 
