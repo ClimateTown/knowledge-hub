@@ -37,5 +37,5 @@ export interface FilterOption extends Tag {
 export type FilterLogic = "and" | "or"
 
 export type CustomFilterEvent = {
-  filter: { filterOptions: FilterOption[]; filterLogic: FilterLogic }
+  filter: { filterTags: Set<string>; filterLogic: FilterLogic }
 }

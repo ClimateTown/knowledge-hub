@@ -2,12 +2,14 @@
   import ButtonLinks from "./ButtonLinks.svelte"
   import { createEventDispatcher } from "svelte"
 
-  let searchTerm = ""
+  export let searchTerm: string | null = ""
 
   const dispatch = createEventDispatcher()
 
   function onSubmit() {
-    dispatch("search", { searchTerm })
+    if(searchTerm) {
+      dispatch("search", { searchTerm })
+    }
   }
 </script>
 

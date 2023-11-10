@@ -11,6 +11,7 @@
     FilterLogic,
     CustomFilterEvent,
   } from "$lib/interfaces"
+  import { replaceStateWithQuery, activeTagsSet } from "$lib/utils"
   import Collapsible from "$lib/components/Collapsible.svelte"
   import TagWrapper from "$lib/components/TagWrapper.svelte"
   import Checkbox from "$lib/components/Checkbox.svelte"
@@ -18,13 +19,18 @@
   const dispatch = createEventDispatcher<CustomFilterEvent>()
   let form: HTMLFormElement
 
-  export let filterOptions: FilterOption[]
+  export let filters: { filterOptions: FilterOption[], filterLogicAnd: boolean };
+
+  let filterOptions: FilterOption[]
+  $: ({filterOptions} = filters)
 
   export let showFilterLogic: boolean = true
   // Whether all the selected tags must match the resource (vs any of the selected tags)
-  export let filterLogicAnd: boolean = true
+  let filterLogicAnd: boolean = true
+  $: ({filterLogicAnd} = filters)
+  let filterLogicAndCtrl: boolean = filterLogicAnd
   let filterLogic: FilterLogic
-  $: filterLogic = filterLogicAnd ? "and" : "or"
+  $: filterLogic = filterLogicAndCtrl ? "and" : "or"
 
   let isFilterDirty: boolean
   $: isFilterDirty = filterOptions.some(
@@ -33,11 +39,23 @@
 
   const resetFilters = () => {
     filterOptions.forEach((option) => (option.active = false))
-    dispatch("filter", { filterOptions, filterLogic })
+   
+    const filterTags = activeTagsSet(filterOptions)
+    replaceStateWithQuery({
+      tags: '',
+      mode: ''
+    })
+    dispatch("filter", { filterTags, filterLogic })
   }
 
   const onSubmit = () => {
-    dispatch("filter", { filterOptions, filterLogic })
+    const filterTags = activeTagsSet(filterOptions)
+
+    replaceStateWithQuery({
+      tags: Array.from(filterTags).join(','),
+      mode: filterLogic
+    })
+    dispatch("filter", { filterTags, filterLogic })
   }
 </script>
 
@@ -74,8 +92,8 @@
             class="inline-flex items-center rounded-md cursor-pointer outline-2 outline-offset-1 focus-within:outline text-white border-2 border-green-700 dark:border-green-900/75"
           >
             <input
-              bind:checked={filterLogicAnd}
-              aria-checked={filterLogicAnd}
+              bind:checked={filterLogicAndCtrl}
+              aria-checked={filterLogicAndCtrl}
               id="switch"
               role="switch"
               type="checkbox"

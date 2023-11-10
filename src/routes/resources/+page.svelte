@@ -2,6 +2,7 @@
   import mixpanel from "mixpanel-browser"
   import Fuse from "fuse.js"
 
+  import { page } from '$app/stores'
   import type { PageData } from "./$types"
   import { onMount } from "svelte"
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants"
@@ -11,7 +12,7 @@
     FilterLogic,
     Resource,
   } from "$lib/interfaces"
-  import { setIntersection } from "$lib/utils"
+  import { setIntersection, replaceStateWithQuery, activeTagsSet, tagQParamSetActive } from "$lib/utils"
   import Search from "$lib/components/Search.svelte"
   import ListItem from "./ListItem.svelte"
   import ResourceNav from "$lib/components/ResourceNav.svelte"
@@ -19,6 +20,10 @@
   import FilterForm from "$lib/components/FilterForm.svelte"
   export let data: PageData
 
+  let qParams: URLSearchParams = $page.url.searchParams
+  $: qParams
+
+  let query: string | null
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedResourceLimit
   let resources = data.payload.resources
@@ -26,6 +31,7 @@
   let filterByTags: Resource[]
   let tagLogicAnd: boolean = true // Whether all the selected tags must match the resource (vs any of the selected tags)
   // TODO: make this a user preference
+  let tagLogic: FilterLogic
   $: tagLogic = tagLogicAnd ? "and" : "or"
 
   let tags: Tag[] = data.payload.tags
@@ -33,6 +39,7 @@
 
   // Creating form filter options, default view
   let filterObject: FilterOption[] = []
+  $: filterObject
   for (const tag of tags) {
     let tagOption: FilterOption = {
       name: tag.name,
@@ -46,10 +53,17 @@
   function filterBySearchInput(event: CustomEvent<{ searchTerm: string }>) {
     const { searchTerm } = event.detail
 
-    // Analytics
+    replaceStateWithQuery({
+      q: searchTerm
+    })
+        // Analytics
     mixpanel.track("Resource Search", {
       "search term": searchTerm,
     })
+    applySearch(searchTerm)
+  }
+
+  const applySearch = (searchTerm: string) => {
 
     const options = {
       includeScore: true,
@@ -57,7 +71,7 @@
       keys: ["description", "title"],
     }
 
-    const fuse = new Fuse(resources, options)
+        const fuse = new Fuse(resources, options)
 
     const results = fuse.search(searchTerm)
 
@@ -69,28 +83,21 @@
   }
 
   const filterResources = (
-    event: CustomEvent<{
-      filterOptions: FilterOption[]
-      filterLogic: FilterLogic
-    }>
+    event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
   ) => {
-    const { filterOptions, filterLogic } = event.detail
-
-    // Reset displayed resources
-    displayedResources = []
-
-    // Tags of interest
-    let filterTags: Set<string> = new Set(
-      filterOptions
-        .filter((option: FilterOption) => option.active === true)
-        .map((option: FilterOption) => option.name)
-    )
+    const { filterTags, filterLogic } = event.detail
 
     // Analytics
     mixpanel.track("Resource Filter", {
       "filter tags": Array.from(filterTags),
       "filter logic": filterLogic,
     })
+    applyTagFilter(filterTags, filterLogic)
+  }
+
+  const applyTagFilter = (filterTags: Set<string>, filterLogic: FilterLogic) => {
+    // Reset displayed resources
+    displayedResources = []
 
     // ! Need to refactor later to make more readable
     // For intersection, minCommonTags = filterTags.size
@@ -118,6 +125,28 @@
     const { displayLimit } = event.detail
     displayedResourceLimit = displayLimit
   }
+
+  // listen for url param changes and reset to all for clear filters
+  if(!qParams) {
+    displayedResources = resources
+  }
+
+  onMount(() => {
+    const params = Object.fromEntries($page.url.searchParams)
+    query = params.q
+
+    if(params.q && !params.tags) {
+      applySearch(params.q)
+    } else {
+      if(params.mode) {
+        tagLogicAnd = params.mode === 'and' ? true : false
+      }
+      if(params.tags) {
+        filterObject = tagQParamSetActive(params.tags, filterObject)
+      }
+      applyTagFilter(activeTagsSet(filterObject), params.mode as FilterLogic ?? 'and')
+    }
+  })
 </script>
 
 <h1>Resources</h1>
@@ -125,10 +154,9 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <ResourceNav />
-<Search on:search={filterBySearchInput}></Search>
+<Search searchTerm={query} on:search={filterBySearchInput}></Search>
 <FilterForm
-  filterOptions={filterObject}
-  filterLogicAnd={tagLogicAnd}
+  filters={{filterOptions: filterObject, filterLogicAnd: tagLogicAnd}}
   on:filter={filterResources}
 />
 

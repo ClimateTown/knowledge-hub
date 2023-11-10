@@ -1,4 +1,4 @@
-import type { YoutubeChannel } from "./interfaces"
+import type { FilterOption, YoutubeChannel } from "./interfaces"
 
 /**
  * format subcount for user display
@@ -73,3 +73,52 @@ export const setIntersection = (set1: Set<any>, set2: Set<any>) => {
   }
   return intersection
 }
+
+/**
+ * get set of active tag names
+ * @param filterOptions 
+ * @returns Set<string> of tag names
+ */
+export const activeTagsSet = (filterOptions: FilterOption[]) => {
+  const filterTags: Set<string> = new Set(
+    filterOptions
+      .filter((option: FilterOption) => option.active === true)
+      .map((option: FilterOption) => option.name)
+  )
+  return filterTags
+}
+
+/**
+ * compare the tage names from query params with the filter object to set active
+ * @param querytagNames list of comma separate tag names
+ * @param filterObject tag options obj array
+ * @returns updated filterObject with active true on tag name matches
+ */
+export const tagQParamSetActive = (querytagNames: string, filterObject: FilterOption[]) => {
+  const tagNames = querytagNames.split(',')
+
+  filterObject.map((option) => {
+    if (tagNames.includes(option.name)) {
+      option.active = true
+    }
+  })
+  return filterObject
+}
+
+/**
+ * 
+ * @param values Record<string, string>
+ */
+export const replaceStateWithQuery = (values: Record<string, string> | undefined) => {
+  const url = new URL(window.location.toString());
+  if (values) {
+    for (let [k, v] of Object.entries(values)) {
+      if (!!v) {
+        url.searchParams.set(k, v);
+      } else {
+        url.searchParams.delete(k);
+      }
+    }
+  }
+  history.replaceState(history.state, '', url);
+};
