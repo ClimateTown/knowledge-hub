@@ -76,7 +76,7 @@ export const setIntersection = (set1: Set<any>, set2: Set<any>) => {
 
 /**
  * get set of active tag names
- * @param filterOptions 
+ * @param filterOptions
  * @returns Set<string> of tag names
  */
 export const activeTagsSet = (filterOptions: FilterOption[]) => {
@@ -94,8 +94,11 @@ export const activeTagsSet = (filterOptions: FilterOption[]) => {
  * @param filterObject tag options obj array
  * @returns updated filterObject with active true on tag name matches
  */
-export const tagQParamSetActive = (querytagNames: string, filterObject: FilterOption[]) => {
-  const tagNames = querytagNames.split(',')
+export const tagQParamSetActive = (
+  querytagNames: string,
+  filterObject: FilterOption[]
+) => {
+  const tagNames = querytagNames.split(",")
 
   filterObject.map((option) => {
     if (tagNames.includes(option.name)) {
@@ -106,19 +109,21 @@ export const tagQParamSetActive = (querytagNames: string, filterObject: FilterOp
 }
 
 /**
- * 
+ *
  * @param values Record<string, string>
  */
-export const replaceStateWithQuery = (values: Record<string, string> | undefined) => {
-  const url = new URL(window.location.toString());
+export const replaceStateWithQuery = (
+  values: Record<string, string> | undefined
+) => {
+  const url = new URL(window.location.toString())
   if (values) {
     for (let [k, v] of Object.entries(values)) {
       if (!!v) {
-        url.searchParams.set(k, v);
+        url.searchParams.set(k, v)
       } else {
-        url.searchParams.delete(k);
+        url.searchParams.delete(k)
       }
     }
   }
-  history.replaceState(history.state, '', url);
-};
+  history.replaceState(history.state, "", url)
+}

@@ -2,7 +2,7 @@
   import mixpanel from "mixpanel-browser"
   import Fuse from "fuse.js"
 
-  import { page } from '$app/stores'
+  import { page } from "$app/stores"
   import type { PageData } from "./$types"
   import { onMount } from "svelte"
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants"
@@ -12,7 +12,12 @@
     FilterLogic,
     Resource,
   } from "$lib/interfaces"
-  import { setIntersection, replaceStateWithQuery, activeTagsSet, tagQParamSetActive } from "$lib/utils"
+  import {
+    setIntersection,
+    replaceStateWithQuery,
+    activeTagsSet,
+    tagQParamSetActive,
+  } from "$lib/utils"
   import Search from "$lib/components/Search.svelte"
   import ListItem from "./ListItem.svelte"
   import ResourceNav from "$lib/components/ResourceNav.svelte"
@@ -54,9 +59,9 @@
     const { searchTerm } = event.detail
 
     replaceStateWithQuery({
-      q: searchTerm
+      q: searchTerm,
     })
-        // Analytics
+    // Analytics
     mixpanel.track("Resource Search", {
       "search term": searchTerm,
     })
@@ -64,14 +69,13 @@
   }
 
   const applySearch = (searchTerm: string) => {
-
     const options = {
       includeScore: true,
       threshold: 0.25,
       keys: ["description", "title"],
     }
 
-        const fuse = new Fuse(resources, options)
+    const fuse = new Fuse(resources, options)
 
     const results = fuse.search(searchTerm)
 
@@ -95,7 +99,10 @@
     applyTagFilter(filterTags, filterLogic)
   }
 
-  const applyTagFilter = (filterTags: Set<string>, filterLogic: FilterLogic) => {
+  const applyTagFilter = (
+    filterTags: Set<string>,
+    filterLogic: FilterLogic
+  ) => {
     // Reset displayed resources
     displayedResources = []
 
@@ -127,7 +134,7 @@
   }
 
   // listen for url param changes and reset to all for clear filters
-  if(!qParams) {
+  if (!qParams) {
     displayedResources = resources
   }
 
@@ -135,16 +142,19 @@
     const params = Object.fromEntries($page.url.searchParams)
     query = params.q
 
-    if(params.q && !params.tags) {
+    if (params.q && !params.tags) {
       applySearch(params.q)
     } else {
-      if(params.mode) {
-        tagLogicAnd = params.mode === 'and' ? true : false
+      if (params.mode) {
+        tagLogicAnd = params.mode === "and" ? true : false
       }
-      if(params.tags) {
+      if (params.tags) {
         filterObject = tagQParamSetActive(params.tags, filterObject)
       }
-      applyTagFilter(activeTagsSet(filterObject), params.mode as FilterLogic ?? 'and')
+      applyTagFilter(
+        activeTagsSet(filterObject),
+        (params.mode as FilterLogic) ?? "and"
+      )
     }
   })
 </script>
@@ -156,7 +166,7 @@
 <ResourceNav />
 <Search searchTerm={query} on:search={filterBySearchInput}></Search>
 <FilterForm
-  filters={{filterOptions: filterObject, filterLogicAnd: tagLogicAnd}}
+  filters={{ filterOptions: filterObject, filterLogicAnd: tagLogicAnd }}
   on:filter={filterResources}
 />
 

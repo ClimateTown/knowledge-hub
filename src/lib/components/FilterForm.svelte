@@ -19,15 +19,15 @@
   const dispatch = createEventDispatcher<CustomFilterEvent>()
   let form: HTMLFormElement
 
-  export let filters: { filterOptions: FilterOption[], filterLogicAnd: boolean };
+  export let filters: { filterOptions: FilterOption[]; filterLogicAnd: boolean }
 
   let filterOptions: FilterOption[]
-  $: ({filterOptions} = filters)
+  $: ({ filterOptions } = filters)
 
   export let showFilterLogic: boolean = true
   // Whether all the selected tags must match the resource (vs any of the selected tags)
   let filterLogicAnd: boolean = true
-  $: ({filterLogicAnd} = filters)
+  $: ({ filterLogicAnd } = filters)
   let filterLogicAndCtrl: boolean = filterLogicAnd
   let filterLogic: FilterLogic
   $: filterLogic = filterLogicAndCtrl ? "and" : "or"
@@ -39,11 +39,11 @@
 
   const resetFilters = () => {
     filterOptions.forEach((option) => (option.active = false))
-   
+
     const filterTags = activeTagsSet(filterOptions)
     replaceStateWithQuery({
-      tags: '',
-      mode: ''
+      tags: "",
+      mode: "",
     })
     dispatch("filter", { filterTags, filterLogic })
   }
@@ -52,8 +52,8 @@
     const filterTags = activeTagsSet(filterOptions)
 
     replaceStateWithQuery({
-      tags: Array.from(filterTags).join(','),
-      mode: filterLogic
+      tags: Array.from(filterTags).join(","),
+      mode: filterLogic,
     })
     dispatch("filter", { filterTags, filterLogic })
   }

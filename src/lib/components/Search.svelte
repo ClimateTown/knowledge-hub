@@ -7,7 +7,7 @@
   const dispatch = createEventDispatcher()
 
   function onSubmit() {
-    if(searchTerm) {
+    if (searchTerm) {
       dispatch("search", { searchTerm })
     }
   }
