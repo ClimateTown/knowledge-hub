@@ -19,9 +19,12 @@
   const dispatch = createEventDispatcher<CustomFilterEvent>()
   let form: HTMLFormElement
 
-  export let filters: { filterOptions: FilterOption[]; filterLogicAnd: boolean } = {
+  export let filters: {
+    filterOptions: FilterOption[]
+    filterLogicAnd: boolean
+  } = {
     filterOptions: [],
-    filterLogicAnd: true
+    filterLogicAnd: true,
   }
 
   let filterOptions: FilterOption[]
