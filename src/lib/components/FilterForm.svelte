@@ -19,7 +19,10 @@
   const dispatch = createEventDispatcher<CustomFilterEvent>()
   let form: HTMLFormElement
 
-  export let filters: { filterOptions: FilterOption[]; filterLogicAnd: boolean }
+  export let filters: { filterOptions: FilterOption[]; filterLogicAnd: boolean } = {
+    filterOptions: [],
+    filterLogicAnd: true
+  }
 
   let filterOptions: FilterOption[]
   $: ({ filterOptions } = filters)
@@ -39,6 +42,7 @@
 
   const resetFilters = () => {
     filterOptions.forEach((option) => (option.active = false))
+    filterLogicAndCtrl = true
 
     const filterTags = activeTagsSet(filterOptions)
     replaceStateWithQuery({

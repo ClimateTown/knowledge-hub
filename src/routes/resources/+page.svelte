@@ -25,9 +25,6 @@
   import FilterForm from "$lib/components/FilterForm.svelte"
   export let data: PageData
 
-  let qParams: URLSearchParams = $page.url.searchParams
-  $: qParams
-
   let query: string | null
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedResourceLimit
@@ -131,11 +128,6 @@
   const updateLimit = (event: CustomEvent<{ displayLimit: number }>) => {
     const { displayLimit } = event.detail
     displayedResourceLimit = displayLimit
-  }
-
-  // listen for url param changes and reset to all for clear filters
-  if (!qParams) {
-    displayedResources = resources
   }
 
   onMount(() => {
