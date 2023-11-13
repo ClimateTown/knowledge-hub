@@ -1,4 +1,5 @@
-import type { FilterOption, YoutubeChannel } from "./interfaces"
+import Fuse from "fuse.js"
+import type { FilterOption, Resource, YoutubeChannel } from "./interfaces"
 
 /**
  * format subcount for user display
@@ -126,4 +127,26 @@ export const replaceStateWithQuery = (
     }
   }
   history.replaceState(history.state, "", url)
+}
+
+/**
+ * 
+ * @param searchTerm string
+ * @param resourceList Resource[]
+ * @returns Resource[] filtered
+ */
+export const filterByQuery = (searchTerm: string, resourceList: Resource[]): Resource[] => {
+  const options = {
+    includeScore: true,
+    threshold: 0.25,
+    keys: ["description", "title"],
+  }
+
+  const fuse = new Fuse(resourceList, options)
+
+  const results = fuse.search(searchTerm)
+
+  return results.map((result) => {
+    return result.item
+  })
 }

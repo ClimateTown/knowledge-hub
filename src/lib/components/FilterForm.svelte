@@ -32,9 +32,7 @@
 
   export let showFilterLogic: boolean = true
   // Whether all the selected tags must match the resource (vs any of the selected tags)
-  let filterLogicAnd: boolean = true
-  $: ({ filterLogicAnd } = filters)
-  let filterLogicAndCtrl: boolean = filterLogicAnd
+  let filterLogicAndCtrl: boolean = filters?.filterLogicAnd ?? true
   let filterLogic: FilterLogic
   $: filterLogic = filterLogicAndCtrl ? "and" : "or"
 
@@ -44,14 +42,16 @@
   )
 
   const resetFilters = () => {
-    filterOptions.forEach((option) => (option.active = false))
-    filterLogicAndCtrl = true
+    filterOptions.map((option) => (option.active = false))
 
-    const filterTags = activeTagsSet(filterOptions)
     replaceStateWithQuery({
       tags: "",
       mode: "",
     })
+
+    const filterTags = activeTagsSet(filterOptions)
+    filterLogicAndCtrl = true
+
     dispatch("filter", { filterTags, filterLogic })
   }
 

@@ -14,9 +14,9 @@
   } from "$lib/interfaces"
   import {
     setIntersection,
-    replaceStateWithQuery,
     activeTagsSet,
     tagQParamSetActive,
+    filterByQuery
   } from "$lib/utils"
   import Search from "$lib/components/Search.svelte"
   import ListItem from "./ListItem.svelte"
@@ -55,30 +55,11 @@
   function filterBySearchInput(event: CustomEvent<{ searchTerm: string }>) {
     const { searchTerm } = event.detail
 
-    replaceStateWithQuery({
-      q: searchTerm,
-    })
     // Analytics
     mixpanel.track("Resource Search", {
       "search term": searchTerm,
     })
-    applySearch(searchTerm)
-  }
-
-  const applySearch = (searchTerm: string) => {
-    const options = {
-      includeScore: true,
-      threshold: 0.25,
-      keys: ["description", "title"],
-    }
-
-    const fuse = new Fuse(resources, options)
-
-    const results = fuse.search(searchTerm)
-
-    const searchResults = results.map((result) => {
-      return result.item
-    })
+    const searchResults = filterByQuery(searchTerm, resources)
 
     displayedResources = searchResults
   }
@@ -93,6 +74,7 @@
       "filter tags": Array.from(filterTags),
       "filter logic": filterLogic,
     })
+
     applyTagFilter(filterTags, filterLogic)
   }
 
@@ -106,7 +88,8 @@
     // ! Need to refactor later to make more readable
     // For intersection, minCommonTags = filterTags.size
     // For union, minCommonTags = 1
-    let minCommonTags = filterLogic === "and" ? filterTags.size : 1
+    tagLogicAnd = filterLogic === "and"
+    let minCommonTags = tagLogicAnd ? filterTags.size : 1
 
     for (let resource of resources) {
       // Resource tags
@@ -135,7 +118,9 @@
     query = params.q
 
     if (params.q && !params.tags) {
-      applySearch(params.q)
+      const searchResults = filterByQuery(params.q, resources)
+
+      displayedResources = searchResults
     } else {
       if (params.mode) {
         tagLogicAnd = params.mode === "and" ? true : false

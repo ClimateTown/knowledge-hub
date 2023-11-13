@@ -1,13 +1,18 @@
 <script lang="ts">
   import ButtonLinks from "./ButtonLinks.svelte"
   import { createEventDispatcher } from "svelte"
-
+  import { replaceStateWithQuery } from "$lib/utils"
+  
   export let searchTerm: string | null = ""
 
   const dispatch = createEventDispatcher()
 
   function onSubmit() {
     if (searchTerm) {
+      replaceStateWithQuery({
+        q: searchTerm,
+      })
+
       dispatch("search", { searchTerm })
     }
   }
