@@ -130,12 +130,15 @@ export const replaceStateWithQuery = (
 }
 
 /**
- * 
+ *
  * @param searchTerm string
  * @param resourceList Resource[]
  * @returns Resource[] filtered
  */
-export const filterByQuery = (searchTerm: string, resourceList: Resource[]): Resource[] => {
+export const filterByQuery = (
+  searchTerm: string,
+  resourceList: Resource[]
+): Resource[] => {
   const options = {
     includeScore: true,
     threshold: 0.25,

@@ -16,7 +16,7 @@
     setIntersection,
     activeTagsSet,
     tagQParamSetActive,
-    filterByQuery
+    filterByQuery,
   } from "$lib/utils"
   import Search from "$lib/components/Search.svelte"
   import ListItem from "./ListItem.svelte"
