@@ -2,25 +2,11 @@ import type { PageServerLoad } from "./$types"
 import { parse } from "yaml"
 import fs from "fs"
 import type { Tag, Resource } from "$lib/interfaces"
-
-const removeEmojisFromStr = (str: string) => {
-  return str.replace(/[\u1000-\uFFFF]+/g, "").trim()
-}
-
-const hasEmoji = (str: string) => {
-  return /[\u1000-\uFFFF]+/g.test(str)
-}
-
-const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
-  if (hasEmoji(a) && hasEmoji(b)) {
-    const aWithoutEmojis = removeEmojisFromStr(a)
-    const bWithoutEmojis = removeEmojisFromStr(b)
-
-    return aWithoutEmojis.localeCompare(bWithoutEmojis)
-  }
-
-  return a.localeCompare(b)
-}
+import {
+  removeEmojisFromStr,
+  hasEmoji,
+  sortAlphabeticallyEmojisFirst,
+} from "$lib/utils"
 
 const parseResources = (tags: Tag[]) => {
   // Create mapping of tag name to tag object
