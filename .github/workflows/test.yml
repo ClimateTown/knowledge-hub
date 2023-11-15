@@ -1,8 +1,8 @@
-name: Testing (YAML, and code)
+name: Testing (YAML, Python code, TS code)
 on: [push]
 
 jobs:
-  test:
+  python_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -11,3 +11,13 @@ jobs:
           python-version: "3.10"
       - run: pip install -r requirements.txt
       - run: python3 -m pytest
+
+  node_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm run test
