@@ -153,3 +153,22 @@ export const filterByQuery = (
     return result.item
   })
 }
+
+export const removeEmojisFromStr = (str: string) => {
+  return str.replace(/[\u1000-\uFFFF]+/g, "").trim()
+}
+
+export const hasEmoji = (str: string) => {
+  return /[\u1000-\uFFFF]+/g.test(str)
+}
+
+export const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
+  if (hasEmoji(a) && hasEmoji(b)) {
+    const aWithoutEmojis = removeEmojisFromStr(a)
+    const bWithoutEmojis = removeEmojisFromStr(b)
+
+    return aWithoutEmojis.localeCompare(bWithoutEmojis)
+  }
+
+  return a.localeCompare(b)
+}
