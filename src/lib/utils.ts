@@ -118,11 +118,14 @@ export const replaceStateWithQuery = (
 ) => {
   const url = new URL(window.location.toString())
   if (values) {
+    // Clear URL of filter settings
+    for (let k of url.searchParams.keys()) {
+      url.searchParams.delete(k)
+    }
+
     for (let [k, v] of Object.entries(values)) {
       if (!!v) {
         url.searchParams.set(k, v)
-      } else {
-        url.searchParams.delete(k)
       }
     }
   }
