@@ -2,7 +2,7 @@
   import ButtonLinks from "./ButtonLinks.svelte"
   import { createEventDispatcher } from "svelte"
 
-  let searchTerm = ""
+  export let searchTerm = ""
 
   const dispatch = createEventDispatcher()
 
