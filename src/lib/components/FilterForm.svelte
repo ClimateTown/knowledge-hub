@@ -11,7 +11,11 @@
     FilterLogic,
     CustomFilterEvent,
   } from "$lib/interfaces"
-  import { replaceStateWithQuery, activeTagsSet, tagsForURLParam } from "$lib/utils"
+  import {
+    replaceStateWithQuery,
+    activeTagsSet,
+    tagsForURLParam,
+  } from "$lib/utils"
   import Collapsible from "$lib/components/Collapsible.svelte"
   import TagWrapper from "$lib/components/TagWrapper.svelte"
   import Checkbox from "$lib/components/Checkbox.svelte"
@@ -47,7 +51,7 @@
     replaceStateWithQuery({
       tags: "",
       mode: "",
-      q: ""
+      q: "",
     })
 
     const filterTags = activeTagsSet(filterOptions)
@@ -62,7 +66,7 @@
     replaceStateWithQuery({
       tags: tagsForURLParam(filterTags),
       mode: filterLogic,
-      q: ""
+      q: "",
     })
     dispatch("filter", { filterTags, filterLogic })
   }

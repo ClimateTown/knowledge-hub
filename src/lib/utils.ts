@@ -26,8 +26,8 @@ export const semanticNumber = (number: number): string => {
 /**
  * channels sorted by subcount, climate town always first
  * @param {YoutubeChannel} a
- * @param {YoutubeChannel} b 
- * @returns {number} sort 
+ * @param {YoutubeChannel} b
+ * @returns {number} sort
  */
 export const sortChannelBySubCount = (
   a: YoutubeChannel,
@@ -48,8 +48,8 @@ export const sortChannelBySubCount = (
 
 /**
  * Given a channel ID, return the channel data from the array
- * @param {YoutubeChannel[]} channelData 
- * @param {string} channelId 
+ * @param {YoutubeChannel[]} channelData
+ * @param {string} channelId
  * @returns found channel data
  */
 export const getChannelData = (
@@ -102,15 +102,15 @@ export const tagQParamSetActive = (
   const tagNames = querytagNames.split(",")
 
   return filterObject.map((option) => {
-    option.active = tagNames.includes(option.name) ? true : false;
-    return option;
+    option.active = tagNames.includes(option.name) ? true : false
+    return option
   })
 }
 
 /**
- * update the url params with the record 
+ * update the url params with the record
  * and replace the state in history api
- * @param {Record<string, string> | undefined} values 
+ * @param {Record<string, string> | undefined} values
  */
 export const replaceStateWithQuery = (
   values: Record<string, string> | undefined
@@ -133,8 +133,8 @@ export const replaceStateWithQuery = (
 
 /**
  * init Fuse with options and run search with provided term
- * @param {string} searchTerm 
- * @param {Resource[]} resourceList 
+ * @param {string} searchTerm
+ * @param {Resource[]} resourceList
  * @returns {Resource[]} filtered resources
  */
 export const filterByQuery = (
@@ -158,7 +158,7 @@ export const filterByQuery = (
 
 /**
  * remove emojis from given string
- * @param {string} str 
+ * @param {string} str
  * @returns {string}
  */
 export const removeEmojisFromStr = (str: string): string => {
@@ -167,7 +167,7 @@ export const removeEmojisFromStr = (str: string): string => {
 
 /**
  * check if the string contains emojis
- * @param {string} str 
+ * @param {string} str
  * @returns {boolean}
  */
 export const hasEmoji = (str: string) => {
@@ -176,9 +176,9 @@ export const hasEmoji = (str: string) => {
 
 /**
  * sort strings by emoji first then alphabetical
- * @param {string} a 
- * @param {string} b 
- * @returns 
+ * @param {string} a
+ * @param {string} b
+ * @returns
  */
 export const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
   if (hasEmoji(a) && hasEmoji(b)) {
@@ -193,9 +193,11 @@ export const sortAlphabeticallyEmojisFirst = (a: string, b: string) => {
 
 /**
  * convert the tag set to a comman separated list, removing emojis
- * @param {Set<string>} filterTags 
+ * @param {Set<string>} filterTags
  * @returns {string} comma separated tag list
  */
 export const tagsForURLParam = (filterTags: Set<string>): string => {
-  return Array.from(filterTags).map((str) => removeEmojisFromStr(str)).join(",")
+  return Array.from(filterTags)
+    .map((str) => removeEmojisFromStr(str))
+    .join(",")
 }

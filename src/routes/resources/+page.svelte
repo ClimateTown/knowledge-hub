@@ -117,7 +117,6 @@
 
   onMount(() => {
     const params = Object.fromEntries($page.url.searchParams)
-    
 
     if (params.q && !params.tags) {
       searchTerm = params.q
@@ -134,7 +133,7 @@
       if (params.tags) {
         filterObject = tagQParamSetActive(params.tags, filterObject)
       }
-      
+
       applyTagFilter(
         activeTagsSet(filterObject),
         (params.mode as FilterLogic) ?? "and"

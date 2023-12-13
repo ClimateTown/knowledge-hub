@@ -163,71 +163,71 @@ describe("Emoji Utilities", () => {
   })
 })
 
-describe('Tag Utilities', () => {
+describe("Tag Utilities", () => {
   const filterOptions: FilterOption[] = [
     {
       count: 10,
       active: false,
-      name: 'name-1'
+      name: "name-1",
     },
     {
       count: 7,
       active: false,
-      name: 'name-2'
+      name: "name-2",
     },
     {
       count: 2,
       active: true,
-      name: 'name-3'
+      name: "name-3",
     },
     {
       count: 5,
       active: false,
-      name: '👋 name-4'
-    }
+      name: "👋 name-4",
+    },
   ]
 
-  describe('activeTagsSet', () =>{
-    it('should return the names of active tags', () => {
-      const expected = new Set<string>(['name-3'])
-      const result =  activeTagsSet(filterOptions)
+  describe("activeTagsSet", () => {
+    it("should return the names of active tags", () => {
+      const expected = new Set<string>(["name-3"])
+      const result = activeTagsSet(filterOptions)
       expect(result).toEqual(expected)
     })
   })
 
-  describe('tagQParamSetActive', () =>{
-    it('should turn the filter option that name matches true, others false', () => {
+  describe("tagQParamSetActive", () => {
+    it("should turn the filter option that name matches true, others false", () => {
       const expected = [
         {
           count: 10,
           active: false,
-          name: 'name-1'
+          name: "name-1",
         },
         {
           count: 7,
           active: true,
-          name: 'name-2'
+          name: "name-2",
         },
         {
           count: 2,
           active: false,
-          name: 'name-3'
+          name: "name-3",
         },
         {
           count: 5,
           active: false,
-          name: '👋 name-4'
-        }
+          name: "👋 name-4",
+        },
       ]
-      const result = tagQParamSetActive('name-2', filterOptions)
+      const result = tagQParamSetActive("name-2", filterOptions)
       expect(result).toEqual(expected)
     })
   })
 
-  describe('tagsForURLParam', () =>{
-    it('should return url safe comma separated list', () => {
-      const expected = 'name-3,name-4'
-      const params = new Set<string>(['name-3','👋 name-4'])
+  describe("tagsForURLParam", () => {
+    it("should return url safe comma separated list", () => {
+      const expected = "name-3,name-4"
+      const params = new Set<string>(["name-3", "👋 name-4"])
       const result = tagsForURLParam(params)
       expect(result).toEqual(expected)
     })
