@@ -25,7 +25,7 @@
   import FilterForm from "$lib/components/FilterForm.svelte"
   export let data: PageData
 
-  let query: string | null
+  let searchTerm: string | null
   let displayedResourceLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedResourceLimit
   let resources = data.payload.resources
@@ -68,6 +68,8 @@
     event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
   ) => {
     const { filterTags, filterLogic } = event.detail
+    // clear search form when using filters
+    searchTerm = null
 
     // Analytics
     mixpanel.track("Resource Filter", {
@@ -115,19 +117,24 @@
 
   onMount(() => {
     const params = Object.fromEntries($page.url.searchParams)
-    query = params.q
+    
 
     if (params.q && !params.tags) {
-      const searchResults = filterByQuery(params.q, resources)
+      searchTerm = params.q
+      const searchResults = filterByQuery(searchTerm, resources)
 
       displayedResources = searchResults
     } else {
+      // clear search form when using filters
+      searchTerm = null
+
       if (params.mode) {
         tagLogicAnd = params.mode === "and" ? true : false
       }
       if (params.tags) {
         filterObject = tagQParamSetActive(params.tags, filterObject)
       }
+      
       applyTagFilter(
         activeTagsSet(filterObject),
         (params.mode as FilterLogic) ?? "and"
@@ -141,9 +148,9 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <ResourceNav />
-<Search searchTerm={query} on:search={filterBySearchInput}></Search>
+<Search {searchTerm} on:search={filterBySearchInput}></Search>
 <FilterForm
-  filters={{ filterOptions: filterObject, filterLogicAnd: tagLogicAnd }}
+  filterData={{ filterOptions: filterObject, filterLogicAnd: tagLogicAnd }}
   on:filter={filterResources}
 />
 

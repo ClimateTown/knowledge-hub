@@ -11,7 +11,7 @@
     FilterLogic,
     CustomFilterEvent,
   } from "$lib/interfaces"
-  import { replaceStateWithQuery, activeTagsSet } from "$lib/utils"
+  import { replaceStateWithQuery, activeTagsSet, tagsForURLParam } from "$lib/utils"
   import Collapsible from "$lib/components/Collapsible.svelte"
   import TagWrapper from "$lib/components/TagWrapper.svelte"
   import Checkbox from "$lib/components/Checkbox.svelte"
@@ -19,7 +19,7 @@
   const dispatch = createEventDispatcher<CustomFilterEvent>()
   let form: HTMLFormElement
 
-  export let filters: {
+  export let filterData: {
     filterOptions: FilterOption[]
     filterLogicAnd: boolean
   } = {
@@ -28,11 +28,11 @@
   }
 
   let filterOptions: FilterOption[]
-  $: ({ filterOptions } = filters)
+  $: ({ filterOptions } = filterData)
 
   export let showFilterLogic: boolean = true
   // Whether all the selected tags must match the resource (vs any of the selected tags)
-  let filterLogicAndCtrl: boolean = filters?.filterLogicAnd ?? true
+  let filterLogicAndCtrl: boolean = filterData?.filterLogicAnd ?? true
   let filterLogic: FilterLogic
   $: filterLogic = filterLogicAndCtrl ? "and" : "or"
 
@@ -47,6 +47,7 @@
     replaceStateWithQuery({
       tags: "",
       mode: "",
+      q: ""
     })
 
     const filterTags = activeTagsSet(filterOptions)
@@ -59,8 +60,9 @@
     const filterTags = activeTagsSet(filterOptions)
 
     replaceStateWithQuery({
-      tags: Array.from(filterTags).join(","),
+      tags: tagsForURLParam(filterTags),
       mode: filterLogic,
+      q: ""
     })
     dispatch("filter", { filterTags, filterLogic })
   }
