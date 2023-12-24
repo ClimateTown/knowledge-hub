@@ -25,6 +25,7 @@
   let displayedResources = resources
   let filterByTags: Resource[]
   let tagLogicAnd: boolean = true // Whether all the selected tags must match the resource (vs any of the selected tags)
+  let searchTerm: string = ""
   // TODO: make this a user preference
   $: tagLogic = tagLogicAnd ? "and" : "or"
 
@@ -44,7 +45,7 @@
   }
 
   function filterBySearchInput(event: CustomEvent<{ searchTerm: string }>) {
-    const { searchTerm } = event.detail
+    searchTerm = event.detail.searchTerm
 
     // Analytics
     mixpanel.track("Resource Search", {
@@ -66,6 +67,9 @@
     })
 
     displayedResources = searchResults
+
+    // Clear filterObject tags
+    filterObject.forEach((option) => (option.active = false))
   }
 
   const filterResources = (
@@ -75,6 +79,9 @@
     }>
   ) => {
     const { filterOptions, filterLogic } = event.detail
+
+    // Reset search term
+    searchTerm = ""
 
     // Reset displayed resources
     displayedResources = []
@@ -125,7 +132,7 @@
   <p class="italic">{resources.length} resources and counting!!</p>
 </div>
 <ResourceNav />
-<Search on:search={filterBySearchInput}></Search>
+<Search on:search={filterBySearchInput} {searchTerm}></Search>
 <FilterForm
   filterOptions={filterObject}
   filterLogicAnd={tagLogicAnd}
