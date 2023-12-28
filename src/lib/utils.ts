@@ -102,7 +102,8 @@ export const tagQParamSetActive = (
   const tagNames = querytagNames.split(",")
 
   return filterObject.map((option) => {
-    option.active = tagNames.includes(option.name)
+    // Remove emoji from option, and compare to URL (which has no emoji)
+    option.active = tagNames.includes(removeEmojisFromStr(option.name))
     return option
   })
 }
