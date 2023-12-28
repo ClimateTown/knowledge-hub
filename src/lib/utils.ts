@@ -90,7 +90,7 @@ export const activeTagsSet = (filterOptions: FilterOption[]) => {
 }
 
 /**
- * compare the tage names from query params with the filter object to set active
+ * Load tag names from URL into filter object.
  * @param {string} querytagNames list of comma separate tag names
  * @param {FilterOption[]} filterObject tag options obj array
  * @returns {FilterOption[]} updated filterObject with active true on tag name matches
@@ -102,7 +102,7 @@ export const tagQParamSetActive = (
   const tagNames = querytagNames.split(",")
 
   return filterObject.map((option) => {
-    option.active = tagNames.includes(option.name) ? true : false
+    option.active = tagNames.includes(option.name)
     return option
   })
 }
