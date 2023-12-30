@@ -27,10 +27,8 @@ def get_page(url):
     response = urlopen(req, timeout=10)
 
     if response.getcode() != 200:
-        logger.error(
-            f"Error fetching {url}. Status code: {response.getcode()}")
-        raise Exception(
-            f"Error fetching {url}. Status code: {response.getcode()}")
+        logger.error(f"Error fetching {url}. Status code: {response.getcode()}")
+        raise Exception(f"Error fetching {url}. Status code: {response.getcode()}")
 
     soup = BeautifulSoup(
         response, "html.parser", from_encoding=response.info().get_param("charset")
@@ -68,7 +66,7 @@ def write_image_to_file(url: str, name: str) -> Path:
     path = Path("static") / "previews" / f"{hashed}.jpg"
 
     # Add Mozilla header to prevent getting blocked for scraping
-    r = httpx.get(url, headers={'User-agent': 'Mozilla/5.0'})
+    r = httpx.get(url, headers={"User-agent": "Mozilla/5.0"})
 
     logger.info(f"Writing file {hashed} for {name}")
     f = open(path, "wb")
@@ -94,8 +92,7 @@ def main():
         if image:
             # Check if image is valid URL
             if validators.url(image):
-                resource["og_preview"] = write_image_to_file(
-                    image, resource["title"])
+                resource["og_preview"] = write_image_to_file(image, resource["title"])
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
