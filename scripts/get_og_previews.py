@@ -27,10 +27,8 @@ def get_page(url):
     response = urlopen(req, timeout=10)
 
     if response.getcode() != 200:
-        logger.error(
-            f"Error fetching {url}. Status code: {response.getcode()}")
-        raise Exception(
-            f"Error fetching {url}. Status code: {response.getcode()}")
+        logger.error(f"Error fetching {url}. Status code: {response.getcode()}")
+        raise Exception(f"Error fetching {url}. Status code: {response.getcode()}")
 
     soup = BeautifulSoup(
         response, "html.parser", from_encoding=response.info().get_param("charset")
