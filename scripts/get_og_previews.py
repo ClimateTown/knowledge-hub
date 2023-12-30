@@ -66,6 +66,8 @@ def get_og_preview(url):
 
 def save_image_as_webp(binary_image: bytes, path: Path, file_name: str) -> Path:
     full_path = path / f"{file_name}.webp"
+    # TODO: Might need to add some validation to make sure the binary is an image
+    # Depends on if Pillow will just write a broken binary instead in those cases
     img = Image.open(BytesIO(binary_image))
     img.save(full_path, "webp")
     return full_path
