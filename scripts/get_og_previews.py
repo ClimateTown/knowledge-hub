@@ -1,3 +1,4 @@
+import hashlib
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -6,6 +7,7 @@ from bs4 import BeautifulSoup
 from loguru import logger
 from tqdm import tqdm
 import validators
+import httpx
 
 resources_file = Path("data") / "resources.yml"
 
@@ -25,8 +27,10 @@ def get_page(url):
     response = urlopen(req, timeout=10)
 
     if response.getcode() != 200:
-        logger.error(f"Error fetching {url}. Status code: {response.getcode()}")
-        raise Exception(f"Error fetching {url}. Status code: {response.getcode()}")
+        logger.error(
+            f"Error fetching {url}. Status code: {response.getcode()}")
+        raise Exception(
+            f"Error fetching {url}. Status code: {response.getcode()}")
 
     soup = BeautifulSoup(
         response, "html.parser", from_encoding=response.info().get_param("charset")
@@ -55,7 +59,22 @@ def get_og_preview(url):
     # TODO: Maybe add additional behaviour to check if the image is large enough
     soup = get_page(url)
     image_url = get_og_image(soup)
+
     return image_url
+
+
+def write_image_to_file(url: str, name: str) -> Path:
+    hashed = hashlib.shake_128(name.encode("utf-8")).hexdigest(4)
+    path = Path("static") / "previews" / f"{hashed}.jpg"
+
+    # Add Mozilla header to prevent getting blocked for scraping
+    r = httpx.get(url, headers={'User-agent': 'Mozilla/5.0'})
+
+    print(f"Writing file {hashed} for {name}")
+    f = open(path, "wb")
+    f.write(r.content)
+    f.close()
+    return path
 
 
 def main():
@@ -75,7 +94,8 @@ def main():
         if image:
             # Check if image is valid URL
             if validators.url(image):
-                resource["og_preview"] = image
+                resource["og_preview"] = write_image_to_file(
+                    image, resource["title"])
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)

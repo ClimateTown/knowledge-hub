@@ -13,6 +13,10 @@ data/channel_data.json
 # Exclude script-generated files
 scripts/onboarding_pr_message.md
 
+#Exclude OG previews
+static/previews/*
+!static/previews/.gitkeep
+
 # Svelte
 .DS_Store
 node_modules

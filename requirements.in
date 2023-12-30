@@ -13,3 +13,4 @@ python-dotenv
 PyYAML
 tqdm
 validators
+httpx
