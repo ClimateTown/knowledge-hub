@@ -70,7 +70,7 @@ def write_image_to_file(url: str, name: str) -> Path | None:
     if r.status_code != 200:
         logger.error(f"Couldn't find image at {url}")
         return None
-    
+
     logger.info(f"Writing preview {hashed}.jpg for {name}")
 
     f = open(path, "wb")
