@@ -70,7 +70,7 @@ def write_image_to_file(url: str, name: str) -> Path:
     # Add Mozilla header to prevent getting blocked for scraping
     r = httpx.get(url, headers={'User-agent': 'Mozilla/5.0'})
 
-    print(f"Writing file {hashed} for {name}")
+    logger.info(f"Writing file {hashed} for {name}")
     f = open(path, "wb")
     f.write(r.content)
     f.close()
