@@ -35,7 +35,7 @@
         loading="lazy"
         class="object-cover rounded-t-lg object-center h-48 w-full"
         alt="Website preview"
-        src={resource.og_preview}
+        src="{base}/{resource.og_preview}"
       />
     {:else}
       <div

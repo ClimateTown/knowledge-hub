@@ -72,7 +72,7 @@ def write_image_to_file(url: str, name: str) -> Path:
     f = open(path, "wb")
     f.write(r.content)
     f.close()
-    return path
+    return Path("previews") / f"{hashed}.jpg"
 
 
 def main():
@@ -92,8 +92,8 @@ def main():
         if image:
             # Check if image is valid URL
             if validators.url(image):
-                path = write_image_to_file(image, resource["title"])
-                resource["og_preview"] = path.as_posix()
+                filename = write_image_to_file(image, resource["title"])
+                resource["og_preview"] = filename.as_posix()
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
