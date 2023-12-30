@@ -112,8 +112,7 @@ def main():
                 file_path = write_image_to_file(image_url, PREVIEW_PATH)
                 if file_path is None:
                     continue
-                # Extract the last parts of the file path (previews/img_name.webp)
-                resource["og_preview"] = "/".join(file_path.parts[-2:])
+                resource["og_preview"] = file_path.name
 
     with RESOURCES_FILE.open("w") as f:
         yaml.dump(resources, f)
