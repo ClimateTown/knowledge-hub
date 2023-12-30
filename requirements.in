@@ -14,3 +14,4 @@ PyYAML
 tqdm
 validators
 httpx
+Pillow

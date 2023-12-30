@@ -107,6 +107,8 @@ pandas==1.5.3
     # via -r requirements.in
 pathspec==0.10.3
     # via black
+pillow==10.1.0
+    # via -r requirements.in
 pip-tools==6.13.0
     # via -r requirements.in
 platformdirs==2.6.0
