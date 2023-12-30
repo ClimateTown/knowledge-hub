@@ -61,8 +61,8 @@ def get_og_preview(url):
     return image_url
 
 
-def write_image_to_file(url: str, name: str) -> Path | None:
-    hashed = hashlib.shake_128(name.encode("utf-8")).hexdigest(4)
+def write_image_to_file(url: str) -> str | None:
+    hashed = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
     path = Path("static") / "previews" / f"{hashed}.jpg"
 
     # Add Mozilla header to prevent getting blocked for scraping
@@ -71,12 +71,12 @@ def write_image_to_file(url: str, name: str) -> Path | None:
         logger.error(f"Couldn't find image at {url}")
         return None
 
-    logger.info(f"Writing preview {hashed}.jpg for {name}")
+    logger.info(f"Writing preview {hashed}.jpg for {r.url.host}")
 
     f = open(path, "wb")
     f.write(r.content)
     f.close()
-    return Path("previews") / f"{hashed}.jpg"
+    return f"previews/{hashed}.jpg"
 
 
 def main():
@@ -97,10 +97,10 @@ def main():
             # Check if image is valid URL
             # TODO: Remove this nesting by offloading the validation to the image writer
             if validators.url(image):
-                filename = write_image_to_file(image, resource["title"])
+                filename = write_image_to_file(image)
                 if filename is None:
                     continue
-                resource["og_preview"] = filename.as_posix()
+                resource["og_preview"] = filename
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
