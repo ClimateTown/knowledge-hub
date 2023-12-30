@@ -27,8 +27,10 @@ def get_page(url):
     response = urlopen(req, timeout=10)
 
     if response.getcode() != 200:
-        logger.error(f"Error fetching {url}. Status code: {response.getcode()}")
-        raise Exception(f"Error fetching {url}. Status code: {response.getcode()}")
+        logger.error(
+            f"Error fetching {url}. Status code: {response.getcode()}")
+        raise Exception(
+            f"Error fetching {url}. Status code: {response.getcode()}")
 
     soup = BeautifulSoup(
         response, "html.parser", from_encoding=response.info().get_param("charset")
@@ -92,7 +94,8 @@ def main():
         if image:
             # Check if image is valid URL
             if validators.url(image):
-                resource["og_preview"] = write_image_to_file(image, resource["title"])
+                path = write_image_to_file(image, resource["title"])
+                resource["og_preview"] = path.as_posix()
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
