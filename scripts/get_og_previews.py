@@ -11,7 +11,8 @@ import validators
 import httpx
 from PIL import Image
 
-resources_file = Path("data") / "resources.yml"
+RESOURCES_FILE = Path("data") / "resources.yml"
+PREVIEW_PATH = Path("static") / "previews"
 
 
 # Somewhat copying the homework from this article
@@ -70,7 +71,7 @@ def save_image_as_webp(binary_image: bytes, path: Path, file_name: str) -> Path:
     return full_path
 
 
-def write_image_to_file(url: str) -> Path | None:
+def write_image_to_file(url: str, file_path: Path) -> Path | None:
     file_name = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
     image_path = Path("static") / "previews"
 
@@ -87,8 +88,9 @@ def write_image_to_file(url: str) -> Path | None:
 
 def main():
     # Ensure the path for our previews actually exists
-    (Path("static") / "previews").mkdir(parents=True, exist_ok=True)
-    with resources_file.open() as f:
+    PREVIEW_PATH.mkdir(parents=True, exist_ok=True)
+
+    with RESOURCES_FILE.open() as f:
         resources = yaml.safe_load(f)
     logger.success("Read in `resources.yml` file.")
 
@@ -96,22 +98,22 @@ def main():
         logger.info(f"Getting OG preview for {resource['url']}")
 
         try:
-            image = get_og_preview(resource["url"])
+            image_url = get_og_preview(resource["url"])
         except Exception as e:
             logger.error(e)
-            image = None
+            image_url = None
 
-        if image:
+        if image_url:
             # Check if image is valid URL
-            # TODO: Remove this nesting by offloading the validation to the image writer
-            if validators.url(image):
-                file_path = write_image_to_file(image)
+            # TODO: Remove this nesting by offloading the validation elsewhere
+            if validators.url(image_url):
+                file_path = write_image_to_file(image_url, PREVIEW_PATH)
                 if file_path is None:
                     continue
                 # Extract the last parts of the file path (previews/img_name.webp)
                 resource["og_preview"] = "/".join(file_path.parts[-2:])
 
-    with resources_file.open("w") as f:
+    with RESOURCES_FILE.open("w") as f:
         yaml.dump(resources, f)
 
     logger.success("Wrote OG previews to `resources.yml` file.")
