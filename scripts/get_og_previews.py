@@ -1,4 +1,5 @@
 import hashlib
+from io import BytesIO
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -8,6 +9,7 @@ from loguru import logger
 from tqdm import tqdm
 import validators
 import httpx
+from PIL import Image
 
 resources_file = Path("data") / "resources.yml"
 
@@ -61,25 +63,31 @@ def get_og_preview(url):
     return image_url
 
 
-def write_image_to_file(url: str) -> str | None:
-    hashed = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
-    path = Path("static") / "previews" / f"{hashed}.jpg"
+def save_image_as_webp(binary_image: bytes, path: Path, file_name: str) -> Path:
+    full_path = path / f"{file_name}.webp"
+    img = Image.open(BytesIO(binary_image))
+    img.save(full_path, "webp")
+    return full_path
+
+
+def write_image_to_file(url: str) -> Path | None:
+    file_name = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
+    image_path = Path("static") / "previews"
 
     # Add Mozilla header to prevent getting blocked for scraping
     r = httpx.get(url, headers={"User-agent": "Mozilla/5.0"}, follow_redirects=True)
+
+    # Site had no actual image in their og_image url, so no point saving it
     if r.status_code != 200:
-        logger.error(f"Couldn't find image at {url}")
+        logger.error(f"Couldn't find any image at {url}")
         return None
 
-    logger.info(f"Writing preview {hashed}.jpg for {r.url.host}")
-
-    f = open(path, "wb")
-    f.write(r.content)
-    f.close()
-    return f"previews/{hashed}.jpg"
+    return save_image_as_webp(r.content, image_path, file_name)
 
 
 def main():
+    # Ensure the path for our previews actually exists
+    (Path("static") / "previews").mkdir(parents=True, exist_ok=True)
     with resources_file.open() as f:
         resources = yaml.safe_load(f)
     logger.success("Read in `resources.yml` file.")
@@ -97,10 +105,11 @@ def main():
             # Check if image is valid URL
             # TODO: Remove this nesting by offloading the validation to the image writer
             if validators.url(image):
-                filename = write_image_to_file(image)
-                if filename is None:
+                file_path = write_image_to_file(image)
+                if file_path is None:
                     continue
-                resource["og_preview"] = filename
+                # Extract the last parts of the file path (previews/img_name.webp)
+                resource["og_preview"] = "/".join(file_path.parts[-2:])
 
     with resources_file.open("w") as f:
         yaml.dump(resources, f)
