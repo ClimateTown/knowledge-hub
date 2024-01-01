@@ -8,7 +8,7 @@
 [![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/ClimateTown)
 
 ![Build workflow](https://img.shields.io/github/actions/workflow/status/ClimateTown/knowledge-hub/build.yml?branch=main&label=website%20build)
-[![All Contributors](https://img.shields.io/github/all-contributors/ClimateTown/knowledge-hub?color=ee8449&style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/github/all-contributors/ClimateTown/knowledge-hub?color=ee8449&style=flat-square)](#✨contributors)
 
 ---
 
