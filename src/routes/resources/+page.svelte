@@ -32,7 +32,7 @@
   let displayedResources = resources
   let filterByTags: Resource[]
   let tagLogicAnd: boolean = true // Whether all the selected tags must match the resource (vs any of the selected tags)
-  // TODO: make this a user preference
+
   let tagLogic: FilterLogic
   $: tagLogic = tagLogicAnd ? "and" : "or"
 
