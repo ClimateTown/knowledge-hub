@@ -64,18 +64,15 @@ def get_og_preview(url):
     return image_url
 
 
-def save_image_as_webp(binary_image: bytes, path: Path, file_name: str) -> Path:
-    full_path = path / f"{file_name}.webp"
-    # TODO: Might need to add some validation to make sure the binary is an image
-    # Depends on if Pillow will just write a broken binary instead in those cases
+def save_image_as_webp(binary_image: bytes, path: Path, file_stem: str) -> Path:
+    full_path = path / f"{file_stem}.webp"
     img = Image.open(BytesIO(binary_image))
     img.save(full_path, "webp")
     return full_path
 
 
-def write_image_to_file(url: str, file_path: Path) -> Path | None:
-    file_name = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
-    image_path = Path("static") / "previews"
+def write_image_to_file(url: str, folder_path: Path) -> Path | None:
+    file_stem = hashlib.shake_128(url.encode("utf-8")).hexdigest(4)
 
     # Add Mozilla header to prevent getting blocked for scraping
     r = httpx.get(url, headers={"User-agent": "Mozilla/5.0"}, follow_redirects=True)
@@ -85,7 +82,7 @@ def write_image_to_file(url: str, file_path: Path) -> Path | None:
         logger.error(f"Couldn't find any image at {url}")
         return None
 
-    return save_image_as_webp(r.content, image_path, file_name)
+    return save_image_as_webp(r.content, folder_path, file_stem)
 
 
 def main():
@@ -105,14 +102,17 @@ def main():
             logger.error(e)
             image_url = None
 
-        if image_url:
-            # Check if image is valid URL
-            # TODO: Remove this nesting by offloading the validation elsewhere
-            if validators.url(image_url):
-                file_path = write_image_to_file(image_url, PREVIEW_PATH)
-                if file_path is None:
-                    continue
-                resource["og_preview"] = file_path.name
+        if image_url is None:
+            continue
+
+        # Skip if URL is not valid format
+        if not validators.url(image_url):
+            continue
+
+        file_path = write_image_to_file(image_url, PREVIEW_PATH)
+        if file_path is None:
+            continue
+        resource["og_preview"] = file_path.name
 
     with RESOURCES_FILE.open("w") as f:
         yaml.dump(resources, f)
