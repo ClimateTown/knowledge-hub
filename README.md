@@ -156,6 +156,9 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/monedula"><img src="https://avatars.githubusercontent.com/u/139066628?v=4?s=60" width="60px;" alt="monedula"/><br /><sub><b>monedula</b></sub></a><br /><a href="#content-monedula" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://commitsovercoffee.com"><img src="https://avatars.githubusercontent.com/u/129554482?v=4?s=60" width="60px;" alt="Sourav Singh"/><br /><sub><b>Sourav Singh</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=commitsovercoffee" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lyrete"><img src="https://avatars.githubusercontent.com/u/34749217?v=4?s=60" width="60px;" alt="Tommi Alajoki"/><br /><sub><b>Tommi Alajoki</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Lyrete" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
