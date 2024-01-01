@@ -13,8 +13,8 @@ data/channel_data.json
 # Exclude script-generated files
 scripts/onboarding_pr_message.md
 
-#Exclude OG previews (so no accidental binary data deployed)
-static/previews/*.webp
+#Exclude OG previews (build process)
+static/previews
 
 # Svelte
 .DS_Store
