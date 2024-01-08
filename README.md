@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://climatetown.github.io/knowledge-hub">
+<a href="https://hub.climatetownproductions.com">
 <img width="200" src="static/images/knowledge-hub-logo.png">
 </a>
 </p>
@@ -12,7 +12,7 @@
 
 ---
 
-The "behind the scenes" of the [ClimateTown Knowledge Hub](https://climatetown.github.io/knowledge-hub), your "one-stop shop" for important online resources in the fight against climate change!
+The "behind the scenes" of the [ClimateTown Knowledge Hub](https://hub.climatetownproductions.com), your "one-stop shop" for important online resources in the fight against climate change!
 
 ## How to suggest a resource
 
