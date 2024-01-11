@@ -170,6 +170,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/34749217?v=4",
       "profile": "https://github.com/Lyrete",
       "contributions": ["code"]
+    },
+    {
+      "login": "Stephen-at-Pleno",
+      "name": "Stephen Tanner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/127327471?v=4",
+      "profile": "https://github.com/Stephen-at-Pleno",
+      "contributions": ["content"]
     }
   ],
   "commitType": "docs"
