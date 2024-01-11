@@ -158,6 +158,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lyrete"><img src="https://avatars.githubusercontent.com/u/34749217?v=4?s=60" width="60px;" alt="Tommi Alajoki"/><br /><sub><b>Tommi Alajoki</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Lyrete" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Stephen-at-Pleno"><img src="https://avatars.githubusercontent.com/u/127327471?v=4?s=60" width="60px;" alt="Stephen Tanner"/><br /><sub><b>Stephen Tanner</b></sub></a><br /><a href="#content-Stephen-at-Pleno" title="Content">🖋</a></td>
     </tr>
   </tbody>
 </table>
