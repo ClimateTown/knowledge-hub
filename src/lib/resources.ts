@@ -41,7 +41,7 @@ const colorData: Color[] = [
     lightHex: "#dccdea",
     darkHex: "#29183a",
   },
-] as const;
+] as const
 
 // Mappings of human readable color names to hex values for light and dark modes
 export const lightColors = colorData.reduce<{ [key: string]: string }>(
