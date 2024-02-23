@@ -5,7 +5,7 @@ interface Color {
 }
 
 // ! Keep in sync with `data/resource_tags.schema.json` which determines valid colors
-let colorData: Color[] = [
+const colorData: Color[] = [
   {
     name: "lavender",
     lightHex: "#c8cdea",
@@ -41,10 +41,10 @@ let colorData: Color[] = [
     lightHex: "#dccdea",
     darkHex: "#29183a",
   },
-]
+] as const;
 
 // Mappings of human readable color names to hex values for light and dark modes
-export let lightColors = colorData.reduce<{ [key: string]: string }>(
+export const lightColors = colorData.reduce<{ [key: string]: string }>(
   (obj, item: Color) => {
     obj[item.name] = item.lightHex
     return obj
@@ -52,7 +52,7 @@ export let lightColors = colorData.reduce<{ [key: string]: string }>(
   {}
 )
 
-export let darkColors = colorData.reduce<{ [key: string]: string }>(
+export const darkColors = colorData.reduce<{ [key: string]: string }>(
   (obj, item: Color) => {
     obj[item.name] = item.darkHex
     return obj
