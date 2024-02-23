@@ -104,7 +104,7 @@
   This data is solely used to monitor site usage, and to enhance the reach of
   the project. As this project is open source, you can inspect the usage of
   analytics. Our analytics platform is Mixpanel (<a
-  href="https://mixpanel.com/legal/privacy-policy"
-  class="underline">see their privacy policy here</a
+    href="https://mixpanel.com/legal/privacy-policy"
+    class="underline">see their privacy policy here</a
   >), with data being stored in the EU.
 </div>
