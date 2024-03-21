@@ -34,7 +34,7 @@
         width="330"
         loading="lazy"
         class="object-cover rounded-t-lg object-center h-48 w-full"
-        alt="Website preview"
+        alt="{resource.title} Website preview"
         src="{base}/previews/{resource.og_preview}"
       />
     {:else}
