@@ -78,7 +78,7 @@
   <ol
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
-    {#each displayedVideos.slice(0, displayedVideoLimit) as video}
+    {#each displayedVideos.slice(0, displayedVideoLimit) as video (video)}
       <li>
         <YoutubeThumbnail
           {...video}
