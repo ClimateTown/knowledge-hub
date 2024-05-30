@@ -39,6 +39,8 @@ describe("YouTube Utilities", () => {
         channelCustomName: "climate town",
         channelName: "climate town",
         channelPic: "",
+        channelPicH: 180,
+        channelPicW: 320,
         channelSubCount: 2,
       },
       {
@@ -46,6 +48,8 @@ describe("YouTube Utilities", () => {
         channelCustomName: "FAKE1",
         channelName: "FAKE1",
         channelPic: "",
+        channelPicH: 180,
+        channelPicW: 320,
         channelSubCount: 100,
       },
       {
@@ -53,6 +57,8 @@ describe("YouTube Utilities", () => {
         channelCustomName: "FAKE2",
         channelName: "FAKE2",
         channelPic: "",
+        channelPicH: 180,
+        channelPicW: 320,
         channelSubCount: 270,
       },
       {
@@ -60,6 +66,8 @@ describe("YouTube Utilities", () => {
         channelCustomName: "FAKE3",
         channelName: "FAKE3",
         channelPic: "",
+        channelPicH: 180,
+        channelPicW: 320,
         channelSubCount: 5,
       },
     ]
@@ -85,6 +93,8 @@ describe("getChannelData", () => {
       channelCustomName: "climate town",
       channelName: "climate town",
       channelPic: "",
+      channelPicH: 180,
+        channelPicW: 320,
       channelSubCount: 2,
     },
     {
@@ -92,6 +102,8 @@ describe("getChannelData", () => {
       channelCustomName: "FAKE1",
       channelName: "FAKE1",
       channelPic: "",
+      channelPicH: 180,
+        channelPicW: 320,
       channelSubCount: 100,
     },
   ]

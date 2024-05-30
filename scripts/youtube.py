@@ -34,6 +34,8 @@ class YoutubeChannel:
     channelCustomName: str
     channelName: str
     channelPic: str
+    channelPicH: int
+    channelPicW: int
     channelSubCount: int
 
 
@@ -132,9 +134,11 @@ def save_channel_data(channel_ids: List[str], youtube: build):
             channelId=item["id"],
             channelCustomName=item["snippet"]["customUrl"],
             channelName=item["snippet"]["title"],
-            channelPic=item["snippet"]["thumbnails"]["default"]["url"].split("=")[
+            channelPic=item["snippet"]["thumbnails"]["medium"]["url"].split("=")[
                 0
             ],  # Can set ?s= on the end to get a custom resolution
+            channelPicH=item["snippet"]["thumbnails"]["medium"]["height"]
+            channelPicW=item["snippet"]["thumbnails"]["medium"]["width"]
             channelSubCount=int(item["statistics"]["subscriberCount"]),
         )
         channels.append(youtube_channel)
