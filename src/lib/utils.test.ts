@@ -94,7 +94,7 @@ describe("getChannelData", () => {
       channelName: "climate town",
       channelPic: "",
       channelPicH: 180,
-        channelPicW: 320,
+      channelPicW: 320,
       channelSubCount: 2,
     },
     {
@@ -103,7 +103,7 @@ describe("getChannelData", () => {
       channelName: "FAKE1",
       channelPic: "",
       channelPicH: 180,
-        channelPicW: 320,
+      channelPicW: 320,
       channelSubCount: 100,
     },
   ]
