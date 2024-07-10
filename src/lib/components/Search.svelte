@@ -19,10 +19,9 @@
 </script>
 
 <form on:submit|preventDefault={onSubmit} class="mb-3" role="search">
-  <label for="search" />
+  <label for="search" class="sr-only">Search by keyword</label>
   <input
     type="search"
-    aria-label="search text"
     bind:value={searchTerm}
     placeholder="Search by keyword"
     id="search"
