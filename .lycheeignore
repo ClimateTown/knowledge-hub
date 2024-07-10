@@ -1,2 +1,3 @@
 # Using regex...
 .*/%25sveltekit\.assets%25/.*
+^https:\/\/www\.patreon\.com\/ClimateTown$
