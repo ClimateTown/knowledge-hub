@@ -12,8 +12,6 @@
 
 ---
 
-### Update: A maintainer has gone on break. Will be back July 2024 🤠
-
 The "behind the scenes" of the [ClimateTown Knowledge Hub](https://hub.climatetownproductions.com), your "one-stop shop" for important online resources in the fight against climate change!
 
 ## How to suggest a resource
