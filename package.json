@@ -39,6 +39,7 @@
   "dependencies": {
     "fuse.js": "^6.6.2",
     "mixpanel-browser": "^2.47.0",
+    "simple-icons": "^13.3.0",
     "ts-node": "^10.4.0",
     "vitest": "^0.26.2"
   }
