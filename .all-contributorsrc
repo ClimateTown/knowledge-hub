@@ -177,6 +177,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/127327471?v=4",
       "profile": "https://github.com/Stephen-at-Pleno",
       "contributions": ["content"]
+    },
+    {
+      "login": "EdwardPrado",
+      "name": "Edward Prado",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45430107?v=4",
+      "profile": "https://github.com/EdwardPrado",
+      "contributions": ["bug"]
     }
   ],
   "commitType": "docs"
