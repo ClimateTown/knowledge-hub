@@ -34,21 +34,15 @@
     filterObject.push(channelOption)
   }
 
-  function filterResources(
-    event: CustomEvent<{
-      filterOptions: FilterOption[]
-      filterLogic: FilterLogic
-    }>
-  ) {
-    const { filterOptions } = event.detail
+  const filterResources = (
+    event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
+  ) => {
+    const { filterTags } = event.detail
+    const filterOptions = Array.from(filterTags)
     displayedVideos = []
 
-    const filteredActiveChannelIds: string[] = filterOptions
-      .filter((channel: FilterOption) => channel.active === true)
-      .map((channel: FilterOption) => (channel.id ? channel.id : channel.name))
-
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-      filteredActiveChannelIds.includes(video.channelId)
+      filterOptions.includes(video.channelName)
     )
 
     // Force svelte re-render
@@ -69,7 +63,7 @@
   the latest long-form videos from each YouTuber.
 </div>
 <FilterForm
-  filterOptions={filterObject}
+  filterData={{ filterOptions: filterObject, filterLogicAnd: false }}
   showFilterLogic={false}
   on:filter={filterResources}
 />
