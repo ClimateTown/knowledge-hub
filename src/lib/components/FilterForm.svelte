@@ -80,7 +80,7 @@
       class="p-4 space-y-4"
     >
       <div class="flex flex-row flex-wrap gap-2">
-        {#each filterOptions as filterOption}
+        {#each filterOptions as filterOption (filterOption)}
           <!-- checkboxes -->
           <TagWrapper
             tagColor={filterOption.color}

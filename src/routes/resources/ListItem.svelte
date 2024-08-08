@@ -61,7 +61,7 @@
         {resource.description}
       </p>
       <div class="flex flex-wrap text-xs py-2">
-        {#each resource.tags as tag}
+        {#each resource.tags as tag (tag)}
           <TagWrapper
             tagColor={tag.color}
             extraClasses="whitespace-nowrap p-1 my-1 mr-2"

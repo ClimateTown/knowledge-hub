@@ -7,12 +7,13 @@
   let darkTagColor: string | undefined
 
   if (tagColor !== undefined) {
-    lightTagColor = lightColors[tagColor]
-    darkTagColor = darkColors[tagColor]
+    lightTagColor = lightColors[tagColor] ?? undefined
+    darkTagColor = darkColors[tagColor] ?? undefined
   }
 </script>
 
 <div
+  data-testid="tag-wrapper-component"
   class="bg-zinc-200 dark:bg-zinc-700 text-black dark:text-white rounded-full {extraClasses}"
   class:tag-color={lightTagColor || darkTagColor}
   style:--tag-color={lightTagColor}
