@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from "$app/paths"
-  import { github_url } from "$lib/constants"
+  import { GITHUB_URL } from "$lib/constants"
 
   import Download from "svelte-bootstrap-icons/lib/Download.svelte"
   import FileEarmarkPlus from "svelte-bootstrap-icons/lib/FileEarmarkPlus.svelte"
@@ -12,7 +12,7 @@
 <nav aria-label="Resource Navigation" class="flex flex-wrap gap-2 pb-3">
   <ButtonLinks
     link={true}
-    url="{github_url}/issues/new/choose"
+    url="{GITHUB_URL}/issues/new/choose"
     version="hollow"
     color="green"
     newTab={true}
@@ -23,7 +23,7 @@
 
   <ButtonLinks
     link={true}
-    url="{github_url}/edit/main/data/resources.yml"
+    url="{GITHUB_URL}/edit/main/data/resources.yml"
     version="hollow"
     color="green"
     newTab={true}

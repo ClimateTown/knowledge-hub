@@ -38,9 +38,19 @@
   on:click={setColorMode}
 >
   {#if darkMode}
-    <MoonStarsFill aria-hidden="true" />
+    <SunFill
+      aria-hidden="true"
+      class="fill-blue-primary"
+      width={24}
+      height={24}
+    />
   {:else}
-    <SunFill aria-hidden="true" />
+    <MoonStarsFill
+      aria-hidden="true"
+      class="fill-blue-primary"
+      width={24}
+      height={24}
+    />
   {/if}
   <span class="sr-only">Change Colour Scheme Mode</span>
 </button>
