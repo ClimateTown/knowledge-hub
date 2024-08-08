@@ -100,7 +100,7 @@
         >
           <DarkModeControl cssClass="w-fit p-2"></DarkModeControl>
 
-          <button on:click={handleDropdownClick}>
+          <button on:click={handleDropdownClick} id="menu">
             <List width={24} height={24} />
           </button>
 
@@ -109,7 +109,7 @@
               class="w-40 absolute right-8 z-10 rounded-md bg-white dark:bg-neutral-900 shadow-lg"
               role="menu"
               aria-orientation="vertical"
-              aria-labelledby="user-menu-button"
+              aria-labelledby="menu"
               tabindex="-1"
             >
               <nav class="flex flex-col">
