@@ -137,8 +137,8 @@ def save_channel_data(channel_ids: List[str], youtube: build):
             channelPic=item["snippet"]["thumbnails"]["medium"]["url"].split("=")[
                 0
             ],  # Can set ?s= on the end to get a custom resolution
-            channelPicH=item["snippet"]["thumbnails"]["medium"]["height"]
-            channelPicW=item["snippet"]["thumbnails"]["medium"]["width"]
+            channelPicH=item["snippet"]["thumbnails"]["medium"]["height"],
+            channelPicW=item["snippet"]["thumbnails"]["medium"]["width"],
             channelSubCount=int(item["statistics"]["subscriberCount"]),
         )
         channels.append(youtube_channel)
