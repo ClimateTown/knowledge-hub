@@ -19,7 +19,7 @@
 
   let displayedVideoLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedVideoLimit
-  let displayedVideos = videoData
+  let displayedVideos: YoutubeVideo[] = videoData
   let rerender: boolean = false
 
   // Creating form filter options, default view
@@ -42,7 +42,7 @@
     displayedVideos = []
 
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-      filterOptions.includes(video.channelName)
+      filterOptions.includes(video.channelId)
     )
 
     // Force svelte re-render
@@ -75,7 +75,7 @@
     {#each displayedVideos.slice(0, displayedVideoLimit) as video}
       <li>
         <YoutubeThumbnail
-          {...video}
+          {video}
           channelInfo={getChannelData(channelData, video.channelId)}
         />
       </li>

@@ -28,6 +28,9 @@ export interface YoutubeVideo {
   publishedAt: string
   videoId: string
   title: string
+  videoPic: string
+  videoPicH: number // e.g. 180 (for 180px)
+  videoPicW: number // e.g. 320 (for 320px)
 }
 
 export interface FilterOption extends Tag {

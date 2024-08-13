@@ -45,6 +45,9 @@ class YoutubeVideo:
     publishedAt: str
     videoId: str
     title: str
+    videoPic: str
+    videoPicH: int
+    videoPicW: int
 
     @property
     def published_dt(self):
@@ -83,6 +86,9 @@ async def get_videos_from_channels(channel_ids: List[str], youtube: build):
                 videoId=item["id"]["videoId"],
                 channelId=item["snippet"]["channelId"],
                 title=item["snippet"]["title"],
+                videoPic=item["snippet"]["thumbnails"]["medium"]["url"],
+                videoPicW=item["snippet"]["thumbnails"]["medium"]["width"],
+                videoPicH=item["snippet"]["thumbnails"]["medium"]["height"]
             )
             channel_videos.append(video)
 
@@ -134,11 +140,11 @@ def save_channel_data(channel_ids: List[str], youtube: build):
             channelId=item["id"],
             channelCustomName=item["snippet"]["customUrl"],
             channelName=item["snippet"]["title"],
-            channelPic=item["snippet"]["thumbnails"]["medium"]["url"].split("=")[
+            channelPic=item["snippet"]["thumbnails"]["default"]["url"].split("=")[
                 0
             ],  # Can set ?s= on the end to get a custom resolution
-            channelPicH=item["snippet"]["thumbnails"]["medium"]["height"],
-            channelPicW=item["snippet"]["thumbnails"]["medium"]["width"],
+            channelPicH=item["snippet"]["thumbnails"]["default"]["height"],
+            channelPicW=item["snippet"]["thumbnails"]["default"]["width"],
             channelSubCount=int(item["statistics"]["subscriberCount"]),
         )
         channels.append(youtube_channel)
