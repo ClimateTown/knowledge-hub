@@ -13,14 +13,14 @@
 >
   <a href="https://youtu.be/{videoId}" target="_blank" rel="noreferrer">
     {#if videoPic}
-    <img
-      loading="lazy"
-      class="rounded-l-lg md:rounded-bl-none md:rounded-t-lg md:w-full"
-      height={videoPicH}
-      width={videoPicW}
-      src={videoPic}
-      alt=""
-    />
+      <img
+        loading="lazy"
+        class="rounded-l-lg md:rounded-bl-none md:rounded-t-lg md:w-full"
+        height={videoPicH}
+        width={videoPicW}
+        src={videoPic}
+        alt=""
+      />
     {/if}
     <div
       class="md:block text-sm font-semibold text-zinc-900 dark:text-zinc-100"
@@ -35,10 +35,15 @@
     rel="noreferrer"
     aria-label="{channelName} youtube channel (in a new tab)"
   >
-  {#if channelPic}
-  <img class="rounded-full" src="{channelPic}" height="18" width="18" alt="">
-  {/if}
-  {channelName}
-    </a
-  >
+    {#if channelPic}
+      <img
+        class="rounded-full"
+        src={channelPic}
+        height="18"
+        width="18"
+        alt=""
+      />
+    {/if}
+    {channelName}
+  </a>
 </div>

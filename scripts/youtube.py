@@ -88,7 +88,7 @@ async def get_videos_from_channels(channel_ids: List[str], youtube: build):
                 title=item["snippet"]["title"],
                 videoPic=item["snippet"]["thumbnails"]["medium"]["url"],
                 videoPicW=item["snippet"]["thumbnails"]["medium"]["width"],
-                videoPicH=item["snippet"]["thumbnails"]["medium"]["height"]
+                videoPicH=item["snippet"]["thumbnails"]["medium"]["height"],
             )
             channel_videos.append(video)
 
