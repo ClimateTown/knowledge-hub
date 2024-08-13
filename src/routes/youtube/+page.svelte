@@ -45,17 +45,18 @@
     event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
   ) => {
     const { filterTags } = event.detail
-    applyVideoFilter(filterTags);
+    applyVideoFilter(filterTags)
   }
 
   const applyVideoFilter = (filterTags: Set<string>) => {
-    const selectedChannels = Array.from(filterTags).map((option) => getChannelIdFromName(option)?.channelId)
+    const selectedChannels = Array.from(filterTags).map(
+      (option) => getChannelIdFromName(option)?.channelId
+    )
 
-    
     displayedVideos = []
 
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-    selectedChannels.includes(video.channelId)
+      selectedChannels.includes(video.channelId)
     )
 
     // Force svelte re-render
@@ -69,14 +70,11 @@
 
   onMount(() => {
     const params = Object.fromEntries($page.url.searchParams)
-      if (params.tags) {
-        filterObject = tagQParamSetActive(params.tags, filterObject)
-      }
+    if (params.tags) {
+      filterObject = tagQParamSetActive(params.tags, filterObject)
+    }
 
-      applyVideoFilter(
-        activeTagsSet(filterObject)
-      )
-    
+    applyVideoFilter(activeTagsSet(filterObject))
   })
 </script>
 
