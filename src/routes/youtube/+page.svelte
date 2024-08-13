@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte"
+  import { page } from "$app/stores"
   import type { PageData } from "./$types"
   import type { YoutubeVideo, FilterOption, FilterLogic } from "$lib/interfaces"
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants"
@@ -6,6 +8,8 @@
     sortChannelBySubCount,
     semanticNumber,
     getChannelData,
+    tagQParamSetActive,
+    activeTagsSet,
   } from "$lib/utils"
   import YoutubeThumbnail from "./YoutubeThumbnail.svelte"
   import FilterForm from "$lib/components/FilterForm.svelte"
@@ -19,8 +23,7 @@
 
   let displayedVideoLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedVideoLimit
-  let displayedVideos: YoutubeVideo[] = videoData
-  let rerender: boolean = false
+  let displayedVideos: YoutubeVideo[] = [...videoData]
 
   // Creating form filter options, default view
   let filterObject: FilterOption[] = []
@@ -34,26 +37,47 @@
     filterObject.push(channelOption)
   }
 
-  const filterResources = (
+  const getChannelIdFromName = (channelName: string) => {
+    return channelData.find((channel) => channel.channelName === channelName)
+  }
+
+  const filterVideos = (
     event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
   ) => {
     const { filterTags } = event.detail
-    const filterOptions = Array.from(filterTags)
+    applyVideoFilter(filterTags);
+  }
+
+  const applyVideoFilter = (filterTags: Set<string>) => {
+    const selectedChannels = Array.from(filterTags).map((option) => getChannelIdFromName(option)?.channelId)
+
+    
     displayedVideos = []
 
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-      filterOptions.includes(video.channelId)
+    selectedChannels.includes(video.channelId)
     )
 
     // Force svelte re-render
     displayedVideos = filteredVideos
-    rerender = !rerender
   }
 
   const updateLimit = (event: CustomEvent<{ displayLimit: number }>) => {
     const { displayLimit } = event.detail
     displayedVideoLimit = displayLimit
   }
+
+  onMount(() => {
+    const params = Object.fromEntries($page.url.searchParams)
+      if (params.tags) {
+        filterObject = tagQParamSetActive(params.tags, filterObject)
+      }
+
+      applyVideoFilter(
+        activeTagsSet(filterObject)
+      )
+    
+  })
 </script>
 
 <h1>Climate YouTube</h1>
@@ -65,25 +89,23 @@
 <FilterForm
   filterData={{ filterOptions: filterObject, filterLogicAnd: false }}
   showFilterLogic={false}
-  on:filter={filterResources}
+  on:filter={filterVideos}
 />
 
-{#key rerender}
-  <ol
-    class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
-  >
-    {#each displayedVideos.slice(0, displayedVideoLimit) as video}
-      <li>
-        <YoutubeThumbnail
-          {video}
-          channelInfo={getChannelData(channelData, video.channelId)}
-        />
-      </li>
-    {:else}
-      <li>No videos here!</li>
-    {/each}
-  </ol>
-{/key}
+<ol
+  class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
+>
+  {#each displayedVideos.slice(0, displayedVideoLimit) as video}
+    <li>
+      <YoutubeThumbnail
+        {video}
+        channelInfo={getChannelData(channelData, video.channelId)}
+      />
+    </li>
+  {:else}
+    <li>No videos here!</li>
+  {/each}
+</ol>
 <p class="italic text-center m-4">Those are all the videos!</p>
 
 <ScrollTopButton on:updateLimit={updateLimit} />
