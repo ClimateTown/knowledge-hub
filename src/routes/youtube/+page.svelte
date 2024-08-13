@@ -24,6 +24,7 @@
   let displayedVideoLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedVideoLimit
   let displayedVideos: YoutubeVideo[] = [...videoData]
+  let rerender: boolean = false
 
   // Creating form filter options, default view
   let filterObject: FilterOption[] = []
@@ -45,21 +46,23 @@
     event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
   ) => {
     const { filterTags } = event.detail
-    applyVideoFilter(filterTags);
+    applyVideoFilter(filterTags)
   }
 
   const applyVideoFilter = (filterTags: Set<string>) => {
-    const selectedChannels = Array.from(filterTags).map((option) => getChannelIdFromName(option)?.channelId)
+    const selectedChannels = Array.from(filterTags).map(
+      (option) => getChannelIdFromName(option)?.channelId
+    )
 
-    
     displayedVideos = []
 
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-    selectedChannels.includes(video.channelId)
+      selectedChannels.includes(video.channelId)
     )
 
     // Force svelte re-render
     displayedVideos = filteredVideos
+    rerender = !rerender
   }
 
   const updateLimit = (event: CustomEvent<{ displayLimit: number }>) => {
@@ -69,14 +72,11 @@
 
   onMount(() => {
     const params = Object.fromEntries($page.url.searchParams)
-      if (params.tags) {
-        filterObject = tagQParamSetActive(params.tags, filterObject)
-      }
+    if (params.tags) {
+      filterObject = tagQParamSetActive(params.tags, filterObject)
+    }
 
-      applyVideoFilter(
-        activeTagsSet(filterObject)
-      )
-    
+    applyVideoFilter(activeTagsSet(filterObject))
   })
 </script>
 
@@ -89,23 +89,26 @@
 <FilterForm
   filterData={{ filterOptions: filterObject, filterLogicAnd: false }}
   showFilterLogic={false}
+  showReset={false}
   on:filter={filterVideos}
 />
 
-<ol
-  class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
->
-  {#each displayedVideos.slice(0, displayedVideoLimit) as video}
-    <li>
-      <YoutubeThumbnail
-        {video}
-        channelInfo={getChannelData(channelData, video.channelId)}
-      />
-    </li>
-  {:else}
-    <li>No videos here!</li>
-  {/each}
-</ol>
+{#key rerender}
+  <ol
+    class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
+  >
+    {#each displayedVideos.slice(0, displayedVideoLimit) as video}
+      <li>
+        <YoutubeThumbnail
+          {video}
+          channelInfo={getChannelData(channelData, video.channelId)}
+        />
+      </li>
+    {:else}
+      <li>No videos here!</li>
+    {/each}
+  </ol>
+{/key}
 <p class="italic text-center m-4">Those are all the videos!</p>
 
 <ScrollTopButton on:updateLimit={updateLimit} />
