@@ -171,6 +171,10 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 
 This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are, again, welcome!
 
+## License
+
+This project (i.e., the code, custom assets, and data) is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). This license does not extend to logos from Climate Town and other trademarked items, which remain the property of the original copyright holders.
+
 ## Acknowledgements
 
 - [Bootstrap Icons](https://icons.getbootstrap.com/) for icons via [svelte-bootstrap-icons](https://www.npmjs.com/package/svelte-bootstrap-icons)
