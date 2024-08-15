@@ -51,11 +51,11 @@
   <!-- Emoji support with Twemoji https://github.com/twitter/twemoji -->
   <link
     rel="preload"
-    href="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+    href="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
     as="script"
   />
   <script
-    src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"
+    src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js"
     crossorigin="anonymous"
   ></script>
 </svelte:head>
