@@ -58,10 +58,10 @@ export const getChannelData = (
 ): YoutubeChannel => {
   const channel = channelData.find((channel) => channel.channelId === channelId)
   if (!channel) {
-    throw new Error(`Channel ID with name '${channelId}' could not be found.`);
+    throw new Error(`Channel ID with name '${channelId}' could not be found.`)
   }
 
-  return channel;
+  return channel
 }
 
 /**

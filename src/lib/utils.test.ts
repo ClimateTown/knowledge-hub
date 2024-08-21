@@ -115,7 +115,9 @@ describe("getChannelData", () => {
   })
 
   it("should throw error for no channel found", () => {
-    expect(() => getChannelData(ytList, "fake")).toThrowError(`Channel ID with name 'fake' could not be found`)
+    expect(() => getChannelData(ytList, "fake")).toThrowError(
+      `Channel ID with name 'fake' could not be found`
+    )
   })
 })
 
