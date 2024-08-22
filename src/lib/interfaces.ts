@@ -18,6 +18,8 @@ export interface YoutubeChannel {
   channelCustomName: string // e.g. "@notjustbikes"
   channelName: string // e.g. "Not Just Bikes"
   channelPic: string // e.g. "https://yt3.ggpht.com/5DBP22k02WIMvHgeoUj_Tt14Kh8u-oaAhYHQu1gXCoHuisGXnavb5k-ivpyffqIARNDzgpBbUw"
+  channelPicH: number // e.g. 180 (for 180px)
+  channelPicW: number // e.g. 320 (for 320px)
   channelSubCount: number
 }
 
@@ -26,6 +28,9 @@ export interface YoutubeVideo {
   publishedAt: string
   videoId: string
   title: string
+  videoPic: string
+  videoPicH: number // e.g. 180 (for 180px)
+  videoPicW: number // e.g. 320 (for 320px)
 }
 
 export interface FilterOption extends Tag {

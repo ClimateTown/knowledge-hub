@@ -35,6 +35,7 @@
   $: ({ filterOptions } = filterData)
 
   export let showFilterLogic: boolean = true
+  export let showReset: boolean = true
   // Whether all the selected tags must match the resource (vs any of the selected tags)
   let filterLogicAndCtrl: boolean = filterData?.filterLogicAnd ?? true
   let filterLogic: FilterLogic
@@ -128,16 +129,18 @@
             >
           </label>
         {/if}
-        <ButtonLinks
-          type="reset"
-          on:click={resetFilters}
-          disabled={!isFilterDirty}
-          version="filled"
-          color="green"
-        >
-          <Trash3 slot="icon" class="w-6 h-6 inline" />
-          <span slot="label">Clear All</span>
-        </ButtonLinks>
+        {#if showReset}
+          <ButtonLinks
+            type="reset"
+            on:click={resetFilters}
+            disabled={!isFilterDirty}
+            version="filled"
+            color="green"
+          >
+            <Trash3 slot="icon" class="w-6 h-6 inline" />
+            <span slot="label">Clear All</span>
+          </ButtonLinks>
+        {/if}
 
         <ButtonLinks type="submit" version="filled" color="green">
           <Funnel slot="icon" class="w-6 h-6 inline" />
