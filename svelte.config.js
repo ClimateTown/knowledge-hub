@@ -8,6 +8,9 @@ const dev = process.argv.includes("dev")
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   preprocess: vitePreprocess(),
+  compilerOptions: {
+    accessors: process.env.TEST,
+  },
   kit: {
     adapter: adapter({
       pages: "build",
