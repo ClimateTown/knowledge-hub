@@ -1,5 +1,8 @@
 name: Testing (YAML, Python code, TS code)
-on: [push]
+on:
+  push:
+    branches: [main, test-me/*]
+  pull_request:
 
 jobs:
   python_test:
