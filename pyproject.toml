@@ -26,3 +26,17 @@ ignore = [
     # Use `X | Y` in `isinstance` (see https://github.com/home-assistant/core/issues/123850)
     "UP038",
 ]
+
+[tool.mypy]
+files = [
+    "data",
+    "scripts"
+]
+
+[[tool.mypy.overrides]]
+
+module = [
+    "googleapiclient.discovery",
+    "validators"
+]
+ignore_missing_imports = true
