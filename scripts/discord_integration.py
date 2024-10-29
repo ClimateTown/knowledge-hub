@@ -1,6 +1,5 @@
 from loguru import logger
 import argparse
-import json
 import requests
 from copy import deepcopy
 
@@ -60,14 +59,14 @@ class GithubIssue:
         payload["embeds"][0]["description"] = trim_to_limit(
             self.issue_description, CHAR_LIMITS["embed_description"]
         )
-        payload["embeds"][0][
-            "url"
-        ] = f"https://www.github.com/ClimateTown/knowledge-hub/issues/{self.issue_number}"
+        payload["embeds"][0]["url"] = (
+            f"https://www.github.com/ClimateTown/knowledge-hub/issues/{self.issue_number}"
+        )
 
         # Setting author
-        payload["embeds"][0]["fields"][0][
-            "value"
-        ] = f"[{self.author}](https://www.github.com/{self.author})"
+        payload["embeds"][0]["fields"][0]["value"] = (
+            f"[{self.author}](https://www.github.com/{self.author})"
+        )
 
         return payload
 
@@ -101,10 +100,10 @@ def main(argv=None):
         args.issue_number, args.issue_title, args.issue_description, args.author
     )
 
-    logger.success(f"Created issue object.")
+    logger.success("Created issue object.")
 
     payload = issue.render_payload()
-    logger.info(f"Rendered payload")
+    logger.info("Rendered payload")
     logger.debug(payload)
 
     # Send rest API call to Discord

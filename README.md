@@ -82,7 +82,7 @@ Alternatively, you can install all project dependencies manually in the OS of yo
 
 As mentioned above, Python is only responsible for some tooling in the codebase. For most changes to the site, Python is not required.
 
-- [install Python](https://www.python.org/downloads/) if you haven't already (minimum version 3.7)
+- [install Python](https://www.python.org/downloads/) 3.10 or 3.11 .
 - create a virtual environment, then activate it (optional, but recommended)
   - `python -m venv venv`
   - activate the environment using either:

@@ -198,7 +198,7 @@ async def main():
     else:
         logger.info("API key parsed from command line.")
 
-    assert type(api_key) == str, "API key must be a string"
+    assert isinstance(api_key, str), "API key must be a string"
 
     logger.success("YouTube API key successfully retrieved")
 
