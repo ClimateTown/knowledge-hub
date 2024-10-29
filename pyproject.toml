@@ -1,0 +1,42 @@
+[tool.pytest.ini_options]
+addopts = ["--strict-config", "--strict-markers"]
+minversion = "7"
+
+[tool.run.lint]
+select = [
+    "E",  # Error
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # Bugbear
+    "UP", # pyupgrade
+    "LOG", # logging
+    "ICN", # import conventions
+    "G", # logging-format
+    "RUF", # ruff
+    "ISC001", # single-line-implicit-string-concatenation
+]
+
+ignore = [
+    # line too long (82 > 79 characters)
+    "E501",
+    # Consider `(slice(2), *block)` instead of concatenation
+    "RUF005",
+    # Prefer `next(iter(variable.items()))` over single element slice
+    "RUF015",
+    # Use `X | Y` in `isinstance` (see https://github.com/home-assistant/core/issues/123850)
+    "UP038",
+]
+
+[tool.mypy]
+files = [
+    "data",
+    "scripts"
+]
+
+[[tool.mypy.overrides]]
+
+module = [
+    "googleapiclient.discovery",
+    "validators"
+]
+ignore_missing_imports = true
