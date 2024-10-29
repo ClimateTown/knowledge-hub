@@ -77,6 +77,7 @@ Alternatively, you can install all project dependencies manually in the OS of yo
 - `cd` into the cloned directory
 - `npm install`
 - `npm run dev`
+- (optional) `npm run test` to run the tests
 
 #### OPTIONAL: Python
 
@@ -89,6 +90,8 @@ As mentioned above, Python is only responsible for some tooling in the codebase.
     - `source venv/bin/activate` (Linux/MacOS)
     - `venv\Scripts\activate.bat` (Windows)
 - `pip install -r requirements.txt`
+- (optional) `pytest` to run the tests
+- (optional) `mypy` to run the typechecking
 
 #### OPTIONAL: Pre-commit
 
