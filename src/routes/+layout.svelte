@@ -1,10 +1,12 @@
 <!-- Emoji support -->
 <script>
   import { base } from "$app/paths"
-  import { github_url, climate_town_url } from "$lib/constants"
+  import { GITHUB_URL, CLIMATE_TOWN_URL } from "$lib/constants"
   import DarkModeControl from "$lib/components/DarkModeControl.svelte"
   import { onMount } from "svelte"
   import mixpanel from "mixpanel-browser"
+  import Footer from "$lib/components/Footer.svelte"
+  import List from "svelte-bootstrap-icons/lib/List.svelte"
 
   // Mixpanel
   let prodToken = "8a77db5f474c225c17451f1bf5b2bca0"
@@ -18,6 +20,21 @@
   })
 
   onMount(() => twemoji.parse(document.body))
+
+  let isDropdownOpen = false
+
+  const handleDropdownClick = () => {
+    isDropdownOpen = !isDropdownOpen // togle state on click
+  }
+
+  const handleDropdownFocusLoss = ({ relatedTarget, currentTarget }) => {
+    if (
+      relatedTarget instanceof HTMLElement &&
+      currentTarget.contains(relatedTarget)
+    )
+      return // check if the new focus target doesn't present in the dropdown tree (exclude ul\li padding area because relatedTarget, in this case, will be null)
+    isDropdownOpen = false
+  }
 
   import "../app.css"
 </script>
@@ -61,85 +78,103 @@
 </svelte:head>
 
 <div
-  class="body flex flex-col lg:flex-row w-full bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50"
+  class="body flex flex-col w-full bg-zinc-50 dark:bg-neutral-900 dark:text-zinc-50"
 >
-  <header
-    class="relative lg:w-fit w-full bg-green-500 dark:bg-green-900/75 flex items-center md:flex-col p-5 min-h-max lg:min-h-screen"
-  >
+  <header class="relative border-b border-slate-300">
     <a
       href="#main-content"
-      class="absolute p-10 mt-8 rounded-lg bg-zinc-50 dark:bg-zinc-800 dark:text-zinc-50 -translate-x-[999%] focus:translate-x-0 hover:bg-zinc-800 hover:text-zinc-50 dark:hover:bg-zinc-50 dark:hover:text-zinc-800 transition-all duration-200 ease-in-out uppercase"
+      class="absolute z-50 font-bold p-10 mt-8 rounded-lg dark:bg-white bg-neutral-800 hover:underline underline-offset-4 text-white dark:text-black text-2xl left-1/2 transform -translate-x-1/2 -translate-y-[999%] focus:translate-y-1/2 transition-all duration-200 ease-in-out"
     >
-      Skip to content.
+      Skip to main content
     </a>
 
-    <a href="{base}/">
-      <picture class="block w-32 lg:w-48 self-center object-contain">
-        <source
-          type="image/avif"
-          srcset="{base}/images/knowledge-hub-logo.avif"
-        />
-        <source
-          type="image/webp"
-          srcset="{base}/images/knowledge-hub-logo.webp"
-        />
-        <img
-          class="w-full h-full object-contain"
-          height="180"
-          width="180"
-          src="{base}/images/knowledge-hub-logo.png"
-          alt="Climate Town Knowledge Hub"
-        />
-      </picture>
-    </a>
-    <DarkModeControl
-      cssClass="absolute w-fit top-1 right-1 border-2 border-current rounded-md p-2 bg-zinc-50 text-black dark:bg-zinc-900 dark:text-white"
-    ></DarkModeControl>
+    <div class="flex max-w-7xl mx-auto h-16 text-end">
+      <div class="mx-8 flex flex-row justify-between items-center w-full">
+        <a href="{base}/" class="flex flex-row items-center">
+          <h2 class="font-bold text-2xl">Knowledge Hub</h2>
+        </a>
 
-    <nav class="gap-2 flex flex-wrap lg:flex-col">
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        href="{base}/">Home</a
-      >
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        href="{base}/resources">Resources</a
-      >
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        href="{base}/youtube">YouTube Feed</a
-      >
-      <div class="h-4" />
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        target="_blank"
-        rel="noreferrer"
-        href={github_url}
-        >✍ Contribute on GitHub <span class="sr-only">in a new tab</span></a
-      >
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        target="_blank"
-        rel="noreferrer"
-        href="{github_url}/#contributors"
-        >📣 Credits <span class="sr-only">in a new tab</span></a
-      >
-      <a
-        class="p-2 text-zinc-100 bg-green-700/75 dark:bg-green-950 font-bold rounded-lg"
-        target="_blank"
-        rel="noreferrer"
-        href={climate_town_url}
-        >🌐 Main Website <span class="sr-only">in a new tab</span>
-      </a>
-    </nav>
+        <div
+          class="block md:hidden gap-2"
+          on:focusout={handleDropdownFocusLoss}
+        >
+          <DarkModeControl cssClass="w-fit p-2"></DarkModeControl>
+
+          <button on:click={handleDropdownClick} id="menu">
+            <List width={24} height={24} />
+          </button>
+
+          {#if isDropdownOpen}
+            <div
+              class="w-40 absolute right-8 z-10 rounded-md bg-white dark:bg-neutral-900 shadow-lg"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu"
+              tabindex="-1"
+            >
+              <nav class="flex flex-col">
+                <a
+                  class="p-2 hover:underline underline-offset-4"
+                  href="{base}/resources">Resources</a
+                >
+                <a
+                  class="p-2 hover:underline underline-offset-4"
+                  href="{base}/youtube">Video Feed</a
+                >
+                <a
+                  class="p-2 hover:underline underline-offset-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={GITHUB_URL}
+                >
+                  Contribute <span class="sr-only">in a new tab</span>
+                </a>
+                <a
+                  class="p-2 hover:underline underline-offset-4"
+                  target="_blank"
+                  rel="noreferrer"
+                  href={CLIMATE_TOWN_URL}
+                >
+                  Climate Town <span class="sr-only">in a new tab</span>
+                </a>
+              </nav>
+            </div>
+          {/if}
+        </div>
+
+        <nav class="gap-2 hidden md:flex md:flex-wrap md:items-center">
+          <a
+            class="p-2 hover:underline underline-offset-4"
+            href="{base}/resources">Resources</a
+          >
+          <a
+            class="p-2 hover:underline underline-offset-4"
+            href="{base}/youtube">Video Feed</a
+          >
+          <a
+            class="p-2 hover:underline underline-offset-4"
+            target="_blank"
+            rel="noreferrer"
+            href={GITHUB_URL}
+            >Contribute <span class="sr-only">in a new tab</span></a
+          >
+          <a
+            class="p-2 hover:underline underline-offset-4"
+            target="_blank"
+            rel="noreferrer"
+            href={CLIMATE_TOWN_URL}
+            >Climate Town <span class="sr-only">in a new tab</span>
+          </a>
+          <DarkModeControl cssClass="w-fit p-2"></DarkModeControl>
+        </nav>
+      </div>
+    </div>
   </header>
 
-  <main
-    id="main-content"
-    class="w-full lg:w-4/5 py-10 pb-5 lg:pt-24 lg:px-32 px-8"
-  >
+  <main id="main-content">
     <slot />
   </main>
+  <Footer />
 </div>
 
 <style>
