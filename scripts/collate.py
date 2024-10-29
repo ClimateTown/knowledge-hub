@@ -4,7 +4,6 @@ This script is placed here for future reference in case another collation is nee
 """
 
 import pandas as pd
-import numpy as np
 from dataclasses import dataclass, asdict, field
 import yaml
 

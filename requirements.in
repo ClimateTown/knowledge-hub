@@ -15,3 +15,12 @@ tqdm
 validators
 httpx
 Pillow
+mypy
+pandas-stubs
+types-jsonschema
+types-PyYAML
+types-pytz
+types-requests
+types-tqdm
+types-beautifulsoup4
+types-Pillow

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte"
+  import { page } from "$app/stores"
   import type { PageData } from "./$types"
   import type { YoutubeVideo, FilterOption, FilterLogic } from "$lib/interfaces"
   import { DEFAULT_DISPLAY_LIMIT } from "$lib/constants"
@@ -6,6 +8,8 @@
     sortChannelBySubCount,
     semanticNumber,
     getChannelData,
+    tagQParamSetActive,
+    activeTagsSet,
   } from "$lib/utils"
   import YoutubeThumbnail from "./YoutubeThumbnail.svelte"
   import FilterForm from "$lib/components/FilterForm.svelte"
@@ -19,7 +23,7 @@
 
   let displayedVideoLimit: number = DEFAULT_DISPLAY_LIMIT
   $: displayedVideoLimit
-  let displayedVideos = videoData
+  let displayedVideos: YoutubeVideo[] = [...videoData]
   let rerender: boolean = false
 
   // Creating form filter options, default view
@@ -34,21 +38,26 @@
     filterObject.push(channelOption)
   }
 
-  function filterResources(
-    event: CustomEvent<{
-      filterOptions: FilterOption[]
-      filterLogic: FilterLogic
-    }>
-  ) {
-    const { filterOptions } = event.detail
+  const getChannelIdFromName = (channelName: string) => {
+    return channelData.find((channel) => channel.channelName === channelName)
+  }
+
+  const filterVideos = (
+    event: CustomEvent<{ filterTags: Set<string>; filterLogic: FilterLogic }>
+  ) => {
+    const { filterTags } = event.detail
+    applyVideoFilter(filterTags)
+  }
+
+  const applyVideoFilter = (filterTags: Set<string>) => {
+    const selectedChannels = Array.from(filterTags).map(
+      (option) => getChannelIdFromName(option)?.channelId
+    )
+
     displayedVideos = []
 
-    const filteredActiveChannelIds: string[] = filterOptions
-      .filter((channel: FilterOption) => channel.active === true)
-      .map((channel: FilterOption) => (channel.id ? channel.id : channel.name))
-
     const filteredVideos: YoutubeVideo[] = videoData.filter((video) =>
-      filteredActiveChannelIds.includes(video.channelId)
+      selectedChannels.includes(video.channelId)
     )
 
     // Force svelte re-render
@@ -60,6 +69,15 @@
     const { displayLimit } = event.detail
     displayedVideoLimit = displayLimit
   }
+
+  onMount(() => {
+    const params = Object.fromEntries($page.url.searchParams)
+    if (params.tags) {
+      filterObject = tagQParamSetActive(params.tags, filterObject)
+    }
+
+    applyVideoFilter(activeTagsSet(filterObject))
+  })
 </script>
 
 <h1>Climate YouTube</h1>
@@ -69,19 +87,20 @@
   the latest long-form videos from each YouTuber.
 </div>
 <FilterForm
-  filterOptions={filterObject}
+  filterData={{ filterOptions: filterObject, filterLogicAnd: false }}
   showFilterLogic={false}
-  on:filter={filterResources}
+  showReset={false}
+  on:filter={filterVideos}
 />
 
 {#key rerender}
   <ol
     class="grid grid-flow-row mt-3 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-1 gap-4"
   >
-    {#each displayedVideos.slice(0, displayedVideoLimit) as video}
+    {#each displayedVideos.slice(0, displayedVideoLimit) as video (video)}
       <li>
         <YoutubeThumbnail
-          {...video}
+          {video}
           channelInfo={getChannelData(channelData, video.channelId)}
         />
       </li>

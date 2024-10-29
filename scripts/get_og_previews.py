@@ -6,7 +6,6 @@ from urllib.request import Request, urlopen
 import yaml
 from bs4 import BeautifulSoup
 from loguru import logger
-from tqdm import tqdm
 import validators
 import httpx
 from PIL import Image

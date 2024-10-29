@@ -391,7 +391,7 @@
     - Research
   title: Drawdown Roadmap
   url: https://drawdown.org/drawdown-roadmap
-- description: A newsletter from Connecticut-based climate activist Bill McKibben. Unfiltered communication about the deepest problem that humans have ever encountered. Contains compilations of news from around the web.
+- description: A newsletter from Vermont-based climate activist Bill McKibben. Unfiltered communication about the deepest problem that humans have ever encountered. Contains compilations of news from around the web.
   tags:
     - Climate Journalism
   title: The Crucial Years by Bill McKibben
@@ -646,3 +646,14 @@
     - Climate Careers
   title: ClimateTechList
   url: https://www.climatetechlist.com/
+- description: A newsletter sharing the most inspirational stories in climate action policy and beyond, from the makers of the Climate Action Now app.
+  tags:
+    - Climate Journalism
+    - Politics
+  title: Your Daily Dose of Climate Hope
+  url: https://climateactapp.substack.com/
+- description: Download the Climate Action Now App and take climate changing actions from your phone, earn points, and fight climate change to help save our planet in crisis.
+  tags:
+    - Individual Action
+  title: Climate Action Now
+  url: https://www.climateactionnow.com/

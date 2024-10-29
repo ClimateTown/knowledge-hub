@@ -34,6 +34,8 @@ class YoutubeChannel:
     channelCustomName: str
     channelName: str
     channelPic: str
+    channelPicH: int
+    channelPicW: int
     channelSubCount: int
 
 
@@ -43,6 +45,9 @@ class YoutubeVideo:
     publishedAt: str
     videoId: str
     title: str
+    videoPic: str
+    videoPicH: int
+    videoPicW: int
 
     @property
     def published_dt(self):
@@ -81,6 +86,9 @@ async def get_videos_from_channels(channel_ids: List[str], youtube: build):
                 videoId=item["id"]["videoId"],
                 channelId=item["snippet"]["channelId"],
                 title=item["snippet"]["title"],
+                videoPic=item["snippet"]["thumbnails"]["medium"]["url"],
+                videoPicW=item["snippet"]["thumbnails"]["medium"]["width"],
+                videoPicH=item["snippet"]["thumbnails"]["medium"]["height"],
             )
             channel_videos.append(video)
 
@@ -135,6 +143,8 @@ def save_channel_data(channel_ids: List[str], youtube: build):
             channelPic=item["snippet"]["thumbnails"]["default"]["url"].split("=")[
                 0
             ],  # Can set ?s= on the end to get a custom resolution
+            channelPicH=item["snippet"]["thumbnails"]["default"]["height"],
+            channelPicW=item["snippet"]["thumbnails"]["default"]["width"],
             channelSubCount=int(item["statistics"]["subscriberCount"]),
         )
         channels.append(youtube_channel)
@@ -188,7 +198,7 @@ async def main():
     else:
         logger.info("API key parsed from command line.")
 
-    assert type(api_key) == str, "API key must be a string"
+    assert isinstance(api_key, str), "API key must be a string"
 
     logger.success("YouTube API key successfully retrieved")
 

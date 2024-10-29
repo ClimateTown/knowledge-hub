@@ -77,18 +77,21 @@ Alternatively, you can install all project dependencies manually in the OS of yo
 - `cd` into the cloned directory
 - `npm install`
 - `npm run dev`
+- (optional) `npm run test` to run the tests
 
 #### OPTIONAL: Python
 
 As mentioned above, Python is only responsible for some tooling in the codebase. For most changes to the site, Python is not required.
 
-- [install Python](https://www.python.org/downloads/) if you haven't already (minimum version 3.7)
+- [install Python](https://www.python.org/downloads/) 3.10 or 3.11 .
 - create a virtual environment, then activate it (optional, but recommended)
   - `python -m venv venv`
   - activate the environment using either:
     - `source venv/bin/activate` (Linux/MacOS)
     - `venv\Scripts\activate.bat` (Windows)
 - `pip install -r requirements.txt`
+- (optional) `pytest` to run the tests
+- (optional) `mypy` to run the typechecking
 
 #### OPTIONAL: Pre-commit
 
@@ -159,6 +162,8 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Lyrete"><img src="https://avatars.githubusercontent.com/u/34749217?v=4?s=60" width="60px;" alt="Tommi Alajoki"/><br /><sub><b>Tommi Alajoki</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Lyrete" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Stephen-at-Pleno"><img src="https://avatars.githubusercontent.com/u/127327471?v=4?s=60" width="60px;" alt="Stephen Tanner"/><br /><sub><b>Stephen Tanner</b></sub></a><br /><a href="#content-Stephen-at-Pleno" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/EdwardPrado"><img src="https://avatars.githubusercontent.com/u/45430107?v=4?s=60" width="60px;" alt="Edward Prado"/><br /><sub><b>Edward Prado</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/issues?q=author%3AEdwardPrado" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://johnatti.com"><img src="https://avatars.githubusercontent.com/u/33670809?v=4?s=60" width="60px;" alt="John Atti"/><br /><sub><b>John Atti</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=jattiman" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -169,6 +174,10 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are, again, welcome!
+
+## License
+
+This project (i.e., the code, custom assets, and data) is licensed under [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). This license does not extend to logos from Climate Town and other trademarked items, which remain the property of the original copyright holders.
 
 ## Acknowledgements
 

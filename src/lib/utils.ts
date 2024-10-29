@@ -55,8 +55,13 @@ export const sortChannelBySubCount = (
 export const getChannelData = (
   channelData: YoutubeChannel[],
   channelId: string
-): YoutubeChannel | undefined => {
-  return channelData.find((channel) => channel.channelId === channelId)
+): YoutubeChannel => {
+  const channel = channelData.find((channel) => channel.channelId === channelId)
+  if (!channel) {
+    throw new Error(`Channel ID with name '${channelId}' could not be found.`)
+  }
+
+  return channel
 }
 
 /**

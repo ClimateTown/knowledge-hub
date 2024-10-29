@@ -156,7 +156,7 @@
 <ol
   class="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-4 gap-y-4 mt-3"
 >
-  {#each displayedResources.slice(0, displayedResourceLimit) as resource}
+  {#each displayedResources.slice(0, displayedResourceLimit) as resource (resource)}
     <li><ListItem {resource} /></li>
   {:else}
     <li>No resources here!</li>
