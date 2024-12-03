@@ -387,6 +387,7 @@
   url: https://us14.campaign-archive.com/home/?u=fa37a090438ee00d891b2a776&id=1f11436137
 - description: Project Drawdown is a nonprofit founded by Paul Hawken and Amanda Joy Ravenhill in 2014 with the purpose of compiling the most important climate solutions; the Roadmap highlights those with massive antipoverty and health benefits, discussing when to implement them.
   tags:
+    - ✨ Mod Choice
     - Education
     - Research
   title: Drawdown Roadmap
@@ -657,3 +658,10 @@
     - Individual Action
   title: Climate Action Now
   url: https://www.climateactionnow.com/
+- description: A comprehensive list of challenges posed by climate change to Earth’s ecosystems, and their corresponding solutions. These solutions operate on multiple levels, ranging from individuals and groups to companies and governments.
+  tags:
+    - ✨ Mod Choice
+    - Education
+    - Research
+  title: Project Regeneration Nexus
+  url: https://regeneration.org/nexus
