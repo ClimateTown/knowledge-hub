@@ -7,7 +7,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.1
+    rev: v0.8.2
     hooks:
       - id: ruff
         args: [--fix, --show-fixes]
@@ -18,7 +18,7 @@ repos:
       - id: check-github-workflows
       - id: check-github-actions
   - repo: https://github.com/rbubley/mirrors-prettier # Update mirror as official mirror is deprecated
-    rev: v3.4.1
+    rev: v3.4.2
     hooks:
       - id: prettier
         args: [--write] # edit files in-place
