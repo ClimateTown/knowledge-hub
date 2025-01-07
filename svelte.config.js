@@ -23,7 +23,7 @@ const config = {
       entries: ["*"],
     },
     paths: {
-      base: dev ? "" : "/knowledge-hub",
+      base: "",
     },
   },
 }
