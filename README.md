@@ -166,6 +166,7 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://johnatti.com"><img src="https://avatars.githubusercontent.com/u/33670809?v=4?s=60" width="60px;" alt="John Atti"/><br /><sub><b>John Atti</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=jattiman" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/k-t-666"><img src="https://avatars.githubusercontent.com/u/191416309?v=4?s=60" width="60px;" alt="kat ⛧ they/them"/><br /><sub><b>kat ⛧ they/them</b></sub></a><br /><a href="#content-k-t-666" title="Content">🖋</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kryptografisch"><img src="https://avatars.githubusercontent.com/u/6816384?v=4?s=60" width="60px;" alt="kryptografisch"/><br /><sub><b>kryptografisch</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/issues?q=author%3Akryptografisch" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://mlog.nektro.net/"><img src="https://avatars.githubusercontent.com/u/5464072?v=4?s=60" width="60px;" alt="Meghan Denny"/><br /><sub><b>Meghan Denny</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=nektro" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
