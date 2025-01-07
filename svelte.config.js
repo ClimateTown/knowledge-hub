@@ -22,9 +22,6 @@ const config = {
     prerender: {
       entries: ["*"],
     },
-    paths: {
-      base: dev ? "" : "/knowledge-hub",
-    },
   },
 }
 
