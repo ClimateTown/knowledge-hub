@@ -176,7 +176,7 @@ def get_pr_message(issues: List[ResourceIssue]):
     message += (
         "\n\n"
         "Thank you to our contributors for these resources! 🥳🌳\n\n"
-        f"This PR was curated with help from the `{SCRIPT_PATH.name}` script. 🤖"
+        "This PR was curated with help from the `npm run resource-onboarding` script. 🤖"
     )
     return message
 
