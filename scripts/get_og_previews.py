@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from loguru import logger
 import validators
 import httpx
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 RESOURCES_FILE = Path("data") / "resources.yml"
 PREVIEW_PATH = Path("static") / "previews"
@@ -81,7 +81,10 @@ def write_image_to_file(url: str, folder_path: Path) -> Path | None:
         logger.error(f"Couldn't find any image at {url}")
         return None
 
-    return save_image_as_webp(r.content, folder_path, file_stem)
+    try:
+        return save_image_as_webp(r.content, folder_path, file_stem)
+    except UnidentifiedImageError:
+        return None
 
 
 def main():
