@@ -212,6 +212,13 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/5464072?v=4",
       "profile": "https://mlog.nektro.net/",
       "contributions": ["code"]
+    },
+    {
+      "login": "Sudhanshu069",
+      "name": "Sudhanshu Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/73892290?v=4",
+      "profile": "https://github.com/Sudhanshu069",
+      "contributions": ["code"]
     }
   ],
   "commitType": "docs"
