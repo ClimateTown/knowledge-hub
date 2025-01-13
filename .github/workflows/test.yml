@@ -4,6 +4,10 @@ on:
     branches: [main, test-me/*]
   pull_request:
 
+concurrency:
+  group: test-${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   python_test:
     runs-on: ubuntu-latest
