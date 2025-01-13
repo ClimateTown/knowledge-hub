@@ -37,13 +37,13 @@
   color: "yellow"
 - name: Individual Action
   color: "lavender"
-- name: location/Canada
+- name: Location/Canada
   color: "purple"
-- name: location/Global
+- name: Location/Global
   color: "purple"
-- name: location/US
+- name: Location/US
   color: "purple"
-- name: location/US/NYC
+- name: Location/US/NYC
   color: "purple"
 - name: Organizations
   color: "teal"
