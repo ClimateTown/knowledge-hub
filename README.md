@@ -168,6 +168,9 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/kryptografisch"><img src="https://avatars.githubusercontent.com/u/6816384?v=4?s=60" width="60px;" alt="kryptografisch"/><br /><sub><b>kryptografisch</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/issues?q=author%3Akryptografisch" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://mlog.nektro.net/"><img src="https://avatars.githubusercontent.com/u/5464072?v=4?s=60" width="60px;" alt="Meghan Denny"/><br /><sub><b>Meghan Denny</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=nektro" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Sudhanshu069"><img src="https://avatars.githubusercontent.com/u/73892290?v=4?s=60" width="60px;" alt="Sudhanshu Singh"/><br /><sub><b>Sudhanshu Singh</b></sub></a><br /><a href="https://github.com/ClimateTown/knowledge-hub/commits?author=Sudhanshu069" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 
