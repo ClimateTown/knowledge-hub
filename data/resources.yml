@@ -1,7 +1,7 @@
 - description: Works to make New York City's buildings more sustainable and resilient, reducing carbon emissions, creating healthier environments and conserving energy and resources.
   tags:
     - Organizations
-    - location/US/NYC
+    - Location/US/NYC
   title: Urban Green Council
   url: https://www.urbangreencouncil.org/
 - description: A grassroots environmental organization that protects wild places, wildlife, and the planet by advocating for clean energy, preserving public lands, and promoting sustainable communities.
@@ -137,7 +137,7 @@
 - description: A global movement working to solve the climate crisis and transition to a world with safe, clean energy for all, through community-driven solutions and grassroots activism.
   tags:
     - Organizations
-    - location/Global
+    - Location/Global
   title: 350.org
   url: https://www.350.org
 - description: Rollie and Climate Town have partnered with Climate Changemakers on several projects, including the awesome movement for electric school bus funding in the US. Climate Changemakers helps people take action in their communities and empowers people to "get off the sidelines".
@@ -222,7 +222,7 @@
   tags:
     - Workers' rights
     - Unionize
-    - location/US
+    - Location/US
   title: UFCW
   url: https://www.ufcw.org
 - description: One Army is a movement tackling global problems. Centered on open source, and with an active Discord community, One Army runs Precious Plastic, Project Kamp, Fixing Fashion and Phonebloks.
@@ -242,7 +242,7 @@
   tags:
     - Organizations
     - Collective Action
-    - location/Canada
+    - Location/Canada
   title: Nature Conservancy of Canada
   url: https://www.natureconservancy.ca/en/what-you-can-do/conservation-volunteers/
 - description: A newsletter to help climate newbies identify careers with the highest carbon emission impact. Written by Stanford MBA students Stella Liu, Joseff Kolman, and Georgia Kossoff.
@@ -420,14 +420,14 @@
 - description: Too Good To Go helps connect restaurants and stores to their local community to reduce food waste nearing their 'best before' dates. Founded in 2016 in Copenhagen, Too Good to Go is now in 17 countries.
   tags:
     - Food Waste
-    - location/US
-    - location/Canada
+    - Location/US
+    - Location/Canada
   title: Too Good to Go
   url: https://toogoodtogo.com/
 - description: Use Flash Food to prevent food waste, and get savings on fresh food items nearing their 'best before' dates in Canada and the U.S.
   tags:
     - Food Waste
-    - location/Global
+    - Location/Global
   title: Flash Food
   url: https://www.flashfood.com/
 - description: Prevent food waste with Love Food Hate Waste, and their ultimate A-Z food storage and usage guide.
@@ -466,7 +466,7 @@
 - description: Website for the United Nations Framework Convention on Climate Change (UNFCCC), tasked with supporting the global response to the threat of climate change.
   tags:
     - ✨ Mod Choice
-    - location/Global
+    - Location/Global
   title: UN Climate Change
   url: https://unfccc.int/
 - description: Strong Towns is a nonprofit media advocacy organization founded by civil engineer Chuck Marohn. They produce content that analyzes the failures of the post-war North American development pattern while giving people the knowledge and tools to start making their places better today.
@@ -489,7 +489,7 @@
     - ✨ Mod Choice
     - Finance
     - Tools
-    - location/Global
+    - Location/Global
   title: bank.green
   url: https://bank.green
 - description: A report curated by various organisations on the impact that banking has on the climate crisis.
@@ -519,7 +519,7 @@
   tags:
     - 🍞 Rollie's Choice
     - Finance
-    - location/US
+    - Location/US
   title: Atmos Financial
   url: https://www.joinatmos.com/
 - description: VoteClimate is an independent political movement founded in Cambridge, UK by climate campaigner Ben Horton. Their mission is to empower citizens to pressure mainstream parties into taking the climate emergency seriously.
@@ -613,7 +613,7 @@
   tags:
     - Organizations
     - Pollution
-    - location/US
+    - Location/US
   title: Beyond Plastics
   url: https://www.beyondplastics.org/
 - description: A not-for-profit investigative journalism organization reporting on climate change.
