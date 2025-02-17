@@ -18,7 +18,7 @@ repos:
       - id: check-github-workflows
       - id: check-github-actions
   - repo: https://github.com/rbubley/mirrors-prettier # Update mirror as official mirror is deprecated
-    rev: v3.5.0
+    rev: v3.5.1
     hooks:
       - id: prettier
         args: [--write] # edit files in-place
