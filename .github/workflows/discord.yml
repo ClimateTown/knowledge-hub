@@ -13,16 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: "3.11"
+          version: "latest"
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          uv sync
       - name: Send message to Discord channel
         run: |
-          python3 scripts/discord_integration.py \
+          uv run scripts/discord_integration.py \
             --webhook-url "${{ secrets.DISCORD_WEBHOOK }}" \
             --issue-number "${{ github.event.issue.number }}" \
             --issue-title "$ISSUE_TITLE" \

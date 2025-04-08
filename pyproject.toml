@@ -1,3 +1,35 @@
+[project]
+name = "knowledge-hub"
+version = "0.0.1"
+dependencies = [
+    "aiohttp",
+    "beautifulsoup4",
+    "black",
+    "google-api-python-client",
+    "jsonschema",
+    "loguru",
+    "numpy",
+    "pandas",
+    "pip-tools",
+    "pre-commit",
+    "pytest",
+    "python-dotenv",
+    "pyyaml",
+    "tqdm",
+    "validators",
+    "httpx",
+    "pillow",
+    "mypy",
+    "pandas-stubs",
+    "types-jsonschema",
+    "types-pyyaml",
+    "types-pytz",
+    "types-requests",
+    "types-tqdm",
+    "types-beautifulsoup4",
+    "types-pillow",
+]
+
 [tool.pytest.ini_options]
 addopts = ["--strict-config", "--strict-markers"]
 minversion = "7"
@@ -26,6 +58,9 @@ ignore = [
     # Use `X | Y` in `isinstance` (see https://github.com/home-assistant/core/issues/123850)
     "UP038",
 ]
+
+[tool.uv]
+package = false
 
 [tool.mypy]
 files = [
