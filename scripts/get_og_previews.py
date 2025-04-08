@@ -111,7 +111,12 @@ def main():
         if not validators.url(image_url):
             continue
 
-        file_path = write_image_to_file(image_url, PREVIEW_PATH)
+        try:
+            file_path = write_image_to_file(image_url, PREVIEW_PATH)
+        except Exception as e:
+            logger.error(e)
+            continue
+
         if file_path is None:
             continue
         resource["og_preview"] = file_path.name
