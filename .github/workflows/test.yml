@@ -13,21 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: "3.11"
-      - run: pip install -r requirements.txt
-      - run: python3 -m pytest
+          version: "latest"
+      - run: uv run pytest
 
   mypy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: "3.11"
-      - run: pip install -r requirements.txt
-      - run: mypy
+          version: "latest"
+      - run: uv run mypy
 
   node_test:
     runs-on: ubuntu-latest

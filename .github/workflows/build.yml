@@ -32,23 +32,20 @@ jobs:
         with:
           node-version: ">=18"
           cache: npm
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: "3.10"
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+          version: "latest"
       - name: Scrape YouTube data
         if: ${{ env.YOUTUBE_API_KEY != '' && github.event_name != 'pull_request' }}
         run: | # Only run if the API key is set
-          python3 scripts/youtube.py --api-key $YOUTUBE_API_KEY
+          uv run scripts/youtube.py --api-key $YOUTUBE_API_KEY
       - name: Get previews for resources
         run: |
-          python3 scripts/get_og_previews.py
+          uv run scripts/get_og_previews.py
       - name: Convert resources to CSV
         run: |
-          python3 scripts/resource_converter.py -i data/resources.yml -o static/ClimateTown-Knowledge-Hub-resources.csv
+          uv run scripts/resource_converter.py -i data/resources.yml -o static/ClimateTown-Knowledge-Hub-resources.csv
       - run: npm install
         # - run: npm ci
       - run: npm run build
