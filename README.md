@@ -83,15 +83,10 @@ Alternatively, you can install all project dependencies manually in the OS of yo
 
 As mentioned above, Python is only responsible for some tooling in the codebase. For most changes to the site, Python is not required.
 
-- [install Python](https://www.python.org/downloads/) 3.10 or 3.11 .
-- create a virtual environment, then activate it (optional, but recommended)
-  - `python -m venv venv`
-  - activate the environment using either:
-    - `source venv/bin/activate` (Linux/MacOS)
-    - `venv\Scripts\activate.bat` (Windows)
-- `pip install -r requirements.txt`
-- (optional) `pytest` to run the tests
-- (optional) `mypy` to run the typechecking
+- [install uv](https://docs.astral.sh/uv/getting-started/installation/)
+- `uv sync` to install the dependencies
+- `uv run pytest` to run the tests
+- `uv run mypy` to run the typechecking
 
 #### OPTIONAL: Pre-commit
 
@@ -99,7 +94,7 @@ This codebase uses [pre-commit](https://pre-commit.com/) and [pre-commit CI](htt
 
 To set up pre-commit locally:
 
-- install the Python environment (which includes pre-commit)
+- [install pre-commit](https://pre-commit.com/#install)
 - `pre-commit install` to install the hooks
 
 To run pre-commit manually (without making a commit), use `pre-commit run --all-files`. If you want to stop using pre-commit locally, just do `pre-commit uninstall`.
