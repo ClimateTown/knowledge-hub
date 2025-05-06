@@ -744,12 +744,12 @@
   url: https://ourchangingclimate.notion.site/Resources-674287cecaae49d28c963b07ba7fbde8
 - description: A publication underscoring the potential of past and often forgotten technologies and how they can inform sustainable energy practices.
   tags:
-  - Education
+    - Education
   title: Low-tech Magazine
   url: https://solar.lowtechmagazine.com/
 - description: Discover proven climate action and sustainability solutions. The Progress Playbook reports on the leaders in the shift to a greener future.
   tags:
-  - Climate Journalism
-  - Politics
+    - Climate Journalism
+    - Politics
   title: The Progress Playbook
   url: https://theprogressplaybook.com/
