@@ -1,0 +1,52 @@
+name: Resource Onboarding
+on:
+  workflow_call:
+
+jobs:
+  onboard_resources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+
+      - name: Run onboarding script
+        run: uv run scripts/onboarding.py
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Read PR message
+        if: steps.check_changes.outputs.has_changes == 'true'
+        id: pr_message
+        run: |
+          TITLE=$(head -n 1 scripts/onboarding_pr_message.md)
+          BODY=$(tail -n +2 scripts/onboarding_pr_message.md)
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          echo "$BODY" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Get current date
+        if: steps.check_changes.outputs.has_changes == 'true'
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Resource onboarding"
+          branch: onboarding/${{ steps.date.outputs.date }}
+          title: ${{ steps.pr_message.outputs.title }}
+          body: ${{ steps.pr_message.outputs.body }}
