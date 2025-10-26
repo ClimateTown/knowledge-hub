@@ -1,6 +1,6 @@
 name: Resource Onboarding
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   onboard_resources:
