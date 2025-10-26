@@ -238,7 +238,7 @@ def main(ignore_issues=None):
 
     # Checks if the resources being onboarded already exist in the database
     if resource_is_duplicated(valid_issues):
-        return
+        exit(1)
 
     onboarding_list = [issue.get_resource_dict() for issue in valid_issues]
 
