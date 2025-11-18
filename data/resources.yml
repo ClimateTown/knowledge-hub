@@ -760,21 +760,21 @@
   url: https://www.opensourceecology.org/
 - description: Sustain Your Style is an independent platform made by people who like fashion and style but are concerned about the current practices of the fashion industry. This website is a resource that provides you with all the tools you need to make informed, sustainable fashion choices.
   tags:
-  - Sustainable Fashion
+    - Sustainable Fashion
   title: Sustain Your Style
   url: https://www.sustainyourstyle.org/
 - description: The Climate and Community Institute (CCI) is a progressive climate and economy think tank based in the US. They work with movements and progressive policy makers to pass new policy, improve implementation, shift narratives, and deepen coalitions.
   tags:
-  - Organizations
+    - Organizations
   title: Climate and Community Institute
   url: https://climateandcommunity.org/about/
 - description: Founded in 2019, Common Wealth is a think tank operating across the UK and the US. They work with a variety of organisations from community and grassroots groups to national and international policymakers, combining rigorous analysis and research with bold ideas for change.
   tags:
-  - Organizations
+    - Organizations
   title: Common Wealth
   url: https://www.common-wealth.org/about
 - description: The Roosevelt Institute is a New York City-based think tank, a student network, and the nonprofit partner to the Franklin D. Roosevelt Presidential Library and Museum that, together, are learning from the past and working to redefine America's collective future.
   tags:
-  - Organizations
+    - Organizations
   title: Roosevelt Institute
   url: https://rooseveltinstitute.org/program/climate-and-economic-transformation/
