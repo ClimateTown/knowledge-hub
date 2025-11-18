@@ -63,6 +63,8 @@
   color: "yellow"
 - name: Sustainable Food
   color: "yellow"
+- name: Sustainable Fashion
+  color: "yellow"
 - name: Tools
   color: "teal"
 - name: Unionize
