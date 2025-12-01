@@ -24,7 +24,7 @@ jobs:
     env:
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/configure-pages@v5
         id: pages
         if: (github.ref == 'refs/heads/main') && (github.repository == 'ClimateTown/knowledge-hub')
