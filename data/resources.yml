@@ -804,3 +804,37 @@
     - Education
   title: The Anti-Autocracy Handbook
   url: https://commonslibrary.org/the-anti-autocracy-handbook-a-scholars-guide-to-navigating-democratic-backsliding/
+- description: An "on this day" blog by professor Marc Hudson detailing the many, many past failures of climate policy (and few successes).
+  tags:
+    - Politics
+    - Research
+    - Article
+  title: All Our Yesterdays
+  url: https://allouryesterdays.info/about/
+- description: Founded by former staffers for Jay Inslee's campaign, Evergreen is a DC-based think tank championing green-collar jobs and advancing major wins in U.S. climate policy.
+  tags:
+    - Politics/US
+    - Research
+    - Organizations
+    - Activism
+    - Climate Tech
+  title: Evergreen Collaborative
+  url: https://collaborative.evergreenaction.com/mission
+- description: A newsletter, podcast, and community focused on the technology, politics, and policy of decarbonization. Created by Seattle-based journalist David Roberts. In your inbox once or twice a week.
+  tags:
+    - Climate Journalism
+    - Politics/US
+  title: Volts.wtf
+  url: https://www.volts.wtf/about
+- description: A defunct magazine that covered a rich variety of environmental issues and the people who solved them at the grassroots. Now a trove of information of environmental justice. Founded in 1996 by David Korten and Sarah van Gelder.
+  tags:
+    - Climate Journalism
+    - Research
+  title: YES! Magazine
+  url: https://www.yesmagazine.org/topic/environmental-justice
+- description: Founded by Chip Giller in 1999, Grist is a nonprofit, independent media organization of 40 journalists dedicated to reporting on climate change, likely the largest in the United States.
+  tags:
+    - Climate Journalism
+    - Politics/US
+  title: Grist
+  url: https://grist.org/about/
