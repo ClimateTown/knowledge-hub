@@ -1,6 +1,7 @@
 [project]
 name = "knowledge-hub"
 version = "0.0.1"
+requires-python = "==3.12.*"
 dependencies = [
     "aiohttp",
     "beautifulsoup4",
@@ -35,15 +36,15 @@ minversion = "7"
 
 [tool.run.lint]
 select = [
-    "E",  # Error
-    "F",  # pyflakes
-    "I",  # isort
-    "B",  # Bugbear
-    "UP", # pyupgrade
-    "LOG", # logging
-    "ICN", # import conventions
-    "G", # logging-format
-    "RUF", # ruff
+    "E",      # Error
+    "F",      # pyflakes
+    "I",      # isort
+    "B",      # Bugbear
+    "UP",     # pyupgrade
+    "LOG",    # logging
+    "ICN",    # import conventions
+    "G",      # logging-format
+    "RUF",    # ruff
     "ISC001", # single-line-implicit-string-concatenation
 ]
 
@@ -62,15 +63,9 @@ ignore = [
 package = false
 
 [tool.mypy]
-files = [
-    "data",
-    "scripts"
-]
+files = ["data", "scripts"]
 
 [[tool.mypy.overrides]]
 
-module = [
-    "googleapiclient.discovery",
-    "validators"
-]
+module = ["googleapiclient.discovery", "validators"]
 ignore_missing_imports = true
