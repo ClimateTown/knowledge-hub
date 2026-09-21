@@ -9,16 +9,15 @@ WARNING: This script modifies the data/resources.yml file. Make sure to save any
 changes you need to before running.
 """
 
+import re
+from datetime import datetime
+from pathlib import Path
+from urllib.parse import urlparse
+
+import pytz
 import requests
 import yaml
 from loguru import logger
-import re
-from urllib.parse import urlparse
-from typing import List
-from datetime import datetime
-import pytz
-from pathlib import Path
-
 
 RESOURCE_ISSUE_PATTERN = r"""###\sResource\stitle\s*
 (?P<title>.+?)\s*
@@ -52,7 +51,7 @@ class GithubIssue:
         return f"Issue {self.issue_number}: {self.issue_title} by {self.author} - {self.issue_url}"
 
     def __repr__(self):
-        return f"<GithubIssue issue_number={self.issue_number}, issue_title={repr(self.issue_title)}, author={repr(self.author)}, issue_url={repr(self.issue_url)}>"
+        return f"<GithubIssue issue_number={self.issue_number}, issue_title={self.issue_title!r}, author={self.author!r}, issue_url={self.issue_url!r}>"
 
 
 class InvalidResourceIssueBody(Exception):
@@ -70,7 +69,7 @@ class ResourceIssue(GithubIssue):
             self.__class__ = GithubIssue
 
     def __repr__(self):
-        return f"<ResourceIssue issue_number={self.issue_number}, issue_title={repr(self.issue_title)}, author={repr(self.author)}, issue_url={repr(self.issue_url)}>"
+        return f"<ResourceIssue issue_number={self.issue_number}, issue_title={self.issue_title!r}, author={self.author!r}, issue_url={self.issue_url!r}>"
 
     def get_resource_dict(self):
         """Returns dict for resource according to data/resources.yml schema."""
@@ -98,10 +97,9 @@ class ResourceIssue(GithubIssue):
                 raise InvalidResourceIssueBody("Resource description must be one line.")
         else:
             raise InvalidResourceIssueBody("Regex parsing of issue body failed.")
-        return
 
 
-def resource_is_duplicated(issues: List[ResourceIssue]):
+def resource_is_duplicated(issues: list[ResourceIssue]):
     """
     Checks if the resource already exists in the database.
 
@@ -158,7 +156,7 @@ def get_tl_domain(url):
     return tl_domain
 
 
-def get_pr_message(issues: List[ResourceIssue]):
+def get_pr_message(issues: list[ResourceIssue]):
     """
     Auto generates the message for the pull request.
     """
@@ -181,7 +179,7 @@ def get_pr_message(issues: List[ResourceIssue]):
     return message
 
 
-def get_all_contributors_message(issues: List[ResourceIssue]):
+def get_all_contributors_message(issues: list[ResourceIssue]):
     # Sorted list of unique authors
     message = "@all-contributors\n"
 
