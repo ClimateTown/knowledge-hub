@@ -3,21 +3,20 @@ Scrapes video and channel data from YouTube using the YouTube API.
 """
 
 import argparse
-import os
-import yaml
-import json
-from pathlib import Path
-from typing import List
-import datetime as dt
-import aiohttp
 import asyncio
+import dataclasses
+import datetime as dt
+import json
+import os
+from dataclasses import dataclass
+from pathlib import Path
 
-from loguru import logger
-from tqdm import tqdm
+import aiohttp
+import yaml
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
-from dataclasses import dataclass
-import dataclasses
+from loguru import logger
+from tqdm import tqdm
 
 YOUTUBE_CHANNEL_IDS = Path("data") / "youtube_channel_ids.yml"
 VIDEO_DATA = Path("data") / "video_data.json"
@@ -64,15 +63,14 @@ class EnhancedJSONEncoder(json.JSONEncoder):
 
 async def is_youtube_short(video_id: str) -> bool:
     url = f"https://www.youtube.com/shorts/{video_id}"
-    async with aiohttp.ClientSession() as session:
-        async with session.head(url) as response:
-            is_short = True if response.status == 200 else False
-            logger.info(f"Checking if {video_id} is a short: {is_short}")
-            return is_short
+    async with aiohttp.ClientSession() as session, session.head(url) as response:
+        is_short = True if response.status == 200 else False
+        logger.info(f"Checking if {video_id} is a short: {is_short}")
+        return is_short
 
 
-async def get_videos_from_channels(channel_ids: List[str], youtube: build):
-    videos: List[YoutubeVideo] = []
+async def get_videos_from_channels(channel_ids: list[str], youtube: build):
+    videos: list[YoutubeVideo] = []
 
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
     for channel_id in channel_ids:
@@ -123,11 +121,11 @@ def get_videos_from_channel(channel_id: str, service: build):
     return response
 
 
-def save_channel_data(channel_ids: List[str], youtube: build):
+def save_channel_data(channel_ids: list[str], youtube: build):
     """
     Uses YouTube API to find the channels, and record data in a JSON file.
     """
-    channels: List[YoutubeChannel] = []
+    channels: list[YoutubeChannel] = []
     pbar = tqdm(channel_ids, desc="Getting videos from channels")
     for channel_id in pbar:
         request = youtube.channels().list(part="snippet,statistics", id=channel_id)
@@ -156,10 +154,9 @@ def save_channel_data(channel_ids: List[str], youtube: build):
         json.dump(channels, f, indent=4, cls=EnhancedJSONEncoder)
 
     logger.success(f"Saved video data to {VIDEO_DATA}")
-    return
 
 
-async def save_video_data(channel_ids: List[str], youtube: build):
+async def save_video_data(channel_ids: list[str], youtube: build):
     """
     Uses the API to find the videos from the channels, and records the data in a JSON file.
     """
@@ -177,7 +174,6 @@ async def save_video_data(channel_ids: List[str], youtube: build):
         json.dump(videos, f, indent=4, cls=EnhancedJSONEncoder)
 
     logger.success(f"Saved video data to {VIDEO_DATA}")
-    return
 
 
 async def main():
@@ -213,8 +209,6 @@ async def main():
 
     await save_video_data(channel_ids, youtube)
     save_channel_data(channel_ids, youtube)
-
-    return
 
 
 if __name__ == "__main__":

@@ -2,13 +2,14 @@
 A small utility CLI app to convert Climate Town Knowledge Hub resources between YAML and CSV.
 """
 
-import yaml
-import pandas as pd
-from pathlib import Path
-import json
-import jsonschema
-from copy import deepcopy
 import argparse
+import json
+from copy import deepcopy
+from pathlib import Path
+
+import jsonschema
+import pandas as pd
+import yaml
 
 CURRENT_FOLDER = Path(__file__).parent.absolute()
 ENCODING = "utf-8"
@@ -66,7 +67,6 @@ class Resources:
             yaml.dump(
                 self._data, f, sort_keys=True, width=float("inf"), allow_unicode=True
             )
-        return
 
     def __dict__(self):
         return deepcopy(self._data)
