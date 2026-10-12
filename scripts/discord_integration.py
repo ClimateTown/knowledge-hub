@@ -1,7 +1,8 @@
-from loguru import logger
 import argparse
-import requests
 from copy import deepcopy
+
+import requests
+from loguru import logger
 
 # Discord char limits https://www.pythondiscord.com/pages/guides/python-guides/discord-embed-limits/
 CHAR_LIMITS = {
