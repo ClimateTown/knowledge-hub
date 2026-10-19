@@ -3,11 +3,11 @@ from io import BytesIO
 from pathlib import Path
 from urllib.request import Request, urlopen
 
+import httpx
+import validators
 import yaml
 from bs4 import BeautifulSoup
 from loguru import logger
-import validators
-import httpx
 from PIL import Image, UnidentifiedImageError
 
 RESOURCES_FILE = Path("data") / "resources.yml"
