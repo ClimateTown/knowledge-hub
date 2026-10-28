@@ -838,3 +838,27 @@
     - Politics/US
   title: Grist
   url: https://grist.org/about/
+- description: Open Repository of Policies from around the world, meant to track progress on implementing laws related to Climate Change.
+  tags:
+    - Climate Accountability
+  title: Climate Policy Radar
+  url: https://www.climatepolicyradar.org/
+- description: An index of global civil society reports focused on climate, with the goal of building the largest searchable database of climate-related issues.
+  tags:
+    - Climate Journalism
+  title: Climate Insights Directory
+  url: https://climateinsightsdirectory.org/
+- description: Forward-looking musings on climate and culture from Brooklyn-based ocean scientist and policy nerd Ayana Elizabeth Johnson.
+  tags:
+    - Climate Journalism
+    - Activism
+    - Politics
+  title: What If We Get It Right?
+  url: https://ayanaelizabeth.substack.com/about
+- description: A newsletter on the politics of clean energy and electrification from Santa Barbara-based analyst Leah C. Stokes.
+  tags:
+    - Climate Journalism
+    - Politics
+    - Research
+  title: Notes from an Electric Era
+  url: https://electricnotes.news/about
