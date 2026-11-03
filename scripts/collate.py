@@ -3,8 +3,9 @@ This collation script is a once off file used for the initial collation of the r
 This script is placed here for future reference in case another collation is needed.
 """
 
+from dataclasses import asdict, dataclass, field
+
 import pandas as pd
-from dataclasses import dataclass, asdict, field
 import yaml
 
 # Obtaining the data
